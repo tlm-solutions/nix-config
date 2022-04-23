@@ -4,25 +4,50 @@
 
 { pkgs, config, lib, ... }: {
   systemd = {
-    services."gnu-radio" = {
-      enable = true;
-      wantedBy = [ "multi-user.target" ];
+    services = {
+      "gnu-radio" = {
+        enable = true;
+        wantedBy = [ "multi-user.target" ];
 
-      script = ''
-        ${pkgs.gnuradio-decode}/bin/recv_and_demod.py
-      '';
+        script = ''
+          ${pkgs.gnuradio-decode}/bin/recv_and_demod.py
+        '';
 
-      serviceConfig = {
-        Forking = true;
-        User = "gnuradio";
-        Restart = "always";
+        serviceConfig = {
+          Forking = true;
+          User = "gnuradio";
+          Restart = "always";
+        };
+      };
+
+      "telegram-decoder" = {
+        enable = true;
+        wantedBy = [ "multi-user.target" ];
+
+        script = ''
+          ${pkgs.telegram-decode}/bin/rec4.py
+        '';
+
+        serviceConfig = {
+          Forking = true;
+          User = "telegram-decoder";
+          Restart = "always";
+        };
       };
     };
   };
-
-  users.users.gnu-radio = {
-    name = "gnuradio";
-    description = "gnu radio service user";
-    isNormalUser = true;
+  
+  # user accounts for systemd units
+  users.users = {
+    gnu-radio = {
+      name = "gnuradio";
+      description = "gnu radio service user";
+      isNormalUser = true;
+    };
+    telegram-decoder = {
+      name = "telegram-decoder";
+      description = "gnu radio service user";
+      isNormalUser = true;
+    };
   };
 }

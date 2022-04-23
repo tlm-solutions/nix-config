@@ -25,6 +25,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/traffic-stop-box/configuration.nix
+            ./modules/gnuradio.nix
             {
               nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" ];
             }
