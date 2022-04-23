@@ -26,7 +26,7 @@
           modules = [
             ./hosts/traffic-stop-box/configuration.nix
             {
-              nixpkgs.overlays = [ radio-conf.overlays."x86_64-linux" ];
+              nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" ];
             }
           ];
         };
