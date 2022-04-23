@@ -38,6 +38,7 @@
     wget
     git-crypt
     neovim
+    custom-gnuradio
   ];
 
   # Enable the OpenSSH daemon.

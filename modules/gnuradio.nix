@@ -17,9 +17,9 @@
       };
     };
   };
-  users.users.infoscreen = {
-    name = "infoscreen";
-    description = "custom user for service infoscreen service";
+  users.users.gnu-radio = {
+    name = "gnu-radio";
+    description = "gnu radio service user";
     isNormalUser = true;
   };
 }
