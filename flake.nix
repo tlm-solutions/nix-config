@@ -14,10 +14,10 @@
   };
 
   outputs = { self, nixpkgs, sops-nix, naersk, radio-conf, ... }@inputs:
-    let
-    in
     {
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box.config.system.build.vm;
+      packages."x86_64-linux".traffic-stop-box = self.nixosConfigurations.traffic-stop-box.config.system.build.vm;
+      packages."x86_64-linux".data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
 
       nixosConfigurations = {
         traffic-stop-box = nixpkgs.lib.nixosSystem {
@@ -31,6 +31,14 @@
             }
           ];
         };
+        data-hoarder = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/data-hoarder/configuration.nix
+          ];
+        };
       };
     };
+  };
 }
