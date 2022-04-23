@@ -14,7 +14,7 @@
         '';
 
         serviceConfig = {
-          Forking = true;
+          Type = "forking";
           User = "gnuradio";
           Restart = "always";
         };
@@ -24,12 +24,9 @@
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = ''
-          ${pkgs.telegram-decode}/bin/decode_telegrams.py
-        '';
-
         serviceConfig = {
-          Forking = true;
+          Exec = "${pkgs.telegram-decode}/bin/decode_telegrams.py";
+          Type = "forking";
           User = "telegram-decoder";
           Restart = "always";
         };
