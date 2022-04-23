@@ -25,7 +25,7 @@
         wantedBy = [ "multi-user.target" ];
 
         script = ''
-          ${pkgs.telegram-decode}/bin/rec4.py
+          ${pkgs.telegram-decode}/bin/decode-telegrams.py
         '';
 
         serviceConfig = {
