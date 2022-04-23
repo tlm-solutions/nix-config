@@ -8,7 +8,7 @@
       enable = true;
       wantedBy = [ "multi-user.target" ];
       script = ''
-
+        ${pkgs.gnuradio-decode}/bin/recv_and_demod.py
       '';
 
       serviceConfig = {
