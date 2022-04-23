@@ -41,7 +41,9 @@
   ];
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-  services.openssh.passwordAuthentication = true;
+  services.openssh = {
+    enable = true;
+    passwordAuthentication = false;
+  };
   programs.mosh.enable = true;
 }
