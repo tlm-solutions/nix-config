@@ -7,19 +7,22 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      #./hardware-configuration.nix
+      ./hardware-configuration.nix
 
       # Enabled modules
       ../../modules/base.nix
     ];
 
-  # symlink flake to '/etc/nixos/flake.nix' to make nixos-rebuild pick it by default
-  environment.etc."nixos/flake.nix".source = "/var/src/ascii.coffee/flake.nix";
-
   # Use the GRUB 2 boot loader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+  #boot.loader.grub.enable = true;
+  #boot.loader.grub.version = 2;
+  #boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 2;
+  
+  hardware.hackrf.enable = true;
 
   networking.hostName = "traffic-stop-box"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -31,7 +34,7 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.eth0.useDHCP = true;
+  networking.interfaces.enp1s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -53,4 +56,3 @@
   system.stateVersion = "21.11"; # Did you read the comment?
 
 }
-

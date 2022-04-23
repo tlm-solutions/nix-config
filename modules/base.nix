@@ -3,8 +3,8 @@
 {
   _module.args.buildVM = false;
 
-  # use Nix 2.4 for flakes support
   nix = {
+    package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
      '';
@@ -22,6 +22,11 @@
     ];
   };
 
+  users.users.k-ot = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" ];
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -35,10 +40,8 @@
     git-crypt
   ];
 
-  users.users.root.password = "wtfwtf";
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-  services.openssh.passwordAuthentication = false;
+  services.openssh.passwordAuthentication = true;
   programs.mosh.enable = true;
 }
