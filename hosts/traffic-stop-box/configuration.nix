@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
 
       # Enabled modules
@@ -21,7 +22,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 2;
-  
+
   hardware.hackrf.enable = true;
 
   networking.hostName = "traffic-stop-box"; # Define your hostname.

@@ -7,7 +7,7 @@
     package = pkgs.nixFlakes;
     extraOptions = ''
       experimental-features = nix-command flakes
-     '';
+    '';
   };
 
   # Select internationalisation properties.
@@ -19,12 +19,11 @@
 
   users.users.root = {
     openssh.authorizedKeys.keyFiles = [
+      ../keys/ssh/revol-xut
+      ../keys/ssh/oxa
+      ../keys/ssh/marenz1
+      ../keys/ssh/marenz2
     ];
-  };
-
-  users.users.k-ot = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
   };
 
   # List packages installed in system profile. To search, run:
@@ -38,6 +37,7 @@
     vim_configurable
     wget
     git-crypt
+    neovim
   ];
 
   # Enable the OpenSSH daemon.
