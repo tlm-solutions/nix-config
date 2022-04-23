@@ -5,7 +5,7 @@
 { pkgs, config, lib, ... }: {
   systemd = {
     services = {
-      "gnu-radio" = {
+      "gnuradio" = {
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
@@ -54,9 +54,9 @@
   security.wrappers = {
     gnuradio-decode = {
       owner = "gnuradio";
-      group = "gnuradio";
+      group = "users";
       capabilities = "cap_sys_nice";
-      source = "${pkgs.gnuradio-decode}/binrecv_and_demond.py";
+      source = "${pkgs.gnuradio-decode}/bin/recv_and_demod.py";
     };
   };
 }
