@@ -55,7 +55,7 @@
     gnuradio-decode = {
       owner = "gnuradio";
       group = "users";
-      capabilities = "cap_sys_nice";
+      capabilities = "cap_sys_nice+eip";
       source = "${pkgs.gnuradio-decode}/bin/recv_and_demod.py";
     };
   };
