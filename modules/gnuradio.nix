@@ -25,7 +25,7 @@
         wantedBy = [ "multi-user.target" ];
 
         script = ''
-          ${pkgs.telegram-decode}/bin/decode-telegrams.py
+          ${pkgs.telegram-decode}/bin/decode_telegrams.py
         '';
 
         serviceConfig = {
@@ -36,7 +36,7 @@
       };
     };
   };
-  
+
   # user accounts for systemd units
   users.users = {
     gnu-radio = {
@@ -48,6 +48,15 @@
       name = "telegram-decoder";
       description = "gnu radio service user";
       isNormalUser = true;
+    };
+  };
+
+  security.wrappers = {
+    gnuradio-decode = {
+      owner = "gnuradio";
+      group = "gnuradio";
+      capabilities = "cap_sys_nice";
+      source = "${pkgs.gnuradio-decode}/binrecv_and_demond.py";
     };
   };
 }
