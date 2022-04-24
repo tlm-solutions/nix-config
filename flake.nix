@@ -11,9 +11,10 @@
     };
 
     radio-conf.url = github:dump-dvb/radio-conf;
+    data-accumulator.url = github:dump-dvb/data-accumulator;
   };
 
-  outputs = { self, nixpkgs, sops-nix, naersk, radio-conf, ... }@inputs:
+  outputs = { self, nixpkgs, sops-nix, naersk, radio-conf, data-accumulator, ... }@inputs:
     {
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box.config.system.build.vm;
       packages."x86_64-linux".traffic-stop-box = self.nixosConfigurations.traffic-stop-box.config.system.build.vm;
@@ -36,9 +37,12 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/data-hoarder/configuration.nix
+            ./modules/data-accumulator.nix
+            {
+              nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" ];
+            }
           ];
         };
       };
     };
-  };
 }
