@@ -38,6 +38,7 @@
           modules = [
             ./hosts/data-hoarder/configuration.nix
             ./modules/data-accumulator.nix
+            ./modules/nginx.nix
             {
               nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" ];
             }
