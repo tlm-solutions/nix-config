@@ -9,9 +9,7 @@
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = ''
-          ${pkgs.gnuradio-decode}/bin/recv_and_demod.py
-        '';
+        script = "exec ${pkgs.gnuradio-decode}/bin/recv_and_demod.py &";
 
         serviceConfig = {
           Type = "forking";
@@ -24,8 +22,10 @@
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
+        script = "exec ${pkgs.telegram-decode}/bin/decode_telegrams.py &";
+        environment.PYTHONUNBUFFERED = "1";
+
         serviceConfig = {
-          Exec = "${pkgs.telegram-decode}/bin/decode_telegrams.py";
           Type = "forking";
           User = "telegram-decoder";
           Restart = "always";
@@ -36,10 +36,11 @@
 
   # user accounts for systemd units
   users.users = {
-    gnu-radio = {
+    gnuradio = {
       name = "gnuradio";
       description = "gnu radio service user";
       isNormalUser = true;
+      extraGroups = [ "plugdev" ];
     };
     telegram-decoder = {
       name = "telegram-decoder";

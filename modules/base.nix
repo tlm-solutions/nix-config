@@ -39,6 +39,7 @@
     git-crypt
     neovim
     custom-gnuradio
+    iftop
   ];
 
   # Enable the OpenSSH daemon.
