@@ -27,6 +27,7 @@
           modules = [
             ./hosts/traffic-stop-box/configuration.nix
             ./modules/gnuradio.nix
+            ./modules/radio_wireguard_client.nix
             {
               nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" ];
             }
