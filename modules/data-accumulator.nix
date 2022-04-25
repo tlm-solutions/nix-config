@@ -29,7 +29,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "acadamicstrokes.com" = {
+        "academicstrokes.com" = {
           enableACME = true;
           forceSSL = true;
           locations = {

@@ -7,11 +7,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1650825703,
-        "narHash": "sha256-boCxGHSsdT6GphU0+76NnadgQ3UfUK6Yzm87XARllrI=",
+        "lastModified": 1650880000,
+        "narHash": "sha256-+jcDsfPTluqXZd9wLFgyLhywq0YHdSNE3FePqzHYXjk=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "cfa9bc965f453ed05d299839679d35c85be9849b",
+        "rev": "6e9eb2b2eea26f469958cd3b4e0c2c5219685344",
         "type": "github"
       },
       "original": {
@@ -90,11 +90,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1650728030,
-        "narHash": "sha256-VfCYsC/0mZQlQqsXf5o5Cib1ncJQ5l7WHN7hEIMmZNw=",
+        "lastModified": 1650830814,
+        "narHash": "sha256-P7vGsHdS19eHVUJt4BeQA4JfauL2nOpEcnYKIbX76YM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5fb3a179605141bfa4c9c423f9b1c33658b059c8",
+        "rev": "c254b8c915ac912ae9ee9dc74eac555ccbf33795",
         "type": "github"
       },
       "original": {
@@ -126,11 +126,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1650837917,
-        "narHash": "sha256-YB5TilQCiZrhhqnqi0FvpVVKRiARmfeP16Bfs7Pknys=",
+        "lastModified": 1650898575,
+        "narHash": "sha256-g/e+p4K/bFU5Fxs+ZBFGkb5suyvgG3hd1sdwQkoD2TM=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "deb0dbbcb21e822ac7815307dff277a5289416f7",
+        "rev": "d34f7cc9fde2130aa1c111d6ac142a0d438b8c26",
         "type": "github"
       },
       "original": {
