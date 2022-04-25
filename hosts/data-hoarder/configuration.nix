@@ -8,7 +8,7 @@
   imports =
     [
       # Include the results of the hardware scan.
-      #./hardware-configuration.nix
+      ./hardware-configuration.nix
 
       # Enabled modules
       ../../modules/base.nix
@@ -17,34 +17,37 @@
   # Use the GRUB 2 boot loader.
   #boot.loader.grub.enable = true;
   #boot.loader.grub.version = 2;
-  #boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.configurationLimit = 2;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
 
   networking.hostName = "data-hoarder"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
+  networking.interfaces.ens3 = {
+    useDHCP = false;
+    ipv4.addresses = [
+      {
+        address = "192.109.108.35";
+        prefixLength = 27;
+      }
+    ];
+  };
 
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = true;
-  networking.interfaces.eth0.useDHCP = true;
+  networking.defaultGateway = "192.109.108.61";
 
-  # Configure network proxy if necessary
+  networking.nameservers = [ "9.9.9.9" ];
+
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 80 443 22 8080 51820 ];
+  networking.firewall.allowedUDPPorts = [ 22 51820 ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

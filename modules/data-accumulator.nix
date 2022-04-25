@@ -9,7 +9,9 @@
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${pkgs.data-accumulator}/bin/data-accumulator &";
+        script = ''
+          exec ${pkgs.data-accumulator}/bin/data-accumulator &
+        '';
 
         environment = {
           "PATH_FORMATTED_DATA" = "/var/lib/data-accumulator/formatted.csv";
@@ -29,9 +31,8 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "acadamicstrokes.com" = {
+        "academicstrokes.com" = {
           enableACME = true;
-          forceSSL = true;
           locations = {
             "/" = {
               proxyPass = "http://127.0.0.1:8080/";

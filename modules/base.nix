@@ -38,7 +38,7 @@
     wget
     git-crypt
     neovim
-    custom-gnuradio
+    #custom-gnuradio
     iftop
   ];
 
