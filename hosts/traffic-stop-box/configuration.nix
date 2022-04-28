@@ -25,7 +25,7 @@
 
   hardware.hackrf.enable = true;
 
-  networking.hostName = "traffic-stop-box"; # Define your hostname.
+  networking.hostName = "traffic-stop-box-${toString config.dvb-dump.systemNumber}"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.

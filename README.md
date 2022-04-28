@@ -12,11 +12,12 @@ This will build a vm which can be used for integration testing.
     $ nix build
 ```
 
-for building the `traffic-stop-box` config.
+for building the `traffic-stop-box-${n}` config.
 
 
 ## Todos
 
+- [x] easily create and deploy new boxes
 - [ ] systemd unit running gnu radio scripts
 - [ ] decode server
 - [ ] secrets managment

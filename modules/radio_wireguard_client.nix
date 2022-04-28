@@ -4,7 +4,7 @@
   networking.firewall.allowedUDPPorts = [ 51820 ];
 
   networking.wg-quick.interfaces.wg-dvb = {
-    address = [ "10.13.37.5/32" ];
+    address = [ "10.13.37.${toString (config.dvb-dump.systemNumber + 100)}/32" ];
     privateKeyFile = "/root/wg-seckey";
 
     peers = [{

@@ -2,7 +2,16 @@
   This file contains the configuration for the gnuradio sdr decoding pipeline
 */
 
-{ pkgs, config, lib, ... }: {
+{ pkgs, config, lib, ... }: 
+let
+  #file = ../configs/config_+"${toString config.dvb-dump.systemNumber}.json";
+  configFiles = [
+    ../configs/config_0.json
+  ];
+  
+  file = builtins.elemAt configFiles config.dvb-dump.systemNumber;
+
+in { 
   systemd = {
     services = {
       "gnuradio" = {
@@ -22,8 +31,7 @@
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${pkgs.telegram-decode}/bin/decode_telegrams.py &";
-        environment.PYTHONUNBUFFERED = "1";
+        script = "exec ${pkgs.telegram-decode}/bin/telegra-decode --config ${file} &";
 
         serviceConfig = {
           Type = "forking";
