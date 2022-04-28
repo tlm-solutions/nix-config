@@ -14,14 +14,9 @@
       ../../modules/base.nix
     ];
 
-  # Use the GRUB 2 boot loader.
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.version = 2;
-  #boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.configurationLimit = 2;
+  boot.loader.systemd-boot.configurationLimit = 1;
   boot.tmpOnTmpfs = true;
 
   hardware.hackrf.enable = true;
@@ -45,7 +40,7 @@
   };
 
   services.journald.extraConfig = ''
-    SystemMaxUse=10M
+    SystemMaxUse=5M
   '';
 
   # Configure network proxy if necessary

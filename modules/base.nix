@@ -8,6 +8,7 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    autoOptimiseStore = true;
   };
 
   # Select internationalisation properties.
@@ -35,7 +36,6 @@
     vim_configurable
     wget
     git-crypt
-    neovim
     iftop
   ];
 
