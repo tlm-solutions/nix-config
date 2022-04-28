@@ -31,7 +31,7 @@ in {
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${pkgs.telegram-decode}/bin/telegra-decode --config ${file} &";
+        script = "exec ${pkgs.telegram-decoder}/bin/telegram-decode --config ${file} &";
 
         serviceConfig = {
           Type = "forking";

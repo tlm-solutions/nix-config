@@ -31,11 +31,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1651090135,
-        "narHash": "sha256-ZEEgQjMFrK3EC9aq2dQCdXwrKFl8rKTPMxbVq2hpPZE=",
+        "lastModified": 1651167578,
+        "narHash": "sha256-0dSBSq5sxQKGBiD35ePw72EB69RUWqHBMRYyHYMkqS8=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "c0855c4e1980797ebfb3d2c3fad510d7f72aa3b7",
+        "rev": "20d0279d224a26d0da89a4014a9e9b3044778983",
         "type": "github"
       },
       "original": {
@@ -130,11 +130,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1650998007,
-        "narHash": "sha256-NcJnbGDBBN023x8s3ll3HZxBcQoPq1ry9E2sjg+4flc=",
+        "lastModified": 1651093906,
+        "narHash": "sha256-kHXSbv+Hc73eV0/JVJ5YsJGr08bA4vJ3/XZew5PgZg0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a3917caedfead19f853aa5769de4c3ea4e4db584",
+        "rev": "feea25c58657fa81d16e0e51f80e1a02ef4cbd49",
         "type": "github"
       },
       "original": {
@@ -166,11 +166,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1651074465,
-        "narHash": "sha256-r0cg+LcdM8kG9/Afg9yAGWDBtdkRTpKxTUtH6NviRYI=",
+        "lastModified": 1651167636,
+        "narHash": "sha256-ItlWFul57R/NiXerbOEIhpNtApzH2zcmBNX2/mPiSWw=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "69c34e2d2cb70e43dfe9eb32a665d27dcdc39da8",
+        "rev": "2f66113c3916561684f2e59421811cf487d635a4",
         "type": "github"
       },
       "original": {
