@@ -2,18 +2,20 @@
   "nodes": {
     "data-accumulator": {
       "inputs": {
-        "naersk": "naersk",
+        "naersk": [
+          "naersk"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1651088753,
-        "narHash": "sha256-VC/MOiVCBJAJt+WyQA9aTld6jkrKIS8XKKbbSwjxc18=",
+        "lastModified": 1651171863,
+        "narHash": "sha256-iTngoHaS0R9XlfLx0ViZ5Y5loh0Cbw19cRsvuNUJgSg=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "fd93f181268d843193201be2939656a0ae44dda1",
+        "rev": "60dae008237a4135df17857b144e87ba4ec43267",
         "type": "github"
       },
       "original": {
@@ -24,18 +26,20 @@
     },
     "decode-server": {
       "inputs": {
-        "naersk": "naersk_2",
+        "naersk": [
+          "naersk"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1651167578,
-        "narHash": "sha256-0dSBSq5sxQKGBiD35ePw72EB69RUWqHBMRYyHYMkqS8=",
+        "lastModified": 1651171608,
+        "narHash": "sha256-0Ln/bO69NafD7Q9pk3scib66e9E0flBoG8aiZhb7b3M=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "20d0279d224a26d0da89a4014a9e9b3044778983",
+        "rev": "341d18d57ea289ca675402ef8f198817385726e4",
         "type": "github"
       },
       "original": {
@@ -45,42 +49,6 @@
       }
     },
     "naersk": {
-      "inputs": {
-        "nixpkgs": "nixpkgs"
-      },
-      "locked": {
-        "lastModified": 1650265945,
-        "narHash": "sha256-SO8+1db4jTOjnwP++29vVgImLIfETSXyoz0FuLkiikE=",
-        "owner": "nix-community",
-        "repo": "naersk",
-        "rev": "e8f9f8d037774becd82fce2781e1abdb7836d7df",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "naersk",
-        "type": "github"
-      }
-    },
-    "naersk_2": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_2"
-      },
-      "locked": {
-        "lastModified": 1650265945,
-        "narHash": "sha256-SO8+1db4jTOjnwP++29vVgImLIfETSXyoz0FuLkiikE=",
-        "owner": "nix-community",
-        "repo": "naersk",
-        "rev": "e8f9f8d037774becd82fce2781e1abdb7836d7df",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "naersk",
-        "type": "github"
-      }
-    },
-    "naersk_3": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -102,34 +70,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1650726686,
-        "narHash": "sha256-hE5PCqQlsdgWH3AUTwesvjZWs5ZUZ8SjMS5cnFB6W54=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "3c0f57e36ed0cf9947281e3b31f1bebb7ce5d4a1",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1650882267,
-        "narHash": "sha256-BFKiz8srATQIBuFEN2HgS2EHisK29EjZ/HV34wSr2lU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "2ea2f7b6d0cb7ce0712f2aa80303cda08deb0de2",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
         "lastModified": 1651093906,
         "narHash": "sha256-kHXSbv+Hc73eV0/JVJ5YsJGr08bA4vJ3/XZew5PgZg0=",
         "owner": "NixOS",
@@ -144,7 +84,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1645296114,
         "narHash": "sha256-y53N7TyIkXsjMpOG7RhvqJFGDacLs9HlyHeSTBioqYU=",
@@ -162,15 +102,15 @@
     },
     "radio-conf": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_2",
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1651167636,
-        "narHash": "sha256-ItlWFul57R/NiXerbOEIhpNtApzH2zcmBNX2/mPiSWw=",
+        "lastModified": 1651167845,
+        "narHash": "sha256-KDYy9umUsHTqtCPPRc6Bok51McMrw3xKVESrlaPZ2LM=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "2f66113c3916561684f2e59421811cf487d635a4",
+        "rev": "cadcb2864f256417b173281c6d91c56205dc441d",
         "type": "github"
       },
       "original": {
@@ -183,30 +123,9 @@
       "inputs": {
         "data-accumulator": "data-accumulator",
         "decode-server": "decode-server",
-        "naersk": "naersk_3",
-        "nixpkgs": "nixpkgs_3",
-        "radio-conf": "radio-conf",
-        "sops-nix": "sops-nix"
-      }
-    },
-    "sops-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1649756291,
-        "narHash": "sha256-KTll8bCINAzIUGaaMrbn9wb5nfhkXRLgmFrWGR/Dku0=",
-        "owner": "Mic92",
-        "repo": "sops-nix",
-        "rev": "c2614c4fe61943b3d280ac1892fcebe6e8eaf8c8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Mic92",
-        "repo": "sops-nix",
-        "type": "github"
+        "naersk": "naersk",
+        "nixpkgs": "nixpkgs",
+        "radio-conf": "radio-conf"
       }
     },
     "utils": {

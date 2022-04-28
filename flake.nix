@@ -2,9 +2,6 @@
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-21.11;
 
-    sops-nix.url = github:Mic92/sops-nix;
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-
     naersk = {
       url = github:nix-community/naersk;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,15 +14,17 @@
     data-accumulator = {
       url = github:dump-dvb/data-accumulator;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
     };
 
     decode-server = {
       url = github:dump-dvb/decode-server;
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, naersk, radio-conf, data-accumulator, decode-server, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, radio-conf, data-accumulator, decode-server, ... }@inputs:
   let
     generate_system = (number: 
       {"traffic-stop-box-${toString number}" = nixpkgs.lib.nixosSystem {
