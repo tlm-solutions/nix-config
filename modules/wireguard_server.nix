@@ -22,7 +22,7 @@
         }
         { # traffic-stop-box
           publicKey = "qyStvzZdoqcjJJQckw4ZwvsQUa+8TBWtnsRxURqanno=";
-          allowedIPs = [ "10.13.37.5/32" ];
+          allowedIPs = [ "10.13.37.100/32" ];
           persistentKeepalive = 25;
         }
         # { # marenz
