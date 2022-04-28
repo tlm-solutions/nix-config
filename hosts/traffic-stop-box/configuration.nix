@@ -22,6 +22,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 2;
+  boot.tmpOnTmpfs = true;
 
   hardware.hackrf.enable = true;
 
@@ -37,6 +38,15 @@
   networking.useDHCP = false;
   networking.interfaces.enp1s0.useDHCP = true;
   documentation.enable = false;
+
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+  };
+
+  services.journald.extraConfig = ''
+    SystemMaxUse=10M
+  '';
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
