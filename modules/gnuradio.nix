@@ -4,12 +4,7 @@
 
 { pkgs, config, lib, ... }: 
 let
-  #file = ../configs/config_+"${toString config.dvb-dump.systemNumber}.json";
-  configFiles = [
-    ../configs/config_0.json
-  ];
-  
-  file = builtins.elemAt configFiles config.dvb-dump.systemNumber;
+  file = ../configs + "/config_${toString config.dvb-dump.systemNumber}.json";
 
 in { 
   systemd = {
@@ -31,7 +26,7 @@ in {
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${pkgs.telegram-decoder}/bin/telegram-decode --config ${file} &";
+        script = "exec ${pkgs.telegram-decoder}/bin/telegram-decode --config ${file} --server 10.13.37.1:8080 &";
 
         serviceConfig = {
           Type = "forking";
