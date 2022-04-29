@@ -54,8 +54,24 @@
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux".traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux".data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
+      packages."aarch64-linux".traffic-stop-box-99 = self.nixosConfigurations.traffic-stop-box-99.config.system.build.vm;
 
-      nixosConfigurations = (nixpkgs.lib.mergeAttrs stop_boxes
+      nixosConfigurations = stop_boxes //
+      {"traffic-stop-box-99" = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./hosts/traffic-stop-box/configuration.nix
+            ./modules/gnuradio.nix
+            ./modules/radio_wireguard_client.nix
+            ./modules/numbering.nix
+            {
+              nixpkgs.overlays = [ radio-conf.overlay."aarch64-linux" decode-server.overlay."aarch64-linux" ];
+              dvb-dump.systemNumber = 99;
+            }
+          ];
+        };
+      } //
       {
         data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -70,11 +86,12 @@
             }
           ];
         };
-      });
+      };
 
       hydraJobs = { 
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
-        traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
+        traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
+        traffic-stop-box-99."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-99.config.system.build.toplevel;
       };
     };
 }
