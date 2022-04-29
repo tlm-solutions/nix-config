@@ -73,5 +73,12 @@
           ];
         };
       });
+
+      hydraJobs = { 
+        data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
+        traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
+      };
     };
 }
+
+
