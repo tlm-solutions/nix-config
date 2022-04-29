@@ -9,6 +9,12 @@
       experimental-features = nix-command flakes
     '';
     autoOptimiseStore = true;
+    binaryCaches = [
+      "https://nix-serve.hq.c3d2.de"
+    ];
+    binaryCachePublicKeys = [
+      "nix-serve.hq.c3d2.de:KZRGGnwOYzys6pxgM8jlur36RmkJQ/y8y62e52fj1ps="
+    ];
   };
 
   # Select internationalisation properties.

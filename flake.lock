@@ -11,11 +11,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1651171863,
-        "narHash": "sha256-iTngoHaS0R9XlfLx0ViZ5Y5loh0Cbw19cRsvuNUJgSg=",
+        "lastModified": 1651225022,
+        "narHash": "sha256-JrITxyNNJv3KTvZjnM2MyhiXRryMlW7qk9wdDh6vrJI=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "60dae008237a4135df17857b144e87ba4ec43267",
+        "rev": "19967ab9d2a773de6a1f2775f394fcfcb54b6841",
         "type": "github"
       },
       "original": {
@@ -26,20 +26,16 @@
     },
     "decode-server": {
       "inputs": {
-        "naersk": [
-          "naersk"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
+        "naersk": "naersk",
+        "nixpkgs": "nixpkgs",
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1651171608,
-        "narHash": "sha256-0Ln/bO69NafD7Q9pk3scib66e9E0flBoG8aiZhb7b3M=",
+        "lastModified": 1651237655,
+        "narHash": "sha256-p5Tr2GzAu3GKgonHXvp1ka3cIpdEnfoMqOVGQacTwDQ=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "341d18d57ea289ca675402ef8f198817385726e4",
+        "rev": "e2c624be1a754c44db6f70ff9c6676a013ea07fa",
         "type": "github"
       },
       "original": {
@@ -49,6 +45,27 @@
       }
     },
     "naersk": {
+      "inputs": {
+        "nixpkgs": [
+          "decode-server",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1650265945,
+        "narHash": "sha256-SO8+1db4jTOjnwP++29vVgImLIfETSXyoz0FuLkiikE=",
+        "owner": "nix-community",
+        "repo": "naersk",
+        "rev": "e8f9f8d037774becd82fce2781e1abdb7836d7df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "naersk_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -70,6 +87,22 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1651007983,
+        "narHash": "sha256-GNay7yDPtLcRcKCNHldug85AhAvBpTtPEJWSSDYBw8U=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "e10da1c7f542515b609f8dfbcf788f3d85b14936",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1651093906,
         "narHash": "sha256-kHXSbv+Hc73eV0/JVJ5YsJGr08bA4vJ3/XZew5PgZg0=",
         "owner": "NixOS",
@@ -84,33 +117,33 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
-        "lastModified": 1645296114,
-        "narHash": "sha256-y53N7TyIkXsjMpOG7RhvqJFGDacLs9HlyHeSTBioqYU=",
+        "lastModified": 1651093906,
+        "narHash": "sha256-kHXSbv+Hc73eV0/JVJ5YsJGr08bA4vJ3/XZew5PgZg0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "530a53dcbc9437363471167a5e4762c5fcfa34a1",
+        "rev": "feea25c58657fa81d16e0e51f80e1a02ef4cbd49",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-21.05",
+        "ref": "nixos-21.11",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "radio-conf": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1651167845,
-        "narHash": "sha256-KDYy9umUsHTqtCPPRc6Bok51McMrw3xKVESrlaPZ2LM=",
+        "lastModified": 1651238192,
+        "narHash": "sha256-00C/yfqjoZkDJf5Jwnm9RCW+47kGR/g+/eDTWW/pVJI=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "cadcb2864f256417b173281c6d91c56205dc441d",
+        "rev": "dad6c36e5dba8fc753b3af5b47ed244b29fc3043",
         "type": "github"
       },
       "original": {
@@ -123,8 +156,8 @@
       "inputs": {
         "data-accumulator": "data-accumulator",
         "decode-server": "decode-server",
-        "naersk": "naersk",
-        "nixpkgs": "nixpkgs",
+        "naersk": "naersk_2",
+        "nixpkgs": "nixpkgs_2",
         "radio-conf": "radio-conf"
       }
     },

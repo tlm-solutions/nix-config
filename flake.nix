@@ -19,8 +19,6 @@
 
     decode-server = {
       url = github:dump-dvb/decode-server;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.naersk.follows = "naersk";
     };
   };
 
@@ -66,7 +64,7 @@
             ./hosts/data-hoarder/configuration.nix
             ./modules/data-accumulator.nix
             ./modules/nginx.nix
-	        ./modules/wireguard_server.nix
+            ./modules/wireguard_server.nix
             {
               nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" ];
             }
