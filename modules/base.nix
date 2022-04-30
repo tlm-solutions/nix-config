@@ -28,6 +28,7 @@
     openssh.authorizedKeys.keyFiles = [
       ../keys/ssh/revol-xut
       ../keys/ssh/oxa
+      ../keys/ssh/oxa1
       ../keys/ssh/marenz1
       ../keys/ssh/marenz2
     ];
