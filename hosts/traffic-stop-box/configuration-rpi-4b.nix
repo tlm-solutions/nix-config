@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+  ];
+
   boot = {
     loader = {
       grub.enable = false;

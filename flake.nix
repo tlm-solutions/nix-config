@@ -31,7 +31,7 @@
             specialArgs = { inherit inputs; };
             modules = [
               ./hosts/traffic-stop-box/configuration.nix
-              ./hosts/traffic-stop-box + "/hardware-configuration-${toString number}.nix"
+              (./hosts/traffic-stop-box + "/hardware-configuration-${toString number}.nix")
               ./hosts/traffic-stop-box/configuration-dell-wyse-3040.nix
               ./modules/gnuradio.nix
               ./modules/radio_wireguard_client.nix
@@ -58,7 +58,7 @@
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux".traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux".data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
-      packages."aarch64-linux".traffic-stop-box-99 = self.nixosConfigurations.traffic-stop-box-99.config.system.build.vm;
+      packages."aarch64-linux".traffic-stop-box-99 = self.nixosConfigurations.traffic-stop-box-99.config.system.build.sdImage;
 
       nixosConfigurations = stop_boxes //
         {
@@ -66,8 +66,9 @@
             system = "aarch64-linux";
             specialArgs = { inherit inputs; };
             modules = [
+
+              "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
               ./hosts/traffic-stop-box/configuration.nix
-              ./hosts/traffic-stop-box/hardware-configuration-99.nix
               ./hosts/traffic-stop-box/configuration-rpi-4b.nix
               ./modules/gnuradio.nix
               ./modules/radio_wireguard_client.nix
@@ -98,7 +99,7 @@
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
-        traffic-stop-box-99."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-99.config.system.build.toplevel;
+        traffic-stop-box-99."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-99.config.system.build.sdImage;
       };
     };
 }
