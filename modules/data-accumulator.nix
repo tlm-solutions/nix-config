@@ -10,7 +10,7 @@
         wantedBy = [ "multi-user.target" ];
 
         script = ''
-          exec ${pkgs.data-accumulator}/bin/data-accumulator --host 10.13.37.1 --port 8080&
+          exec ${pkgs.data-accumulator}/bin/data-accumulator --host 0.0.0.0 --port 8080&
         '';
 
         environment = {
