@@ -9,18 +9,21 @@
       address = [ "10.13.37.1/32" ];
       privateKeyFile = "/root/wg-seckey";
       listenPort = 51820;
-      peers =  [
-        { # Tassilo
+      peers = [
+        {
+          # Tassilo
           publicKey = "vgo3le9xrFsIbbDZsAhQZpIlX+TuWjfEyUcwkoqUl2Y=";
           allowedIPs = [ "10.13.37.2/32" ];
           persistentKeepalive = 25;
         }
-        { # oxa
+        {
+          # oxa
           publicKey = "QbaQaGqudRXIh03IbBNATfBZfpMLmwihlwLs6W9+P1c=";
           allowedIPs = [ "10.13.37.3/32" ];
           persistentKeepalive = 25;
         }
-        { # traffic-stop-box
+        {
+          # traffic-stop-box
           publicKey = "qyStvzZdoqcjJJQckw4ZwvsQUa+8TBWtnsRxURqanno=";
           allowedIPs = [ "10.13.37.100/32" ];
           persistentKeepalive = 25;

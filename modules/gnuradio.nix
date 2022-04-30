@@ -2,11 +2,12 @@
   This file contains the configuration for the gnuradio sdr decoding pipeline
 */
 
-{ pkgs, config, lib, ... }: 
+{ pkgs, config, lib, ... }:
 let
   file = ../configs + "/config_${toString config.dvb-dump.systemNumber}.json";
 
-in { 
+in
+{
   systemd = {
     services = {
       "gnuradio" = {
