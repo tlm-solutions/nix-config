@@ -19,7 +19,9 @@ in
         serviceConfig = {
           Type = "forking";
           User = "gnuradio";
-          Restart = "always";
+          Restart = "on-failure";
+          StartLimitBurst = "2";
+          StartLimitIntervalSec = "150s";
         };
       };
 
@@ -32,7 +34,9 @@ in
         serviceConfig = {
           Type = "forking";
           User = "telegram-decoder";
-          Restart = "always";
+          Restart = "on-failure";
+          StartLimitBurst = "2";
+          StartLimitIntervalSec = "150s";
         };
       };
     };
