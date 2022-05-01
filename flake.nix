@@ -20,9 +20,13 @@
     decode-server = {
       url = github:dump-dvb/decode-server;
     };
+
+    dvb-api = {
+      url = github:dump-dvb/dvb-api;
+    };
   };
 
-  outputs = { self, nixpkgs, naersk, radio-conf, data-accumulator, decode-server, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, radio-conf, data-accumulator, decode-server, dvb-api, ... }@inputs:
     let
       generate_system = (number:
         {
@@ -89,8 +93,9 @@
               ./modules/data-accumulator.nix
               ./modules/nginx.nix
               ./modules/wireguard_server.nix
+              ./modules/public_api.nix
               {
-                nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" ];
+                nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" dvb-api.overlay."x86_64-linux" ];
               }
             ];
           };
