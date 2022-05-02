@@ -9,7 +9,7 @@
           locations = {
             "/" = {
               root = "${pkgs.windshield}/bin/";
-              index = "index.html"
+              index = "index.html";
             };
           };
         };
