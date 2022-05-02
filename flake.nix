@@ -24,9 +24,18 @@
     dvb-api = {
       url = github:dump-dvb/dvb-api;
     };
+
+    stops = {
+      url = github:dump-dvb/stop-names;
+      flake = false;
+    };
+
+    windshield = {
+      url = github:dump-dvb/windshield;
+    };
   };
 
-  outputs = { self, nixpkgs, naersk, radio-conf, data-accumulator, decode-server, dvb-api, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, ... }@inputs:
     let
       generate_system = (number:
         {
@@ -43,6 +52,7 @@
               {
                 nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
                 dvb-dump.systemNumber = number;
+                dvb-dump.stopsJson = "${stops}/stops.json";
               }
             ];
           };
@@ -80,6 +90,7 @@
               {
                 nixpkgs.overlays = [ radio-conf.overlay."aarch64-linux" decode-server.overlay."aarch64-linux" ];
                 dvb-dump.systemNumber = 99;
+                dvb-dump.stopsJson = "${stops}/stops.json";
               }
             ];
           };
@@ -94,8 +105,11 @@
               ./modules/nginx.nix
               ./modules/wireguard_server.nix
               ./modules/public_api.nix
+              ./modules/map.nix
+              ./modules/numbering.nix
               {
-                nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" dvb-api.overlay."x86_64-linux" ];
+                nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" dvb-api.overlay."x86_64-linux" windshield.overlay."x86_64-linux" ];
+                dvb-dump.stopsJson = "${stops}/stops.json";
               }
             ];
           };
