@@ -1,0 +1,405 @@
+{
+    "102": {
+        "name": "LSA Anton-/Leipziger Straße",
+        "lat": 51.063033,
+        "lon": 13.736958
+    },
+    "103": {
+        "name": "Anton-/Zur Eisenbahnstraße",
+        "lat": 51.064067,
+        "lon": 13.736935
+    },
+    "104": {
+        "name": "Schlesischer Platz",
+        "lat": 51.064783,
+        "lon": 13.740362
+    },
+    "107": {
+        "name": "Albertplatz",
+        "lat": 51.063252,
+        "lon": 13.746367
+    },
+    "108": {
+        "name": "Albertplatz West",
+        "lat": 51.064241,
+        "lon": 13.744951
+    },
+    "109": {
+        "name": "Bautzner/Rothenburger",
+        "lat": 51.062925,
+        "lon": 13.751871
+    },
+    "119": {
+        "name": "Straßburger Platz",
+        "lat": 51.046078,
+        "lon": 13.754815
+    },
+    "120": {
+        "name": "Lennéstraße/Hauptallee",
+        "lat": 51.042455,
+        "lon": 13.751296
+    },
+    "121": {
+        "name": "Lennéplatz",
+        "lat": 51.038294,
+        "lon": 13.746646
+    },
+    "136": {
+        "name": "Könneritzstraße/Jahnstraße",
+        "lat": 51.055101,
+        "lon": 13.723554
+    },
+
+    "200": {
+        "name": "Synagoge",
+        "lat": 51.052611,
+        "lon": 13.747128
+    },
+    "201": {
+        "name": "St. Petersburger Straße/Pulmann-Newa",
+        "lat": 51.042306,
+        "lon": 13.736348
+    },
+    "203": {
+        "name": "Pirnaischer Platz",
+        "lat": 51.049434,
+        "lon": 13.744379
+    },
+    "204": {
+        "name": "Rathenauplatz",
+        "lat": 51.051463,
+        "lon": 13.747008
+    },
+    "205": {
+        "name": "Carolaplatz",
+        "lat": 51.057410,
+        "lon": 13.745794
+    },
+    "206": {
+        "name": "Neustädter Markt",
+        "lat": 51.057757,
+        "lon": 13.741322
+    },
+    "207": {
+        "name": "Robert-Blum-Straße / Große Meißner Str.",
+        "lat": 51.061568,
+        "lon": 13.737761
+    },
+    "208": {
+        "name": "Bodenbacher / Zwinglistraße",
+        "lat": 51.033500,
+        "lon": 13.782810
+    },
+    "268": {
+        "name": "Albertplatz Süd",
+        "lat": 51.061454,
+        "lon": 13.746032
+    },
+    "305": {
+        "name": "Karcherallee",
+        "lat": 51.0370345,
+        "lon": 13.7781818
+    },
+    "307": {
+        "name": "Stübelallee/Zwinglistraße",
+        "lat": 51.0346967,
+        "lon": 13.7840746
+    },
+    "308": {
+        "name": "Zwinglistraße",
+        "lat": 51.0340625,
+        "lon": 13.7833343
+    },
+    "310": {
+        "name": "Rennplatzstraße",
+        "lat": 51.0272979,
+        "lon": 13.8004320
+    },
+    "311": {
+        "name": "Marienberger Straße",
+        "lat": 51.0256244,
+        "lon": 13.8052278
+    },
+    "324": {
+        "name": "Fetscherplatz",
+        "lat": 51.046367,
+        "lon": 13.770653
+    },
+    "330": {
+        "name": "Schandauer Straße/Alternberger Straße",
+        "lat": 51.0394224,
+        "lon": 13.8059762
+    },
+    "346": {
+        "name": "Schillerplatz",
+        "lat": 51.052175,
+        "lon": 13.805205
+    },
+    "357": {
+        "name": "Hepkestraße",
+        "lat": 51.0327378,
+        "lon": 13.8052781
+    },
+    "363": {
+        "name": "Blasewitzer/Fetscherstraße",
+        "lat": 51.052881,
+        "lon": 13.777738
+    },
+    "387": {
+        "name": "Seidnitz Center",
+        "lat": 51.0297010,
+        "lon": 13.8024819
+    },
+    "405": {
+        "name": "Caspar-David-Friedrich-Straße",
+        "lat": 51.0264364,
+        "lon": 13.7556769
+    },
+    "406": {
+        "name": "Heinrich-Zille-Straße",
+        "lat": 51.0255861,
+        "lon": 13.7572326
+    },
+    "421": {
+        "name": "Wasaplatz",
+        "lat": 51.027979,
+        "lon": 13.759444
+    },
+    "429": {
+        "name": "Moränenende/Breitscheidstraße",
+        "lat": 51.0135254,
+        "lon": 13.8110393
+    },
+    "435": {
+        "name": "Moränenende/Wilhelm-Liebknecht-Straße",
+        "lat": 51.0125937,
+        "lon": 13.8100717
+    },
+    "452": {
+        "name": "Tiergartenstraße",
+        "lat": 51.0298346,
+        "lon": 13.7711960
+    },
+    "453": {
+        "name": "Karchallee/Winterbergstraße",
+        "lat": 51.0331947,
+        "lon": 13.7745916
+    },
+    "454": {
+        "name": "Dresden Grunaer Weg",
+        "lat": 51.0309016,
+        "lon": 13.7803976
+    },
+    "455": {
+        "name": "Winderbergstraße",
+        "lat": 51.0241871,
+        "lon": 13.7973314
+    },
+    "459": {
+        "name": "Mügelner Straße/Moränenende",
+        "lat": 51.0112617,
+        "lon": 13.8079246
+    },
+    "504": {
+        "name": "Reichenbachstraße",
+        "lat": 51.0348507,
+        "lon": 13.7312898
+    },
+    "506": {
+        "name": "Fritz-Foerster-Platz",
+        "lat": 51.0301741,
+        "lon": 13.7307460
+    },
+    "552": {
+        "name": "Zellescher Weg",
+        "lat": 51.0284316,
+        "lon": 13.7459510
+    },
+    "604": {
+        "name": "Nürnberger/Budapester Str.",
+        "lat": 51.0369342,
+        "lon": 13.7157618
+    },
+    "606": {
+        "name": "Chemnitzer/Nöthritzer Str.",
+        "lat": 51.0292989,
+        "lon": 13.7071278
+    },
+    "651": {
+        "name": "Nürnberger Platz",
+        "lat": 51.0323243,
+        "lon": 13.7261459
+    },
+    "804": {
+        "name": "Tharandter/Kesselsdorfer Straße",
+        "lat": 51.0436693,
+        "lon": 13.7043013
+    },
+    "851": {
+        "name": "Löbtauer Straße/Fröbelstraße",
+        "lat": 51.0500279,
+        "lon": 13.7126293
+    },
+    "1101": {
+        "name": "Louisenstraße",
+        "lat": 51.0680048,
+        "lon": 13.7477077
+    },
+    "1102": {
+        "name": "Bischofsweg",
+        "lat": 51.0713760,
+        "lon": 13.7506816
+    },
+    "1103": {
+        "name": "Tannenstraße",
+        "lat": 51.0737276,
+        "lon": 13.7528442
+    },
+    "1151": {
+        "name": "Bischofsplatz",
+        "lat": 51.071993,
+        "lon": 13.746973
+    },
+    "1104": {
+        "name": "Staufenbergallee",
+        "lat": 51.0766329,
+        "lon": 13.7555318
+    },
+    "1202": {
+        "name": "LSA Bautzner Straße/Pulsnitzer",
+        "lat": 51.0633708,
+        "lon": 13.7578833
+    },
+    "1203": {
+        "name": "Pulsnitzer Straße",
+        "lat": 51.063314,
+        "lon": 13.757515
+    },
+    "1205": {
+        "name": "Diakonissenkrankenhaus",
+        "lat": 51.0641348,
+        "lon": 13.7621847
+    },
+    "1220": {
+        "name": "Nordstraße",
+        "lat": 51.0661350,
+        "lon": 13.7694067
+    },
+
+    "1301": {
+        "name": "Körnerplatz/Grundstr.",
+        "lat": 51.0539600,
+        "lon": 13.8150960
+    },
+
+    "1501": {
+        "name": "Hansastraße/Eisenbahnstraße",
+        "lat": 51.0657888,
+        "lon": 13.7381732
+    },
+    "3402": {
+        "name": "Dresden Johannisfriedhof",
+        "lat": 51.0368414,
+        "lon": 13.8125265
+    },
+    "408": {
+        "name": "Corinthstraße",
+        "lat": 51.0213106,
+        "lon": 13.7643742
+    },
+    "403": {
+        "name": "Stehlener Platz",
+        "lat": 51.0331333,
+        "lon": 13.7488785
+    },
+    "402": {
+        "name": "Gerhart-Hauptmann-Straße/Tiergartenstraße",
+        "lat": 51.0374158,
+        "lon": 13.7487953
+    },
+    "401": {
+        "name": "Lenneplatz",
+        "lat": 51.0380162,
+        "lon": 13.7474113
+    },
+    "121": {
+        "name": "Leneestraße/Gellerstraße",
+        "lat": 51.0383636,
+        "lon": 13.7466174
+    },
+    "123": {
+        "name": "Gret-Palucca-Straße",
+        "lat": 51.0389626,
+        "lon": 13.7394281
+    },
+    "501": {
+        "name": "Fritz-Löffler-Straße/Stehlener Straße",
+        "lat": 51.0389726,
+        "lon": 13.7332578
+    },
+    "192": {
+        "name": "Hauptbahnhof",
+        "lat": 51.0396540,
+        "lon": 13.7337835
+    },
+    "302": {
+        "name": "Comeniusplatz",
+        "lat": 51.0416777,
+        "lon": 13.7666030
+    },
+    "1504": {
+        "name": "Dresden Grossenhainer Platz",
+        "lat": 51.074117,
+        "lon": 13.738611
+    },
+    "1404": {
+        "name": "Dresden Grossenhainer Strasse / Frintz-Reuter-Strasse",
+        "lat": 51.075230,
+        "lon": 13.734514
+    },
+    "1270": {
+        "name": "Stauffenbergalle / Hans-Oster-Strasse",
+        "lat": 51.075896,
+        "lon": 13.757962
+    },
+    "1293": {
+        "name":"Hans-Oster-Strasse",
+        "lat": 51.074884,
+        "lon": 13.760771
+    },
+    "1257": {
+        "name":"Marienallee",
+        "lat": 51.073226,
+        "lon": 13.765502
+    },
+    "1271": {
+        "name":"Landesdirektion Sachsen",
+        "lat": 51.071685,
+        "lon": 13.770473
+    },
+    "1258": {
+        "name":"Waldschloesschenstrasse",
+        "lat": 51.069858,
+        "lon": 13.775674
+    },
+    "1206": {
+        "name":"Waldschloesschen",
+        "lat": 51.067329,
+        "lon": 13.776489
+    },
+    "1276": {
+        "name": "Jaegerpark Heideblick",
+        "lat": 51.070416,
+        "lon": 13.788827
+    },
+    "1301": {
+        "name": "Koernerplatz",
+        "lat": 51.054347,
+        "lon": 13.814161
+    },
+    "112": {
+        "name": "Rosa-Luxemburg-Platz",
+        "lat": 51.059115,
+        "lon": 13.752996
+    }
+}
