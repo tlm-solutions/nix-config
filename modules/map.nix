@@ -8,7 +8,8 @@
           enableACME = true;
           locations = {
             "/" = {
-              index = "${pkgs.windshield}/bin/index.html";
+              root = "${pkgs.windshield}/bin/";
+              index = "index.html"
             };
           };
         };
