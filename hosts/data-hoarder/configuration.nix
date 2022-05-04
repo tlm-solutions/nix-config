@@ -30,7 +30,7 @@
     useDHCP = false;
     ipv4.addresses = [
       {
-        address = "192.109.108.35";
+        address = "192.109.108.52";
         prefixLength = 27;
       }
     ];

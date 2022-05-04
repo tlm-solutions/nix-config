@@ -106,7 +106,7 @@
               ./modules/wireguard_server.nix
               ./modules/public_api.nix
               ./modules/map.nix
-              ./modules/ftp.nix
+              #./modules/ftp.nix
               ./modules/numbering.nix
               {
                 nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" dvb-api.overlay."x86_64-linux" windshield.overlay."x86_64-linux" ];
