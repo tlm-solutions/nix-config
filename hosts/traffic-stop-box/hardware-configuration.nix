@@ -16,13 +16,13 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/9ec62084-dedb-4539-a9a0-052f0bcd90be";
+      device = "/dev/disk/by-label/root";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/D434-2A4C";
+      device = "/dev/disk/by-label/boot";
       fsType = "vfat";
     };
 

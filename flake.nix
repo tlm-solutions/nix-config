@@ -44,7 +44,7 @@
             specialArgs = { inherit inputs; };
             modules = [
               ./hosts/traffic-stop-box/configuration.nix
-              (./hosts/traffic-stop-box + "/hardware-configuration-${toString number}.nix")
+              (./hosts/traffic-stop-box/hardware-configuration.nix)
               ./hosts/traffic-stop-box/configuration-dell-wyse-3040.nix
               ./modules/gnuradio.nix
               ./modules/radio_wireguard_client.nix
@@ -60,9 +60,10 @@
       );
 
       # increment this number if you want to add a new system
-      numberOfSystems = 1;
+      numberOfSystems = 10;
       # list of accending system numbers
-      id_list = ((num: if num == 0 then [ num ] else [ num ] ++ (id_list num - 1)) (numberOfSystems - 1));
+      #id_list = ((num: if num <= 0 then [ num ] else [ num ] ++ (id_list (num - 1))) (numberOfSystems - 1));
+      id_list = [ 0 1 2 3 4 5 6 7 8 9 10 ];
       # list of nixos systems
       list_of_systems = builtins.map generate_system id_list;
       # attribute set of all traffic stop boxes
