@@ -10,10 +10,10 @@
     '';
     autoOptimiseStore = true;
     binaryCaches = [
-      "https://nix-serve.hq.c3d2.de"
+      "https://dump-dvb.cachix.org"
     ];
     binaryCachePublicKeys = [
-      "nix-serve.hq.c3d2.de:KZRGGnwOYzys6pxgM8jlur36RmkJQ/y8y62e52fj1ps="
+      "dump-dvb.cachix.org-1:+Dq7gqpQG4YlLA2X3xJsG1v3BrlUGGpVtUKWk0dTyUU="
     ];
   };
 
