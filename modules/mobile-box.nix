@@ -52,6 +52,15 @@ in
           Restart = "always";
         };
       };
+      "start-wifi-hotspot" = {
+        wantedBy = [ "multi-user.target" ];
+        serviceConfig = {
+          Type = "simple";
+        };
+        script = ''
+          ${pkgs.linux-router}/bin/lnxrouter --ap wlan0 dump-dvb -g 10.3.141.1 -p trolling-dvb
+        '';
+      };
     };
   };
 
