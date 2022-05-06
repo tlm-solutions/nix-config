@@ -23,9 +23,39 @@
           persistentKeepalive = 25;
         }
         {
-          # traffic-stop-box
+          # traffic-stop-box-0
           publicKey = "qyStvzZdoqcjJJQckw4ZwvsQUa+8TBWtnsRxURqanno=";
           allowedIPs = [ "10.13.37.100/32" ];
+          persistentKeepalive = 25;
+        }
+        {
+          # traffic-stop-box-1
+          publicKey = "dOPobdvfphx0EHmU7dd5ihslFzZi17XgRDQLMIUYa1w=";
+          allowedIPs = [ "10.13.37.101/32" ];
+          persistentKeepalive = 25;
+        }
+        {
+          # traffic-stop-box-2
+          publicKey = "4TUQCToGNhjsCgV9elYE/91Vd/RvMgvMXtF/1Dzlvxo=";
+          allowedIPs = [ "10.13.37.102/32" ];
+          persistentKeepalive = 25;
+        }
+        {
+          # traffic-stop-box-3
+          publicKey = "w3AT3EahW1sCK8ZsR7sDTcQj1McXYeWx7fnfQFA7i3o=";
+          allowedIPs = [ "10.13.37.103/32" ];
+          persistentKeepalive = 25;
+        }
+        {
+          # traffic-stop-box-4
+          publicKey = "B0wPH0jUxaatRncHMkgDEQ+DzvlbTBrVJY4etxqQgG8=";
+          allowedIPs = [ "10.13.37.104/32" ];
+          persistentKeepalive = 25;
+        }
+        {
+          # traffic-stop-box-5
+          publicKey = "bGMO3+BuMbNMnqgt+1lEKAwCVi3BrtpcZlVf9ULcmkw=";
+          allowedIPs = [ "10.13.37.105/32" ];
           persistentKeepalive = 25;
         }
         # { # marenz
