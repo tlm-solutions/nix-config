@@ -34,6 +34,12 @@
           allowedIPs = [ "10.13.37.101/32" ];
           persistentKeepalive = 25;
         }
+        {
+          # traffic-stop-box-2
+          publicKey = "4TUQCToGNhjsCgV9elYE/91Vd/RvMgvMXtF/1Dzlvxo=";
+          allowedIPs = [ "10.13.37.102/32" ];
+          persistentKeepalive = 25;
+        }
         # { # marenz
         # { # marenz
         #   publicKey = "";
