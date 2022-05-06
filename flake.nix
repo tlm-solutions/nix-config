@@ -73,24 +73,20 @@
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux".traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux".data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
-      packages."aarch64-linux".traffic-stop-box-99 = self.nixosConfigurations.traffic-stop-box-99.config.system.build.sdImage;
+      packages."x86_64-linux".mobile-box = self.nixosConfigurations.mobile-box.config.system.build.vm;
 
-      nixosConfigurations = stop_boxes //
-        {
-          "traffic-stop-box-99" = nixpkgs.lib.nixosSystem {
-            system = "aarch64-linux";
+      nixosConfigurations = stop_boxes // {
+          "mobile-box" = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = [
-
-              "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
               ./hosts/traffic-stop-box/configuration.nix
-              ./hosts/traffic-stop-box/configuration-rpi-4b.nix
+              ./hosts/traffic-stop-box/hardware-configuration.nix
               ./modules/gnuradio.nix
               ./modules/radio_wireguard_client.nix
               ./modules/numbering.nix
               {
-                nixpkgs.overlays = [ radio-conf.overlay."aarch64-linux" decode-server.overlay."aarch64-linux" ];
-                dvb-dump.systemNumber = 99;
+                nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
                 dvb-dump.stopsJson = "${stops}/stops.json";
               }
             ];
@@ -107,7 +103,7 @@
               ./modules/wireguard_server.nix
               ./modules/public_api.nix
               ./modules/map.nix
-              #./modules/ftp.nix
+              ./modules/file_sharing.nix
               ./modules/numbering.nix
               {
                 nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" dvb-api.overlay."x86_64-linux" windshield.overlay."x86_64-linux" ];
@@ -120,7 +116,7 @@
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
-        traffic-stop-box-99."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-99.config.system.build.sdImage;
+        mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.sdImage;
       };
     };
 }
