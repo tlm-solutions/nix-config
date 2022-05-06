@@ -6,13 +6,14 @@
       virtualHosts = {
         "files.dvb.solutions" = {
           enableACME = true;
-          locations = {
-            "/" = {
-              root = "/var/lib/data-accumulator/";
-            };
+          default = true;
+          forceSSL = true;
+          root = "/var/lib/data-accumulator/";
+          extraConfig = ''
+            autoindex on;
+          '';
           };
         };
       };
     };
-  };
 }

@@ -34,6 +34,24 @@ in
           StartLimitIntervalSec = "150s";
         };
       };
+      "data-accumulator" = {
+        enable = true;
+        wantedBy = [ "multi-user.target" ];
+
+        script = ''
+          exec ${pkgs.data-accumulator}/bin/data-accumulator --host 0.0.0.0 --port 8080&
+        '';
+
+        environment = {
+          "PATH_FORMATTED_DATA" = "/var/lib/data-accumulator/formatted.csv";
+          "PATH_RAW_DATA" = "/var/lib/data-accumulator/raw.csv";
+        };
+        serviceConfig = {
+          Type = "forking";
+          User = "data-accumulator";
+          Restart = "always";
+        };
+      };
     };
   };
 
@@ -48,6 +66,11 @@ in
     telegram-decoder = {
       name = "telegram-decoder";
       description = "gnu radio service user";
+      isNormalUser = true;
+    };
+    data-accumulator = {
+      name = "data-accumulator";
+      description = "";
       isNormalUser = true;
     };
   };

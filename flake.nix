@@ -73,14 +73,17 @@
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux".traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux".data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
-      packages."x86_64-linux".mobile-box = self.nixosConfigurations.mobile-box.config.system.build.vm;
+      packages."x86_64-linux".mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
+      packages."x86_64-linux".mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
 
       nixosConfigurations = stop_boxes // {
           "mobile-box" = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = [
+              "${nixpkgs}/nixos/modules/installer/cd-dvd/iso-image.nix"
               ./hosts/traffic-stop-box/configuration.nix
+              ./hosts/traffic-stop-box/configuration-dell-wyse-3040.nix
               ./hosts/traffic-stop-box/hardware-configuration.nix
               ./modules/gnuradio.nix
               ./modules/radio_wireguard_client.nix
@@ -116,7 +119,7 @@
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
-        mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.sdImage;
+        mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.vm;
       };
     };
 }

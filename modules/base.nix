@@ -1,8 +1,6 @@
 { pkgs, config, ... }:
 
 {
-  _module.args.buildVM = false;
-
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
