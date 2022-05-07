@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   networking.firewall.allowedUDPPorts = [ 51820 ];
@@ -13,21 +13,6 @@
       endpoint = "academicstrokes.com:51820";
       persistentKeepalive = 25;
     }];
-  };
 
-  systemd = {
-    services = {
-      "wireguard-ping" = {
-        enable = true;
-        wantedBy = [ "multi-user.target" ];
-
-        script = "exec ${pkgs.iputils}/bin/ping 10.13.37.1 &";
-
-        serviceConfig = {
-          Type = "forking";
-          Restart = "on-failure";
-        };
-      };
-    };
   };
 }
