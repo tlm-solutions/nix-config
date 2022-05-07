@@ -1,6 +1,6 @@
 {pkgs, config, lib}:
 let
-  file = ../configs/mobile_box.nix;
+  file = ../configs/mobile_box.json;
 in
 {
   systemd = {

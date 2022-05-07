@@ -81,15 +81,16 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = [
-              "${nixpkgs}/nixos/modules/installer/cd-dvd/iso-image.nix"
+              "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
               ./hosts/traffic-stop-box/configuration.nix
               ./hosts/traffic-stop-box/configuration-dell-wyse-3040.nix
-              ./hosts/traffic-stop-box/hardware-configuration.nix
-              ./modules/gnuradio.nix
-              ./modules/radio_wireguard_client.nix
               ./modules/numbering.nix
               {
-                nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
+                nixpkgs.overlays = [ 
+                  radio-conf.overlay."x86_64-linux" 
+                  decode-server.overlay."x86_64-linux" 
+                  data-accumulator.overlay."x86_64-linux"
+                ];
                 dvb-dump.stopsJson = "${stops}/stops.json";
               }
             ];
