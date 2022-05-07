@@ -44,8 +44,8 @@
             specialArgs = { inherit inputs; };
             modules = [
               ./hosts/traffic-stop-box/configuration.nix
-              (./hosts/traffic-stop-box/hardware-configuration.nix)
-              ./hosts/traffic-stop-box/configuration-dell-wyse-3040.nix
+              ./hosts/traffic-stop-box/hardware-configuration.nix
+              ./hardware/configuration-dell-wyse-3040.nix
               ./modules/gnuradio.nix
               ./modules/radio_wireguard_client.nix
               ./modules/numbering.nix
@@ -82,9 +82,11 @@
             specialArgs = { inherit inputs; };
             modules = [
               "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
-              ./hosts/traffic-stop-box/configuration.nix
-              ./hosts/traffic-stop-box/configuration-dell-wyse-3040.nix
+              ./hosts/mobile-box/configuration.nix
+              ./hosts/mobile-box/hardware-configuration.nix
+              ./hardware/configuration-dell-wyse-3040.nix
               ./modules/numbering.nix
+              ./modules/mobile-box.nix
               {
                 nixpkgs.overlays = [ 
                   radio-conf.overlay."x86_64-linux" 
@@ -92,6 +94,7 @@
                   data-accumulator.overlay."x86_64-linux"
                 ];
                 dvb-dump.stopsJson = "${stops}/stops.json";
+                dvb-dump.systemNumber = 130;
               }
             ];
           };

@@ -1,4 +1,4 @@
-{pkgs, config, lib}:
+{pkgs, config, lib, ...}:
 let
   file = ../configs/mobile_box.json;
 in
@@ -34,6 +34,7 @@ in
           StartLimitIntervalSec = "150s";
         };
       };
+
       "data-accumulator" = {
         enable = true;
         wantedBy = [ "multi-user.target" ];
@@ -52,6 +53,7 @@ in
           Restart = "always";
         };
       };
+
       "start-wifi-hotspot" = {
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {

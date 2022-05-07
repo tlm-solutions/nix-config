@@ -6,7 +6,7 @@
       virtualHosts = {
         "files.dvb.solutions" = {
           enableACME = true;
-          enableSSL = true;
+          onlySSL = true;
           root = "/var/lib/data-accumulator/";
           extraConfig = ''
             autoindex on;
