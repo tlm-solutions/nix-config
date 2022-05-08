@@ -14,5 +14,12 @@
           };
         };
       };
+      cron = {
+        enable = true;
+        systemCronJobs = [
+          "0 0 0 * * cd /var/lib/data-accumulator/ && cp ./formatted.csv ./data/$(date +\"%d-%m-%Y\")-raw-data.csv"
+        ];
+
+      };
     };
 }

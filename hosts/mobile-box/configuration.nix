@@ -13,7 +13,9 @@
 
   boot.tmpOnTmpfs = true;
 
+
   hardware.hackrf.enable = true;
+  hardware.rtl-sdr.enable = true;
 
   networking.hostName = "mobile-box"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
