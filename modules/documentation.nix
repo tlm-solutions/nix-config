@@ -1,15 +1,15 @@
-{ pkgs, config, lib, ... }: {
+{ pkgs, lib, ... }: {
   services = {
     nginx = {
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "map.dvb.solutions" = {
+        "docs.dvb.solutions" = {
           enableACME = true;
           onlySSL = true;
           locations = {
             "/" = {
-              root = "${pkgs.windshield}/bin/";
+              root = "${pkgs.dvb-dump-docs}/bin/";
               index = "index.html";
             };
           };

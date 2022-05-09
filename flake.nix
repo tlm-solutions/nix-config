@@ -23,6 +23,8 @@
 
     dvb-api = {
       url = github:dump-dvb/dvb-api;
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
     };
 
     stops = {
@@ -32,10 +34,16 @@
 
     windshield = {
       url = github:dump-dvb/windshield;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    docs = {
+      url = github:dump-dvb/documentation;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, naersk, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, ... }@inputs:
     let
       generate_system = (number:
         {
@@ -77,28 +85,28 @@
       packages."x86_64-linux".mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
 
       nixosConfigurations = stop_boxes // {
-          "mobile-box" = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = [
-              "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
-              ./hosts/mobile-box/configuration.nix
-              ./hosts/mobile-box/hardware-configuration.nix
-              ./hardware/configuration-dell-wyse-3040.nix
-              ./modules/numbering.nix
-              ./modules/mobile-box.nix
-              {
-                nixpkgs.overlays = [ 
-                  radio-conf.overlay."x86_64-linux" 
-                  decode-server.overlay."x86_64-linux" 
-                  data-accumulator.overlay."x86_64-linux"
-                ];
-                dvb-dump.stopsJson = "${stops}/stops.json";
-                dvb-dump.systemNumber = 130;
-              }
-            ];
-          };
-        } //
+        "mobile-box" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
+            ./hosts/mobile-box/configuration.nix
+            ./hosts/mobile-box/hardware-configuration.nix
+            ./hardware/configuration-dell-wyse-3040.nix
+            ./modules/numbering.nix
+            ./modules/mobile-box.nix
+            {
+              nixpkgs.overlays = [
+                radio-conf.overlay."x86_64-linux"
+                decode-server.overlay."x86_64-linux"
+                data-accumulator.overlay."x86_64-linux"
+              ];
+              dvb-dump.stopsJson = "${stops}/stops.json";
+              dvb-dump.systemNumber = 130;
+            }
+          ];
+        };
+      } //
         {
           data-hoarder = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
@@ -113,7 +121,12 @@
               ./modules/file_sharing.nix
               ./modules/numbering.nix
               {
-                nixpkgs.overlays = [ data-accumulator.overlay."x86_64-linux" dvb-api.overlay."x86_64-linux" windshield.overlay."x86_64-linux" ];
+                nixpkgs.overlays = [
+                  data-accumulator.overlay."x86_64-linux"
+                  dvb-api.overlay."x86_64-linux"
+                  windshield.overlay."x86_64-linux"
+                  docs.overlay."x86_64-linux"
+                ];
                 dvb-dump.stopsJson = "${stops}/stops.json";
               }
             ];

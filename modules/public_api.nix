@@ -5,7 +5,7 @@
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${pkgs.dvb-api}/bin/dvb-api &"; 
+        script = "exec ${pkgs.dvb-api}/bin/dvb-api &";
 
         environment = {
           "GRPC_HOST" = "127.0.0.1:50051";
@@ -20,7 +20,7 @@
       };
     };
   };
-  
+
   services = {
     nginx = {
       enable = true;
@@ -28,6 +28,7 @@
       virtualHosts = {
         "socket.dvb.solutions" = {
           enableACME = true;
+          onlySSL = true;
           locations = {
             "/" = {
               proxyPass = "http://127.0.0.1:9001/";
@@ -35,8 +36,9 @@
             };
           };
         };
-      "api.dvb.solutions" = {
+        "api.dvb.solutions" = {
           enableACME = true;
+          onlySSL = true;
           locations = {
             "/" = {
               proxyPass = "http://127.0.0.1:9002/";

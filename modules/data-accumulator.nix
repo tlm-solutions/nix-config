@@ -26,24 +26,6 @@
     };
   };
 
-  services = {
-    nginx = {
-      enable = true;
-      recommendedProxySettings = true;
-      virtualHosts = {
-        "academicstrokes.com" = {
-          enableACME = true;
-          locations = {
-            "/" = {
-              proxyPass = "http://127.0.0.1:8080/";
-              proxyWebsockets = true;
-            };
-          };
-        };
-      };
-    };
-  };
-
   # user accounts for systemd units
   users.users = {
     data-accumulator = {

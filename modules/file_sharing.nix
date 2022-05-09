@@ -1,4 +1,4 @@
-{pkgs, lib, ...} : {
+{ pkgs, lib, ... }: {
   services = {
     nginx = {
       enable = true;
@@ -11,15 +11,15 @@
           extraConfig = ''
             autoindex on;
           '';
-          };
         };
       };
-      cron = {
-        enable = true;
-        systemCronJobs = [
-          "0 0 0 * * cd /var/lib/data-accumulator/ && cp ./formatted.csv ./data/$(date +\"%d-%m-%Y\")-raw-data.csv"
-        ];
-
-      };
     };
+    cron = {
+      enable = true;
+      systemCronJobs = [
+        "0 0 0 * * cd /var/lib/data-accumulator/ && cp ./formatted.csv ./data/$(date +\"%d-%m-%Y\")-raw-data.csv"
+      ];
+
+    };
+  };
 }

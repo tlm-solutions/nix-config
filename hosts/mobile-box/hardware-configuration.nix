@@ -26,11 +26,11 @@
       fsType = "vfat";
     };
 
-    swapDevices = [
-      {
-        device = "/dev/mmcblk0p1";
-      }
-    ];
+  swapDevices = [
+    {
+      device = "/dev/mmcblk0p1";
+    }
+  ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
