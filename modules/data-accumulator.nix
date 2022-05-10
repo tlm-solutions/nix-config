@@ -14,8 +14,9 @@
         '';
 
         environment = {
-          "PATH_FORMATTED_DATA" = "/var/lib/data-accumulator/formatted.csv";
-          "PATH_RAW_DATA" = "/var/lib/data-accumulator/raw.csv";
+          "INFLUXDB_HOST" = "http://127.0.0.1:8082";
+          #"PATH_FORMATTED_DATA" = "/var/lib/data-accumulator/formatted.csv";
+          #"PATH_RAW_DATA" = "/var/lib/data-accumulator/raw.csv";
         };
         serviceConfig = {
           Type = "forking";
@@ -23,6 +24,12 @@
           Restart = "always";
         };
       };
+    };
+  };
+
+  services = {
+    influxdb2 = {
+      enable = true;
     };
   };
 
