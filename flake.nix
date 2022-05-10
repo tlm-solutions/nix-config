@@ -15,10 +15,12 @@
       url = github:dump-dvb/data-accumulator;
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
+      inputs.stops.follows = "stops";
     };
 
     decode-server = {
       url = github:dump-dvb/decode-server;
+      inputs.stops.follows = "stops";
     };
 
     dvb-api = {

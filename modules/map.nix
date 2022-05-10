@@ -6,7 +6,6 @@
       virtualHosts = {
         "map.dvb.solutions" = {
           enableACME = true;
-          onlySSL = true;
           locations = {
             "/" = {
               root = "${pkgs.windshield}/bin/";
