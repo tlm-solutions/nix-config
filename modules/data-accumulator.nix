@@ -14,7 +14,7 @@
         '';
 
         environment = {
-          "INFLUXDB_HOST" = "http://127.0.0.1:8082";
+          "INFLUXDB_HOST" = "http://127.0.0.1:8086";
           #"PATH_FORMATTED_DATA" = "/var/lib/data-accumulator/formatted.csv";
           #"PATH_RAW_DATA" = "/var/lib/data-accumulator/raw.csv";
         };
@@ -28,8 +28,11 @@
   };
 
   services = {
-    influxdb2 = {
+    influxdb = {
       enable = true;
+      settings = {
+
+      };
     };
   };
 

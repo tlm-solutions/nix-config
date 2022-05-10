@@ -14,11 +14,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1652215140,
-        "narHash": "sha256-6hS55onKfadoF3GVivMPq7+UdcFqlbvAKEztE/NKY2I=",
+        "lastModified": 1652221872,
+        "narHash": "sha256-/z1KLfgbehzi5KPFf65jVVQOUwdzG2+huMRIAhsjHwI=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "064d9666f7adef0ad5ae4b937daea4d469d7cb98",
+        "rev": "87b8e50543396fd69e6a0ab51a2b59ac7f28bc84",
         "type": "github"
       },
       "original": {
@@ -34,11 +34,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1652215298,
-        "narHash": "sha256-Nw2zEcXbNQWtI6sejSM9t5k2vf5ndMKz6AiCoq0/Xzc=",
+        "lastModified": 1652218147,
+        "narHash": "sha256-q1PbSffAgFvSMnK01lPihKo7bborbuMVb6iHrBpS9lY=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "b53452ff1872a64a13e308d90e3af72904a2a4db",
+        "rev": "5afc71ddb47dd1636dfe23926ec3abe30bb5e7aa",
         "type": "github"
       },
       "original": {
@@ -78,11 +78,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1652215901,
-        "narHash": "sha256-7yva3x+oAqTHT2pWYMlhdBhKdafoAXez5M3EMB2+8Es=",
+        "lastModified": 1652222905,
+        "narHash": "sha256-LCpPn65Hp2GjbmZSCiMMm0qg/8azCRerWicnGwN0Pdc=",
         "owner": "dump-dvb",
         "repo": "dvb-api",
-        "rev": "458142ed73c66dec92420e45dab6fb41e7a4a348",
+        "rev": "4da6a3bbb964dd1291b335f125db98b093b1be27",
         "type": "github"
       },
       "original": {
@@ -186,11 +186,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1651693447,
-        "narHash": "sha256-82DT9Nvu7rFp1wQ/x24qnbJtJ2/99N/EuWyiKuPRX5I=",
+        "lastModified": 1652218074,
+        "narHash": "sha256-WA6zjsEN21gQDecFJ2AJZ7HZfSdG01H9Qiqchb3eBjU=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "c7b758af97cde038368991c333dc5ab985c55861",
+        "rev": "a97e09626bc7bf5a28b3e3ba02ce677e36bdc0db",
         "type": "github"
       },
       "original": {
@@ -311,11 +311,11 @@
         "utils": "utils_5"
       },
       "locked": {
-        "lastModified": 1651868878,
-        "narHash": "sha256-XfgfzzoFoPAzf8UeL6vI9AKWoeS4X241WNOCc4jJxkc=",
+        "lastModified": 1652223268,
+        "narHash": "sha256-NwTKeuoFFgE+x7Iebjohb8ostyxLAE+47PRRPSnla80=",
         "owner": "dump-dvb",
         "repo": "windshield",
-        "rev": "a33d093a718abeb7138e6935803a97135a3b336b",
+        "rev": "087a9246315b8cb37a98f43d0fa29598753b40a1",
         "type": "github"
       },
       "original": {
