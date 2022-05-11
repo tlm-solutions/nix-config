@@ -14,9 +14,8 @@
         '';
 
         environment = {
-          "INFLUXDB_HOST" = "http://127.0.0.1:8086";
-          #"PATH_FORMATTED_DATA" = "/var/lib/data-accumulator/formatted.csv";
-          #"PATH_RAW_DATA" = "/var/lib/data-accumulator/raw.csv";
+          "INFLUXDB_HOST" = "http://localhost:8086";
+          "GRPC_HOST" = "http://127.0.0.1:50051";
         };
         serviceConfig = {
           Type = "forking";
