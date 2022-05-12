@@ -10,6 +10,12 @@ with lib; {
     default = ../configs/stops.json;
     description = "stops conig json";
   };
+  options.dvb-dump.graphJson = mkOption {
+    type = types.path;
+    default = ../configs/graph.json;
+    description = "graph json containing the network graphs";
+  };
+
 }
 
 

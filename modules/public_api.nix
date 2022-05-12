@@ -10,6 +10,7 @@
         environment = {
           "GRPC_HOST" = "127.0.0.1:50051";
           "DEFAULT_WEBSOCKET_HOST" = "127.0.0.1:9001";
+          "GRAPH_FILE" = "${config.dvb-dump.graphJson}";
           "STOPS_FILE" = "${config.dvb-dump.stopsJson}";
         };
 

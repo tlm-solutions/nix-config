@@ -29,9 +29,6 @@
   services = {
     influxdb = {
       enable = true;
-      settings = {
-
-      };
     };
   };
 

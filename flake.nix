@@ -122,6 +122,7 @@
               ./modules/map.nix
               ./modules/file_sharing.nix
               ./modules/numbering.nix
+              ./modules/grafana.nix
               {
                 nixpkgs.overlays = [
                   data-accumulator.overlay."x86_64-linux"
@@ -130,6 +131,7 @@
                   docs.overlay."x86_64-linux"
                 ];
                 dvb-dump.stopsJson = "${stops}/stops.json";
+                dvb-dump.graphJson = "${stops}/graph.json";
               }
             ];
           };
