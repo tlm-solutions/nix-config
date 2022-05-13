@@ -123,6 +123,7 @@
               ./modules/file_sharing.nix
               ./modules/numbering.nix
               ./modules/grafana.nix
+              ./modules/website.nix
               {
                 nixpkgs.overlays = [
                   data-accumulator.overlay."x86_64-linux"

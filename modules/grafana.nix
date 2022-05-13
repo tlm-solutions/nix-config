@@ -37,7 +37,7 @@
           params = { module = [ "http_2xx" ]; };
           static_configs = [{
             targets = [
-              "10.13.37.1:8080"
+              "127.0.0.1:8080"
             ];
           }];
           relabel_configs = [
@@ -86,12 +86,12 @@
       port = 2342;
       addr = "127.0.0.1";
 
-      provision = {
-        enable = true;
-        dashboards = [
-          { options.path = "${../services/dashboards}"; }
-        ];
-      };
+      #provision = {
+      #  enable = true;
+        #dashboards = [
+        #  { options.path = "${../services/dashboards}"; }
+        #];
+      #};
     };
 
     # reverse proxy for grafana
@@ -99,8 +99,8 @@
       enable = true;
       virtualHosts = {
         "${toString config.services.grafana.domain}" = {
-          enableACME = true;
           forceSSL = true;
+          enableACME = true;
           locations."/" = {
             proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
             proxyWebsockets = true;

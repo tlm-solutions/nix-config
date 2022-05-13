@@ -5,6 +5,7 @@
       recommendedProxySettings = true;
       virtualHosts = {
         "map.dvb.solutions" = {
+          forceSSL = true;
           enableACME = true;
           locations = {
             "/" = {

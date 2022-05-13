@@ -29,6 +29,7 @@
       recommendedProxySettings = true;
       virtualHosts = {
         "socket.dvb.solutions" = {
+          forceSSL = true;
           enableACME = true;
           locations = {
             "/" = {
@@ -38,8 +39,8 @@
           };
         };
         "api.dvb.solutions" = {
+          forceSSL = true;
           enableACME = true;
-          onlySSL = true;
           locations = {
             "/" = {
               proxyPass = "http://127.0.0.1:9002/";

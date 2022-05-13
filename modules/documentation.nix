@@ -6,7 +6,7 @@
       virtualHosts = {
         "docs.dvb.solutions" = {
           enableACME = true;
-          onlySSL = true;
+          forceSSL = true;
           locations = {
             "/" = {
               root = "${pkgs.dvb-dump-docs}/bin/";

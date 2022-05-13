@@ -15,7 +15,7 @@ scrape_configs:
       max_age: 12h
       labels:
         job: systemd-journal
-        host: espresso 
+        host: data-hoarder
     relabel_configs:
       - source_labels: ['__journal__systemd_unit']
         target_label: 'unit'
