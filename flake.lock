@@ -30,15 +30,15 @@
     "decode-server": {
       "inputs": {
         "naersk": "naersk",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs",
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1652480711,
-        "narHash": "sha256-C8k8TWOqwNL0UuSao7E4W/CYibTzWPwCX+0AbjDoPlg=",
+        "lastModified": 1652484874,
+        "narHash": "sha256-Hzd0tlGRUZCG4sGV+JmvOevCBu8hj8KDvJDfHD7V3C8=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "8e1611a0105a5ee35e75ba99a2f08b94043ff2f4",
+        "rev": "d744861c50bc45c7205a1c66bcf32ed12028bf02",
         "type": "github"
       },
       "original": {
@@ -93,7 +93,10 @@
     },
     "naersk": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "decode-server",
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1651574473,
@@ -131,20 +134,6 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1652252629,
-        "narHash": "sha256-SvT64apetqc8P5nYp1/fOZvUmHUPdPFUZbhSpKy+1aI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "d2fc6856824cb87742177eefc8dd534bdb6c3439",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
         "lastModified": 1651571855,
         "narHash": "sha256-KZie6c2J2DUPLjG2PkYSwGLvD6RygA3TxZSPQpctbNI=",
         "owner": "NixOS",
@@ -159,7 +148,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1652182392,
         "narHash": "sha256-H9Bmor+kfogrE0X7Fi5sh0gCUWDG4pnmYxedJyIT41A=",
@@ -175,7 +164,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1651571855,
         "narHash": "sha256-KZie6c2J2DUPLjG2PkYSwGLvD6RygA3TxZSPQpctbNI=",
@@ -193,7 +182,7 @@
     },
     "radio-conf": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_3",
         "utils": "utils_4"
       },
       "locked": {
@@ -217,7 +206,7 @@
         "docs": "docs",
         "dvb-api": "dvb-api",
         "naersk": "naersk_2",
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_2",
         "radio-conf": "radio-conf",
         "stops": "stops",
         "windshield": "windshield"
