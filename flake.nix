@@ -124,6 +124,7 @@
               ./modules/numbering.nix
               ./modules/grafana.nix
               ./modules/website.nix
+              ./modules/documentation.nix
               {
                 nixpkgs.overlays = [
                   data-accumulator.overlay."x86_64-linux"

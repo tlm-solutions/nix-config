@@ -1,7 +1,11 @@
 { pkgs, config, lib, ... }: {
   security.acme.acceptTerms = true;
   security.acme.email = "dump-dvb@protonmail.com";
-  services.nginx.commonHttpConfig = ''
+  services.nginx = {
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    commonHttpConfig = ''
       # Enable CSP for your services.
       #add_header Content-Security-Policy "script-src 'self'; object-src 'none'; base-uri 'none';" always;
 
@@ -17,5 +21,6 @@
       # Enable XSS protection of the browser.
       # May be unnecessary when CSP is configured properly (see above)
         add_header X-XSS-Protection "1; mode=block";
-  '';
+    '';
+  };
 }
