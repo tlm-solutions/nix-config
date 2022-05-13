@@ -14,11 +14,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1652381353,
-        "narHash": "sha256-EJKOeyFPhdoVClgIf/ntoihbt3rp8I4Mt/Ghkn5351I=",
+        "lastModified": 1652479374,
+        "narHash": "sha256-/JdfcvxWlL/jT+yhNlT6B+TFU0qZ34J0zF3Ib00hnu4=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "18f4a20d66c41c0e4ceeb8c0cf83295a420ec3f0",
+        "rev": "94ebefc4625b9f69da1a03332ab54f0da0f3eb11",
         "type": "github"
       },
       "original": {
@@ -30,15 +30,15 @@
     "decode-server": {
       "inputs": {
         "naersk": "naersk",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1652372540,
-        "narHash": "sha256-mkpXYip4VjB/HEiXmb+R2uWha/5ShywPrxXjzeU6ETY=",
+        "lastModified": 1652480711,
+        "narHash": "sha256-C8k8TWOqwNL0UuSao7E4W/CYibTzWPwCX+0AbjDoPlg=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "e28fb00212fff2bccadc7277e74bb2fe36f48eba",
+        "rev": "8e1611a0105a5ee35e75ba99a2f08b94043ff2f4",
         "type": "github"
       },
       "original": {
@@ -54,11 +54,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1652107302,
-        "narHash": "sha256-iq45VgrTL97HQvuQ5mW9NoG3XMCWLKBSpT8yXxxskpU=",
+        "lastModified": 1652469410,
+        "narHash": "sha256-Nv9dZXE1iep47/VA4WEhMvLxLp+jif0CyhI0Pgpzddo=",
         "owner": "dump-dvb",
         "repo": "documentation",
-        "rev": "fd8fa3d6633623bf0f2f89e239b06d4cd9fcdb90",
+        "rev": "aec98bef00dc2e2cfa7553500dc28abe831bf475",
         "type": "github"
       },
       "original": {
@@ -78,11 +78,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1652465848,
-        "narHash": "sha256-NkSGHKFdhY33Yhn5oceBRVNCN82Ns+w0tzNcwDgsfbc=",
+        "lastModified": 1652469608,
+        "narHash": "sha256-xZxuvOzINCS7CizfqCcQOZMIyWvlLy0rk4rT6q146e0=",
         "owner": "dump-dvb",
         "repo": "dvb-api",
-        "rev": "41e6094283c3ebb23823b22fedc6f7a636a17045",
+        "rev": "4c2298e02278904113540ed64fd97e11026a56d2",
         "type": "github"
       },
       "original": {
@@ -93,10 +93,7 @@
     },
     "naersk": {
       "inputs": {
-        "nixpkgs": [
-          "decode-server",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
         "lastModified": 1651574473,
@@ -134,6 +131,20 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1652252629,
+        "narHash": "sha256-SvT64apetqc8P5nYp1/fOZvUmHUPdPFUZbhSpKy+1aI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "d2fc6856824cb87742177eefc8dd534bdb6c3439",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1651571855,
         "narHash": "sha256-KZie6c2J2DUPLjG2PkYSwGLvD6RygA3TxZSPQpctbNI=",
         "owner": "NixOS",
@@ -148,7 +159,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1652182392,
         "narHash": "sha256-H9Bmor+kfogrE0X7Fi5sh0gCUWDG4pnmYxedJyIT41A=",
@@ -164,7 +175,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1651571855,
         "narHash": "sha256-KZie6c2J2DUPLjG2PkYSwGLvD6RygA3TxZSPQpctbNI=",
@@ -182,7 +193,7 @@
     },
     "radio-conf": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "utils": "utils_4"
       },
       "locked": {
@@ -206,7 +217,7 @@
         "docs": "docs",
         "dvb-api": "dvb-api",
         "naersk": "naersk_2",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "radio-conf": "radio-conf",
         "stops": "stops",
         "windshield": "windshield"
@@ -311,11 +322,11 @@
         "utils": "utils_5"
       },
       "locked": {
-        "lastModified": 1652389979,
-        "narHash": "sha256-B9mUGbI/vm8At7DQAXbgYwGyTeqsBJt/aaljhcqk7aQ=",
+        "lastModified": 1652477176,
+        "narHash": "sha256-EMYPJYGEmK3kV/2t8+SbhgPhibgzv4Irfqf6aSmR8+E=",
         "owner": "dump-dvb",
         "repo": "windshield",
-        "rev": "ab2fc81ba1a867e769cf8cc4b2d5c61e81747eee",
+        "rev": "65dd5b72f0a02c14fa7597560dce8135bdbfde34",
         "type": "github"
       },
       "original": {
