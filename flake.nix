@@ -7,6 +7,11 @@
       #inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    microvm = {
+      url = github:astro/microvm.nix;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     radio-conf = {
       url = github:dump-dvb/radio-conf;
     };
@@ -45,7 +50,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, naersk, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -123,6 +128,7 @@
           data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
           mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
           mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
+          staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         } // {
           deploy-all = deployAllScript;
         } // individualScripts);
@@ -189,6 +195,7 @@
             specialArgs = { inherit inputs; };
             modules = ([
               ./hosts/staging/configuration.nix
+              microvm.nixosModules.microvm
             ] ++ data-hoarder-modules);
           };
         });

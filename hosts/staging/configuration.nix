@@ -7,19 +7,15 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-
       # Enabled modules
       ../../modules/base.nix
     ];
 
-  # Use the GRUB 2 boot loader.
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.version = 2;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
+  microvm = {
+    vcpu = 4;
+    mem = 4096;
+    hypervisor = "cloud-hypervisor";
+  };
 
   networking.hostName = "staging-data-hoarder"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

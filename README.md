@@ -1,7 +1,7 @@
 # Traffic Stop Box
 
 Is a mobile radio antenna which is built to capture traffic stop telegrams which are sent
-by trams or buses in the dresden germany.
+by trams or buses in the dresden germany area.
 
 
 ## Building with nix
