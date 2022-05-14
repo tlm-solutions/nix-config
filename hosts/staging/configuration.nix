@@ -22,18 +22,16 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-  networking.interfaces.ens3 = {
+  networking.interfaces.eth0 = {
     useDHCP = false;
-    ipv4.addresses = [
-      {
-        address = "192.109.108.52";
-        prefixLength = 27;
-      }
-    ];
+    ipv4.addresses = [ {
+      address = "172.20.73.64";
+      prefixLength = 25;
+    } ];
   };
 
-  networking.defaultGateway = "192.109.108.61";
-  networking.nameservers = [ "9.9.9.9" ];
+  networking.defaultGateway = "172.20.73.1";
+  networking.nameservers = [ "172.20.73.8" "9.9.9.9" ];
 
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
