@@ -54,7 +54,7 @@
       installScript = (target: (pkgs.writeScript "deploy" ''
         #!${pkgs.runtimeShell} -ex
         nix copy --to ssh://root@10.13.37.${toString (target + 100)} ${self}
-        ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch
+        ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch --flake ${self}#traffic-stop-box-${toString target}
       ''));
 
       # concatanes commands together

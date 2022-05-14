@@ -24,9 +24,12 @@
 
   documentation.enable = false;
 
-  nix.gc = {
-    automatic = true;
-    dates = "daily";
+  nix = {
+    buildCores = 1;
+    gc = {
+      automatic = true;
+      dates = "daily";
+    };
   };
 
   services.journald.extraConfig = ''

@@ -88,9 +88,9 @@
 
       #provision = {
       #  enable = true;
-        #dashboards = [
-        #  { options.path = "${../services/dashboards}"; }
-        #];
+      #dashboards = [
+      #  { options.path = "${../services/dashboards}"; }
+      #];
       #};
     };
 
