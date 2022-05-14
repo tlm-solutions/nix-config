@@ -4,7 +4,7 @@
 
     naersk = {
       url = github:nix-community/naersk;
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     radio-conf = {
@@ -20,7 +20,7 @@
 
     decode-server = {
       url = github:dump-dvb/decode-server;
-      inputs.stops.follows = "stops";
+      #inputs.stops.follows = "stops";
     };
 
     dvb-api = {
@@ -50,17 +50,6 @@
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
 
-      # command which generates the update script for that specific machine
-      installScript = (target: (pkgs.writeScript "deploy" ''
-        #!${pkgs.runtimeShell} -ex
-        nix copy --to ssh://root@10.13.37.${toString (target + 100)} ${self}
-        ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch --flake ${self}#traffic-stop-box-${toString target}
-      ''));
-
-      # concatanes commands together
-      deployBoxes = (systems: lib.strings.concatStringsSep " "
-        (builtins.map (system: "${(installScript system)}") systems));
-
       # function that generates a system with the given number
       generate_system = (number:
         {
@@ -88,27 +77,62 @@
       numberOfSystems = 10;
       # list of accending system numbers
       #id_list = ((num: if num <= 0 then [ num ] else [ num ] ++ (id_list (num - 1))) (numberOfSystems - 1));
-      id_list = [ 0 1 2 ];
+      id_list = [ 0 1 2 3 4 ];
       # list of nixos systems
       list_of_systems = builtins.map generate_system id_list;
       # attribute set of all traffic stop boxes
       stop_boxes = nixpkgs.lib.foldr (x: y: nixpkgs.lib.mergeAttrs x y) { } list_of_systems;
 
-      deployScript = (pkgs.writeScript "deploy-all" (
+      boxes = id_list;
+      installScript = (target: (pkgs.writeScriptBin "deploy" ''
+        #!${pkgs.runtimeShell}
+        ssh root@10.13.37.${toString (target + 100)} "ps cax | grep \"nixos-rebuild\" > /dev/null"
+        if [ $? -eq 0 ]
+        then
+            echo "Process is running."
+            exit
+        else
+            echo "Process is not running."
+            nix copy --to ssh://root@10.13.37.${toString (target + 100)} ${self}
+            ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch --flake ${self}#traffic-stop-box-${toString target} --option substituters "https://dump-dvb.cachix.org" --option substituters "https://cache.nixos.org"
+        fi
+      ''));
+
+      # concatanes commands together
+      deployBoxes = (systems: lib.strings.concatStringsSep " "
+        (builtins.map (system: "${(installScript system)}/bin/deploy") systems));
+
+      deployAllScript = (pkgs.writeScriptBin "deploy-all" (
         '' 
-              #!${pkgs.runtimeShell} -ex
-              ${pkgs.parallel}/bin/parallel --citation
-              ${pkgs.parallel}/bin/parallel -j10 ::: ${deployBoxes id_list} || echo "Some deployment failed"
-      ''
+                #!${pkgs.runtimeShell} -ex
+                ${pkgs.parallel}/bin/parallel --citation
+                ${pkgs.parallel}/bin/parallel -j10 ::: ${deployBoxes boxes} || echo "Some deployment failed"
+        ''
       ));
+
+      individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) {} (builtins.map (number: {"deploy-box-${toString number}" = (installScript number);}) boxes);
+
+
+      #deployScripts = pkgs.callPackage ./pkgs/deployment.nix {
+      #  boxes = id_list;
+      #  self = self;
+      #};
+
+      packages = ({
+          traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
+          data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
+          mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
+          mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
+        } // {
+          deploy-all = deployAllScript;
+        } // individualScripts);
+        # deployScripts);
+        #"x86_64-linux" = ({
+        #} // deployScripts );});
     in
     {
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
-      packages."x86_64-linux".traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
-      packages."x86_64-linux".data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
-      packages."x86_64-linux".mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
-      packages."x86_64-linux".mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
-      packages."x86_64-linux".deploy-all = deployScript;
+      packages."x86_64-linux" = packages;
 
       nixosConfigurations = stop_boxes // {
         "mobile-box" = nixpkgs.lib.nixosSystem {
