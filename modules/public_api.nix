@@ -28,7 +28,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "socket.dvb.solutions" = {
+        "socket.${config.dvb-dump.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {
@@ -38,7 +38,7 @@
             };
           };
         };
-        "api.dvb.solutions" = {
+        "api.${config.dvb-dump.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {

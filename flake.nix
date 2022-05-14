@@ -20,7 +20,9 @@
 
     decode-server = {
       url = github:dump-dvb/decode-server;
-      #inputs.stops.follows = "stops";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.stops.follows = "stops";
+      inputs.naersk.follows = "naersk";
     };
 
     dvb-api = {
@@ -62,7 +64,7 @@
               ./hardware/configuration-dell-wyse-3040.nix
               ./modules/gnuradio.nix
               ./modules/radio_wireguard_client.nix
-              ./modules/numbering.nix
+              ./modules/options.nix
               {
                 nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
                 dvb-dump.systemNumber = number;
@@ -94,7 +96,7 @@
         else
             echo "Process is not running."
             nix copy --to ssh://root@10.13.37.${toString (target + 100)} ${self}
-            ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch --flake ${self}#traffic-stop-box-${toString target} --option substituters "https://dump-dvb.cachix.org" --option substituters "https://cache.nixos.org"
+            ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch --flake ${self}#traffic-stop-box-${toString target} --option substituters "https://dump-dvb.cachix.org" --option substituters "https://cache.nixos.org" --recreate-lock-file
         fi
       ''));
 
@@ -126,15 +128,35 @@
         } // {
           deploy-all = deployAllScript;
         } // individualScripts);
-        # deployScripts);
-        #"x86_64-linux" = ({
-        #} // deployScripts );});
     in
     {
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux" = packages;
 
-      nixosConfigurations = stop_boxes // {
+      nixosConfigurations = let 
+        data-hoarder-modules = [
+          ./modules/data-accumulator.nix
+          ./modules/nginx.nix
+          ./modules/wireguard_server.nix
+          ./modules/public_api.nix
+          ./modules/map.nix
+          ./modules/file_sharing.nix
+          ./modules/options.nix
+          ./modules/grafana.nix
+          ./modules/website.nix
+          ./modules/documentation.nix
+          {
+            nixpkgs.overlays = [
+              data-accumulator.overlay."x86_64-linux"
+              dvb-api.overlay."x86_64-linux"
+              windshield.overlay."x86_64-linux"
+              docs.overlay."x86_64-linux"
+            ];
+            dvb-dump.stopsJson = "${stops}/stops.json";
+            dvb-dump.graphJson = "${stops}/graph.json";
+          }
+        ];
+        in (stop_boxes // {
         "mobile-box" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
@@ -143,7 +165,7 @@
             ./hosts/mobile-box/configuration.nix
             ./hosts/mobile-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
-            ./modules/numbering.nix
+            ./modules/options.nix
             ./modules/mobile-box.nix
             {
               nixpkgs.overlays = [
@@ -156,41 +178,28 @@
             }
           ];
         };
-      } //
-        {
+      } // {
           data-hoarder = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
-            modules = [
+            modules = ([
               ./hosts/data-hoarder/configuration.nix
-              ./modules/data-accumulator.nix
-              ./modules/nginx.nix
-              ./modules/wireguard_server.nix
-              ./modules/public_api.nix
-              ./modules/map.nix
-              ./modules/file_sharing.nix
-              ./modules/numbering.nix
-              ./modules/grafana.nix
-              ./modules/website.nix
-              ./modules/documentation.nix
-              {
-                nixpkgs.overlays = [
-                  data-accumulator.overlay."x86_64-linux"
-                  dvb-api.overlay."x86_64-linux"
-                  windshield.overlay."x86_64-linux"
-                  docs.overlay."x86_64-linux"
-                ];
-                dvb-dump.stopsJson = "${stops}/stops.json";
-                dvb-dump.graphJson = "${stops}/graph.json";
-              }
-            ];
+            ] ++ data-hoarder-modules);
           };
-        };
+          staging-data-hoarder = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
+            modules = ([
+              ./hosts/staging/configuration.nix
+            ] ++ data-hoarder-modules);
+          };
+        });
 
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
+        staging-data-hoarder."x86_64-linux" = self.nixosConfigurations.staging-data-hoarder.config.system.build.toplevel;
       };
     };
 }

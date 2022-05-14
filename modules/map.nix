@@ -4,7 +4,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "map.dvb.solutions" = {
+        "map.${config.dvb-dump.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {

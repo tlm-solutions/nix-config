@@ -54,7 +54,7 @@
           params = { module = [ "http_2xx" ]; };
           static_configs = [{
             targets = [
-              "api.dvb.solutions"
+              "api.${config.dvb-dump.domain}"
             ];
           }];
           relabel_configs = [
@@ -82,7 +82,7 @@
     # visualizer
     grafana = {
       enable = true;
-      domain = "monitoring.dvb.solutions";
+      domain = "monitoring.${config.dvb-dump.domain}";
       port = 2342;
       addr = "127.0.0.1";
 

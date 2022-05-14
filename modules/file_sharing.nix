@@ -1,10 +1,10 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, config, ... }: {
   services = {
     nginx = {
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "files.dvb.solutions" = {
+        "files.${config.dvb-dump.domain}" = {
           enableACME = true;
           forceSSL = true;
           root = "/var/lib/data-accumulator/";

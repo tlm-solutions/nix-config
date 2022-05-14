@@ -16,6 +16,11 @@ with lib; {
     description = "graph json containing the network graphs";
   };
 
+  options.dvb-dump.domain = mkOption {
+    type = types.str;
+    default = "dvb.solutions";
+    description = "domain the server is running on";
+  };
 }
 
 

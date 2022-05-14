@@ -1,8 +1,8 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, config, ... }: {
   services.nginx = {
     enable = true;
     virtualHosts = {
-      "dvb.solutions" = {
+      "${config.dvb-dump.domain}" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
