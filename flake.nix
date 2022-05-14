@@ -20,15 +20,13 @@
 
     decode-server = {
       url = github:dump-dvb/decode-server;
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.stops.follows = "stops";
-      inputs.naersk.follows = "naersk";
     };
 
     dvb-api = {
       url = github:dump-dvb/dvb-api;
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
+      inputs.stops.follows = "stops";
     };
 
     stops = {
