@@ -6,6 +6,13 @@
 let
   file = ../configs + "/config_${toString config.dvb-dump.systemNumber}.json";
 
+  receiver_config = [
+    { frequency = "170795000"; offset = "19550"; device = "hackrf=0"; }
+    { frequency = "170795000"; offset = "19500"; device = "hackrf=0"; }
+    { frequency = "153850000"; offset = "20000"; device = ""; }
+  ];
+
+  receiver = pkgs.gnuradio-decode.override(lib.elemAt receiver_config config.dvb-dump.systemNumber);
 in
 {
   systemd = {
@@ -14,7 +21,7 @@ in
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${pkgs.gnuradio-decode}/bin/recv_and_demod.py &";
+        script = "exec ${receiver}/bin/recv_and_demod.py &";
 
         serviceConfig = {
           Type = "forking";
@@ -62,7 +69,7 @@ in
       owner = "gnuradio";
       group = "users";
       capabilities = "cap_sys_nice+eip";
-      source = "${pkgs.gnuradio-decode}/bin/recv_and_demod.py";
+      source = "${receiver}/bin/recv_and_demod.py";
     };
   };
 }
