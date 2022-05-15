@@ -14,11 +14,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1652650700,
-        "narHash": "sha256-BqyG4D7QFUoXNTONejGAwGxi7kjDMXe9mr2IfQHTKGM=",
+        "lastModified": 1652653305,
+        "narHash": "sha256-hYjd1U9ZSV7gD5H+VvKTnCtARLdk3jiQ8p2fGzBV1Yk=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "036bcabdc39220a3e6503e75fbd4edc60ab3e37a",
+        "rev": "0709ae52c996ebfad0a8c349b038dcaf038a4dc2",
         "type": "github"
       },
       "original": {
@@ -210,11 +210,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1652530570,
-        "narHash": "sha256-GWRrbUv9l1GSyBkj39s9AqNLX1l3rzVOwvnuG4WYM+E=",
+        "lastModified": 1652559422,
+        "narHash": "sha256-jPVTNImBTUIFdtur+d4IVot6eXmsvtOcBm0TzxmhWPk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4c560cc7ee57e1fb28e6fd7bdacdf01f948f8a91",
+        "rev": "8b3398bc7587ebb79f93dfeea1b8c574d3c6dba1",
         "type": "github"
       },
       "original": {
