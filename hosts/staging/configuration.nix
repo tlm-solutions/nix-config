@@ -29,13 +29,13 @@
       proto = "virtiofs";
       socket = "store.socket";
     } {
-      source = "/var/lib/microvms/data-hoarder-staging/etc";
+      source = "/var/lib/microvms/staging-data-hoarder/etc";
       mountPoint = "/etc";
       tag = "etc";
       proto = "virtiofs";
       socket = "etc.socket";
     } {
-      source = "/var/lib/microvms/data-hoarder-staging/var";
+      source = "/var/lib/microvms/staging-data-hoarder/var";
       mountPoint = "/var";
       tag = "var";
       proto = "virtiofs";
