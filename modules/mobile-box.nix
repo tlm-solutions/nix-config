@@ -44,9 +44,9 @@ in
         '';
 
         environment = {
-          "PATH_FORMATTED_DATA" = "/var/lib/data-accumulator/formatted.csv";
-          "PATH_RAW_DATA" = "/var/lib/data-accumulator/raw.csv";
+          "CSV_FILE" = "/var/lib/data-accumulator/formatted.csv";
         };
+
         serviceConfig = {
           Type = "forking";
           User = "data-accumulator";
