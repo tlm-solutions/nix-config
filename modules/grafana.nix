@@ -109,4 +109,7 @@
       };
     };
   };
+
+  # noXlibs breaks pango/cairo
+  environment.noXlibs = false;
 }

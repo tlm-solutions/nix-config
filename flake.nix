@@ -7,6 +7,11 @@
       #inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    microvm = {
+      url = github:astro/microvm.nix;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     radio-conf = {
       url = github:dump-dvb/radio-conf;
     };
@@ -45,7 +50,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, naersk, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -84,6 +89,7 @@
       stop_boxes = nixpkgs.lib.foldr (x: y: nixpkgs.lib.mergeAttrs x y) { } list_of_systems;
 
       boxes = id_list;
+
       installScript = (target: (pkgs.writeScriptBin "deploy" ''
         #!${pkgs.runtimeShell}
         ssh root@10.13.37.${toString (target + 100)} "ps cax | grep \"nixos-rebuild\" > /dev/null"
@@ -122,6 +128,7 @@
           data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
           mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
           mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
+          staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         } // {
           deploy-all = deployAllScript;
         } // individualScripts);
@@ -134,7 +141,6 @@
         data-hoarder-modules = [
           ./modules/data-accumulator.nix
           ./modules/nginx.nix
-          ./modules/wireguard_server.nix
           ./modules/public_api.nix
           ./modules/map.nix
           ./modules/file_sharing.nix
@@ -181,6 +187,7 @@
             specialArgs = { inherit inputs; };
             modules = ([
               ./hosts/data-hoarder/configuration.nix
+              ./modules/wireguard_server.nix
             ] ++ data-hoarder-modules);
           };
           staging-data-hoarder = nixpkgs.lib.nixosSystem {
@@ -188,6 +195,7 @@
             specialArgs = { inherit inputs; };
             modules = ([
               ./hosts/staging/configuration.nix
+              microvm.nixosModules.microvm
             ] ++ data-hoarder-modules);
           };
         });

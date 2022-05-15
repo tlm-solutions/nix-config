@@ -1,7 +1,6 @@
 { config, ... }:
 
 {
-
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
   networking.wg-quick.interfaces = {
@@ -20,6 +19,12 @@
           # oxa
           publicKey = "QbaQaGqudRXIh03IbBNATfBZfpMLmwihlwLs6W9+P1c=";
           allowedIPs = [ "10.13.37.3/32" ];
+          persistentKeepalive = 25;
+        }
+        # data hoarder staging
+        {
+          publicKey = "sDiukhk4m+efHc/i1brao0ztnOM1ZipmgTmg8q9kZGQ=";
+          allowedIPs = [ "10.13.37.5/32" ];
           persistentKeepalive = 25;
         }
         {

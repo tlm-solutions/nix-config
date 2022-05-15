@@ -9,7 +9,7 @@
           enableACME = true;
           locations = {
             "/" = {
-              root = "${pkgs.windshield}/bin/";
+              root = if (config.dvb-dump.domain == "dvb.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
               index = "index.html";
             };
           };

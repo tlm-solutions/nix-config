@@ -6,9 +6,6 @@
     recommendedOptimisation = true;
     recommendedGzipSettings = true;
     commonHttpConfig = ''
-      # Enable CSP for your services.
-      add_header Content-Security-Policy "script-src 'self'; object-src 'none'; base-uri 'none';" always;
-
       # Permissions Policy - gps only
       add_header Permissions-Policy "geolocation=()";
 
