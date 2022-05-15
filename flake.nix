@@ -100,7 +100,7 @@
         else
             echo "Process is not running."
             nix copy --to ssh://root@10.13.37.${toString (target + 100)} ${self}
-            ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch --flake ${self}#traffic-stop-box-${toString target} --option substituters "https://dump-dvb.cachix.org" --option substituters "https://cache.nixos.org" --recreate-lock-file
+            ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch --flake ${self} -L
         fi
       ''));
 
@@ -111,8 +111,7 @@
       deployAllScript = (pkgs.writeScriptBin "deploy-all" (
         '' 
                 #!${pkgs.runtimeShell} -ex
-                ${pkgs.parallel}/bin/parallel --citation
-                ${pkgs.parallel}/bin/parallel -j10 ::: ${deployBoxes boxes} || echo "Some deployment failed"
+                ${pkgs.parallel}/bin/parallel --will-cite -j10 ::: ${deployBoxes boxes} || echo "Some deployment failed"
         ''
       ));
 
