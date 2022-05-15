@@ -89,6 +89,7 @@
       stop_boxes = nixpkgs.lib.foldr (x: y: nixpkgs.lib.mergeAttrs x y) { } list_of_systems;
 
       boxes = id_list;
+
       installScript = (target: (pkgs.writeScriptBin "deploy" ''
         #!${pkgs.runtimeShell}
         ssh root@10.13.37.${toString (target + 100)} "ps cax | grep \"nixos-rebuild\" > /dev/null"
