@@ -15,6 +15,32 @@
     vcpu = 4;
     mem = 4096;
     hypervisor = "cloud-hypervisor";
+
+    interfaces = [ {
+      type = "tap";
+      id = "staging-dh";
+      mac = "00:de:5b:f9:e2:3d";
+    } ];
+
+    shares = [ {
+      source = "/nix/store";
+      mountPoint = "/nix/.ro-store";
+      tag = "store";
+      proto = "virtiofs";
+      socket = "store.socket";
+    } {
+      source = "/var/lib/microvms/data-hoarder-staging/etc";
+      mountPoint = "/etc";
+      tag = "etc";
+      proto = "virtiofs";
+      socket = "etc.socket";
+    } {
+      source = "/var/lib/microvms/data-hoarder-staging/var";
+      mountPoint = "/var";
+      tag = "var";
+      proto = "virtiofs";
+      socket = "var.socket";
+    } ];
   };
 
   networking.hostName = "staging-data-hoarder"; # Define your hostname.
