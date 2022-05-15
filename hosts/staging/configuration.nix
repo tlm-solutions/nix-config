@@ -69,6 +69,21 @@
   networking.firewall.enable = true;
 
   dvb-dump.domain = "staging.dvb.solutions";
+  networking.firewall.allowedUDPPorts = [ 51820 ]; 
+  networking.wg-quick.interfaces.wg-dvb = {
+    address = [ "10.13.37.5/32" ]; 
+    privateKeyFile = "/root/wg-seckey";
+    postUp = '' ${pkgs.iputils}/bin/ping -c 10 10.13.37.1 || true ''; 
+    peers = [
+      { 
+        publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY="; 
+        allowedIPs = [ "10.13.37.0/24" ];
+        endpoint = "academicstrokes.com:51820";
+        persistentKeepalive = 25; 
+      }
+    ]; 
+  }; 
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

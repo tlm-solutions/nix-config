@@ -196,7 +196,6 @@
             specialArgs = { inherit inputs; };
             modules = ([
               ./hosts/staging/configuration.nix
-              ./modules/radio_wireguard_client.nix
               microvm.nixosModules.microvm
             ] ++ data-hoarder-modules);
           };
