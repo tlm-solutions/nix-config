@@ -7,9 +7,11 @@ let
   file = ../configs + "/config_${toString config.dvb-dump.systemNumber}.json";
 
   receiver_config = [
-    { frequency = "170795000"; offset = "19550"; device = "hackrf=0"; }
-    { frequency = "170795000"; offset = "19500"; device = "hackrf=0"; }
-    { frequency = "153850000"; offset = "20000"; device = ""; }
+    { frequency = "170795000"; offset = "19550"; device = "hackrf=0"; } # dresden - barkhausen
+    { frequency = "170795000"; offset = "19500"; device = "hackrf=0"; } # dresden - zentralwerk
+    { frequency = "153850000"; offset = "20000"; device = ""; } # chemnitz
+    { frequency = "170795000"; offset = "19550"; device = "hackrf=0"; } # dresden unused
+    { frequency = "170795000"; offset = "19550"; device = "hackrf=0"; } # dresden unused
   ];
 
   receiver = pkgs.gnuradio-decode.override(lib.elemAt receiver_config config.dvb-dump.systemNumber);
