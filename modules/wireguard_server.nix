@@ -23,7 +23,7 @@
         }
         # data hoarder staging
         {
-          publicKey = "sDiukhk4m+efHc/i1brao0ztnOM1ZipmgTmg8q9kZGQ=";
+          publicKey = "48hc7DVnUh2DHYhrxrNtNzj05MRecJO52j2niPImvkU=";
           allowedIPs = [ "10.13.37.5/32" ];
           persistentKeepalive = 25;
         }

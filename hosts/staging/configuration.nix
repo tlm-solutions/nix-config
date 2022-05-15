@@ -71,7 +71,7 @@
   dvb-dump.domain = "staging.dvb.solutions";
   networking.wg-quick.interfaces.wg-dvb = {
     address = [ "10.13.37.5/32" ]; 
-    privateKeyFile = "/root/wg-seckey";
+    privateKeyFile = "/var/wg-seckey";
     postUp = '' ${pkgs.iputils}/bin/ping -c 10 10.13.37.1 || true ''; 
     peers = [
       { 
