@@ -69,7 +69,6 @@
   networking.firewall.enable = true;
 
   dvb-dump.domain = "staging.dvb.solutions";
-  networking.firewall.allowedUDPPorts = [ 51820 ]; 
   networking.wg-quick.interfaces.wg-dvb = {
     address = [ "10.13.37.5/32" ]; 
     privateKeyFile = "/root/wg-seckey";
