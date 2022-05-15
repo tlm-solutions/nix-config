@@ -38,7 +38,7 @@ in
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${pkgs.telegram-decoder}/bin/telegram-decode --config ${file} --server http://10.13.37.1:8080 &";
+        script = "exec ${pkgs.telegram-decoder}/bin/telegram-decode --config ${file} --server http://10.13.37.1:8080 http://10.13.37.5:8080 &";
 
         serviceConfig = {
           Type = "forking";
