@@ -14,11 +14,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1652643696,
-        "narHash": "sha256-x7BCOw7IP6k3kaDSUbpdEXmfY/hT/fz0d7D2N+xvGxA=",
+        "lastModified": 1652650700,
+        "narHash": "sha256-BqyG4D7QFUoXNTONejGAwGxi7kjDMXe9mr2IfQHTKGM=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "3778b32c234261731dafc59fc7d7676f586b76d5",
+        "rev": "036bcabdc39220a3e6503e75fbd4edc60ab3e37a",
         "type": "github"
       },
       "original": {

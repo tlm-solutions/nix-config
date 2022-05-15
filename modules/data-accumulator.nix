@@ -14,7 +14,7 @@
         '';
 
         environment = {
-          "INFLUXDB_HOST" = "http://localhost:8086";
+          "INFLUX_HOST" = "http://localhost:8086";
           "GRPC_HOST" = "http://127.0.0.1:50051";
         };
         serviceConfig = {
