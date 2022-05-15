@@ -142,7 +142,6 @@
         data-hoarder-modules = [
           ./modules/data-accumulator.nix
           ./modules/nginx.nix
-          ./modules/wireguard_server.nix
           ./modules/public_api.nix
           ./modules/map.nix
           ./modules/file_sharing.nix
@@ -189,6 +188,7 @@
             specialArgs = { inherit inputs; };
             modules = ([
               ./hosts/data-hoarder/configuration.nix
+              ./modules/wireguard_server.nix
             ] ++ data-hoarder-modules);
           };
           staging-data-hoarder = nixpkgs.lib.nixosSystem {
@@ -196,6 +196,7 @@
             specialArgs = { inherit inputs; };
             modules = ([
               ./hosts/staging/configuration.nix
+              ./modules/wireguard_staging.nix
               microvm.nixosModules.microvm
             ] ++ data-hoarder-modules);
           };

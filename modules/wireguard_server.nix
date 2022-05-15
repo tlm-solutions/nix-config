@@ -22,6 +22,12 @@
           allowedIPs = [ "10.13.37.3/32" ];
           persistentKeepalive = 25;
         }
+        # data hoarder staging
+        {
+          publicKey = "sDiukhk4m+efHc/i1brao0ztnOM1ZipmgTmg8q9kZGQ=";
+          allowedIPs = [ "10.13.37.5/32" ];
+          persistentKeepalive = 25;
+        }
         {
           # traffic-stop-box-0
           publicKey = "qyStvzZdoqcjJJQckw4ZwvsQUa+8TBWtnsRxURqanno=";
