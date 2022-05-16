@@ -7,6 +7,7 @@
     services = {
       "data-accumulator" = {
         enable = true;
+        requires = [ "influxdb.service" ];
         wantedBy = [ "multi-user.target" ];
 
         script = ''
