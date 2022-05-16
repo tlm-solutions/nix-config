@@ -15,6 +15,7 @@
     vcpu = 4;
     mem = 4096;
     hypervisor = "cloud-hypervisor";
+    socket = "${config.networking.hostName}.socket";
 
     interfaces = [ {
       type = "tap";
