@@ -8,8 +8,12 @@
       "data-accumulator" = {
         enable = true;
         requires = [ "influxdb.service" ];
-        after =  [ "influxdb.services" ];
+        after =  [ "influxdb.service" ];
         wantedBy = [ "multi-user.target" ];
+
+        preStart = ''
+          'while ! influx </dev/null >/dev/null 2>&1; do sleep 0.2; done'
+        '';
 
         script = ''
           exec ${pkgs.data-accumulator}/bin/data-accumulator --host 0.0.0.0 --port 8080&
