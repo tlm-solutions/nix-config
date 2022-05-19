@@ -60,11 +60,18 @@ in
           Type = "simple";
         };
         script = ''
-          ${pkgs.linux-router}/bin/lnxrouter --ap wlan0 dump-dvb -g 10.3.141.1 -p trolling-dvb
+          ${pkgs.linux-router}/bin/lnxrouter --ap wlp0s20ul dump-dvb -g 10.3.141.1 -p trolling-dvb
         '';
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [
+    usbUtils
+    hackrf
+    iw
+    tcpdump
+  ];
 
   # user accounts for systemd units
   users.users = {
