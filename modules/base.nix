@@ -13,7 +13,6 @@
     binaryCachePublicKeys = [
       "dump-dvb.cachix.org-1:+Dq7gqpQG4YlLA2X3xJsG1v3BrlUGGpVtUKWk0dTyUU="
     ];
-
   };
 
   # Select internationalisation properties.
