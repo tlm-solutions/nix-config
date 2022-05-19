@@ -67,7 +67,7 @@ in
   };
 
   environment.systemPackages = with pkgs; [
-    usbUtils
+    usbutils
     hackrf
     iw
     tcpdump
