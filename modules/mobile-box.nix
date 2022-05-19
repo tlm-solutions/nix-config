@@ -19,7 +19,6 @@ in
           StartLimitIntervalSec = "150s";
         };
       };
-
       "telegram-decoder" = {
         enable = true;
         wantedBy = [ "multi-user.target" ];
@@ -34,7 +33,6 @@ in
           StartLimitIntervalSec = "150s";
         };
       };
-
       "data-accumulator" = {
         enable = true;
         wantedBy = [ "multi-user.target" ];
@@ -53,7 +51,23 @@ in
           Restart = "always";
         };
       };
+      "wartrammer" = {
+        enable = true;
+        wantedBy = [ "multi-user.target" ];
 
+        script = ''
+          exec ${pkgs.wartrammer-backend}/bin/wartrammer-40k --port 7680
+        '';
+
+        environment = {
+        };
+
+        serviceConfig = {
+          Type = "forking";
+          User = "wartrammer";
+          Restart = "always";
+        };
+      };
       "start-wifi-hotspot" = {
         wantedBy = [ "multi-user.target" ];
         serviceConfig = {
@@ -65,9 +79,28 @@ in
       };
     };
   };
+  services = {
+    nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      virtualHosts = {
+        "wartrammer" = {
+          locations = {
+            "/" = {
+              root = "${pkgs.wartrammer-frontend}/bin/";
+              index = "index.html";
+            };
+            "/api" = {
+              proxyPass = "http://127.0.0.1:7680";
+            };
+          };
+        };
+      };
+    };
+  };
 
   environment.systemPackages = with pkgs; [
-    usbUtils
+    usbutils
     hackrf
     iw
     tcpdump
@@ -88,6 +121,11 @@ in
     };
     data-accumulator = {
       name = "data-accumulator";
+      description = "";
+      isNormalUser = true;
+    };
+    wartrammer = {
+      name = "wartrammer";
       description = "";
       isNormalUser = true;
     };

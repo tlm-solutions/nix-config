@@ -48,9 +48,13 @@
       url = github:dump-dvb/documentation;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wartrammer = {
+      url = github:dump-dvb/wartrammer-40k;
+    };
   };
 
-  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, wartrammer, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -175,6 +179,7 @@
                 radio-conf.overlay."x86_64-linux"
                 decode-server.overlay."x86_64-linux"
                 data-accumulator.overlay."x86_64-linux"
+                wartrammer.overlay."x86_64-linux"
               ];
               dvb-dump.stopsJson = "${stops}/stops.json";
               dvb-dump.systemNumber = 130;

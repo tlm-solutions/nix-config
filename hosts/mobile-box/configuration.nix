@@ -28,7 +28,9 @@
   nix.gc = {
     automatic = true;
     dates = "daily";
+
   };
+  nix.buildCores = 2;
 
   services.journald.extraConfig = ''
     SystemMaxUse=5M
