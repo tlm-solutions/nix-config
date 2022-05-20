@@ -158,7 +158,7 @@
           }
         ];
         in (stop_boxes // {
-        "mobile-box" = nixpkgs.lib.nixosSystem {
+        mobile-box = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [

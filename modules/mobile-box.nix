@@ -48,7 +48,9 @@ in
         serviceConfig = {
           Type = "forking";
           User = "data-accumulator";
-          Restart = "always";
+          Restart = "on-failure";
+          StartLimitBurst = "2";
+          StartLimitIntervalSec = "150s";
         };
       };
       "wartrammer" = {
@@ -59,14 +61,14 @@ in
           exec ${pkgs.wartrammer-backend}/bin/wartrammer-40k --port 7680
         '';
 
-        environment = {
-        };
-
         serviceConfig = {
           Type = "forking";
           User = "wartrammer";
-          Restart = "always";
+          Restart = "on-failure";
+          StartLimitBurst = "2";
+          StartLimitIntervalSec = "150s";
         };
+        
       };
       "start-wifi-hotspot" = {
         wantedBy = [ "multi-user.target" ];
