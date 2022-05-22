@@ -22,4 +22,19 @@
 
     };
   };
+
+  systemd.services.dump-csv = {
+    path = [ pkgs.influxdb ];
+    script = ''
+      TMPFILE=(mktemp)
+      influx -precision rfc3339 -database \"dvbdump\" -execute \"SELECT * FROM telegram_r_09\" -format csv > $TMPFILE
+
+      mv $TMPFILE /var/lib/data-accumulator/data/telegrams.csv
+    '';
+  };
+  systemd.timers.dump-csv = {
+    partOf = [ "dump-csv.service" ];
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnCalendar = "hourly";
+  };
 }
