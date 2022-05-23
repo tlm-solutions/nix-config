@@ -204,6 +204,7 @@
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
         staging-data-hoarder."x86_64-linux" = self.nixosConfigurations.staging-data-hoarder.config.system.build.toplevel;
+        mobile-box-iso."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
       };
     };
 }
