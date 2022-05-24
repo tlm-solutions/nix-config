@@ -52,6 +52,15 @@
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
+      isoModule = {
+        imports = [
+          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
+          {
+            boot.growPartition = true;
+            services.getty.autologinUser = null;
+          }
+        ];
+      };
 
       # function that generates a system with the given number
       generate_system = (number:
@@ -60,6 +69,7 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = [
+              isoModule
               ./hosts/traffic-stop-box/configuration.nix
               ./hosts/traffic-stop-box/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix
@@ -123,6 +133,7 @@
 
       packages = ({
           traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
+          traffic-stop-box-iso = self.nixosConfigurations.traffic-stop-box-0.config.system.build.isoImage;
           data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
           mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
           mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
@@ -162,7 +173,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
+            isoModule
             ./hosts/mobile-box/configuration.nix
             ./hosts/mobile-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
