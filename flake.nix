@@ -78,7 +78,7 @@
         system.build.diskImage = import "${nixpkgs}/nixos/lib/make-disk-image.nix" {
           name = "${config.networking.hostName}-disk";
           partitionTableType = "hybrid";
-          additionalSpace = "1G";
+          additionalSpace = "2G";
           inherit config lib pkgs;
         };
       };
