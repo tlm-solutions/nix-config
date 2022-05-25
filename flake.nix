@@ -52,14 +52,34 @@
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
-      isoModule = {
-        imports = [
-          "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
-          {
-            boot.growPartition = true;
-            services.getty.autologinUser = null;
-          }
-        ];
+      diskModule = { config, lib, pkgs, ... }: {
+        fileSystems."/" = {
+          device = "/dev/disk/by-label/nixos";
+          autoResize = true;
+          fsType = "ext4";
+        };
+
+        fileSystems."/boot" = {
+          device = "/dev/disk/by-label/ESP";
+          fsType = "vfat";
+        };
+
+        boot = {
+          loader.efi.canTouchEfiVariables = false;
+          loader.grub = {
+            enable = true;
+            devices = [ "/dev/sda" ];
+            efiSupport = true;
+            efiInstallAsRemovable = true;
+          };
+          growPartition = true;
+        };
+
+        system.build.diskImage = import "${nixpkgs}/nixos/lib/make-disk-image.nix" {
+          name = "${config.networking.hostName}-disk";
+          partitionTableType = "hybrid";
+          inherit config lib pkgs;
+        };
       };
 
       # function that generates a system with the given number
@@ -69,7 +89,7 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = [
-              isoModule
+              diskModule
               ./hosts/traffic-stop-box/configuration.nix
               ./hosts/traffic-stop-box/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix
@@ -133,10 +153,10 @@
 
       packages = ({
           traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
-          traffic-stop-box-iso = self.nixosConfigurations.traffic-stop-box-0.config.system.build.isoImage;
+          traffic-stop-box-disk = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
           data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
           mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
-          mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
+          mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
           staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         } // {
           deploy-all = deployAllScript;
@@ -173,7 +193,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            isoModule
+            diskModule
             ./hosts/mobile-box/configuration.nix
             ./hosts/mobile-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
