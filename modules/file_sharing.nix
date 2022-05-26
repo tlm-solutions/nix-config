@@ -24,13 +24,14 @@
   };
 
   systemd.services.dump-csv = {
-    path = [ pkgs.influxdb ];
+    path = with pkgs; [ influxdb gzip ];
     script = ''
       cd /tmp
-      TMPFILE=$(mktemp telegrams.XXXXX.csv)
-      influx -precision rfc3339 -database dvbdump -execute "SELECT * FROM telegram_r_09" -format csv > $TMPFILE
+      TMPFILE=$(mktemp telegrams.XXXXX.csv.gz)
+      influx -precision rfc3339 -database dvbdump -execute "SELECT * FROM telegram_r_09" -format csv | gzip -c > $TMPFILE
+      chmod a+r $TMPFILE
 
-      mv $TMPFILE /var/lib/data-accumulator/data/telegrams.csv
+      mv $TMPFILE /var/lib/data-accumulator/data/telegrams.csv.gz
     '';
   };
   systemd.timers.dump-csv = {
