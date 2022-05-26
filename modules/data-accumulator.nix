@@ -25,6 +25,11 @@
           Restart = "always";
         };
       };
+      "influxdb" = {
+        serviceConfig = {
+          Restart = lib.mkForce "always";
+        };
+      };
     };
   };
 
