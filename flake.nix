@@ -80,6 +80,10 @@
           partitionTableType = "hybrid";
           additionalSpace = "2G";
           inherit config lib pkgs;
+          postVM = ''
+            mkdir -p $out/nix-support
+            echo file binary-dist $diskImage >> $out/nix-support/hydra-build-products
+          '';
         };
       };
 
