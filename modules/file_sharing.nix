@@ -26,8 +26,9 @@
   systemd.services.dump-csv = {
     path = [ pkgs.influxdb ];
     script = ''
-      TMPFILE=(mktemp)
-      influx -precision rfc3339 -database \"dvbdump\" -execute \"SELECT * FROM telegram_r_09\" -format csv > $TMPFILE
+      cd /tmp
+      TMPFILE=$(mktemp telegrams.XXXXX.csv)
+      influx -precision rfc3339 -database dvbdump -execute "SELECT * FROM telegram_r_09" -format csv > $TMPFILE
 
       mv $TMPFILE /var/lib/data-accumulator/data/telegrams.csv
     '';
