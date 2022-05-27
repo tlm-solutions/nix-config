@@ -68,7 +68,7 @@ in
           StartLimitBurst = "2";
           StartLimitIntervalSec = "150s";
         };
-        
+
       };
       "start-wifi-hotspot" = {
         wantedBy = [ "multi-user.target" ];
@@ -76,7 +76,7 @@ in
           Type = "simple";
         };
         script = ''
-          ${pkgs.linux-router}/bin/lnxrouter --ap wlp0s20ul dump-dvb -g 10.3.141.1 -p trolling-dvb
+          ${pkgs.linux-router}/bin/lnxrouter --ap wlp0s20u2 dump-dvb -g 10.3.141.1 -p trolling-dvb
         '';
       };
     };
