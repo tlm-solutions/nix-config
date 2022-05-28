@@ -6,4 +6,5 @@
   # replicates the default behaviour.
   networking.useDHCP = false;
   networking.interfaces.enp1s0.useDHCP = true;
+  boot.tmpOnTmpfsSize = "4%";
 }
