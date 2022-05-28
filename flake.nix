@@ -94,7 +94,6 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = [
-              diskModule
               ./hosts/traffic-stop-box/configuration.nix
               ./hosts/traffic-stop-box/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix

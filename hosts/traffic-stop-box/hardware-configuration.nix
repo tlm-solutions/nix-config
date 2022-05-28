@@ -20,13 +20,17 @@
       fsType = "ext4";
     };
 
-  # fileSystems."/boot" =
-  #   {
-  #     device = "/dev/disk/by-label/boot";
-  #     fsType = "vfat";
-  #   };
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-label/boot";
+      fsType = "vfat";
+    };
 
   swapDevices = [ ];
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 1;
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
