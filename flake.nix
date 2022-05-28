@@ -157,7 +157,6 @@
 
       packages = ({
           traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
-          traffic-stop-box-disk = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
           data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
           mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
           mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
@@ -237,7 +236,6 @@
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
-        traffic-stop-box-0-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         staging-data-hoarder."x86_64-linux" = self.nixosConfigurations.staging-data-hoarder.config.system.build.toplevel;
