@@ -11,11 +11,14 @@ in
     services = {
       "clicky-bunty-server" = {
         enable = true;
+
+        description = "dvbdump managment service";
         requires = [ "influxdb.service" ];
         after = [ "influxdb.service" ];
         wantedBy = [ "multi-user.target" ];
 
         script = ''
+          export POSTGRES_PASSWORD=$(cat /root/postgres_password)
           exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host 127.0.0.1 --port ${toString port}&
         '';
 
@@ -28,6 +31,17 @@ in
           User = "clicky-bunty-server";
           Restart = "always";
         };
+      };
+      "pg-dvbdump-setup" = {
+          description = "prepare dvbdump postgres database";
+          wantedBy = [ "multi-user.target" ];
+          after = [ "networking.target" "postgresql.service" ];
+          serviceConfig.Type = "oneshot";
+
+          path = [ pkgs.sudo config.services.postgresql.package ];
+          script = ''
+            sudo -u ${config.services.postgresql.superUser} psql -c "ALTER ROLE dvbdump WITH PASSWORD '$(cat /root/postgres_password)'"
+          '';
       };
     };
   };
