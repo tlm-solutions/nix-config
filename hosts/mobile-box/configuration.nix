@@ -5,12 +5,6 @@
 { config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [
-      # Enabled modules
-      ../../modules/base.nix
-    ];
-
   boot.tmpOnTmpfs = true;
 
 

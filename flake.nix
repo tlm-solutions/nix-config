@@ -52,6 +52,30 @@
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
+
+        data-hoarder-modules = [
+          ./modules/data-accumulator.nix
+          ./modules/nginx.nix
+          ./modules/public_api.nix
+          ./modules/map.nix
+          ./modules/file_sharing.nix
+          ./modules/options.nix
+          ./modules/grafana.nix
+          ./modules/website.nix
+          ./modules/documentation.nix
+          ./modules/base.nix
+          {
+            nixpkgs.overlays = [
+              data-accumulator.overlay."x86_64-linux"
+              dvb-api.overlay."x86_64-linux"
+              windshield.overlay."x86_64-linux"
+              docs.overlay."x86_64-linux"
+            ];
+            dvb-dump.stopsJson = "${stops}/stops.json";
+            dvb-dump.graphJson = "${stops}/graph.json";
+          }
+        ];
+
       diskModule = { config, lib, pkgs, ... }: {
         fileSystems."/" = {
           device = "/dev/disk/by-label/nixos";
@@ -97,6 +121,7 @@
               ./hosts/traffic-stop-box/configuration.nix
               ./hosts/traffic-stop-box/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix
+              ./modules/base.nix
               ./modules/gnuradio.nix
               ./modules/radio_wireguard_client.nix
               ./modules/options.nix
@@ -110,17 +135,12 @@
         }
       );
 
-      # increment this number if you want to add a new system
-      numberOfSystems = 10;
       # list of accending system numbers
-      #id_list = ((num: if num <= 0 then [ num ] else [ num ] ++ (id_list (num - 1))) (numberOfSystems - 1));
       id_list = [ 0 1 2 3 4 ];
       # list of nixos systems
       list_of_systems = builtins.map generate_system id_list;
       # attribute set of all traffic stop boxes
       stop_boxes = nixpkgs.lib.foldr (x: y: nixpkgs.lib.mergeAttrs x y) { } list_of_systems;
-
-      boxes = id_list;
 
       installScript = (target: (pkgs.writeScriptBin "deploy" ''
         #!${pkgs.runtimeShell}
@@ -141,19 +161,13 @@
         (builtins.map (system: "${(installScript system)}/bin/deploy") systems));
 
       deployAllScript = (pkgs.writeScriptBin "deploy-all" (
-        '' 
+        ''
                 #!${pkgs.runtimeShell} -ex
-                ${pkgs.parallel}/bin/parallel --will-cite -j10 ::: ${deployBoxes boxes} || echo "Some deployment failed"
+                ${pkgs.parallel}/bin/parallel --will-cite -j10 ::: ${deployBoxes id_list} || echo "Some deployment failed"
         ''
       ));
 
-      individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) {} (builtins.map (number: {"deploy-box-${toString number}" = (installScript number);}) boxes);
-
-
-      #deployScripts = pkgs.callPackage ./pkgs/deployment.nix {
-      #  boxes = id_list;
-      #  self = self;
-      #};
+      individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) {} (builtins.map (number: {"deploy-box-${toString number}" = (installScript number);}) id_list);
 
       packages = ({
           traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
@@ -161,7 +175,6 @@
           mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
           mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
           staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
-        } // {
           deploy-all = deployAllScript;
         } // individualScripts);
     in
@@ -169,29 +182,7 @@
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux" = packages;
 
-      nixosConfigurations = let 
-        data-hoarder-modules = [
-          ./modules/data-accumulator.nix
-          ./modules/nginx.nix
-          ./modules/public_api.nix
-          ./modules/map.nix
-          ./modules/file_sharing.nix
-          ./modules/options.nix
-          ./modules/grafana.nix
-          ./modules/website.nix
-          ./modules/documentation.nix
-          {
-            nixpkgs.overlays = [
-              data-accumulator.overlay."x86_64-linux"
-              dvb-api.overlay."x86_64-linux"
-              windshield.overlay."x86_64-linux"
-              docs.overlay."x86_64-linux"
-            ];
-            dvb-dump.stopsJson = "${stops}/stops.json";
-            dvb-dump.graphJson = "${stops}/graph.json";
-          }
-        ];
-        in (stop_boxes // {
+      nixosConfigurations = (stop_boxes // {
         mobile-box = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
@@ -200,6 +191,7 @@
             ./hosts/mobile-box/configuration.nix
             ./hosts/mobile-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
+            ./modules/base.nix
             ./modules/options.nix
             ./modules/mobile-box.nix
             {
@@ -214,12 +206,12 @@
             }
           ];
         };
-      } // {
           data-hoarder = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = ([
               ./hosts/data-hoarder/configuration.nix
+              ./hosts/data-hoarder/hardware-configuration.nix
               ./modules/wireguard_server.nix
             ] ++ data-hoarder-modules);
           };
