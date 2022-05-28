@@ -20,8 +20,8 @@ in
         '';
 
         environment = {
-          "POSTGRES" = "";
-          "SALT_PATH" = "";
+          "POSTGRES" = "postgresql://dvbdump@localhost:5432";
+          "SALT_PATH" = "/root/password_hash_salt"; #TODO: do it proper with sops
         };
         serviceConfig = {
           Type = "forking";
