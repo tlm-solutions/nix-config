@@ -20,7 +20,7 @@ in
         '';
 
         environment = {
-          "POSTGRES" = "postgresql://dvbdump@localhost:5432";
+          "POSTGRES" = "localhost:5432";
           "SALT_PATH" = "/root/password_hash_salt"; #TODO: do it proper with sops
         };
         serviceConfig = {
@@ -34,6 +34,7 @@ in
 
   services = {
     postgresql = {
+      port = 5432;
       enable = true;
       ensureUsers = [
         {
