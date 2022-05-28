@@ -50,9 +50,14 @@
     clicky-bunty-server = {
       url = github:dump-dvb/clicky-bunty-server;
     };
+
+    sops-nix = {
+      url = github:Mic92/sops-nix;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, wartrammer, clicky-bunty-server, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -69,6 +74,8 @@
         ./modules/data-hoarder/website.nix
         ./modules/data-hoarder/documentation.nix
         ./modules/data-hoarder/clicky-bunty.nix
+        ./modules/data-hoarder/secrets.nix
+        sops-nix.nixosModules.sops
         {
           nixpkgs.overlays = [
             data-accumulator.overlay."x86_64-linux"
@@ -105,6 +112,7 @@
             specialArgs = { inherit inputs; };
             modules = [
               diskModule
+              sops-nix.nixosModules.sops
               ./hosts/traffic-stop-boxes/configuration.nix
               ./hosts/traffic-stop-boxes/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix
@@ -112,6 +120,7 @@
               ./modules/options.nix
               ./modules/traffic-stop-boxes/gnuradio.nix
               ./modules/traffic-stop-boxes/radio_wireguard_client.nix
+              ./modules/traffic-stop-boxes/secrets.nix
               {
                 nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
                 dvb-dump.systemNumber = number;
@@ -181,6 +190,7 @@
             ./modules/base.nix
             ./modules/options.nix
             ./modules/traffic-stop-boxes/mobile-box.nix
+            sops-nix.nixosModules.sops
             {
               nixpkgs.overlays = [
                 radio-conf.overlay."x86_64-linux"
@@ -222,5 +232,3 @@
       };
     };
 }
-
-

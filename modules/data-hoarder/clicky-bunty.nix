@@ -24,7 +24,7 @@ in
 
         environment = {
           "POSTGRES" = "localhost:5432";
-          "SALT_PATH" = "/root/password_hash_salt"; #TODO: do it proper with sops
+          "SALT_PATH" = config.sops.secrets.postgres_password_hash_salt.path;
         };
         serviceConfig = {
           Type = "forking";
