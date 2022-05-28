@@ -46,9 +46,13 @@
     wartrammer = {
       url = github:dump-dvb/wartrammer-40k;
     };
+
+    clicky-bunty-server = {
+      url = github:dump-dvb/clicky-bunty-server;
+    };
   };
 
-  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, wartrammer, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, wartrammer, clicky-bunty-server, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -63,6 +67,7 @@
         ./modules/grafana.nix
         ./modules/website.nix
         ./modules/documentation.nix
+        ./modules/clicky-bunty.nix
         ./modules/base.nix
         {
           nixpkgs.overlays = [
@@ -70,6 +75,7 @@
             dvb-api.overlay."x86_64-linux"
             windshield.overlay."x86_64-linux"
             docs.overlay."x86_64-linux"
+            clicky-bunty-server.overlay."x86_64-linux"
           ];
           dvb-dump.stopsJson = "${stops}/stops.json";
           dvb-dump.graphJson = "${stops}/graph.json";
