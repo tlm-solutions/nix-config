@@ -17,31 +17,33 @@
     hypervisor = "cloud-hypervisor";
     socket = "${config.networking.hostName}.socket";
 
-    interfaces = [ {
+    interfaces = [{
       type = "tap";
       id = "staging-dh";
       mac = "00:de:5b:f9:e2:3d";
-    } ];
+    }];
 
-    shares = [ {
+    shares = [{
       source = "/nix/store";
       mountPoint = "/nix/.ro-store";
       tag = "store";
       proto = "virtiofs";
       socket = "store.socket";
-    } {
-      source = "/var/lib/microvms/staging-data-hoarder/etc";
-      mountPoint = "/etc";
-      tag = "etc";
-      proto = "virtiofs";
-      socket = "etc.socket";
-    } {
-      source = "/var/lib/microvms/staging-data-hoarder/var";
-      mountPoint = "/var";
-      tag = "var";
-      proto = "virtiofs";
-      socket = "var.socket";
-    } ];
+    }
+      {
+        source = "/var/lib/microvms/staging-data-hoarder/etc";
+        mountPoint = "/etc";
+        tag = "etc";
+        proto = "virtiofs";
+        socket = "etc.socket";
+      }
+      {
+        source = "/var/lib/microvms/staging-data-hoarder/var";
+        mountPoint = "/var";
+        tag = "var";
+        proto = "virtiofs";
+        socket = "var.socket";
+      }];
   };
 
   networking.hostName = "staging-data-hoarder"; # Define your hostname.
@@ -51,10 +53,10 @@
   time.timeZone = "Europe/Berlin";
   networking.interfaces.eth0 = {
     useDHCP = false;
-    ipv4.addresses = [ {
+    ipv4.addresses = [{
       address = "172.20.73.64";
       prefixLength = 25;
-    } ];
+    }];
   };
 
   networking.defaultGateway = "172.20.73.1";
@@ -71,18 +73,18 @@
 
   dvb-dump.domain = "staging.dvb.solutions";
   networking.wg-quick.interfaces.wg-dvb = {
-    address = [ "10.13.37.5/32" ]; 
+    address = [ "10.13.37.5/32" ];
     privateKeyFile = "/var/wg-seckey";
-    postUp = '' ${pkgs.iputils}/bin/ping -c 10 10.13.37.1 || true ''; 
+    postUp = '' ${pkgs.iputils}/bin/ping -c 10 10.13.37.1 || true '';
     peers = [
-      { 
-        publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY="; 
+      {
+        publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY=";
         allowedIPs = [ "10.13.37.0/24" ];
         endpoint = "academicstrokes.com:51820";
-        persistentKeepalive = 25; 
+        persistentKeepalive = 25;
       }
-    ]; 
-  }; 
+    ];
+  };
 
 
   # This value determines the NixOS release from which the default

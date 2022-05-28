@@ -46,9 +46,13 @@
     wartrammer = {
       url = github:dump-dvb/wartrammer-40k;
     };
+
+    clicky-bunty-server = {
+      url = github:dump-dvb/clicky-bunty-server;
+    };
   };
 
-  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, wartrammer, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, wartrammer, clicky-bunty-server, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -113,7 +117,7 @@
         ''
       ));
 
-      individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) {} (builtins.map (number: {"deploy-box-${toString number}" = (installScript number);}) boxes);
+      individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) { } (builtins.map (number: { "deploy-box-${toString number}" = (installScript number); }) boxes);
 
 
       #deployScripts = pkgs.callPackage ./pkgs/deployment.nix {
@@ -122,65 +126,69 @@
       #};
 
       packages = ({
-          traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
-          data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
-          mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
-          mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
-          staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
-        } // {
-          deploy-all = deployAllScript;
-        } // individualScripts);
+        traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
+        data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
+        mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
+        mobile-box-iso = self.nixosConfigurations.mobile-box.config.system.build.isoImage;
+        staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
+      } // {
+        deploy-all = deployAllScript;
+      } // individualScripts);
     in
     {
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux" = packages;
 
-      nixosConfigurations = let 
-        data-hoarder-modules = [
-          ./modules/data-accumulator.nix
-          ./modules/nginx.nix
-          ./modules/public_api.nix
-          ./modules/map.nix
-          ./modules/file_sharing.nix
-          ./modules/options.nix
-          ./modules/grafana.nix
-          ./modules/website.nix
-          ./modules/documentation.nix
-          {
-            nixpkgs.overlays = [
-              data-accumulator.overlay."x86_64-linux"
-              dvb-api.overlay."x86_64-linux"
-              windshield.overlay."x86_64-linux"
-              docs.overlay."x86_64-linux"
-            ];
-            dvb-dump.stopsJson = "${stops}/stops.json";
-            dvb-dump.graphJson = "${stops}/graph.json";
-          }
-        ];
-        in (stop_boxes // {
-        mobile-box = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
-            ./hosts/mobile-box/configuration.nix
-            ./hosts/mobile-box/hardware-configuration.nix
-            ./hardware/configuration-dell-wyse-3040.nix
+      nixosConfigurations =
+        let
+          data-hoarder-modules = [
+            ./modules/data-accumulator.nix
+            ./modules/nginx.nix
+            ./modules/public_api.nix
+            ./modules/map.nix
+            ./modules/file_sharing.nix
             ./modules/options.nix
-            ./modules/mobile-box.nix
+            ./modules/grafana.nix
+            ./modules/website.nix
+            ./modules/documentation.nix
+            ./modules/clicky-bunty.nix
             {
               nixpkgs.overlays = [
-                radio-conf.overlay."x86_64-linux"
-                decode-server.overlay."x86_64-linux"
                 data-accumulator.overlay."x86_64-linux"
-                wartrammer.overlay."x86_64-linux"
+                dvb-api.overlay."x86_64-linux"
+                windshield.overlay."x86_64-linux"
+                docs.overlay."x86_64-linux"
+                clicky-bunty-server.overlay."x86_64-linux"
               ];
               dvb-dump.stopsJson = "${stops}/stops.json";
-              dvb-dump.systemNumber = 130;
+              dvb-dump.graphJson = "${stops}/graph.json";
             }
           ];
-        };
-      } // {
+        in
+        (stop_boxes // {
+          mobile-box = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
+            modules = [
+              "${nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-base.nix"
+              ./hosts/mobile-box/configuration.nix
+              ./hosts/mobile-box/hardware-configuration.nix
+              ./hardware/configuration-dell-wyse-3040.nix
+              ./modules/options.nix
+              ./modules/mobile-box.nix
+              {
+                nixpkgs.overlays = [
+                  radio-conf.overlay."x86_64-linux"
+                  decode-server.overlay."x86_64-linux"
+                  data-accumulator.overlay."x86_64-linux"
+                  wartrammer.overlay."x86_64-linux"
+                ];
+                dvb-dump.stopsJson = "${stops}/stops.json";
+                dvb-dump.systemNumber = 130;
+              }
+            ];
+          };
+        } // {
           data-hoarder = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };

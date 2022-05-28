@@ -68,7 +68,7 @@ in
           StartLimitBurst = "2";
           StartLimitIntervalSec = "150s";
         };
-        
+
       };
       "start-wifi-hotspot" = {
         wantedBy = [ "multi-user.target" ];
