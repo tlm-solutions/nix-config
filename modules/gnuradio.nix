@@ -14,7 +14,7 @@ let
     { frequency = "170795000"; offset = "19550"; device = "hackrf=0"; } # dresden unused
   ];
 
-  receiver = pkgs.gnuradio-decode.override(lib.elemAt receiver_config config.dvb-dump.systemNumber);
+  receiver = pkgs.gnuradio-decode.override (lib.elemAt receiver_config config.dvb-dump.systemNumber);
 in
 {
   systemd = {

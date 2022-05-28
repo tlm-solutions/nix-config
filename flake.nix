@@ -53,28 +53,28 @@
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
 
-        data-hoarder-modules = [
-          ./modules/data-accumulator.nix
-          ./modules/nginx.nix
-          ./modules/public_api.nix
-          ./modules/map.nix
-          ./modules/file_sharing.nix
-          ./modules/options.nix
-          ./modules/grafana.nix
-          ./modules/website.nix
-          ./modules/documentation.nix
-          ./modules/base.nix
-          {
-            nixpkgs.overlays = [
-              data-accumulator.overlay."x86_64-linux"
-              dvb-api.overlay."x86_64-linux"
-              windshield.overlay."x86_64-linux"
-              docs.overlay."x86_64-linux"
-            ];
-            dvb-dump.stopsJson = "${stops}/stops.json";
-            dvb-dump.graphJson = "${stops}/graph.json";
-          }
-        ];
+      data-hoarder-modules = [
+        ./modules/data-accumulator.nix
+        ./modules/nginx.nix
+        ./modules/public_api.nix
+        ./modules/map.nix
+        ./modules/file_sharing.nix
+        ./modules/options.nix
+        ./modules/grafana.nix
+        ./modules/website.nix
+        ./modules/documentation.nix
+        ./modules/base.nix
+        {
+          nixpkgs.overlays = [
+            data-accumulator.overlay."x86_64-linux"
+            dvb-api.overlay."x86_64-linux"
+            windshield.overlay."x86_64-linux"
+            docs.overlay."x86_64-linux"
+          ];
+          dvb-dump.stopsJson = "${stops}/stops.json";
+          dvb-dump.graphJson = "${stops}/graph.json";
+        }
+      ];
 
       diskModule = { config, lib, pkgs, ... }: {
         fileSystems."/" = {
@@ -162,21 +162,21 @@
 
       deployAllScript = (pkgs.writeScriptBin "deploy-all" (
         ''
-                #!${pkgs.runtimeShell} -ex
-                ${pkgs.parallel}/bin/parallel --will-cite -j10 ::: ${deployBoxes id_list} || echo "Some deployment failed"
+          #!${pkgs.runtimeShell} -ex
+          ${pkgs.parallel}/bin/parallel --will-cite -j10 ::: ${deployBoxes id_list} || echo "Some deployment failed"
         ''
       ));
 
-      individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) {} (builtins.map (number: {"deploy-box-${toString number}" = (installScript number);}) id_list);
+      individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) { } (builtins.map (number: { "deploy-box-${toString number}" = (installScript number); }) id_list);
 
       packages = ({
-          traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
-          data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
-          mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
-          mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
-          staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
-          deploy-all = deployAllScript;
-        } // individualScripts);
+        traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
+        data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
+        mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
+        mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
+        staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
+        deploy-all = deployAllScript;
+      } // individualScripts);
     in
     {
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
@@ -206,24 +206,24 @@
             }
           ];
         };
-          data-hoarder = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = ([
-              ./hosts/data-hoarder/configuration.nix
-              ./hosts/data-hoarder/hardware-configuration.nix
-              ./modules/wireguard_server.nix
-            ] ++ data-hoarder-modules);
-          };
-          staging-data-hoarder = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs; };
-            modules = ([
-              ./hosts/staging/configuration.nix
-              microvm.nixosModules.microvm
-            ] ++ data-hoarder-modules);
-          };
+        data-hoarder = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = ([
+            ./hosts/data-hoarder/configuration.nix
+            ./hosts/data-hoarder/hardware-configuration.nix
+            ./modules/wireguard_server.nix
+          ] ++ data-hoarder-modules);
         };
+        staging-data-hoarder = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = ([
+            ./hosts/staging/configuration.nix
+            microvm.nixosModules.microvm
+          ] ++ data-hoarder-modules);
+        };
+      };
 
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
