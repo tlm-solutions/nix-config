@@ -182,7 +182,7 @@
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux" = packages;
 
-      nixosConfigurations = (stop_boxes // {
+      nixosConfigurations = stop_boxes // {
         mobile-box = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
@@ -223,7 +223,7 @@
               microvm.nixosModules.microvm
             ] ++ data-hoarder-modules);
           };
-        });
+        };
 
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
