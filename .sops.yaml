@@ -1,7 +1,8 @@
 keys:
   - &admin_oxa DD0998E6CDF294537FC604F991FA5E5BF9AA901C
   - &admin_revol-xut 91EBE87016391323642A6803B966009D57E69CC6
-  # - &admin_marenz
+  - &admin_marenz-1 67896FFDB943A035!
+  - &admin_marenz-2 8DDB37C979AA1B75!
   # - &admin_astro
   - &data-hoarder age1zmuyxqnhq7naxa8egf24gzz2tjqtg5j9yv8zhvcxta08xqr8h9aqq7fjca
   - &data-hoarder-staging age1xztjvj79kxdrf97mldvv9nas5vfm636y3agkcvtyyyd0xtg73aasx5y7dc
@@ -18,6 +19,8 @@ creation_rules:
       - pgp:
         - *admin_oxa
         - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
         age:
         - *data-hoarder
         - *data-hoarder-staging
@@ -29,6 +32,8 @@ creation_rules:
       - pgp:
         - *admin_oxa
         - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
         age:
         - *data-hoarder
         - *data-hoarder-staging
@@ -37,6 +42,8 @@ creation_rules:
       - pgp:
         - *admin_oxa
         - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
         age:
         - *traffic-stop-box-0
         - *traffic-stop-box-1
@@ -46,6 +53,8 @@ creation_rules:
       - pgp:
         - *admin_oxa
         - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
         age:
         - *traffic-stop-box-0
   - path_regex: secrets/traffic-stop-box-1/[^/]+\.yaml$
@@ -53,6 +62,8 @@ creation_rules:
       - pgp:
         - *admin_oxa
         - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
         age:
         - *traffic-stop-box-1
   - path_regex: secrets/traffic-stop-box-2/[^/]+\.yaml$
@@ -60,6 +71,8 @@ creation_rules:
       - pgp:
         - *admin_oxa
         - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
         age:
         - *traffic-stop-box-2
   - path_regex: secrets/traffic-stop-box-3/[^/]+\.yaml$
@@ -67,6 +80,8 @@ creation_rules:
       - pgp:
         - *admin_oxa
         - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
         # age:
         # - *traffic-stop-box-3
   - path_regex: secrets/traffic-stop-box-4/[^/]+\.yaml$
@@ -74,5 +89,7 @@ creation_rules:
       - pgp:
         - *admin_oxa
         - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
         # age:
         # - *traffic-stop-box-4
