@@ -17,6 +17,7 @@ creation_rules:
     key_groups:
       - pgp:
         - *admin_oxa
+        - *admin_revol-xut
         age:
         - *data-hoarder
         - *data-hoarder-staging
@@ -27,6 +28,7 @@ creation_rules:
     key_groups:
       - pgp:
         - *admin_oxa
+        - *admin_revol-xut
         age:
         - *data-hoarder
         - *data-hoarder-staging
@@ -34,6 +36,7 @@ creation_rules:
     key_groups:
       - pgp:
         - *admin_oxa
+        - *admin_revol-xut
         age:
         - *traffic-stop-box-0
         - *traffic-stop-box-1
@@ -42,29 +45,34 @@ creation_rules:
     key_groups:
       - pgp:
         - *admin_oxa
+        - *admin_revol-xut
         age:
         - *traffic-stop-box-0
   - path_regex: secrets/traffic-stop-box-1/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
+        - *admin_revol-xut
         age:
         - *traffic-stop-box-1
   - path_regex: secrets/traffic-stop-box-2/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
+        - *admin_revol-xut
         age:
         - *traffic-stop-box-2
   - path_regex: secrets/traffic-stop-box-3/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
+        - *admin_revol-xut
         # age:
         # - *traffic-stop-box-3
   - path_regex: secrets/traffic-stop-box-4/[^/]+\.yaml$
     key_groups:
       - pgp:
         - *admin_oxa
+        - *admin_revol-xut
         # age:
         # - *traffic-stop-box-4
