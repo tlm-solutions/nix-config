@@ -24,6 +24,7 @@ in
 
         environment = {
           "POSTGRES" = "localhost:5432";
+          "POSTGRES_PASSWORD" = "/root/postgres_password"; #TODO: do it proper with sops
           "SALT_PATH" = "/root/password_hash_salt"; #TODO: do it proper with sops
         };
         serviceConfig = {
