@@ -8,11 +8,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1653781748,
-        "narHash": "sha256-rC1NynSdl6F5cjioDUWuPd5yeuQBKHS7VutbWRLvZp8=",
+        "lastModified": 1653816475,
+        "narHash": "sha256-bRqf2V1E+uHjmmL8qPXVCAWS4wUmAR+mmskEQvHb3nM=",
         "owner": "dump-dvb",
         "repo": "clicky-bunty-server",
-        "rev": "a2dbb8ad08b93607b25be7eab04c977ed571e19b",
+        "rev": "a231692d4c9a8ebe4110a46e3feecf87721b0ac7",
         "type": "github"
       },
       "original": {
@@ -70,11 +70,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1653773279,
-        "narHash": "sha256-t+O31Kx/1swB0VwiYPfi5AjA6e11lMHyPa8wiACqlfw=",
+        "lastModified": 1653785541,
+        "narHash": "sha256-Iy+QQfdrK+da4kiNisl3P7WR/pTtC9MsQkUosHTIm+I=",
         "owner": "dump-dvb",
         "repo": "documentation",
-        "rev": "b8c2a1dae0c8cb420fc121928294d6f365cb153e",
+        "rev": "98e12fed89017f97b5ec48e6344edcf5756b16ce",
         "type": "github"
       },
       "original": {
