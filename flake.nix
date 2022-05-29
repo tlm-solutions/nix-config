@@ -83,31 +83,11 @@
       ];
 
       diskModule = { config, lib, pkgs, ... }: {
-        fileSystems."/" = {
-          device = "/dev/disk/by-label/nixos";
-          autoResize = true;
-          fsType = "ext4";
-        };
-
-        fileSystems."/boot" = {
-          device = "/dev/disk/by-label/ESP";
-          fsType = "vfat";
-        };
-
-        boot = {
-          loader.efi.canTouchEfiVariables = false;
-          loader.grub = {
-            enable = true;
-            devices = [ "/dev/sda" ];
-            efiSupport = true;
-            efiInstallAsRemovable = true;
-          };
-          growPartition = true;
-        };
+        boot.growPartition = true;
 
         system.build.diskImage = import "${nixpkgs}/nixos/lib/make-disk-image.nix" {
           name = "${config.networking.hostName}-disk";
-          partitionTableType = "hybrid";
+          partitionTableType = "efi";
           additionalSpace = "2G";
           inherit config lib pkgs;
           postVM = ''
@@ -124,8 +104,9 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = [
-              ./hosts/traffic-stop-box/configuration.nix
-              ./hosts/traffic-stop-box/hardware-configuration.nix
+              diskModule
+              ./hosts/traffic-stop-boxes/configuration.nix
+              ./hosts/traffic-stop-boxes/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix
               ./modules/base.nix
               ./modules/options.nix
@@ -233,10 +214,11 @@
 
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
+        staging-data-hoarder."x86_64-linux" = self.nixosConfigurations.staging-data-hoarder.config.system.build.toplevel;
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
+        traffic-stop-box-0-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
-        staging-data-hoarder."x86_64-linux" = self.nixosConfigurations.staging-data-hoarder.config.system.build.toplevel;
       };
     };
 }
