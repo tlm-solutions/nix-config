@@ -4,7 +4,7 @@
 
 { pkgs, config, lib, ... }:
 let
-  file = ../configs + "/config_${toString config.dvb-dump.systemNumber}.json";
+  file = ../../configs + "/config_${toString config.dvb-dump.systemNumber}.json";
 
   receiver_config = [
     { frequency = "170795000"; offset = "19550"; device = "hackrf=0"; } # dresden - barkhausen
