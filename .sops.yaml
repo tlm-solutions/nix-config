@@ -1,6 +1,6 @@
 keys:
   - &admin_oxa DD0998E6CDF294537FC604F991FA5E5BF9AA901C
-  # - &admin_revol-xut
+  - &admin_revol-xut 91EBE87016391323642A6803B966009D57E69CC6
   # - &admin_marenz
   # - &admin_astro
   - &data-hoarder age1zmuyxqnhq7naxa8egf24gzz2tjqtg5j9yv8zhvcxta08xqr8h9aqq7fjca
