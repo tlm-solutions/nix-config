@@ -8,11 +8,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1653771261,
-        "narHash": "sha256-sK8KT+5B0KmD0/E1vgs/aYXxiBDs0UwxZ10kELA+BpQ=",
+        "lastModified": 1653781748,
+        "narHash": "sha256-rC1NynSdl6F5cjioDUWuPd5yeuQBKHS7VutbWRLvZp8=",
         "owner": "dump-dvb",
         "repo": "clicky-bunty-server",
-        "rev": "8e9a141574f793412b1f911b86ed57629f28bcb9",
+        "rev": "a2dbb8ad08b93607b25be7eab04c977ed571e19b",
         "type": "github"
       },
       "original": {
