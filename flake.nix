@@ -83,13 +83,15 @@
       ];
 
       diskModule = { config, lib, pkgs, ... }: {
-        boot.growPartition = true;
-
         system.build.diskImage = import "${nixpkgs}/nixos/lib/make-disk-image.nix" {
           name = "${config.networking.hostName}-disk";
           partitionTableType = "efi";
           additionalSpace = "2G";
-          inherit config lib pkgs;
+          copyChannel = false;
+          config = config // {
+            boot.growPartition = true;
+          };
+          inherit lib pkgs;
           postVM = ''
             mkdir -p $out/nix-support
             echo file binary-dist $diskImage >> $out/nix-support/hydra-build-products
