@@ -1,8 +1,8 @@
 keys:
   - &admin_oxa DD0998E6CDF294537FC604F991FA5E5BF9AA901C
   - &admin_revol-xut 91EBE87016391323642A6803B966009D57E69CC6
-  - &admin_marenz-1 069836A578F7939612DB4934F77D0F7E247A1EE4!
-  - &admin_marenz-2 ED06986DFAAE6A61B751DC2F537F97DFB394C433!
+  - &admin_marenz-1 069836A578F7939612DB4934F77D0F7E247A1EE4
+  - &admin_marenz-2 ED06986DFAAE6A61B751DC2F537F97DFB394C433
   # - &admin_astro
   - &data-hoarder age1zmuyxqnhq7naxa8egf24gzz2tjqtg5j9yv8zhvcxta08xqr8h9aqq7fjca
   - &data-hoarder-staging age1xztjvj79kxdrf97mldvv9nas5vfm636y3agkcvtyyyd0xtg73aasx5y7dc
