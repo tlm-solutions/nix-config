@@ -58,17 +58,17 @@
       lib = pkgs.lib;
 
       data-hoarder-modules = [
-        ./modules/data-accumulator.nix
-        ./modules/nginx.nix
-        ./modules/public_api.nix
-        ./modules/map.nix
-        ./modules/file_sharing.nix
-        ./modules/options.nix
-        ./modules/grafana.nix
-        ./modules/website.nix
-        ./modules/documentation.nix
-        ./modules/clicky-bunty.nix
         ./modules/base.nix
+        ./modules/options.nix
+        ./modules/data-hoarder/data-accumulator.nix
+        ./modules/data-hoarder/nginx.nix
+        ./modules/data-hoarder/public_api.nix
+        ./modules/data-hoarder/map.nix
+        ./modules/data-hoarder/file_sharing.nix
+        ./modules/data-hoarder/grafana.nix
+        ./modules/data-hoarder/website.nix
+        ./modules/data-hoarder/documentation.nix
+        ./modules/data-hoarder/clicky-bunty.nix
         {
           nixpkgs.overlays = [
             data-accumulator.overlay."x86_64-linux"
@@ -83,31 +83,11 @@
       ];
 
       diskModule = { config, lib, pkgs, ... }: {
-        fileSystems."/" = {
-          device = "/dev/disk/by-label/nixos";
-          autoResize = true;
-          fsType = "ext4";
-        };
-
-        fileSystems."/boot" = {
-          device = "/dev/disk/by-label/ESP";
-          fsType = "vfat";
-        };
-
-        boot = {
-          loader.efi.canTouchEfiVariables = false;
-          loader.grub = {
-            enable = true;
-            devices = [ "/dev/sda" ];
-            efiSupport = true;
-            efiInstallAsRemovable = true;
-          };
-          growPartition = true;
-        };
+        boot.growPartition = true;
 
         system.build.diskImage = import "${nixpkgs}/nixos/lib/make-disk-image.nix" {
           name = "${config.networking.hostName}-disk";
-          partitionTableType = "hybrid";
+          partitionTableType = "efi";
           additionalSpace = "2G";
           inherit config lib pkgs;
           postVM = ''
@@ -124,13 +104,14 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs; };
             modules = [
-              ./hosts/traffic-stop-box/configuration.nix
-              ./hosts/traffic-stop-box/hardware-configuration.nix
+              diskModule
+              ./hosts/traffic-stop-boxes/configuration.nix
+              ./hosts/traffic-stop-boxes/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix
               ./modules/base.nix
-              ./modules/gnuradio.nix
-              ./modules/radio_wireguard_client.nix
               ./modules/options.nix
+              ./modules/traffic-stop-boxes/gnuradio.nix
+              ./modules/traffic-stop-boxes/radio_wireguard_client.nix
               {
                 nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
                 dvb-dump.systemNumber = number;
@@ -175,14 +156,14 @@
 
       individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) { } (builtins.map (number: { "deploy-box-${toString number}" = (installScript number); }) id_list);
 
-      packages = ({
+      packages = {
         traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
         data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         deploy-all = deployAllScript;
-      } // individualScripts);
+      } // individualScripts;
     in
     {
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
@@ -199,7 +180,7 @@
             ./hardware/configuration-dell-wyse-3040.nix
             ./modules/base.nix
             ./modules/options.nix
-            ./modules/mobile-box.nix
+            ./modules/traffic-stop-boxes/mobile-box.nix
             {
               nixpkgs.overlays = [
                 radio-conf.overlay."x86_64-linux"
@@ -215,28 +196,29 @@
         data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = ([
+          modules = [
             ./hosts/data-hoarder/configuration.nix
             ./hosts/data-hoarder/hardware-configuration.nix
-            ./modules/wireguard_server.nix
-          ] ++ data-hoarder-modules);
+            ./modules/data-hoarder/wireguard_server.nix
+          ] ++ data-hoarder-modules;
         };
         staging-data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = ([
+          modules = [
             ./hosts/staging/configuration.nix
             microvm.nixosModules.microvm
-          ] ++ data-hoarder-modules);
+          ] ++ data-hoarder-modules;
         };
       };
 
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
+        staging-data-hoarder."x86_64-linux" = self.nixosConfigurations.staging-data-hoarder.config.system.build.toplevel;
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
+        traffic-stop-box-0-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
-        staging-data-hoarder."x86_64-linux" = self.nixosConfigurations.staging-data-hoarder.config.system.build.toplevel;
       };
     };
 }

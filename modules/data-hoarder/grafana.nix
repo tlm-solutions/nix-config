@@ -17,7 +17,7 @@
         # used for pinging services and checking their healthiness
         blackbox = {
           enable = true;
-          configFile = ../services/blackbox.yaml;
+          configFile = ../../services/blackbox.yaml;
         };
       };
 
@@ -69,14 +69,14 @@
     promtail = {
       enable = true;
       # doesn't have a configFile option so this has to do
-      configuration = builtins.fromJSON (lib.readFile ../services/promtail.json);
+      configuration = builtins.fromJSON (lib.readFile ../../services/promtail.json);
     };
 
 
     # exports systemd logs and other
     loki = {
       enable = true;
-      configFile = ../services/loki.yaml;
+      configFile = ../../services/loki.yaml;
     };
 
     # visualizer
@@ -89,7 +89,7 @@
       #provision = {
       #  enable = true;
       #dashboards = [
-      #  { options.path = "${../services/dashboards}"; }
+      #  { options.path = "${../../services/dashboards}"; }
       #];
       #};
     };

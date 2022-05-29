@@ -20,17 +20,13 @@
       fsType = "ext4";
     };
 
-  # fileSystems."/boot" =
-  #   {
-  #     device = "/dev/disk/by-label/boot";
-  #     fsType = "vfat";
-  #   };
-
-  swapDevices = [
+  fileSystems."/boot" =
     {
-      device = "/dev/mmcblk0p1";
-    }
-  ];
+      device = "/dev/disk/by-label/ESP";
+      fsType = "vfat";
+    };
+
+  swapDevices = [ ];
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
