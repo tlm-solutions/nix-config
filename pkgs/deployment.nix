@@ -1,39 +1,36 @@
-{ self, pkgs, lib, boxes }:
+{ pkgs, systems }:
 let
-  # command which generates the update script for that specific machine
-  installScript = (target: (pkgs.writeScript "deploy" ''
-    #!${pkgs.runtimeShell}
-    ssh root@10.13.37.${toString (target + 100)} "ps cax | grep \"nixos-rebuild\" > /dev/null"
-    if [ $? -eq 0 ]
-    then
-        echo "Process is running."
-        exit
-    else
-        echo "Process is not running."
-        nix copy --to ssh://root@10.13.37.${toString (target + 100)} ${self}
-        ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch --flake ${self}#traffic-stop-box-${toString target}
-    fi
-  ''));
+
+  installScript = (id: 
+    let
+      ip = "10.13.37.${toString (id + 100)}";
+    in
+      (pkgs.writeScriptBin "deploy" ''
+      #!${pkgs.runtimeShell}
+      ssh root@${ip} "ps cax | grep \"nixos-rebuild\" > /dev/null"
+      if [ $? -eq 0 ]
+      then
+          echo "\e[1;31m [!] nixos-rebuild is already running on ${ip}"
+          exit 1
+      else
+          nix copy --to ssh://root@${ip} ${self}
+          ssh root@${ip} -- nixos-rebuild switch --flake ${self} -L
+      fi
+    '')
+    );
 
   # concatanes commands together
-  deployBoxes = (systems: lib.strings.concatStringsSep " "
-    (builtins.map (system: "${(installScript system)}") systems));
+  deployBoxes = (systems: pkgs.lib.strings.concatStringsSep " "
+    (builtins.map (system: "${(installScript system)}/bin/deploy") systems));
 
-  deployAllScript = (pkgs.writeScript "deploy-all" (
-    '' 
-              #!${pkgs.runtimeShell} -ex
-              ${pkgs.parallel}/bin/parallel --citation
-              ${pkgs.parallel}/bin/parallel -j10 ::: ${deployBoxes boxes} || echo "Some deployment failed"
-      ''
+  deployAllScript = (pkgs.writeScriptBin "deploy-all" (
+    ''
+      #!${pkgs.runtimeShell} -ex
+      ${pkgs.parallel}/bin/parallel --will-cite -j10 ::: ${deployBoxes id_list} || echo "Some deployment failed"
+    ''
   ));
 
-  individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) { } (builtins.map (number: { "deploy-box-${toString number}" = (installScript number); }) boxes);
-
-in
-({
+  individualScripts = pkgs.lib.mapAttrs' (name: value: pkgs.lib.attrsets.nameValuePair ("deploy-" + name) (builtins.map installScript value)) systems;
+in {
   deploy-all = deployAllScript;
-}) #individualScripts
-
-#in (individualScripts // {
-#  deploy-all = deployAllScript;
-#})
+} // individualScripts;

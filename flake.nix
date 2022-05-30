@@ -126,37 +126,9 @@
 
       # list of accending system numbers
       id_list = [ 0 1 2 3 4 ];
-      # list of nixos systems
-      list_of_systems = builtins.map generate_system id_list;
+
       # attribute set of all traffic stop boxes
-      stop_boxes = nixpkgs.lib.foldr (x: y: nixpkgs.lib.mergeAttrs x y) { } list_of_systems;
-
-      installScript = (target: (pkgs.writeScriptBin "deploy" ''
-        #!${pkgs.runtimeShell}
-        ssh root@10.13.37.${toString (target + 100)} "ps cax | grep \"nixos-rebuild\" > /dev/null"
-        if [ $? -eq 0 ]
-        then
-            echo "Process is running."
-            exit
-        else
-            echo "Process is not running."
-            nix copy --to ssh://root@10.13.37.${toString (target + 100)} ${self}
-            ssh root@10.13.37.${toString (target + 100)} -- nixos-rebuild switch --flake ${self} -L
-        fi
-      ''));
-
-      # concatanes commands together
-      deployBoxes = (systems: lib.strings.concatStringsSep " "
-        (builtins.map (system: "${(installScript system)}/bin/deploy") systems));
-
-      deployAllScript = (pkgs.writeScriptBin "deploy-all" (
-        ''
-          #!${pkgs.runtimeShell} -ex
-          ${pkgs.parallel}/bin/parallel --will-cite -j10 ::: ${deployBoxes id_list} || echo "Some deployment failed"
-        ''
-      ));
-
-      individualScripts = lib.foldl (x: y: lib.mergeAttrs x y) { } (builtins.map (number: { "deploy-box-${toString number}" = (installScript number); }) id_list);
+      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (builtins.map generate_system y)) { } id_list;
 
       packages = {
         traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
@@ -164,8 +136,7 @@
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
-        deploy-all = deployAllScript;
-      } // individualScripts;
+      } // (import ./pkgs/deployment.nix { pkgs, stop_boxes });
     in
     {
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
@@ -224,5 +195,3 @@
       };
     };
 }
-
-
