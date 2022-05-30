@@ -9,5 +9,8 @@
     postgres_password_hash_salt = {
       owner = config.users.users.postgres.name;
     };
+    postgres_password = {
+      owner = config.users.users.postgres.name;
+    };
   };
 }

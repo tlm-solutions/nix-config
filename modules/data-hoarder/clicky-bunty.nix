@@ -25,6 +25,7 @@ in
         environment = {
           "POSTGRES" = "localhost:5432";
           "SALT_PATH" = config.sops.secrets.postgres_password_hash_salt.path;
+          "POSTGRES_PASSWORD" = config.sops.secrets.postgres_password.path;
         };
         serviceConfig = {
           Type = "forking";
