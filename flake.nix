@@ -128,7 +128,7 @@
       id_list = [ 0 1 2 3 4 ];
 
       # attribute set of all traffic stop boxes
-      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (builtins.map generate_system y)) { } id_list;
+      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y)) { } id_list;
 
       packages = {
         traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
@@ -136,7 +136,7 @@
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
-      } // (import ./pkgs/deployment.nix { pkgs, stop_boxes });
+      } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
     {
       defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
