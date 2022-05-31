@@ -18,7 +18,6 @@ in
         wantedBy = [ "multi-user.target" ];
 
         script = ''
-          export POSTGRES_PASSWORD=$(cat /root/postgres_password)
           exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host 127.0.0.1 --port ${toString port}&
         '';
 

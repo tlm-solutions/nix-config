@@ -7,10 +7,10 @@
     wg-seckey-staging = { };
     wg-seckey = { };
     postgres_password_hash_salt = {
-      owner = config.users.users.postgres.name;
+      owner = config.users.users.clicky-bunty-server.name;
     };
     postgres_password = {
-      owner = config.users.users.postgres.name;
+      owner = config.users.users.clicky-bunty-server.name;
     };
   };
 }
