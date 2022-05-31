@@ -24,8 +24,10 @@ in
         '';
 
         environment = {
-          "POSTGRES" = "localhost:5432";
+          "POSTGRES_HOST" = "127.0.0.1";
+          "POSTGRES_PORT" = "5432";
         };
+
         serviceConfig = {
           Type = "forking";
           User = "clicky-bunty-server";
