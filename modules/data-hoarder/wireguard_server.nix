@@ -6,7 +6,7 @@
   networking.wg-quick.interfaces = {
     wg-dvb = {
       address = [ "10.13.37.1/32" ];
-      privateKeyFile = "/root/wg-seckey";
+      privateKeyFile = config.sops.secrets.wg-seckey.path;
       listenPort = 51820;
       peers = [
         {

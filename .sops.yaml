@@ -1,0 +1,98 @@
+keys:
+  - &admin_oxa DD0998E6CDF294537FC604F991FA5E5BF9AA901C
+  - &admin_revol-xut 91EBE87016391323642A6803B966009D57E69CC6
+  - &admin_marenz-1 069836A578F7939612DB4934F77D0F7E247A1EE4
+  - &admin_marenz-2 ED06986DFAAE6A61B751DC2F537F97DFB394C433
+  # - &admin_astro
+  - &data-hoarder age1zmuyxqnhq7naxa8egf24gzz2tjqtg5j9yv8zhvcxta08xqr8h9aqq7fjca
+  - &data-hoarder-staging age1xztjvj79kxdrf97mldvv9nas5vfm636y3agkcvtyyyd0xtg73aasx5y7dc
+  # turmlabor
+  - &traffic-stop-box-0 age1yxtur968m4xe0m3kj0waqpm2kuuywpp9f6t0rxl4f0262ze9n9jqehw0k5
+  # zw
+  - &traffic-stop-box-1 age1l8773krx0tuu85hv8wgrwdutgadv5efdxw0yzyq7taslhnpl9fxseuysne
+  # chemnitz
+  - &traffic-stop-box-2 age1l8773krx0tuu85hv8wgrwdutgadv5efdxw0yzyq7taslhnpl9fxseuysne
+  # staging boxes
+  - &traffic-stop-box-3 age1l8773krx0tuu85hv8wgrwdutgadv5efdxw0yzyq7taslhnpl9fxseuysne
+  - &traffic-stop-box-4 age1l8773krx0tuu85hv8wgrwdutgadv5efdxw0yzyq7taslhnpl9fxseuysne
+  # - &mobile-box
+creation_rules:
+  - path_regex: secrets/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *data-hoarder
+        - *data-hoarder-staging
+        - *traffic-stop-box-0
+        - *traffic-stop-box-1
+        - *traffic-stop-box-2
+  - path_regex: secrets/data-hoarder/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *data-hoarder
+        - *data-hoarder-staging
+  - path_regex: secrets/traffic-stop-box/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *traffic-stop-box-0
+        - *traffic-stop-box-1
+        - *traffic-stop-box-2
+  - path_regex: secrets/traffic-stop-box-0/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *traffic-stop-box-0
+  - path_regex: secrets/traffic-stop-box-1/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *traffic-stop-box-1
+  - path_regex: secrets/traffic-stop-box-2/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *traffic-stop-box-2
+  - path_regex: secrets/traffic-stop-box-3/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *traffic-stop-box-3
+  - path_regex: secrets/traffic-stop-box-4/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *traffic-stop-box-4
