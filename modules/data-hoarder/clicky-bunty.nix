@@ -18,13 +18,13 @@ in
         wantedBy = [ "multi-user.target" ];
 
         script = ''
+          export SALT_PATH=$(cat ${config.sops.secrets.postgres_password_hash_salt.path})
+          export POSTGRES_PASSWORD=$(cat ${config.sops.secrets.postgres_password.path})
           exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host 127.0.0.1 --port ${toString port}&
         '';
 
         environment = {
           "POSTGRES" = "localhost:5432";
-          "SALT_PATH" = config.sops.secrets.postgres_password_hash_salt.path;
-          "POSTGRES_PASSWORD" = config.sops.secrets.postgres_password.path;
         };
         serviceConfig = {
           Type = "forking";
