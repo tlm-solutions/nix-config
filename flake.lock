@@ -121,9 +121,7 @@
     "microvm": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_9"
       },
       "locked": {
         "lastModified": 1653399543,
@@ -213,7 +211,7 @@
     },
     "naersk_5": {
       "inputs": {
-        "nixpkgs": "nixpkgs_9"
+        "nixpkgs": "nixpkgs_10"
       },
       "locked": {
         "lastModified": 1653413650,
@@ -231,7 +229,7 @@
     },
     "naersk_6": {
       "inputs": {
-        "nixpkgs": "nixpkgs_12"
+        "nixpkgs": "nixpkgs_13"
       },
       "locked": {
         "lastModified": 1652722411,
@@ -295,6 +293,20 @@
     },
     "nixpkgs_10": {
       "locked": {
+        "lastModified": 1653918805,
+        "narHash": "sha256-6ahwAnBNGgqSNSn/6RnsxrlFi+fkA+RyT6o/5S1915o=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "a0a69be4b5ee63f1b5e75887a406e9194012b492",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_11": {
+      "locked": {
         "lastModified": 1653918726,
         "narHash": "sha256-C+BpRKWjuwR4a9R0w5V5AFaQiyDtRPSRec7VJCX1NI4=",
         "owner": "NixOS",
@@ -309,7 +321,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_11": {
+    "nixpkgs_12": {
       "locked": {
         "lastModified": 1653229824,
         "narHash": "sha256-klSCYMpR4TqWYoTD/xZ2qM9UIPRFC6pK+S/kJuVLbFw=",
@@ -325,7 +337,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_12": {
+    "nixpkgs_13": {
       "locked": {
         "lastModified": 1652840887,
         "narHash": "sha256-gEK4NNa4GwIgTZE63kt/4WTFAWRTJVSa30+h4ZjFh9U=",
@@ -339,7 +351,7 @@
         "type": "indirect"
       }
     },
-    "nixpkgs_13": {
+    "nixpkgs_14": {
       "locked": {
         "lastModified": 1652885393,
         "narHash": "sha256-YIgvvlk4iQ1Hi7KD9o5gsojc+ApB+jiH1d5stK8uXiw=",
@@ -463,21 +475,23 @@
     },
     "nixpkgs_9": {
       "locked": {
-        "lastModified": 1653918805,
-        "narHash": "sha256-6ahwAnBNGgqSNSn/6RnsxrlFi+fkA+RyT6o/5S1915o=",
-        "owner": "NixOS",
+        "lastModified": 1653845079,
+        "narHash": "sha256-7ghaQZ+7JXLI9FgNH8+RQHAt3/ubT92j8NtjZleP6t4=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "a0a69be4b5ee63f1b5e75887a406e9194012b492",
+        "rev": "b62ada430501de88dfbb08cea4eb98ead3a5e3e7",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "radio-conf": {
       "inputs": {
-        "nixpkgs": "nixpkgs_11",
+        "nixpkgs": "nixpkgs_12",
         "utils": "utils_5"
       },
       "locked": {
@@ -503,7 +517,7 @@
         "dvb-api": "dvb-api",
         "microvm": "microvm",
         "naersk": "naersk_5",
-        "nixpkgs": "nixpkgs_10",
+        "nixpkgs": "nixpkgs_11",
         "radio-conf": "radio-conf",
         "sops-nix": "sops-nix",
         "stops": "stops_4",
@@ -705,7 +719,7 @@
     "wartrammer": {
       "inputs": {
         "naersk": "naersk_6",
-        "nixpkgs": "nixpkgs_13",
+        "nixpkgs": "nixpkgs_14",
         "utils": "utils_6"
       },
       "locked": {
