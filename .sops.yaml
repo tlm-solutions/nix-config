@@ -40,6 +40,16 @@ creation_rules:
         age:
         - *data-hoarder
         - *data-hoarder-staging
+  - path_regex: secrets/data-hoarder-staging/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *data-hoarder
+        - *data-hoarder-staging
   - path_regex: secrets/traffic-stop-box/[^/]+\.yaml$
     key_groups:
       - pgp:

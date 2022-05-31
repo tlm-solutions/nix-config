@@ -56,6 +56,7 @@
   networking.defaultGateway = "172.20.73.1";
   networking.nameservers = [ "172.20.73.8" "9.9.9.9" ];
 
+  sops.defaultSopsFile = ../../secrets/data-hoarder-staging/secrets.yaml;
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
