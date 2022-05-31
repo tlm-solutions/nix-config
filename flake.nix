@@ -9,7 +9,6 @@
 
     microvm = {
       url = github:astro/microvm.nix;
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     radio-conf = {
