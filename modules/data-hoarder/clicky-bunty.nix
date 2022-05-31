@@ -40,7 +40,7 @@ in
 
           path = [ pkgs.sudo config.services.postgresql.package ];
           script = ''
-            sudo -u ${config.services.postgresql.superUser} psql -c "ALTER ROLE dvbdump WITH PASSWORD '$(cat /root/postgres_password)'"
+            sudo -u ${config.services.postgresql.superUser} psql -c "ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})'"
           '';
       };
     };
