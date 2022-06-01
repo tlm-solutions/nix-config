@@ -69,7 +69,7 @@ in
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "managment-backend.${config.dvb-dump.domain}" = {
+        "management-backend.${config.dvb-dump.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {
