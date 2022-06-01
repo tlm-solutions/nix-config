@@ -26,6 +26,7 @@
       }
     ];
   };
+  environment.systemPackages = with pkgs; [ influxdb ];
 
   networking.defaultGateway = "192.109.108.61";
   networking.nameservers = [ "9.9.9.9" ];
