@@ -28,10 +28,11 @@
     script = ''
       cd /tmp
       TMPFILE=$(mktemp telegrams.XXXXX.csv.gz)
-      influx -precision rfc3339 -database dvbdump -execute "SELECT * FROM telegram_r_09" -format csv | gzip -c > $TMPFILE
+      TIMESTAMP=$(date +"%Y%m%d-%H%M")
+influx -precision rfc3339 -database dvbdump -execute "SELECT * FROM telegram_r_09 WHERE time > now()-1h" -format csv | gzip -c > $TMPFILE
       chmod a+r $TMPFILE
 
-      mv $TMPFILE /var/lib/data-accumulator/data/telegrams.csv.gz
+      mv $TMPFILE /var/lib/data-accumulator/data/telegrams-''${TIMESTAMP}.csv.gz
     '';
   };
   systemd.timers.dump-csv = {
