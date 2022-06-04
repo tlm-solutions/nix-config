@@ -7,7 +7,7 @@
         forceSSL = true;
         locations."/" = {
           extraConfig = ''
-            return 307 https://docs.dvb.de;
+            return 307 https://docs.dvb.solutions;
           '';
         };
       };
