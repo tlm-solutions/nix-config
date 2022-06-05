@@ -1,6 +1,6 @@
 { pkgs, config, lib, ... }: {
   security.acme.acceptTerms = true;
-  security.acme.email = "dump-dvb@protonmail.com";
+  security.acme.defaults.email = "dump-dvb@protonmail.com";
   services.nginx = {
     recommendedTlsSettings = true;
     recommendedOptimisation = true;
