@@ -495,11 +495,11 @@
         "utils": "utils_5"
       },
       "locked": {
-        "lastModified": 1654439624,
-        "narHash": "sha256-yLkynLeh2aHY/fwgzu18PZAn0C+YrOluJaYpuBU8AvM=",
+        "lastModified": 1654440596,
+        "narHash": "sha256-Xem2DT3F6mWQF8up3Dm+wjY4r1t4aRr7SK/uq1yrcAg=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "470340ec1c1fa987c942e2e8003f807d4e7f7220",
+        "rev": "8a1392e1be56270cd9a20cb60e3b0830740f4dff",
         "type": "github"
       },
       "original": {
