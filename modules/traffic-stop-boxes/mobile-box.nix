@@ -9,7 +9,7 @@ in
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${receiver}/bin/gnuradio-decoder-cpp 170795000 19550 &";
+        script = "exec ${pkgs.gnuradio-decoder}/bin/gnuradio-decoder-cpp 170795000 19550 &";
 
         serviceConfig = {
           Type = "forking";
@@ -138,7 +138,7 @@ in
       owner = "gnuradio";
       group = "users";
       capabilities = "cap_sys_nice+eip";
-      source = "${receiver}/bin/gnuradio-decoder-cpp";
+      source = "${pkgs.gnuradio-decoder}/bin/gnuradio-decoder-cpp";
     };
   };
 }
