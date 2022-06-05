@@ -9,7 +9,7 @@ in
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        #script = "exec ${pkgs.gnuradio-decode}/bin/recv_and_demod.py &";
+        script = "exec ${receiver}/bin/gnuradio-decoder-cpp 170795000 19550 &";
 
         serviceConfig = {
           Type = "forking";
@@ -134,11 +134,11 @@ in
   };
 
   security.wrappers = {
-    #gnuradio-decode = {
-    #  owner = "gnuradio";
-    #  group = "users";
-    #  capabilities = "cap_sys_nice+eip";
-    #  source = "${pkgs.gnuradio-decode}/bin/recv_and_demod.py";
-    #};
+    gnuradio-decode = {
+      owner = "gnuradio";
+      group = "users";
+      capabilities = "cap_sys_nice+eip";
+      source = "${receiver}/bin/gnuradio-decoder-cpp";
+    };
   };
 }
