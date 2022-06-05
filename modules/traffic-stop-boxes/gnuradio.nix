@@ -6,7 +6,7 @@
 let
   file = ../../configs + "/config_${toString config.dvb-dump.systemNumber}.json";
 
-  receiver_config = [
+  receiver_configs = [
     { frequency = "170795000"; offset = "19550"; device = "hackrf=0"; } # dresden - barkhausen
     { frequency = "170795000"; offset = "19500"; device = "hackrf=0"; } # dresden - zentralwerk
     { frequency = "153850000"; offset = "20000"; device = ""; } # chemnitz
@@ -15,7 +15,7 @@ let
   ];
 
   receiver = pkgs.gnuradio-decoder;
-  receiver_config = lib.elemAt receiver_config config.dvb-dump.systemNumber;
+  receiver_config = lib.elemAt receiver_configs config.dvb-dump.systemNumber;
 in
 {
   systemd = {
