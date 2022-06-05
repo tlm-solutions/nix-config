@@ -70,11 +70,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1654363651,
-        "narHash": "sha256-4GNNKps1D7TvY/3aFVaRHn1LEpoizODhZ69CwDuDG78=",
+        "lastModified": 1654448662,
+        "narHash": "sha256-f41BFJ01ahKlin32z/cXOGW4lSawFoNUmFOlTk71aik=",
         "owner": "dump-dvb",
         "repo": "documentation",
-        "rev": "5f8f407d37667a136445538907524c55a82f9d69",
+        "rev": "5b0f44bfb5eda89c0b95c22744ec47ad4693db9a",
         "type": "github"
       },
       "original": {
@@ -90,11 +90,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1654427652,
-        "narHash": "sha256-gebqrlzNqxuGttriZkaOJyGVIdFZoiZmePAuUWwOg4Q=",
+        "lastModified": 1654448884,
+        "narHash": "sha256-o4lkJ48d2xTlwxA77WHPU+/ulzIyLa3i/UmJG56bHwQ=",
         "owner": "dump-dvb",
         "repo": "dvb-api",
-        "rev": "f999de0a99867eff4d7836fc948f1a83a4d2233b",
+        "rev": "b2ad262c169819545fd47741c1922aa261124034",
         "type": "github"
       },
       "original": {

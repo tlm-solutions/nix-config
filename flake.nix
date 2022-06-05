@@ -140,6 +140,7 @@
 
       packages = {
         traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
+        staging-data-hoarder = self.nixosConfigurations.staging-data-hoarder.config.system.build.vm;
         data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
