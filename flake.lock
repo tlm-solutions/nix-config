@@ -90,11 +90,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1654425777,
-        "narHash": "sha256-qI3+5H7bJAwn0OxryrrDsLWNeEC2/raaJYmcsCqKqtM=",
+        "lastModified": 1654427652,
+        "narHash": "sha256-gebqrlzNqxuGttriZkaOJyGVIdFZoiZmePAuUWwOg4Q=",
         "owner": "dump-dvb",
         "repo": "dvb-api",
-        "rev": "8d7907b3bfa281badcc7ec494dd71ed5fc5d0a9e",
+        "rev": "f999de0a99867eff4d7836fc948f1a83a4d2233b",
         "type": "github"
       },
       "original": {
