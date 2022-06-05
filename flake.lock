@@ -323,16 +323,16 @@
     },
     "nixpkgs_12": {
       "locked": {
-        "lastModified": 1653229824,
-        "narHash": "sha256-klSCYMpR4TqWYoTD/xZ2qM9UIPRFC6pK+S/kJuVLbFw=",
+        "lastModified": 1654230545,
+        "narHash": "sha256-8Vlwf0x8ow6pPOK2a04bT+pxIeRnM1+O0Xv9/CuDzRs=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "06db2e2197401b74fcf82d4e84be15b0b5851c7b",
+        "rev": "236cc2971ac72acd90f0ae3a797f9f83098b17ec",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-21.11",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -495,11 +495,11 @@
         "utils": "utils_5"
       },
       "locked": {
-        "lastModified": 1654361673,
-        "narHash": "sha256-vedy7z0Ab9mdoKflEsQ24CE5nXHjgSPIgzR3+BDF928=",
+        "lastModified": 1654392488,
+        "narHash": "sha256-yxHb7oLkKl1qBQp0hoEENXQr/RigVp2AJeTzBoWhLmM=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "2ae1633dabea96c1b865311985c625e2b7f6500c",
+        "rev": "0254e6978b1f337ea52237fb3e642ebe1bc1fa14",
         "type": "github"
       },
       "original": {
@@ -673,11 +673,11 @@
     },
     "utils_5": {
       "locked": {
-        "lastModified": 1652776076,
-        "narHash": "sha256-gzTw/v1vj4dOVbpBSJX4J0DwUR6LIyXo7/SuuTJp1kM=",
+        "lastModified": 1653893745,
+        "narHash": "sha256-0jntwV3Z8//YwuOjzhV2sgJJPt+HY6KhU7VZUL0fKZQ=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "04c1b180862888302ddfb2e3ad9eaa63afc60cf8",
+        "rev": "1ed9fb1935d260de5fe1c2f7ee0ebaae17ed2fa1",
         "type": "github"
       },
       "original": {

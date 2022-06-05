@@ -14,7 +14,8 @@ let
     { frequency = "170795000"; offset = "19550"; device = "hackrf=0"; } # dresden unused
   ];
 
-  receiver = pkgs.gnuradio-decode.override (lib.elemAt receiver_config config.dvb-dump.systemNumber);
+  receiver = pkgs.gnuradio-decoder;
+  receiver_config = lib.elemAt receiver_config config.dvb-dump.systemNumber;
 in
 {
   systemd = {
@@ -23,7 +24,7 @@ in
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${receiver}/bin/recv_and_demod.py &";
+        script = "exec ${receiver}/bin/gnuradio-decoder-cpp ${receiver_config.frequency} ${receiver_config.offset} ${receiver_config.device} &";
 
         serviceConfig = {
           Type = "forking";
@@ -71,7 +72,7 @@ in
       owner = "gnuradio";
       group = "users";
       capabilities = "cap_sys_nice+eip";
-      source = "${receiver}/bin/recv_and_demod.py";
+      source = "${receiver}/bin/gnuradio-decoder-cpp";
     };
   };
 }
