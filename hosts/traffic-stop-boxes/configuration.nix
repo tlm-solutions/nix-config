@@ -12,6 +12,7 @@
   time.timeZone = "Europe/Berlin";
 
   documentation.enable = false;
+  documentation.nixos.enable = false;
 
   nix = {
     buildCores = 1;
