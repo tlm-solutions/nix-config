@@ -18,11 +18,17 @@
   };
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
     keyMap = "uk";
   };
+
+  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.supportedLocales = [
+    "en_US.UTF-8/UTF-8"
+    "en_US/ISO-8859-1"
+    "C.UTF-8/UTF-8"
+  ];
 
   users.users.root = {
     openssh.authorizedKeys.keyFiles = [
@@ -41,7 +47,7 @@
     git
     htop
     tmux
-    vim_configurable
+    (vim_configurable.override { guiSupport = false; luaSupport = false; perlSupport = false; pythonSupport = false; rubySupport = false; cscopeSupport = false; netbeansSupport = false; })
     wget
     git-crypt
     iftop
