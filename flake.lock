@@ -90,11 +90,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1654475537,
-        "narHash": "sha256-pfjc3iG0k58GTi9s0ELnRxGtCIKkACSeJVXlapC3V4c=",
+        "lastModified": 1654476423,
+        "narHash": "sha256-X+nCFGINLhOvZ5eOccSTnhdedj+ndr3IbPUJ1QhZPqM=",
         "owner": "dump-dvb",
         "repo": "dvb-api",
-        "rev": "be8bbb0a67a14535572b7078159ce4568a5de005",
+        "rev": "8115f455c94435e65b345e03306017cbcfd1ce12",
         "type": "github"
       },
       "original": {
@@ -124,11 +124,11 @@
         "nixpkgs": "nixpkgs_9"
       },
       "locked": {
-        "lastModified": 1654033151,
-        "narHash": "sha256-dIFCkDvHdFrC1aKP4aOs3Bg1tOKyxFOgPrqJJnZpjZ4=",
+        "lastModified": 1654475993,
+        "narHash": "sha256-bGymMoL5Ut7KC9y2zO7/14y01xUqmSehbig2yBl8Sxw=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "d364c8bf1a16d79b67b0979343d943a5a9ffa636",
+        "rev": "322acf99b1520ae803f84f2bfa305231adedc344",
         "type": "github"
       },
       "original": {
