@@ -4,27 +4,32 @@
 
     naersk = {
       url = github:nix-community/naersk;
-      #inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     microvm = {
       url = github:astro/microvm.nix;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     radio-conf = {
       url = github:dump-dvb/radio-conf;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     data-accumulator = {
       url = github:dump-dvb/data-accumulator;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     decode-server = {
       url = github:dump-dvb/decode-server;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     dvb-api = {
       url = github:dump-dvb/dvb-api;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     stops = {
@@ -44,10 +49,12 @@
 
     wartrammer = {
       url = github:dump-dvb/wartrammer-40k;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     clicky-bunty-server = {
       url = github:dump-dvb/clicky-bunty-server;
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     sops-nix = {
