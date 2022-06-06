@@ -5,7 +5,7 @@ keys:
   - &admin_marenz-2 ED06986DFAAE6A61B751DC2F537F97DFB394C433
   # - &admin_astro
   - &data-hoarder age1zmuyxqnhq7naxa8egf24gzz2tjqtg5j9yv8zhvcxta08xqr8h9aqq7fjca
-  - &data-hoarder-staging age1xztjvj79kxdrf97mldvv9nas5vfm636y3agkcvtyyyd0xtg73aasx5y7dc
+  - &data-hoarder-staging age1m4g4y5ga2m8xdvs7rarda3tyk4gtkyta6pfyq2n3xmy47z20kfxq73m8r8
   # turmlabor
   - &traffic-stop-box-0 age1yxtur968m4xe0m3kj0waqpm2kuuywpp9f6t0rxl4f0262ze9n9jqehw0k5
   # zw
