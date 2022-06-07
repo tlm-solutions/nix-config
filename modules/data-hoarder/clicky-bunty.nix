@@ -19,7 +19,7 @@ in
 
         script = ''
           export RUST_BACKTRACE=FULL
-          export SALT_PATH=$(cat ${config.sops.secrets.postgres_password_hash_salt.path})
+          export SALT_PATH=${config.sops.secrets.postgres_password_hash_salt.path}
           export POSTGRES_PASSWORD=$(cat ${config.sops.secrets.postgres_password.path})
           exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host 127.0.0.1 --port ${toString port}&
         '';
