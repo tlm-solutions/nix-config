@@ -82,6 +82,14 @@
     ];
   };
 
+  # NFS
+  services.nfs.server = {
+    enable = true;
+    exports = ''
+      /var/lib/oopsie   10.13.37.0/24(rw,insecure)
+    '';
+  };
+
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
