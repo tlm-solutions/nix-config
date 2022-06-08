@@ -86,7 +86,7 @@
   services.nfs.server = {
     enable = true;
     exports = ''
-      /var/lib/oopsie   10.13.37.0/24(rw,insecure)
+      /var/lib/oopsie   10.13.37.0/24(rw,insecure,fsid=root)
     '';
   };
 
