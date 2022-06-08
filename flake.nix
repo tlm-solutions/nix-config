@@ -151,6 +151,7 @@
         data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
+        tsb-dell-user-image = self.nixosConfigurations.tsb-dell-user.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
@@ -200,6 +201,24 @@
             microvm.nixosModules.microvm
           ] ++ data-hoarder-modules;
         };
+        tsb-dell-user = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            diskModule
+            ./hosts/traffic-stop-boxes/configuration.nix
+            ./hosts/traffic-stop-boxes/hardware-configuration.nix
+            ./hardware/configuration-dell-wyse-3040.nix
+            ./modules/base.nix
+            ./modules/options.nix
+            ./modules/traffic-stop-boxes/gnuradio.nix
+            ./modules/traffic-stop-boxes/user.nix
+            {
+              nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
+              dvb-dump.stopsJson = "${stops}/stops.json";
+            }
+          ];
+        };
       };
 
       hydraJobs = {
@@ -209,6 +228,7 @@
         traffic-stop-box-0-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
+        tsb-dell-user-image."x86_64-linux" = self.nixosConfigurations.tsb-dell-user.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
     };
