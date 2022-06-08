@@ -82,15 +82,6 @@
     ];
   };
 
-  # NFS
-  services.nfs.server = {
-    enable = true;
-    exports = ''
-      /var/lib/oopsie   10.13.37.0/24(rw,insecure,fsid=root)
-    '';
-  };
-
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
