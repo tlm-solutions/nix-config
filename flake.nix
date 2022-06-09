@@ -152,6 +152,7 @@
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         user-stop-box-wyse-3040-image = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
+        user-stop-box-rpi4-image = self.nixosConfigurations.user-stop-box-rpi4.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
@@ -225,10 +226,13 @@
           specialArgs = { inherit inputs; };
           modules = [
             diskModule
-            ./hosts/user-stop-box/configuration.nix
-            ./hosts/user-stop-box/hardware-configuration.nix
+            ./hosts/user-stop-box-rpi4/configuration.nix
+            ./hosts/user-stop-box-rpi4/hardware-configuration.nix
+            ./hardware/configuration-rpi-4b.nix
             ./user-config.nix
+            ./modules/base.nix
             ./modules/dump-dvb
+            ./modules/user-stop-box/user.nix
             {
               nixpkgs.overlays = [ radio-conf.overlay."aarch64-linux" decode-server.overlay."aarch64-linux" ];
             }
@@ -244,6 +248,7 @@
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         user-stop-box-wyse-3040-image."x86_64-linux" = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
+        user-stop-box-rpi4-image."aarch64-linux" = self.nixosConfigurations.user-stop-box-rpi4.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
     };
