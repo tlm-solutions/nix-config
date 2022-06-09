@@ -70,7 +70,6 @@
 
       data-hoarder-modules = [
         ./modules/base.nix
-        ./modules/options.nix
         ./modules/data-hoarder/data-accumulator.nix
         ./modules/data-hoarder/nginx.nix
         ./modules/data-hoarder/public_api.nix
@@ -81,6 +80,7 @@
         ./modules/data-hoarder/documentation.nix
         ./modules/data-hoarder/clicky-bunty.nix
         ./modules/data-hoarder/secrets.nix
+        ./modules/dump-dvb
         sops-nix.nixosModules.sops
         {
           nixpkgs.overlays = [
@@ -90,8 +90,8 @@
             docs.overlay."x86_64-linux"
             clicky-bunty-server.overlay."x86_64-linux"
           ];
-          dvb-dump.stopsJson = "${stops}/stops.json";
-          dvb-dump.graphJson = "${stops}/graph.json";
+          dump-dvb.stopsJson = "${stops}/stops.json";
+          dump-dvb.graphJson = "${stops}/graph.json";
         }
       ];
 
@@ -125,14 +125,14 @@
               ./hosts/traffic-stop-boxes/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix
               ./modules/base.nix
-              ./modules/options.nix
-              ./modules/traffic-stop-boxes/gnuradio.nix
               ./modules/traffic-stop-boxes/radio_wireguard_client.nix
               ./modules/traffic-stop-boxes/secrets.nix
+              ./modules/traffic-stop-boxes/radio-config.nix
+              ./modules/dump-dvb
               {
                 nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
-                dvb-dump.systemNumber = number;
-                dvb-dump.stopsJson = "${stops}/stops.json";
+                dump-dvb.systemNumber = number;
+                dump-dvb.stopsJson = "${stops}/stops.json";
               }
             ];
           };
@@ -151,7 +151,7 @@
         data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
-        tsb-dell-user-image = self.nixosConfigurations.tsb-dell-user.config.system.build.diskImage;
+        user-stop-box-wyse-3040-image = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
@@ -169,8 +169,9 @@
             ./hosts/mobile-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
             ./modules/base.nix
-            ./modules/options.nix
             ./modules/traffic-stop-boxes/mobile-box.nix
+            ./modules/dump-dvb
+            ./user-config.nix
             sops-nix.nixosModules.sops
             {
               nixpkgs.overlays = [
@@ -179,8 +180,8 @@
                 data-accumulator.overlay."x86_64-linux"
                 wartrammer.overlay."x86_64-linux"
               ];
-              dvb-dump.stopsJson = "${stops}/stops.json";
-              dvb-dump.systemNumber = 130;
+              dump-dvb.stopsJson = "${stops}/stops.json";
+              dump-dvb.systemNumber = 130;
             }
           ];
         };
@@ -201,25 +202,39 @@
             microvm.nixosModules.microvm
           ] ++ data-hoarder-modules;
         };
-        tsb-dell-user = nixpkgs.lib.nixosSystem {
+        user-stop-box-wyse-3040 = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
             diskModule
-            ./hosts/traffic-stop-boxes/configuration.nix
-            ./hosts/traffic-stop-boxes/hardware-configuration.nix
+            ./hosts/user-stop-box/configuration.nix
+            ./hosts/user-stop-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
             ./modules/base.nix
-            ./modules/options.nix
-            ./modules/traffic-stop-boxes/gnuradio.nix
-            ./modules/traffic-stop-boxes/user.nix
+            ./modules/dump-dvb
+            ./modules/user-stop-box/user.nix
+            ./user-config.nix
             {
               nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
-              dvb-dump.stopsJson = "${stops}/stops.json";
+              dump-dvb.stopsJson = "${stops}/stops.json";
             }
           ];
         };
+        user-stop-box-rpi4 = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            diskModule
+            ./hosts/user-stop-box/configuration.nix
+            ./hosts/user-stop-box/hardware-configuration.nix
+            ./user-config.nix
+            ./modules/dump-dvb
+            {
+              nixpkgs.overlays = [ radio-conf.overlay."aarch64-linux" decode-server.overlay."aarch64-linux" ];
+            }
+          ];
       };
+    };
 
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
@@ -228,7 +243,7 @@
         traffic-stop-box-0-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
-        tsb-dell-user-image."x86_64-linux" = self.nixosConfigurations.tsb-dell-user.config.system.build.diskImage;
+        user-stop-box-wyse-3040-image."x86_64-linux" = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
     };

@@ -110,17 +110,6 @@ in
 
   # user accounts for systemd units
   users.users = {
-    gnuradio = {
-      name = "gnuradio";
-      description = "gnu radio service user";
-      isNormalUser = true;
-      extraGroups = [ "plugdev" ];
-    };
-    telegram-decoder = {
-      name = "telegram-decoder";
-      description = "gnu radio service user";
-      isNormalUser = true;
-    };
     data-accumulator = {
       name = "data-accumulator";
       description = "";

@@ -2,7 +2,7 @@
 let
 
   installScript = (system:
-    let ip = "10.13.37.${toString (system.config.dvb-dump.systemNumber + 100)}";
+    let ip = "10.13.37.${toString (system.config.dump-dvb.systemNumber + 100)}";
     in (pkgs.writeScriptBin "deploy" ''
       #!${pkgs.runtimeShell}
       ssh root@${ip} "ps cax | grep \"nixos-rebuild\" > /dev/null"

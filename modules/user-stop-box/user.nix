@@ -3,9 +3,9 @@
   users.mutableUsers = true;
 
   users.users.tramwarrior = {
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "plugdev" ];
     group = "users";
-    home = "/home/grue";
+    home = "/home/tramwarrior";
     isNormalUser = true;
     createHome = true;
     initialPassword = "changeme";
