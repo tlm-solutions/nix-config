@@ -10,8 +10,8 @@
         environment = {
           "GRPC_HOST" = "127.0.0.1:50051";
           "DEFAULT_WEBSOCKET_HOST" = "127.0.0.1:9001";
-          "GRAPH_FILE" = "${config.dvb-dump.graphJson}";
-          "STOPS_FILE" = "${config.dvb-dump.stopsJson}";
+          "GRAPH_FILE" = "${config.dump-dvb.graphJson}";
+          "STOPS_FILE" = "${config.dump-dvb.stopsJson}";
         };
 
         serviceConfig = {
@@ -28,7 +28,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "socket.${config.dvb-dump.domain}" = {
+        "socket.${config.dump-dvb.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {
@@ -38,7 +38,7 @@
             };
           };
         };
-        "api.${config.dvb-dump.domain}" = {
+        "api.${config.dump-dvb.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {

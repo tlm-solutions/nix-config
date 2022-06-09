@@ -4,7 +4,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "files.${config.dvb-dump.domain}" = {
+        "files.${config.dump-dvb.domain}" = {
           enableACME = true;
           forceSSL = true;
           root = "/var/lib/data-accumulator/";
