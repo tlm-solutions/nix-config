@@ -16,7 +16,6 @@
     };
     postgres_password = {
       group = config.users.groups.postgres-dvbdump.name;
-      owner = config.users.users.clicky-bunty-server.name;
     };
   };
 }
