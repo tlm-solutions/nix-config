@@ -47,7 +47,9 @@
     data-accumulator = {
       name = "data-accumulator";
       description = "";
-      isNormalUser = true;
+      isNormalUser = false;
+      isSystemUser = true;
+      group = config.users.groups.postgres-dvbdump.name;
     };
   };
 }

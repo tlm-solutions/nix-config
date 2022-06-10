@@ -88,7 +88,8 @@ in
     clicky-bunty-server = {
       name = "clicky-bunty-server";
       description = "";
-      isNormalUser = true;
+      isSystemUser = true;
+      group = config.users.groups.postgres-dvbdump.name;
     };
   };
 
