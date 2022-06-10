@@ -16,6 +16,7 @@
     };
     postgres_password = {
       group = config.users.groups.postgres-dvbdump.name;
+      mode = "0440";
     };
   };
 }
