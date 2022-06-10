@@ -12,12 +12,15 @@
         wantedBy = [ "multi-user.target" ];
 
         script = ''
+          export POSTGRES_PASSWORD=$(cat ${config.sops.secrets.postgres_password.path})
           exec ${pkgs.data-accumulator}/bin/data-accumulator --host 0.0.0.0 --port 8080&
         '';
 
         environment = {
           "INFLUX_HOST" = "http://localhost:8086";
           "GRPC_HOST" = "http://127.0.0.1:50051";
+          "POSTGRES_HOST" = "127.0.0.1";
+          "POSTGRES_PORT" = "5432";
         };
         serviceConfig = {
           Type = "forking";

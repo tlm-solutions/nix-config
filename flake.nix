@@ -237,8 +237,8 @@
               nixpkgs.overlays = [ radio-conf.overlay."aarch64-linux" decode-server.overlay."aarch64-linux" ];
             }
           ];
+        };
       };
-    };
 
       hydraJobs = {
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;

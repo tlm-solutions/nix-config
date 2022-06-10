@@ -1,32 +1,32 @@
 { pkgs, config, lib, ... }:
 let
-   receiver = pkgs.gnuradio-decoder;
-   cfg = config.services.dump-dvb.gnuradio;
+  receiver = pkgs.gnuradio-decoder;
+  cfg = config.services.dump-dvb.gnuradio;
 in
-  {
-    options.services.dump-dvb.gnuradio = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = ''Wether to enable dump-dvb gnuradio reciever'';
-      };
-      device = lib.mkOption {
-        type = lib.types.str;
-        default = "";
-        example = "hackrf=0";
-        description = ''Device string to pass to gnuradio'';
-      };
-      frequency = lib.mkOption {
-        type = lib.types.int;
-        default = 170795000;
-        description = ''Frequency to tune radio to'';
-      };
-      offset = lib.mkOption {
-        type = lib.types.int;
-        default = 19550;
-        description = ''Offset of the signal from center frequency'';
-      };
+{
+  options.services.dump-dvb.gnuradio = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = ''Wether to enable dump-dvb gnuradio reciever'';
     };
+    device = lib.mkOption {
+      type = lib.types.str;
+      default = "";
+      example = "hackrf=0";
+      description = ''Device string to pass to gnuradio'';
+    };
+    frequency = lib.mkOption {
+      type = lib.types.int;
+      default = 170795000;
+      description = ''Frequency to tune radio to'';
+    };
+    offset = lib.mkOption {
+      type = lib.types.int;
+      default = 19550;
+      description = ''Offset of the signal from center frequency'';
+    };
+  };
 
   config = lib.mkIf config.services.dump-dvb.gnuradio.enable {
 
@@ -45,20 +45,20 @@ in
       };
     };
 
-  users.groups.gnuradio = {};
-  users.users.gnuradio = {
-    name = "gnuradio";
-    description = "gnu radio service user";
-    isSystemUser = true;
-    group = "gnuradio";
-    extraGroups = [ "plugdev" ];
-  };
+    users.groups.gnuradio = { };
+    users.users.gnuradio = {
+      name = "gnuradio";
+      description = "gnu radio service user";
+      isSystemUser = true;
+      group = "gnuradio";
+      extraGroups = [ "plugdev" ];
+    };
 
-  security.wrappers.gnuradio-decode = {
-    owner = "gnuradio";
-    group = "users";
-    capabilities = "cap_sys_nice+eip";
-    source = "${receiver}/bin/gnuradio-decoder-cpp";
+    security.wrappers.gnuradio-decode = {
+      owner = "gnuradio";
+      group = "users";
+      capabilities = "cap_sys_nice+eip";
+      source = "${receiver}/bin/gnuradio-decoder-cpp";
     };
 
   };
