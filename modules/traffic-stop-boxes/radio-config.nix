@@ -13,13 +13,13 @@ let
   receiver_config = lib.elemAt receiver_configs config.dump-dvb.systemNumber;
 in
 {
-  services.dump-dvb.gnuradio = {
+  dump-dvb.services.gnuradio = {
     enable = true;
     frequency = receiver_config.frequency;
     offset = receiver_config.offset;
     device = receiver_config.device;
   };
-  services.dump-dvb.telegram-decoder = {
+  dump-dvb.services.telegram-decoder = {
     enable = true;
     server = [ "http://10.13.37.1" "http://10.13.37.5" ];
     configFile = file;

@@ -1,11 +1,11 @@
 {
-  services.dump-dvb.gnuradio = {
+  dump-dvb.services.gnuradio = {
     enable = true;
     #     frequency = 105200000;
     #     offset = 1100;
     #     device = "";
   };
-  services.dump-dvb.telegram-decoder = {
+  dump-dvb.services.telegram-decoder = {
     enable = true;
   };
 }

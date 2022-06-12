@@ -1,10 +1,10 @@
 { pkgs, config, lib, ... }:
 let
   receiver = pkgs.gnuradio-decoder;
-  cfg = config.services.dump-dvb.gnuradio;
+  cfg = config.dump-dvb.services.gnuradio;
 in
 {
-  options.services.dump-dvb.gnuradio = {
+  options.dump-dvb.services.gnuradio = {
     enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -28,7 +28,7 @@ in
     };
   };
 
-  config = lib.mkIf config.services.dump-dvb.gnuradio.enable {
+  config = lib.mkIf config.dump-dvb.services.gnuradio.enable {
 
     systemd.services."gnuradio" = {
       enable = true;
