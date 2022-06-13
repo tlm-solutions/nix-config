@@ -49,7 +49,7 @@ in
     users.users.gnuradio = {
       name = "gnuradio";
       description = "gnu radio service user";
-      isSystemUser = true;
+      isNormalUser = true;
       group = "gnuradio";
       extraGroups = [ "plugdev" ];
     };
