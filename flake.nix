@@ -201,6 +201,9 @@
           modules = [
             ./hosts/staging/configuration.nix
             microvm.nixosModules.microvm
+            {
+              environment.systemPackages = with pkgs; [tcpdump];
+            }
           ] ++ data-hoarder-modules;
         };
         user-stop-box-wyse-3040 = nixpkgs.lib.nixosSystem {
