@@ -56,11 +56,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1655210270,
-        "narHash": "sha256-UMsgOAmpkczoMznElJdVCbOMrrLBBZf/C/tWkc+Fcuo=",
+        "lastModified": 1655234983,
+        "narHash": "sha256-6QPI7BboWuBuNf2AYLDsLSvNv0z/DKfMb0nHhnxq8Jk=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "12fe1164532a6353df330edbea5f2436e7e2d2ac",
+        "rev": "7f0cd7890655c45087be96531e36bfe4e7897162",
         "type": "github"
       },
       "original": {
@@ -347,11 +347,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1655096306,
-        "narHash": "sha256-3B3zBaQVLL956deZgmucouvkZroObQ4JKHzbIfFS9/c=",
+        "lastModified": 1655200170,
+        "narHash": "sha256-/yzkX+10sJhYNIcTtZ5ObS+nh/HrJp01XLaubzbRDcU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a119e218ad27bea32057a3463e3694a61c9e3802",
+        "rev": "9ff91ce2e4c5d70551d4c8fd8830931c6c6b26b8",
         "type": "github"
       },
       "original": {
