@@ -3,6 +3,10 @@
 */
 
 { pkgs, config, lib, ... }: {
+  imports = [
+    ./postgres.nix
+  ];
+
   systemd = {
     services = {
       "data-accumulator" = {

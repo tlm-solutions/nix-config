@@ -5,8 +5,11 @@
 { pkgs, config, lib, ... }:
 let
   port = 8070;
-in
-{
+in {
+  imports = [
+    ./postgres.nix
+  ];
+
   systemd = {
     services = {
       "clicky-bunty-server" = {
@@ -35,36 +38,11 @@ in
           Restart = "always";
         };
       };
-      "pg-dvbdump-setup" = {
-        description = "prepare dvbdump postgres database";
-        wantedBy = [ "multi-user.target" ];
-        after = [ "networking.target" "postgresql.service" ];
-        serviceConfig.Type = "oneshot";
-
-        path = [ pkgs.sudo config.services.postgresql.package ];
-        script = ''
-          sudo -u ${config.services.postgresql.superUser} psql -c "ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})'"
-        '';
-      };
+      
     };
   };
 
   services = {
-    postgresql = {
-      port = 5432;
-      enable = true;
-      ensureUsers = [
-        {
-          name = "dvbdump";
-          ensurePermissions = {
-            "DATABASE dvbdump" = "ALL PRIVILEGES";
-          };
-        }
-      ];
-      ensureDatabases = [
-        "dvbdump"
-      ];
-    };
     nginx = {
       enable = true;
       recommendedProxySettings = true;
