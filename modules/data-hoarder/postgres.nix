@@ -1,4 +1,4 @@
-{
+{pkgs, config, lib, ... }: {
   services.postgresql = {
       port = 5432;
       enable = true;
@@ -15,7 +15,7 @@
       ];
   };
 
-  systemd."pg-dvbdump-setup" = {
+  systemd.services."pg-dvbdump-setup" = {
       description = "prepare dvbdump postgres database";
       wantedBy = [ "multi-user.target" ];
       after = [ "networking.target" "postgresql.service" ];
