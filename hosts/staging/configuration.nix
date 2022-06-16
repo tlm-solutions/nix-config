@@ -13,7 +13,7 @@
 
     interfaces = [{
       type = "tap";
-      id = "serv-dvb-staging";
+      id = "serv-dvb-stag";
       mac = "00:de:5b:f9:e2:3d";
     }];
 
