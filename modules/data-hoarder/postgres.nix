@@ -1,5 +1,6 @@
 {pkgs, config, lib, ... }: {
   services.postgresql = {
+    package = pkgs.postgresql_14;
       port = 5432;
       enable = true;
       ensureUsers = [
