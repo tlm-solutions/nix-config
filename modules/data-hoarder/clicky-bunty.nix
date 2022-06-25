@@ -5,7 +5,8 @@
 { pkgs, config, lib, ... }:
 let
   port = 8070;
-in {
+in
+{
   imports = [
     ./postgres.nix
   ];
@@ -23,7 +24,7 @@ in {
         script = ''
           export RUST_BACKTRACE=FULL
           export SALT_PATH=${config.sops.secrets.postgres_password_hash_salt.path}
-          export POSTGRES_PASSWORD=$(cat ${config.sops.secrets.postgres_password.path})
+          export POSTGRES_PASSWORD=$(cat ${config.sops.secrets.postgres_password_dvbdump.path})
           exec ${pkgs.clicky-bunty-server}/bin/clicky-bunty-server --host 127.0.0.1 --port ${toString port}&
         '';
 
@@ -38,7 +39,7 @@ in {
           Restart = "always";
         };
       };
-      
+
     };
   };
 

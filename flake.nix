@@ -32,6 +32,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    funnel = {
+      url = github:dump-dvb/funnel;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     stops = {
       url = github:dump-dvb/stop-names;
       flake = false;
@@ -63,7 +68,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, funnel, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -72,7 +77,8 @@
         ./modules/base.nix
         ./modules/data-hoarder/data-accumulator.nix
         ./modules/data-hoarder/nginx.nix
-        ./modules/data-hoarder/public_api.nix
+        ./modules/data-hoarder/api.nix
+        ./modules/data-hoarder/socket.nix
         ./modules/data-hoarder/map.nix
         ./modules/data-hoarder/file_sharing.nix
         ./modules/data-hoarder/grafana.nix
@@ -86,6 +92,7 @@
           nixpkgs.overlays = [
             data-accumulator.overlay."x86_64-linux"
             dvb-api.overlay."x86_64-linux"
+            funnel.overlay."x86_64-linux"
             windshield.overlay."x86_64-linux"
             docs.overlay."x86_64-linux"
             clicky-bunty-server.overlay."x86_64-linux"
@@ -146,6 +153,7 @@
       stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y)) { } id_list;
 
       packages = {
+        default = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
         traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
         staging-data-hoarder = self.nixosConfigurations.staging-data-hoarder.config.system.build.vm;
         data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
@@ -157,7 +165,6 @@
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
     {
-      defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux" = packages;
 
       nixosConfigurations = stop_boxes // {
@@ -202,7 +209,7 @@
             ./hosts/staging/configuration.nix
             microvm.nixosModules.microvm
             {
-              environment.systemPackages = with pkgs; [tcpdump];
+              environment.systemPackages = with pkgs; [ tcpdump ];
             }
           ] ++ data-hoarder-modules;
         };

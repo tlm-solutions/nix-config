@@ -1,11 +1,11 @@
 { pkgs, config, lib, ... }: {
   systemd = {
     services = {
-      "dvb-api" = {
+      "funnel" = {
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${pkgs.dvb-api}/bin/dvb-api &";
+        script = "exec ${pkgs.funnel}bin/funnel &";
 
         environment = {
           "GRPC_HOST" = "127.0.0.1:50051";
@@ -16,7 +16,7 @@
 
         serviceConfig = {
           Type = "forking";
-          User = "dvb-api";
+          User = "funnel";
           Restart = "always";
         };
       };
@@ -38,25 +38,15 @@
             };
           };
         };
-        "api.${config.dump-dvb.domain}" = {
-          forceSSL = true;
-          enableACME = true;
-          locations = {
-            "/" = {
-              proxyPass = "http://127.0.0.1:9002/";
-              proxyWebsockets = true;
-            };
-          };
-        };
       };
     };
   };
 
   # user accounts for systemd units
   users.users = {
-    dvb-api = {
-      name = "dvb-api";
-      description = "public dvb api serive";
+    funnel = {
+      name = "funnel";
+      description = "public websocket serive";
       isNormalUser = true;
       extraGroups = [ ];
     };
