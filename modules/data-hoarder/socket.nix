@@ -5,7 +5,7 @@
         enable = true;
         wantedBy = [ "multi-user.target" ];
 
-        script = "exec ${pkgs.funnel}bin/funnel &";
+        script = "exec ${pkgs.funnel}/bin/funnel &";
 
         environment = {
           "GRPC_HOST" = "127.0.0.1:50051";
