@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ lib, ... }:
 with lib; {
   options.dump-dvb.systemNumber = mkOption {
     type = types.int;
