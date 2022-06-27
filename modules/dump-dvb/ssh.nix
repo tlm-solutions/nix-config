@@ -1,4 +1,4 @@
-{ ... }: {
+{ lib, config, ... }: {
   options.dump-dvb = {
     installSSHKeys = lib.mkOption {
       type = lib.types.bool;
