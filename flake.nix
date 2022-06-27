@@ -68,7 +68,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, funnel, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, microvm, radio-conf, data-accumulator, decode-server, dvb-api, funnel, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
