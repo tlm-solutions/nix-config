@@ -8,7 +8,7 @@
         script = "exec ${pkgs.funnel}/bin/funnel &";
 
         environment = {
-          "GRPC_HOST" = "127.0.0.1:50051";
+          "GRPC_HOST" = "127.0.0.1:50052";
           "DEFAULT_WEBSOCKET_HOST" = "127.0.0.1:9001";
           "GRAPH_FILE" = "${config.dump-dvb.graphJson}";
           "STOPS_FILE" = "${config.dump-dvb.stopsJson}";
