@@ -9,7 +9,7 @@
 
         environment = {
           "GRPC_HOST" = "127.0.0.1:50052";
-          "DEFAULT_WEBSOCKET_HOST" = "127.0.0.1:9001";
+          "DEFAULT_WEBSOCKET_HOST" = "127.0.0.1:9002";
           "GRAPH_FILE" = "${config.dump-dvb.graphJson}";
           "STOPS_FILE" = "${config.dump-dvb.stopsJson}";
         };
@@ -33,7 +33,7 @@
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = "http://127.0.0.1:9001/";
+              proxyPass = "http://127.0.0.1:9002/";
               proxyWebsockets = true;
             };
           };
