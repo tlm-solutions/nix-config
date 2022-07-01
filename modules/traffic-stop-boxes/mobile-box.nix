@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, ... }:
 let
   file = ../../configs/mobile_box.json;
 in

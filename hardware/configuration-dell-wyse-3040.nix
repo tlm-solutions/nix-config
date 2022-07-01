@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ ... }:
 
 {
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.

@@ -2,7 +2,7 @@
   This file contains the configuration for the gnuradio sdr decoding pipeline
 */
 
-{ pkgs, config, lib, ... }:
+{ pkgs, config, ... }:
 let
   port = 8070;
 in
