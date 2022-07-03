@@ -17,8 +17,8 @@ in
         enable = true;
 
         description = "dvbdump managment service";
-        requires = [ "influxdb.service" ];
-        after = [ "influxdb.service" ];
+        requires = [ "postgresql.service" ];
+        after = [ "postgresql.service" ];
         wantedBy = [ "multi-user.target" ];
 
         script = ''

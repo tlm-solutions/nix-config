@@ -11,8 +11,8 @@
     services = {
       "data-accumulator" = {
         enable = true;
-        requires = [ "influxdb.service" ];
-        after = [ "influxdb.service" ];
+        requires = [ "postgresql.service" ];
+        after = [ "postgresql.service" ];
         wantedBy = [ "multi-user.target" ];
 
         script = ''
@@ -32,17 +32,6 @@
           Restart = "always";
         };
       };
-      "influxdb" = {
-        serviceConfig = {
-          Restart = lib.mkForce "always";
-        };
-      };
-    };
-  };
-
-  services = {
-    influxdb = {
-      enable = true;
     };
   };
 
