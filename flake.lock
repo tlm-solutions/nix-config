@@ -56,11 +56,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1656884727,
-        "narHash": "sha256-f6LjbAK4Wq7UyEruKgsta0YMaooqUc7KjWamHAtEvmI=",
+        "lastModified": 1656892351,
+        "narHash": "sha256-5aOhCijICAovGn5JJc4y269p74QG+Yn2eFKluY/x2xo=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "919927ff33be8106fe40ac49ee6fdef20dad5cfa",
+        "rev": "fb2dc199bdda77815b42478e9c4061045536215b",
         "type": "github"
       },
       "original": {
