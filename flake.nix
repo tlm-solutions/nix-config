@@ -162,6 +162,7 @@
         user-stop-box-wyse-3040-image = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
         user-stop-box-rpi4-image = self.nixosConfigurations.user-stop-box-rpi4.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
+        decode-server = decode-server.packages."x86_64-linux".telegram-decoder;
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
     {
@@ -259,6 +260,7 @@
         user-stop-box-wyse-3040-image."x86_64-linux" = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
         user-stop-box-rpi4-image."x86_64-linux" = self.nixosConfigurations.user-stop-box-rpi4.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
+        decode-server."x86_64-linux" = self.packages."x86_64-linux".decode-server;
       };
-    };
+   };
 }
