@@ -1,28 +1,19 @@
 {
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
-
     dump-dvb = {
       url = github:dump-dvb/dump-dvb.nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     microvm = {
       url = github:astro/microvm.nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    radio-conf = {
-      url = github:dump-dvb/radio-conf;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
 
-    decode-server = {
-      url = github:dump-dvb/decode-server;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    funnel = {
-      url = github:dump-dvb/funnel;
+    sops-nix = {
+      url = github:Mic92/sops-nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -30,47 +21,15 @@
       url = github:dump-dvb/stop-names;
       flake = false;
     };
-
-    windshield = {
-      url = github:dump-dvb/windshield;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    docs = {
-      url = github:dump-dvb/documentation;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    wartrammer = {
-      url = github:dump-dvb/wartrammer-40k;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    clicky-bunty-server = {
-      url = github:dump-dvb/clicky-bunty-server;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = github:Mic92/sops-nix;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
     inputs@{ self
-    , nixpkgs
     , dump-dvb
     , microvm
-    , radio-conf
-    , decode-server
-    , funnel
-    , stops
-    , windshield
-    , docs
-    , wartrammer
-    , clicky-bunty-server
+    , nixpkgs
     , sops-nix
+    , stops
     , ...
     }:
     let
@@ -96,7 +55,6 @@
         {
           nixpkgs.overlays = [
             dump-dvb.overlays.default
-            docs.overlay."x86_64-linux"
           ];
           dump-dvb.stopsJson = "${stops}/stops.json";
           dump-dvb.graphJson = "${stops}/graph.json";
@@ -166,7 +124,6 @@
         user-stop-box-wyse-3040-image = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
         user-stop-box-rpi4-image = self.nixosConfigurations.user-stop-box-rpi4.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
-        decode-server = decode-server.packages."x86_64-linux".telegram-decoder;
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
     {
@@ -268,7 +225,6 @@
         user-stop-box-wyse-3040-image."x86_64-linux" = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
         user-stop-box-rpi4-image."x86_64-linux" = self.nixosConfigurations.user-stop-box-rpi4.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
-        decode-server."x86_64-linux" = self.packages."x86_64-linux".decode-server;
       };
    };
 }
