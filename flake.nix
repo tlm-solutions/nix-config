@@ -52,11 +52,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    docs = {
-      url = github:dump-dvb/documentation;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     wartrammer = {
       url = github:dump-dvb/wartrammer-40k;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,7 +68,7 @@
     };
   };
 
-  outputs = { self, dump-dvb, nixpkgs, microvm, radio-conf, data-accumulator, decode-server, dvb-api, funnel, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
+  outputs = { self, dump-dvb, nixpkgs, microvm, radio-conf, data-accumulator, decode-server, dvb-api, funnel, stops, windshield, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -96,7 +91,6 @@
         {
           nixpkgs.overlays = [
             dump-dvb.overlays.default
-            docs.overlay."x86_64-linux"
           ];
           dump-dvb.stopsJson = "${stops}/stops.json";
           dump-dvb.graphJson = "${stops}/graph.json";
