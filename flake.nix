@@ -6,12 +6,6 @@
       url = github:dump-dvb/dump-dvb.nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    naersk = {
-      url = github:nix-community/naersk;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     microvm = {
       url = github:astro/microvm.nix;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,18 +16,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    data-accumulator = {
-      url = github:dump-dvb/data-accumulator;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     decode-server = {
       url = github:dump-dvb/decode-server;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dvb-api = {
-      url = github:dump-dvb/dvb-api;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -73,7 +57,22 @@
     };
   };
 
-  outputs = { self, dump-dvb, nixpkgs, microvm, radio-conf, data-accumulator, decode-server, dvb-api, funnel, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
+  outputs =
+    inputs@{ self
+    , nixpkgs
+    , dump-dvb
+    , microvm
+    , radio-conf
+    , decode-server
+    , funnel
+    , stops
+    , windshield
+    , docs
+    , wartrammer
+    , clicky-bunty-server
+    , sops-nix
+    , ...
+    }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -93,6 +92,7 @@
         ./modules/data-hoarder/secrets.nix
         ./modules/dump-dvb
         sops-nix.nixosModules.sops
+        dump-dvb.nixosModules.default
         {
           nixpkgs.overlays = [
             dump-dvb.overlays.default
@@ -129,6 +129,7 @@
             modules = [
               diskModule
               sops-nix.nixosModules.sops
+              dump-dvb.nixosModules.default
               ./hosts/traffic-stop-boxes/configuration.nix
               ./hosts/traffic-stop-boxes/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix
@@ -177,6 +178,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             diskModule
+            dump-dvb.nixosModules.default
             ./hosts/mobile-box/configuration.nix
             ./hosts/mobile-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
@@ -219,6 +221,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             diskModule
+            dump-dvb.nixosModules.default
             ./hosts/user-stop-box/configuration.nix
             ./hosts/user-stop-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
@@ -239,6 +242,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             diskModule
+            dump-dvb.nixosModules.default
             ./hosts/user-stop-box-rpi4/configuration.nix
             ./hosts/user-stop-box-rpi4/hardware-configuration.nix
             ./hardware/configuration-rpi-4b.nix
