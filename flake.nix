@@ -2,6 +2,11 @@
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
 
+    dump-dvb = {
+      url = github:dump-dvb/dump-dvb.nix;
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     naersk = {
       url = github:nix-community/naersk;
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,7 +73,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, microvm, radio-conf, data-accumulator, decode-server, dvb-api, funnel, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
+  outputs = { self, dump-dvb, nixpkgs, microvm, radio-conf, data-accumulator, decode-server, dvb-api, funnel, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
@@ -90,12 +95,8 @@
         sops-nix.nixosModules.sops
         {
           nixpkgs.overlays = [
-            data-accumulator.overlay."x86_64-linux"
-            dvb-api.overlay."x86_64-linux"
-            funnel.overlay."x86_64-linux"
-            windshield.overlay."x86_64-linux"
+            dump-dvb.overlays.default
             docs.overlay."x86_64-linux"
-            clicky-bunty-server.overlay."x86_64-linux"
           ];
           dump-dvb.stopsJson = "${stops}/stops.json";
           dump-dvb.graphJson = "${stops}/graph.json";
@@ -137,7 +138,9 @@
               ./modules/traffic-stop-boxes/radio-config.nix
               ./modules/dump-dvb
               {
-                nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
+                nixpkgs.overlays = [
+                  dump-dvb.overlays.default
+                ];
                 dump-dvb.systemNumber = number;
                 dump-dvb.stopsJson = "${stops}/stops.json";
               }
@@ -184,10 +187,7 @@
             sops-nix.nixosModules.sops
             {
               nixpkgs.overlays = [
-                radio-conf.overlay."x86_64-linux"
-                decode-server.overlay."x86_64-linux"
-                data-accumulator.overlay."x86_64-linux"
-                wartrammer.overlay."x86_64-linux"
+                dump-dvb.overlays.default
               ];
               dump-dvb.stopsJson = "${stops}/stops.json";
               dump-dvb.systemNumber = 130;
@@ -227,7 +227,9 @@
             ./modules/user-stop-box/user.nix
             ./user-config.nix
             {
-              nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
+              nixpkgs.overlays = [
+                dump-dvb.overlays.default
+              ];
               dump-dvb.stopsJson = "${stops}/stops.json";
             }
           ];
@@ -245,7 +247,9 @@
             ./modules/dump-dvb
             ./modules/user-stop-box/user.nix
             {
-              nixpkgs.overlays = [ radio-conf.overlay."aarch64-linux" decode-server.overlay."aarch64-linux" ];
+              nixpkgs.overlays = [
+                dump-dvb.overlays.default
+              ];
             }
           ];
         };
