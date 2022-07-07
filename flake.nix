@@ -121,8 +121,6 @@
         data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
-        user-stop-box-wyse-3040-image = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
-        user-stop-box-rpi4-image = self.nixosConfigurations.user-stop-box-rpi4.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
@@ -142,7 +140,6 @@
             ./modules/base.nix
             ./modules/traffic-stop-boxes/mobile-box.nix
             ./modules/dump-dvb
-            ./user-config.nix
             sops-nix.nixosModules.sops
             {
               nixpkgs.overlays = [
@@ -173,47 +170,6 @@
             }
           ] ++ data-hoarder-modules;
         };
-        user-stop-box-wyse-3040 = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            diskModule
-            dump-dvb.nixosModules.default
-            ./hosts/user-stop-box/configuration.nix
-            ./hosts/user-stop-box/hardware-configuration.nix
-            ./hardware/configuration-dell-wyse-3040.nix
-            ./modules/base.nix
-            ./modules/dump-dvb
-            ./modules/user-stop-box/user.nix
-            ./user-config.nix
-            {
-              nixpkgs.overlays = [
-                dump-dvb.overlays.default
-              ];
-              dump-dvb.stopsJson = "${stops}/stops.json";
-            }
-          ];
-        };
-        user-stop-box-rpi4 = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            diskModule
-            dump-dvb.nixosModules.default
-            ./hosts/user-stop-box-rpi4/configuration.nix
-            ./hosts/user-stop-box-rpi4/hardware-configuration.nix
-            ./hardware/configuration-rpi-4b.nix
-            ./user-config.nix
-            ./modules/base.nix
-            ./modules/dump-dvb
-            ./modules/user-stop-box/user.nix
-            {
-              nixpkgs.overlays = [
-                dump-dvb.overlays.default
-              ];
-            }
-          ];
-        };
       };
 
       hydraJobs = {
@@ -222,8 +178,6 @@
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
         traffic-stop-box-0-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
-        user-stop-box-wyse-3040-image."x86_64-linux" = self.nixosConfigurations.user-stop-box-wyse-3040.config.system.build.diskImage;
-        user-stop-box-rpi4-image."x86_64-linux" = self.nixosConfigurations.user-stop-box-rpi4.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
    };
