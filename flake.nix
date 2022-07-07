@@ -38,17 +38,7 @@
 
       data-hoarder-modules = [
         ./modules/base.nix
-        ./modules/data-hoarder/data-accumulator.nix
-        ./modules/data-hoarder/nginx.nix
-        ./modules/data-hoarder/api.nix
-        ./modules/data-hoarder/socket.nix
-        ./modules/data-hoarder/map.nix
-        ./modules/data-hoarder/file_sharing.nix
-        ./modules/data-hoarder/grafana.nix
-        ./modules/data-hoarder/website.nix
-        ./modules/data-hoarder/documentation.nix
-        ./modules/data-hoarder/clicky-bunty.nix
-        ./modules/data-hoarder/secrets.nix
+        ./modules/data-hoarder
         ./modules/dump-dvb
         sops-nix.nixosModules.sops
         dump-dvb.nixosModules.default
