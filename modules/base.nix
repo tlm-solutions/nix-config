@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   nix = {
     package = pkgs.nixFlakes;
@@ -9,7 +8,6 @@
     autoOptimiseStore = true;
   };
 
-  # Select internationalisation properties.
   console = {
     font = "Lat2-Terminus16";
     keyMap = "uk";
@@ -22,21 +20,38 @@
     "C.UTF-8/UTF-8"
   ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
     htop
     tmux
-    (vim_configurable.override { guiSupport = false; luaSupport = false; perlSupport = false; pythonSupport = false; rubySupport = false; cscopeSupport = false; netbeansSupport = false; })
+    (vim_configurable.override {
+      guiSupport = false;
+      luaSupport = false;
+      perlSupport = false;
+      pythonSupport = false;
+      rubySupport = false;
+      cscopeSupport = false;
+      netbeansSupport = false;
+    })
     wget
     git-crypt
     iftop
   ];
 
-  # Enable the OpenSSH daemon.
+  users.users.root = {
+    openssh.authorizedKeys.keyFiles = [
+      ../keys/ssh/revol-xut
+      ../keys/ssh/oxa
+      ../keys/ssh/oxa1
+      ../keys/ssh/marenz1
+      ../keys/ssh/marenz2
+      ../keys/ssh/astro
+    ];
+  };
   services.openssh = {
     enable = true;
+    permitRootLogin = "prohibit-password";
+    passwordAuthentication = false;
   };
   programs.mosh.enable = true;
 }
