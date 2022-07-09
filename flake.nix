@@ -46,6 +46,8 @@
           nixpkgs.overlays = [
             dump-dvb.overlays.default
           ];
+          dump-dvb.stopsJson = "${stops}/stops.json";
+          dump-dvb.graphJson = "${stops}/graph.json";
         }
       ];
 
@@ -89,6 +91,7 @@
                   dump-dvb.overlays.default
                 ];
                 dump-dvb.systemNumber = number;
+                dump-dvb.stopsJson = "${stops}/stops.json";
               }
             ];
           };
@@ -132,6 +135,7 @@
               nixpkgs.overlays = [
                 dump-dvb.overlays.default
               ];
+              dump-dvb.stopsJson = "${stops}/stops.json";
               dump-dvb.systemNumber = 130;
             }
           ];
