@@ -25,6 +25,7 @@
           "GRPC_HOST" = "http://127.0.0.1:50051";
           "POSTGRES_HOST" = "127.0.0.1";
           "POSTGRES_PORT" = "5432";
+          "DATABASE_BACKEND" = "POSTGRES";
         };
         serviceConfig = {
           Type = "forking";
