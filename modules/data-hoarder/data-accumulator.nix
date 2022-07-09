@@ -16,7 +16,8 @@
         wantedBy = [ "multi-user.target" ];
 
         script = ''
-          export POSTGRES_PASSWORD=$(cat ${config.sops.secrets.postgres_password_telegrams.path})
+          export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${config.sops.secrets.postgres_password_telegrams.path})
+          export POSTGRES_DVBDUMP_PASSWORD=$(cat ${config.sops.secrets.postgres_password_dvbdump.path})
           exec ${pkgs.data-accumulator}/bin/data-accumulator --host 0.0.0.0 --port 8080&
         '';
 
