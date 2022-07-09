@@ -152,6 +152,7 @@
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
+        data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner; 
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
     {
@@ -188,8 +189,8 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/data-hoarder/configuration.nix
-            ./hosts/data-hoarder/hardware-configuration.nix
             ./modules/data-hoarder/wireguard_server.nix
+            microvm.nixosModules.microvm
           ] ++ data-hoarder-modules;
         };
         staging-data-hoarder = nixpkgs.lib.nixosSystem {
