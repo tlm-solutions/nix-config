@@ -40,7 +40,7 @@
           time timestamp not null,
           station UUID not null,
           region text not null,
-          type int8 not null,
+          telegram_type int8 not null,
           delay int,
           reporting_point int not null,
           junction int not null,
