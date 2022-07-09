@@ -63,12 +63,12 @@
           allowedIPs = [ "10.13.37.105/32" ];
           persistentKeepalive = 25;
         }
-        # { # marenz
-        # { # marenz
-        #   publicKey = "";
-        #   allowedIPs = [ "10.13.37.4/32" ];
-        #   persistentKeepalive = 25;
-        # }
+        {
+          # marenz
+          publicKey = "XJddbPj6Zdtn4roi6UWGuR2EA81juMmlaUOuMSLi2FM=";
+          allowedIPs = [ "10.13.37.4/32" ];
+          persistentKeepalive = 25;
+        }
       ];
     };
   };
