@@ -39,7 +39,7 @@
           id serial8 primary key not null,
           time timestamp not null,
           station UUID not null,
-          region int8 not null,
+          region text not null,
           type int8 not null,
           delay int,
           reporting_point int not null,
