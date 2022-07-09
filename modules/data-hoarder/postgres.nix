@@ -55,6 +55,7 @@
           vehicle_number int,
           operator int2
         );"
-    '';
+      sudo -u ${config.services.postgresql.superUser} psql --dbname telegrams -c "ALTER TABLE r09_telegrams OWNER TO telegrams;"
+  '';
   };
 }
