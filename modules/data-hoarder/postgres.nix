@@ -35,7 +35,7 @@
       sudo -u ${config.services.postgresql.superUser} psql -c "ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_dvbdump.path})'"
       sudo -u ${config.services.postgresql.superUser} psql -c "ALTER ROLE telegrams WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_telegrams.path})'"
 
-      sudo -u telegrams psql --dbname telegrams -c "create table r09_telegrams (
+      sudo -u ${config.services.postgresql.superUser} psql --dbname telegrams -c "create table r09_telegrams (
           id serial8 primary key not null,
           time timestamp not null,
           station UUID not null,
