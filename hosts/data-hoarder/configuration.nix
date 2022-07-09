@@ -76,4 +76,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.05";
 
+  security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+
 }
