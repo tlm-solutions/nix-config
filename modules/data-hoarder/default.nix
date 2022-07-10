@@ -7,6 +7,7 @@
     ./grafana.nix
     ./map.nix
     ./nginx.nix
+    ./postgres.nix
     ./secrets.nix
     ./socket.nix
     ./website.nix
