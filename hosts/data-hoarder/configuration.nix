@@ -5,13 +5,6 @@
 { pkgs, ... }:
 
 {
-  # Use the GRUB 2 boot loader.
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.version = 2;
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "/dev/vda"; # or "nodev" for efi only
-
   networking.hostName = "data-hoarder"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -28,8 +21,8 @@
   };
   environment.systemPackages = with pkgs; [ influxdb ];
 
-  networking.defaultGateway = "192.109.108.61";
-  networking.nameservers = [ "9.9.9.9" ];
+  networking.defaultGateway = "172.20.73.1";
+  networking.nameservers = [ "172.20.73.8" "9.9.9.9" ];
 
   sops.defaultSopsFile = ../../secrets/data-hoarder/secrets.yaml;
 

@@ -194,7 +194,6 @@
           modules = [
             microvm.nixosModules.microvm
             ./hosts/data-hoarder/configuration.nix
-            ./hosts/data-hoarder/hardware-configuration.nix
             ./modules/data-hoarder/wireguard_server.nix
           ] ++ data-hoarder-modules;
         };
