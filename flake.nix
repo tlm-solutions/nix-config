@@ -128,15 +128,13 @@
             ./hosts/mobile-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
             ./modules/base.nix
-            ./modules/traffic-stop-boxes/mobile-box.nix
+            ./modules/traffic-stop-boxes/mobile-box-dresden.nix
             ./modules/dump-dvb
             sops-nix.nixosModules.sops
             {
-              nixpkgs.overlays = [
-                dump-dvb.overlays.default
-              ];
               dump-dvb.stopsJson = "${stops}/stops.json";
               dump-dvb.systemNumber = 130;
+              dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box.json";
             }
           ];
         };

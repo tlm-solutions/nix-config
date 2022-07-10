@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  users.users.root.initialPassword = "rewt";
   nix = {
     package = pkgs.nixFlakes;
     extraOptions = ''
