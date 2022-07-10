@@ -3,6 +3,8 @@
 {
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
+  boot.extraModulePackages = [ config.boot.kernelPackages.wireguard ];
+
   networking.wg-quick.interfaces = {
     wg-dvb = {
       address = [ "10.13.37.1/32" ];
