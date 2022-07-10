@@ -5,17 +5,35 @@
 { pkgs, ... }:
 
 {
+  microvm = {
+    hypervisor = "cloud-hypervisor";
+    mem = 4096;
+    vcpu = 8;
+    interfaces = [ {
+      type = "tap";
+      id = "serv-dvb-prod";
+      mac = "02:db:db:db:db:db";
+    } ];
+    shares = [ {
+      source = "/nix/store";
+      mountPoint = "/nix/.ro-store";
+      tag = "store";
+      proto = "virtiofs";
+      socket = "store.socket";
+    } ];
+  };
+
   networking.hostName = "data-hoarder"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-  networking.interfaces.ens3 = {
+  networking.interfaces.eth0 = {
     useDHCP = false;
     ipv4.addresses = [
       {
-        address = "192.109.108.52";
-        prefixLength = 27;
+        address = "172.20.73.69";
+        prefixLength = 25;
       }
     ];
   };
