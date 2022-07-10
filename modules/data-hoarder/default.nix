@@ -1,5 +1,7 @@
 { config, ... }: {
   imports = [
+    ./clicky-bunty.nix
+    ./data-accumulator.nix
     ./documentation.nix
     ./file_sharing.nix
     ./grafana.nix
@@ -9,8 +11,4 @@
     ./socket.nix
     ./website.nix
   ];
-  dump-dvb = {
-    clickyBuntyServer.enable = true;
-    dataAccumulator.enable = true;
-  };
 }
