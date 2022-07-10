@@ -1,61 +1,27 @@
-/*
-  This file contains the configuration for the gnuradio sdr decoding pipeline
-*/
-
-{ pkgs, config, lib, ... }: {
-  imports = [
-    ./postgres.nix
-  ];
-
-  systemd = {
-    services = {
-      "data-accumulator" = {
-        enable = true;
-        requires = [ "influxdb.service" ];
-        after = [ "influxdb.service" ];
-        wantedBy = [ "multi-user.target" ];
-
-        script = ''
-          export POSTGRES_TELEGRAMS_PASSWORD=$(cat ${config.sops.secrets.postgres_password_telegrams.path})
-          export POSTGRES_DVBDUMP_PASSWORD=$(cat ${config.sops.secrets.postgres_password_dvbdump.path})
-          exec ${pkgs.data-accumulator}/bin/data-accumulator --host 0.0.0.0 --port 8080&
-        '';
-
-        environment = {
-          "INFLUX_HOST" = "http://localhost:8086";
-          "GRPC_HOST" = "http://127.0.0.1:50051";
-          "POSTGRES_HOST" = "127.0.0.1";
-          "POSTGRES_PORT" = "5432";
-          "DATABASE_BACKEND" = "POSTGRES";
-        };
-        serviceConfig = {
-          Type = "forking";
-          User = "data-accumulator";
-          Restart = "always";
-        };
-      };
-      "influxdb" = {
-        serviceConfig = {
-          Restart = lib.mkForce "always";
-        };
-      };
+{ config, ... }:
+{
+  dump-dvb.dataAccumulator = {
+    enable = true;
+    host = "0.0.0.0";
+    port = 8080;
+    DB = {
+      backend = "POSTGRES";
+      host = "127.0.0.1";
+      port = 5432;
+      telegramsPasswordFile = config.sops.secrets.postgres_password_telegrams.path;
+      dvbPasswordFile = config.sops.secrets.postgres_password_dvbdump.path;
     };
-  };
-
-  services = {
-    influxdb = {
-      enable = true;
-    };
-  };
-
-  # user accounts for systemd units
-  users.users = {
-    data-accumulator = {
-      name = "data-accumulator";
-      description = "";
-      isNormalUser = false;
-      isSystemUser = true;
-      group = config.users.groups.postgres-dvbdump.name;
-    };
+    GRPC = [
+      {
+        name = "FUNNEL";
+        host = "127.0.0.1";
+        port = 50051;
+      }
+      {
+        name = "API";
+        host = "127.0.0.1";
+        port = 9002;
+      }
+    ];
   };
 }
