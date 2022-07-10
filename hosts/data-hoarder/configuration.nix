@@ -13,7 +13,7 @@
 
     interfaces = [{
       type = "tap";
-      id = "serv-data-hoarder";
+      id = "serv-dvb-dh";
       mac = "00:de:5b:f9:e3:3e";
     }];
 
