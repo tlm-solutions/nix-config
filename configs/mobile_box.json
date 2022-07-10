@@ -2,6 +2,6 @@
     "name": "Mobile",
     "lat": 0,
     "lon": 0,
-    "station_id": 1000,
-    "region": "dresden"
+    "id": "285a6f4e-9123-4fcf-beeb-092463256c74",
+    "region": 0
 }
