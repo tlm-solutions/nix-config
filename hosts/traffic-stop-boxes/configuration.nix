@@ -3,9 +3,6 @@
 {
   boot.tmpOnTmpfs = true;
 
-  hardware.hackrf.enable = true;
-  hardware.rtl-sdr.enable = true;
-
   networking.hostName = "traffic-stop-box-${toString config.dump-dvb.systemNumber}"; # Define your hostname.
 
   # Set your time zone.
@@ -29,11 +26,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 1;
-
-  dump-dvb = {
-    installSSHKeys = true;
-    useBinaryCache = true;
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
