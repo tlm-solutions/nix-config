@@ -1,4 +1,4 @@
-{ config, ... }: {
+{
   imports = [
     ./clicky-bunty.nix
     ./data-accumulator.nix
