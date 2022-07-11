@@ -57,11 +57,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1657403938,
-        "narHash": "sha256-M9NfEKX8crLXrwuKbPGfV7gc04vG+FJifbaHMRxe22c=",
+        "lastModified": 1657496309,
+        "narHash": "sha256-YH361E+Sag6RjKtMkpbxk3wyuW2EuhwTr/HLeZJx9LM=",
         "owner": "dump-dvb",
         "repo": "data-accumulator",
-        "rev": "1b3a32738db4e959eebf59dcfb3dac1c4e0d0987",
+        "rev": "4a3a569f71b4215d0461974cc7bbe8d54090e0d4",
         "type": "github"
       },
       "original": {
@@ -81,11 +81,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1657479879,
-        "narHash": "sha256-nrrlUCO2A1UL13RRGVmWasIenAh8g2i13LVD/Mj0Uy8=",
+        "lastModified": 1657496319,
+        "narHash": "sha256-Ne4Kklv8MCF8su5GC9LR2fl9y1k+3RhthBXe47l4rkM=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "7731fbc37a76d49569eff63525ff0a960e3ec5e4",
+        "rev": "52bd9af2cde328877732c5a5fac7540cbdac45d3",
         "type": "github"
       },
       "original": {
@@ -133,11 +133,11 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1657485438,
-        "narHash": "sha256-8DPl5NoeOwaDGjK2azugNfSIoqyHG208z4jaoyCjLrU=",
+        "lastModified": 1657533923,
+        "narHash": "sha256-IHU9Y6rfzR4JDATqWcJVwPBdwdI96Gc9cwkYKUBUniE=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.nix",
-        "rev": "0d853b6b8fcddc56bf330fbccda3b65b83965aa3",
+        "rev": "15c8b2cdabec4d404951f02c1b91f75c50269efe",
         "type": "github"
       },
       "original": {
@@ -194,11 +194,11 @@
         "utils": "utils_6"
       },
       "locked": {
-        "lastModified": 1657482444,
-        "narHash": "sha256-YSfcekPeUVZ9oZDPi69Q5ZqfcHoPRf5vSdZMOlxS7wU=",
+        "lastModified": 1657483516,
+        "narHash": "sha256-uwU/Me3XxVf4KomwPgTEK8NPI4PJKAxalAoA1jd13n0=",
         "owner": "dump-dvb",
         "repo": "funnel",
-        "rev": "2b4480fde563596971c0d250ba2ad6502d19ec2e",
+        "rev": "3a0f6dafd20ec741305c2028650d09c5330cca87",
         "type": "github"
       },
       "original": {
