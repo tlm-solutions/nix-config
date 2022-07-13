@@ -54,4 +54,11 @@
     passwordAuthentication = false;
   };
   programs.mosh.enable = true;
+  users.motd = ''
+     _._     _,-'""`-._
+    (,-.`._,'(       |\`-/|  Be vewy vewy quiet!
+        `-.-' \ )-`( , o o)  We're hunting tewegwams!
+              `-    \`_`"'-
+  '';
+
 }
