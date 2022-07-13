@@ -1,13 +1,16 @@
-{ config, ... }: {
+{ config, ... }: 
+let
+  serice_number = 2;
+in {
   dump-dvb.funnel = {
     enable = true;
     GRPC = {
       host = "127.0.0.1";
-      port = 9002;
+      port = 50050 + serice_number;
     };
     defaultWebsocket = {
       host = "127.0.0.1";
-      port = 50052;
+      port = 9000 + serice_number;
     };
   };
   services = {
@@ -20,7 +23,7 @@
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.dump-dvb.funnel.GRPC; "http://${host}:${toString port}/";
+              proxyPass = with config.dump-dvb.funnel.defaultWebsocket; "http://${host}:${toString port}/";
               proxyWebsockets = true;
             };
           };
