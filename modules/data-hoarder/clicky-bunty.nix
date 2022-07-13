@@ -10,6 +10,11 @@
     user = "clicky-bunty-server";
     group = config.users.groups.postgres-dvbdump.name;
   };
+  systemd.services."clicky-bunty-server" = {
+    after = [ "postgresql.service" ];
+    wants = [ "postgresql.service" ];
+  };
+
 
   services = {
     nginx = {
