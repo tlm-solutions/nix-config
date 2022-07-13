@@ -1,5 +1,6 @@
 {
   imports = [
+    ./click.nix
     ./clicky-bunty.nix
     ./data-accumulator.nix
     ./documentation.nix
