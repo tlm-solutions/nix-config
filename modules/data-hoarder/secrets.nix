@@ -31,6 +31,10 @@ in
       group = config.users.groups.postgres-dvbdump.name;
       mode = "0440";
     };
+    postgres_password_grafana = {
+      group = config.users.groups.postgres-dvbdump.name;
+      mode = "0440";
+    };
 
   };
 }

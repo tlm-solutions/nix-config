@@ -4,38 +4,24 @@
     enable = true;
     port = 5432;
     package = pkgs.postgresql_14;
-    ensureUsers = [
-      {
-        name = "dvbdump";
-        ensurePermissions = {
-          "DATABASE dvbdump" = "ALL PRIVILEGES";
-        };
-      }
-      {
-        name = "telegrams";
-        ensurePermissions = {
-          "DATABASE telegrams" = "ALL PRIVILEGES";
-        };
-      }
+    initialScript = pkgs.writeText "dvbdump-initScript" ''
+      CREATE DATABASE dvbdump;
+      CREATE USER dvbdump;
+      GRANT ALL PRIVILEGES ON DATABASE dvbdump TO dvbdump;
+      ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_dvbdump.path})';
 
-    ];
-    ensureDatabases = [
-      "dvbdump"
-      "telegrams"
-    ];
-  };
-  systemd.services."pg-dvbdump-setup" = {
-    description = "prepare dvbdump postgres database";
-    wantedBy = [ "multi-user.target" ];
-    after = [ "networking.target" "postgresql.service" ];
-    serviceConfig.Type = "oneshot";
+      CREATE DATABASE telegrams;
+      CREATE USER telegrams;
+      GRANT ALL PRIVILEGES ON DATABASE telegrams TO telegrams;
+      ALTER ROLE telegrams WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_telegrams.path})';
 
-    path = [ pkgs.sudo config.services.postgresql.package ];
-    script = ''
-      sudo -u ${config.services.postgresql.superUser} psql -c "ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_dvbdump.path})'"
-      sudo -u ${config.services.postgresql.superUser} psql -c "ALTER ROLE telegrams WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_telegrams.path})'"
+      CREATE USER grafana;
+      GRANT CONNECT ON DATABASE telegrams TO grafana;
+      GRANT SELECT ON ALL TABLES IN SCHEMA public TO grafana;
+      ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_grafana.path})';
 
-      sudo -u ${config.services.postgresql.superUser} psql --dbname telegrams -c "create table r09_telegrams (
+      \c telegrams
+      create table r09_telegrams (
           id serial8 primary key not null,
           time timestamp not null,
           station UUID not null,
@@ -54,8 +40,8 @@
           train_length int2,
           vehicle_number int,
           operator int2
-        );"
-      sudo -u ${config.services.postgresql.superUser} psql --dbname telegrams -c "ALTER TABLE r09_telegrams OWNER TO telegrams;"
-  '';
+        );
+      ALTER TABLE r09_telegrams OWNER TO telegrams;
+    '';
   };
 }
