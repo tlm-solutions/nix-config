@@ -14,4 +14,22 @@ in {
     stopsFile = config.dump-dvb.stopsJson;
   };
 
+  services = {
+    nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      virtualHosts = {
+        "api.${config.dump-dvb.domain}" = {
+          forceSSL = true;
+          enableACME = true;
+          locations = {
+            "/" = {
+              proxyPass = with config.dump-dvb.api; "http://127.0.0.1:${toString port}/";
+              proxyWebsockets = true;
+            };
+          };
+        };
+      };
+    };
+  };
 }
