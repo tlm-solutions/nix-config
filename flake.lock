@@ -102,11 +102,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658262264,
-        "narHash": "sha256-z+991VvrL2QrCuijXqslMPybSh26j0D7Fvam6oQE79c=",
+        "lastModified": 1658401321,
+        "narHash": "sha256-nYkoOdszuWDpKmenSWUbVumH5W1GmJ2LlWBpcT/ar4w=",
         "owner": "dump-dvb",
         "repo": "documentation",
-        "rev": "fd8f24cc6056e80161c8f6a12bf388e98a7d95c9",
+        "rev": "f2c93b5e90822001b53749f771aef1d8eaec7b91",
         "type": "github"
       },
       "original": {
@@ -132,11 +132,11 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1658399310,
-        "narHash": "sha256-A+4MZ0MVe/gQgUrrfGRJoFp8rAzuZJICxrNQyk9ArSY=",
+        "lastModified": 1658420804,
+        "narHash": "sha256-ai5Cs0e4l8Od0HhsuUJdpRCb10jyectiSsrfrihBrQE=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.nix",
-        "rev": "e5a54d6d5f52f0112bf5f64f182c3f4017cc028a",
+        "rev": "b53ea1f3daa7fd8f68453f8837e38eec895bd592",
         "type": "github"
       },
       "original": {
@@ -460,11 +460,11 @@
         "utils": "utils_7"
       },
       "locked": {
-        "lastModified": 1657130203,
-        "narHash": "sha256-1iww9+It0Q4pkxu9EROE5IpmIDim5j/HNbvFVaKoN6A=",
+        "lastModified": 1658420111,
+        "narHash": "sha256-e+jPDYoiouTk15CNedhdN1dC6x/QGv6TwVLPsjRTJI8=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "c7a3aaa134500ae224927e30901b2af2dc08029e",
+        "rev": "b30cedd3f6eec77430a8298a253854bede33b4ed",
         "type": "github"
       },
       "original": {
