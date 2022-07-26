@@ -26,7 +26,7 @@ in
     enable = true;
     server = [ "http://10.13.37.1:8080" "http://10.13.37.5:8080" ];
     configFile = file;
-    authTokenFile = "/etc/telegram-decoder/token";
+    authTokenFile = config.sops.secrets.telegram-decoder-token.path;
   };
 }
 
