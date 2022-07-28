@@ -16,11 +16,6 @@
       url = github:Mic92/sops-nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    stops = {
-      url = github:dump-dvb/stop-names;
-      flake = false;
-    };
   };
 
   outputs =
@@ -29,7 +24,6 @@
     , microvm
     , nixpkgs
     , sops-nix
-    , stops
     , ...
     }:
     let
@@ -46,8 +40,8 @@
           nixpkgs.overlays = [
             dump-dvb.overlays.default
           ];
-          dump-dvb.stopsJson = "${stops}/stops.json";
-          dump-dvb.graphJson = "${stops}/graph.json";
+          dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
+          dump-dvb.graphJson = "${pkgs.stops}/json/graph.json";
         }
       ];
 
@@ -91,7 +85,7 @@
                   dump-dvb.overlays.default
                 ];
                 dump-dvb.systemNumber = number;
-                dump-dvb.stopsJson = "${stops}/stops.json";
+                dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
               }
             ];
           };
@@ -132,7 +126,7 @@
             ./modules/dump-dvb
             sops-nix.nixosModules.sops
             {
-              dump-dvb.stopsJson = "${stops}/stops.json";
+              dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
               dump-dvb.systemNumber = 130;
               dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box.json";
             }

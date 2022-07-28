@@ -5,10 +5,12 @@
       "${config.dump-dvb.domain}" = {
         enableACME = true;
         forceSSL = true;
-        locations."/" = {
-          extraConfig = ''
-            return 307 https://docs.dvb.solutions;
-          '';
+        locations = {
+          "/" = {
+            extraConfig = ''
+              return 307 https://docs.dvb.solutions;
+            '';
+          };
         };
       };
     };
