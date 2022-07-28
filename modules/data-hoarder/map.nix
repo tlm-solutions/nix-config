@@ -19,8 +19,8 @@
               root = if (config.dump-dvb.domain == "dvb.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
               index = "index.html";
             };
-            "/stops/" = {
-              root = "${pkgs.stops}/json/";
+            "/stops.json" = {
+              root = "${pkgs.stops}/json";
             };
           };
         };
