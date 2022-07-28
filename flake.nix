@@ -40,8 +40,6 @@
           nixpkgs.overlays = [
             dump-dvb.overlays.default
           ];
-          dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
-          dump-dvb.graphJson = "${pkgs.stops}/json/graph.json";
         }
       ];
 
