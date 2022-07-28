@@ -22,6 +22,9 @@
             "/stops.json" = {
               root = "${pkgs.stops}/json";
             };
+            "/graph.json" = {
+              root = "${pkgs.stops}/json";
+            };
           };
         };
       };
