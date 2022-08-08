@@ -56,6 +56,8 @@
       psql -d telegrams -c "COPY (SELECT id, to_char(time::timestamp at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS') time, station, region, telegram_type, delay, reporting_point, junction, direction, request_status, priority, direction_request, line, run_number, destination_number, train_length, vehicle_number, operator FROM r09_telegrams) TO '$TMPFILE' DELIMITER ',' HEADER CSV;"
 
       mv $TMPFILE /var/lib/data-accumulator/telegram-dump.csv
+
+      chmod a+r /var/lib/data-accumulator/telegram-dump.csv
     '';
   };
 
