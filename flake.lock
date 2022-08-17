@@ -81,11 +81,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1657634014,
-        "narHash": "sha256-AzQFhW/Al+qDK7U52ugn49w/OkorZF4JmMmnT/fxcNw=",
+        "lastModified": 1660752888,
+        "narHash": "sha256-LpV3URdw/pWOn3nsagl6cUJshIuRvh4pLYbjgsrAR1M=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "db21a8dda85743dbf6ca6023da6ea7abbb4a2650",
+        "rev": "510ba41d60da25f34359ef377bcbeeebb89f7d0c",
         "type": "github"
       },
       "original": {
@@ -133,16 +133,32 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1660751938,
-        "narHash": "sha256-afhlfLD14VieRcQ14Xv6dzVArOSiGFi3ZbuGxw/T4T0=",
+        "lastModified": 1660756738,
+        "narHash": "sha256-LiZ+vHU0kQdRJqG5B5nR9nL40YgKP7fbr1FIz+LBnLA=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.nix",
-        "rev": "4d5e1bb1a20a1da09349f2f73357da4cd08d6efd",
+        "rev": "843b5f84af3d27d2cc5df15c1bd64d4b33b03c01",
         "type": "github"
       },
       "original": {
         "owner": "dump-dvb",
         "repo": "dump-dvb.nix",
+        "type": "github"
+      }
+    },
+    "dump-dvb-rust": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1660748521,
+        "narHash": "sha256-XH5uGW9j1j/+iXXUAW0nLClE7Yh2JecHt2s7Mt93icY=",
+        "owner": "dump-dvb",
+        "repo": "dump-dvb.rs",
+        "rev": "8c10db6f637c9c0235b68bea17ff55da4fcfc809",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dump-dvb",
+        "repo": "dump-dvb.rs",
         "type": "github"
       }
     },
@@ -209,19 +225,19 @@
     },
     "funnel": {
       "inputs": {
+        "dump-dvb-rust": "dump-dvb-rust",
         "nixpkgs": [
           "dump-dvb",
           "nixpkgs"
         ],
-        "telegrams": "telegrams",
         "utils": "utils_6"
       },
       "locked": {
-        "lastModified": 1660585328,
-        "narHash": "sha256-3oHzuFgudTi+3W8qg74VNHfTkv3bSPEXeVdMaBN6kBY=",
+        "lastModified": 1660751993,
+        "narHash": "sha256-9KbtXHR3Ol8o49EZ4wqCUDU0fpzE3Itm2eW/bOxNlGM=",
         "owner": "dump-dvb",
         "repo": "funnel",
-        "rev": "aae87e73209905e1298a2abf7bba2ea57f000fc6",
+        "rev": "643de99478a5b4298804b892693e667620c57589",
         "type": "github"
       },
       "original": {
@@ -602,22 +618,6 @@
       "original": {
         "owner": "dump-dvb",
         "repo": "stop-names",
-        "type": "github"
-      }
-    },
-    "telegrams": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1659905766,
-        "narHash": "sha256-b48Mm/XUScU9zX8TQwmGfgekew3KhgqRB6f3hJnke6Y=",
-        "owner": "dump-dvb",
-        "repo": "telegrams",
-        "rev": "ae78e8b4f649a77be171ebb871dd3eb87aff7005",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dump-dvb",
-        "repo": "telegrams",
         "type": "github"
       }
     },
