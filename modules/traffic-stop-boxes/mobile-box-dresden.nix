@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
   {
     dump-dvb = {
       gnuradio = {
@@ -19,6 +19,7 @@
         CSVFile = "/var/lib/data-accumulator/formatted.csv";
       };
     };
+    networking.firewall.allowedTCPPorts = [ 80 config.dump-dvb.wartrammer.port ];
     dump-dvb.wartrammer.enable = true;
           systemd.services."start-wifi-hotspot" = {
         wantedBy = [ "multi-user.target" ];
