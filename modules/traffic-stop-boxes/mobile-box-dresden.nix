@@ -17,6 +17,7 @@
         port = 8080;
         DB.backend = "CSVFILE";
         CSVFile = "/var/lib/data-accumulator/formatted.csv";
+        offline = true;
       };
     };
     networking.firewall.allowedTCPPorts = [ 80 config.dump-dvb.wartrammer.port ];

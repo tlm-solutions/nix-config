@@ -133,11 +133,11 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1660756738,
-        "narHash": "sha256-LiZ+vHU0kQdRJqG5B5nR9nL40YgKP7fbr1FIz+LBnLA=",
+        "lastModified": 1660759708,
+        "narHash": "sha256-wzKLaFG0h14cxHt4AdoCOXvMoakCOdjwvZbWEhad7L8=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.nix",
-        "rev": "843b5f84af3d27d2cc5df15c1bd64d4b33b03c01",
+        "rev": "001396f6d100798ae1fe3e8300c4d9ee00683881",
         "type": "github"
       },
       "original": {
