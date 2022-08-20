@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }: {
+{ config, lib, ... }: {
 
   services = {
     # metrics collector
@@ -54,7 +54,7 @@
           params = { module = [ "http_2xx" ]; };
           static_configs = [{
             targets = [
-              "api.${config.dvb-dump.domain}"
+              "api.${config.dump-dvb.domain}"
             ];
           }];
           relabel_configs = [
@@ -82,7 +82,7 @@
     # visualizer
     grafana = {
       enable = true;
-      domain = "monitoring.${config.dvb-dump.domain}";
+      domain = "monitoring.${config.dump-dvb.domain}";
       port = 2342;
       addr = "127.0.0.1";
 

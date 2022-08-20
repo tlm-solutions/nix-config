@@ -1,14 +1,16 @@
-{ pkgs, lib, config, ... }: {
+{ config, ... }: {
   services.nginx = {
     enable = true;
     virtualHosts = {
-      "${config.dvb-dump.domain}" = {
+      "${config.dump-dvb.domain}" = {
         enableACME = true;
         forceSSL = true;
-        locations."/" = {
-          extraConfig = ''
-            return 307 https://docs.dvb.solutions;
-          '';
+        locations = {
+          "/" = {
+            extraConfig = ''
+              return 307 https://docs.dvb.solutions;
+            '';
+          };
         };
       };
     };

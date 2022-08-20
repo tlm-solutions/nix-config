@@ -1,17 +1,15 @@
-{ config, pkgs, inputs, ... }:
+{ config, ... }:
 
 {
   boot.tmpOnTmpfs = true;
 
-  hardware.hackrf.enable = true;
-  hardware.rtl-sdr.enable = true;
-
-  networking.hostName = "traffic-stop-box-${toString config.dvb-dump.systemNumber}"; # Define your hostname.
+  networking.hostName = "traffic-stop-box-${toString config.dump-dvb.systemNumber}"; # Define your hostname.
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
   documentation.enable = false;
+  documentation.nixos.enable = false;
 
   nix = {
     buildCores = 1;

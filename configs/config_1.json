@@ -2,6 +2,6 @@
     "name": "Zentralwerk",
     "lat": 51.0810632,
     "lon": 13.7280758,
-    "station_id": 1,
-    "region": "dresden"
+    "id": "8aa034af-3545-4c36-b235-17e46cad6f07",
+    "region": 0
 }

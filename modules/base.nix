@@ -1,5 +1,4 @@
-{ pkgs, config, ... }:
-
+{ pkgs, ... }:
 {
   nix = {
     package = pkgs.nixFlakes;
@@ -7,17 +6,8 @@
       experimental-features = nix-command flakes
     '';
     autoOptimiseStore = true;
-    binaryCaches = [
-      "https://dump-dvb.cachix.org"
-      "https://nix-serve.hq.c3d2.de"
-    ];
-    binaryCachePublicKeys = [
-      "dump-dvb.cachix.org-1:+Dq7gqpQG4YlLA2X3xJsG1v3BrlUGGpVtUKWk0dTyUU="
-      "nix-serve.hq.c3d2.de:KZRGGnwOYzys6pxgM8jlur36RmkJQ/y8y62e52fj1ps="
-    ];
   };
 
-  # Select internationalisation properties.
   console = {
     font = "Lat2-Terminus16";
     keyMap = "uk";
@@ -30,6 +20,24 @@
     "C.UTF-8/UTF-8"
   ];
 
+  environment.systemPackages = with pkgs; [
+    git
+    htop
+    tmux
+    (vim_configurable.override {
+      guiSupport = false;
+      luaSupport = false;
+      perlSupport = false;
+      pythonSupport = false;
+      rubySupport = false;
+      cscopeSupport = false;
+      netbeansSupport = false;
+    })
+    wget
+    git-crypt
+    iftop
+  ];
+
   users.users.root = {
     openssh.authorizedKeys.keyFiles = [
       ../keys/ssh/revol-xut
@@ -40,23 +48,19 @@
       ../keys/ssh/astro
     ];
   };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    git
-    htop
-    tmux
-    (vim_configurable.override { guiSupport = false; luaSupport = false; perlSupport = false; pythonSupport = false; rubySupport = false; cscopeSupport = false; netbeansSupport = false; })
-    wget
-    git-crypt
-    iftop
-  ];
-
-  # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
+    permitRootLogin = "prohibit-password";
     passwordAuthentication = false;
   };
   programs.mosh.enable = true;
+  users.motd = ''
+     _._     _,-'""`-._
+    (,-.`._,'(       |\`-/|  Be vewy vewy quiet!
+        `-.-' \ )-`( , o o)  We're hunting tewegwams!
+              `-    \`_`"'-
+  '';
+
+  dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
+  dump-dvb.graphJson = "${pkgs.stops}/json/graph.json";
 }

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   microvm = {
@@ -13,7 +13,7 @@
 
     interfaces = [{
       type = "tap";
-      id = "staging-dh";
+      id = "serv-dvb-stag";
       mac = "00:de:5b:f9:e2:3d";
     }];
 
@@ -67,7 +67,7 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 
-  dvb-dump.domain = "staging.dvb.solutions";
+  dump-dvb.domain = "staging.dvb.solutions";
   networking.wg-quick.interfaces.wg-dvb = {
     address = [ "10.13.37.5/32" ];
     privateKeyFile = config.sops.secrets.wg-seckey.path;

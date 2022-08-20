@@ -1,9 +1,7 @@
 {
   inputs = {
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
-
-    naersk = {
-      url = github:nix-community/naersk;
+    dump-dvb = {
+      url = github:dump-dvb/dump-dvb.nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -12,50 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    radio-conf = {
-      url = github:dump-dvb/radio-conf;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    data-accumulator = {
-      url = github:dump-dvb/data-accumulator;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    decode-server = {
-      url = github:dump-dvb/decode-server;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    dvb-api = {
-      url = github:dump-dvb/dvb-api;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    stops = {
-      url = github:dump-dvb/stop-names;
-      flake = false;
-    };
-
-    windshield = {
-      url = github:dump-dvb/windshield;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    docs = {
-      url = github:dump-dvb/documentation;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    wartrammer = {
-      url = github:dump-dvb/wartrammer-40k;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    clicky-bunty-server = {
-      url = github:dump-dvb/clicky-bunty-server;
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.05;
 
     sops-nix = {
       url = github:Mic92/sops-nix;
@@ -63,35 +18,28 @@
     };
   };
 
-  outputs = { self, nixpkgs, naersk, microvm, radio-conf, data-accumulator, decode-server, dvb-api, stops, windshield, docs, wartrammer, clicky-bunty-server, sops-nix, ... }@inputs:
+  outputs =
+    inputs@{ self
+    , dump-dvb
+    , microvm
+    , nixpkgs
+    , sops-nix
+    , ...
+    }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
 
       data-hoarder-modules = [
         ./modules/base.nix
-        ./modules/options.nix
-        ./modules/data-hoarder/data-accumulator.nix
-        ./modules/data-hoarder/nginx.nix
-        ./modules/data-hoarder/public_api.nix
-        ./modules/data-hoarder/map.nix
-        ./modules/data-hoarder/file_sharing.nix
-        ./modules/data-hoarder/grafana.nix
-        ./modules/data-hoarder/website.nix
-        ./modules/data-hoarder/documentation.nix
-        ./modules/data-hoarder/clicky-bunty.nix
-        ./modules/data-hoarder/secrets.nix
+        ./modules/data-hoarder
+        ./modules/dump-dvb
         sops-nix.nixosModules.sops
+        dump-dvb.nixosModules.default
         {
           nixpkgs.overlays = [
-            data-accumulator.overlay."x86_64-linux"
-            dvb-api.overlay."x86_64-linux"
-            windshield.overlay."x86_64-linux"
-            docs.overlay."x86_64-linux"
-            clicky-bunty-server.overlay."x86_64-linux"
+            dump-dvb.overlays.default
           ];
-          dvb-dump.stopsJson = "${stops}/stops.json";
-          dvb-dump.graphJson = "${stops}/graph.json";
         }
       ];
 
@@ -121,18 +69,20 @@
             modules = [
               diskModule
               sops-nix.nixosModules.sops
+              dump-dvb.nixosModules.default
               ./hosts/traffic-stop-boxes/configuration.nix
               ./hosts/traffic-stop-boxes/hardware-configuration.nix
               ./hardware/configuration-dell-wyse-3040.nix
               ./modules/base.nix
-              ./modules/options.nix
-              ./modules/traffic-stop-boxes/gnuradio.nix
               ./modules/traffic-stop-boxes/radio_wireguard_client.nix
               ./modules/traffic-stop-boxes/secrets.nix
+              ./modules/traffic-stop-boxes/radio-config.nix
+              ./modules/dump-dvb
               {
-                nixpkgs.overlays = [ radio-conf.overlay."x86_64-linux" decode-server.overlay."x86_64-linux" ];
-                dvb-dump.systemNumber = number;
-                dvb-dump.stopsJson = "${stops}/stops.json";
+                nixpkgs.overlays = [
+                  dump-dvb.overlays.default
+                ];
+                dump-dvb.systemNumber = number;
               }
             ];
           };
@@ -146,6 +96,7 @@
       stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y)) { } id_list;
 
       packages = {
+        default = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
         traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
         staging-data-hoarder = self.nixosConfigurations.staging-data-hoarder.config.system.build.vm;
         data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
@@ -156,7 +107,6 @@
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
     {
-      defaultPackage."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
       packages."x86_64-linux" = packages;
 
       nixosConfigurations = stop_boxes // {
@@ -165,22 +115,16 @@
           specialArgs = { inherit inputs; };
           modules = [
             diskModule
+            dump-dvb.nixosModules.default
             ./hosts/mobile-box/configuration.nix
             ./hosts/mobile-box/hardware-configuration.nix
             ./hardware/configuration-dell-wyse-3040.nix
             ./modules/base.nix
-            ./modules/options.nix
-            ./modules/traffic-stop-boxes/mobile-box.nix
+            ./modules/traffic-stop-boxes/mobile-box-dresden.nix
+            ./modules/dump-dvb
             sops-nix.nixosModules.sops
             {
-              nixpkgs.overlays = [
-                radio-conf.overlay."x86_64-linux"
-                decode-server.overlay."x86_64-linux"
-                data-accumulator.overlay."x86_64-linux"
-                wartrammer.overlay."x86_64-linux"
-              ];
-              dvb-dump.stopsJson = "${stops}/stops.json";
-              dvb-dump.systemNumber = 130;
+              dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box.json";
             }
           ];
         };
@@ -188,6 +132,7 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
+            microvm.nixosModules.microvm
             ./hosts/data-hoarder/configuration.nix
             ./modules/data-hoarder/wireguard_server.nix
             microvm.nixosModules.microvm
@@ -199,6 +144,9 @@
           modules = [
             ./hosts/staging/configuration.nix
             microvm.nixosModules.microvm
+            {
+              environment.systemPackages = with pkgs; [ tcpdump ];
+            }
           ] ++ data-hoarder-modules;
         };
       };
@@ -212,5 +160,5 @@
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
-    };
+   };
 }
