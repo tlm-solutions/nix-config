@@ -13,7 +13,7 @@ let
           exit 1
       else
           nix copy --to ssh://root@${ip} ${self}
-          ssh root@${ip} -- nixos-rebuild switch --flake ${self} -L
+          ssh root@${ip} -- nixos-rebuild switch --option narinfo-cache-negative-ttl 0 --flake ${self} -L
       fi
     ''));
 
