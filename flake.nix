@@ -47,7 +47,7 @@
         system.build.diskImage = import "${nixpkgs}/nixos/lib/make-disk-image.nix" {
           name = "${config.networking.hostName}-disk";
           partitionTableType = "efi";
-          additionalSpace = "2G";
+          additionalSpace = "0G";
           copyChannel = false;
           config = config // {
             boot.growPartition = true;
