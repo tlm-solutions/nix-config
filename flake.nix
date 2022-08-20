@@ -52,6 +52,7 @@
           config = config // {
             boot.growPartition = true;
           };
+          format = "raw";
           inherit lib pkgs;
           postVM = ''
             mkdir -p $out/nix-support
