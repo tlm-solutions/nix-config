@@ -1,7 +1,4 @@
 { pkgs, config, ... }: {
-  dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
-  dump-dvb.graphJson = "${pkgs.stops}/json/graph.json";
-
   services = {
     nginx = {
       enable = true;

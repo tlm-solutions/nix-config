@@ -83,7 +83,6 @@
                   dump-dvb.overlays.default
                 ];
                 dump-dvb.systemNumber = number;
-                dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
               }
             ];
           };
@@ -124,8 +123,6 @@
             ./modules/dump-dvb
             sops-nix.nixosModules.sops
             {
-              dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
-              dump-dvb.systemNumber = 130;
               dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box.json";
             }
           ];

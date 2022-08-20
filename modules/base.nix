@@ -61,4 +61,6 @@
               `-    \`_`"'-
   '';
 
+  dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
+  dump-dvb.graphJson = "${pkgs.stops}/json/graph.json";
 }
