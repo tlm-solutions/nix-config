@@ -17,7 +17,7 @@
         host = "0.0.0.0";
         port = 8080;
         DB.backend = "CSVFILE";
-        CSVFile = "/var/lib/data-accumulator/formatted.csv";
+        R09CsvFile = "/var/lib/data-accumulator/formatted.csv";
         offline = true;
       };
     };
