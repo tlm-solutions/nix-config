@@ -42,6 +42,17 @@
           operator int2
         );
       ALTER TABLE r09_telegrams OWNER TO telegrams;
+
+      create table raw_telegrams (
+          id serial8 primary key not null,
+          time timestamp not null,
+          station UUID not null,
+          region integer not null,
+          telegram_type int8 not null,
+          data bytea not null
+      );
+      ALTER TABLE raw_telegrams OWNER TO telegrams;
+
     '';
   };
 
