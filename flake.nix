@@ -44,10 +44,10 @@
       ];
 
       diskModule = { config, lib, pkgs, ... }: {
-        system.build.diskImage = import "${nixpkgs}/nixos/lib/make-disk-image.nix" {
+        system.build.diskImage = import ./modules/make-disk-image.nix {
           name = "${config.networking.hostName}-disk";
           partitionTableType = "efi";
-          additionalSpace = "1G";
+          additionalSpace = "0G";
           copyChannel = false;
           config = config // {
             boot.growPartition = true;

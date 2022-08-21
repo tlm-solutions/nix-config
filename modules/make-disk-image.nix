@@ -285,6 +285,10 @@ let format' = format; in let
       nix --extra-experimental-features nix-command copy --to $root --no-check-sigs ${concatStringsSep " " additionalPaths'}
     ''}
 
+    # delete /nix/store/.links (hydra build produces it, my local build does not produce it...)
+    echo "Deleting root/nix/store/.links"
+    rm -rf $root/nix/store/.links
+
     diskImage=nixos.raw
 
     ${if diskSize == "auto" then ''
