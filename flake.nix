@@ -112,7 +112,6 @@
           extraModules = [
             (import "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix")
             ./hardware/configuration-rpi-3b.nix
-            ./modules/user-stop-box/user.nix
           ];
         }
       ];
