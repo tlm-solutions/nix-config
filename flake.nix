@@ -180,9 +180,7 @@
         data-hoarder."x86_64-linux" = self.nixosConfigurations.data-hoarder.config.system.build.toplevel;
         staging-data-hoarder."x86_64-linux" = self.nixosConfigurations.staging-data-hoarder.config.system.build.toplevel;
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
-        traffic-stop-box-0-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
         traffic-stop-box-3."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-3.config.system.build.toplevel;
-        traffic-stop-box-3-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-3.config.system.build.sdImage;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
