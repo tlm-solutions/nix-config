@@ -7,4 +7,10 @@
   networking.useDHCP = false;
   networking.interfaces.enp1s0.useDHCP = true;
   boot.tmpOnTmpfsSize = "25%";
+  fileSystems."/" =
+    {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "ext4";
+    };
+
 }

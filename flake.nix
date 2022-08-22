@@ -59,39 +59,65 @@
       };
 
       # function that generates a system with the given number
-      generate_system = (number:
+      generate_system = (id: hostname: arch: extraModules:
         {
-          "traffic-stop-box-${toString number}" = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
+          "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem {
+            system = arch;
             specialArgs = { inherit inputs; };
             modules = [
-              diskModule
               sops-nix.nixosModules.sops
               dump-dvb.nixosModules.default
-              ./hosts/traffic-stop-boxes/configuration.nix
-              ./hosts/traffic-stop-boxes/hardware-configuration.nix
-              ./hardware/configuration-dell-wyse-3040.nix
+              ./hosts/traffic-stop-box
               ./modules/base.nix
-              ./modules/traffic-stop-boxes/radio_wireguard_client.nix
-              ./modules/traffic-stop-boxes/secrets.nix
-              ./modules/traffic-stop-boxes/radio-config.nix
               ./modules/dump-dvb
               {
                 nixpkgs.overlays = [
                   dump-dvb.overlays.default
                 ];
-                dump-dvb.systemNumber = number;
+                dump-dvb.systemNumber = id;
               }
-            ];
+            ] ++ extraModules;
           };
         }
       );
 
-      # list of accending system numbers
-      id_list = [ 0 1 2 3 4 ];
+      id_list = [
+        { # Barkhausen Bau
+          id = 0;
+          arch = "x86_64-linux";
+          extraModules = [
+            ./hardware/configuration-dell-wyse-3040.nix
+            diskModule
+          ];
+        }
+        { # Zentralwerk
+          id = 1;
+          arch = "x86_64-linux";
+          extraModules = [
+            ./hardware/configuration-dell-wyse-3040.nix
+            diskModule
+          ];
+        }
+        { # Chemnitz
+          id = 2;
+          arch = "x86_64-linux";
+          extraModules = [
+            ./hardware/configuration-dell-wyse-3040.nix
+            diskModule
+          ];
+        }
+        {
+          id = 3;
+          arch = "aarch64-linux";
+          extraModules = [
+            (import "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix")
+            ./hardware/configuration-rpi-3b.nix
+          ];
+        }
+      ];
 
       # attribute set of all traffic stop boxes
-      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y)) { } id_list;
+      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y.id y.hostname y.arch y.extraModules)) { } id_list;
 
       packages = {
         default = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
@@ -101,7 +127,7 @@
         mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
-        data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner; 
+        data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
     {
@@ -154,6 +180,8 @@
         staging-data-hoarder."x86_64-linux" = self.nixosConfigurations.staging-data-hoarder.config.system.build.toplevel;
         traffic-stop-box-0."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.toplevel;
         traffic-stop-box-0-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-0.config.system.build.diskImage;
+        traffic-stop-box-3."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-3.config.system.build.toplevel;
+        traffic-stop-box-3-disk."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-3.config.system.build.sdImage;
         mobile-box."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.toplevel;
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
