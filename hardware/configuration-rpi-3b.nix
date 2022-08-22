@@ -1,15 +1,12 @@
 { lib, pkgs, ... }:
 {
-  imports = [
-  ];
-
   boot = {
     loader = {
       grub.enable = false;
-      raspberryPi = {
-        enable = true;
-        version = 4;
-      };
+      # raspberryPi = {
+      #   enable = true;
+      #   version = 4;
+      # };
     };
     kernelPackages = pkgs.linuxPackages_latest;
     # No ZFS on latest kernel:
@@ -24,4 +21,5 @@
 
   networking.useDHCP = false;
   networking.interfaces.eth0.useDHCP = true;
+    # boot.loader.generic-extlinux-compatible.enable = lib.mkForce false;
 }

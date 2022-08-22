@@ -9,16 +9,4 @@
       (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" "sdhci_acpi" ];
-  boot.initrd.kernelModules = [ ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-label/ESP";
-      fsType = "vfat";
-    };
-
-  swapDevices = [ ];
-
 }
