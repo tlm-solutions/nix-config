@@ -133,7 +133,7 @@
           modules = [
             microvm.nixosModules.microvm
             ./hosts/data-hoarder/configuration.nix
-            ./modules/data-hoarder/wireguard_server.nix
+            ./hosts/data-hoarder/wireguard_server.nix
           ] ++ data-hoarder-modules;
         };
         staging-data-hoarder = nixpkgs.lib.nixosSystem {
