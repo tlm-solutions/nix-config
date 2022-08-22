@@ -36,6 +36,8 @@
     wget
     git-crypt
     iftop
+    tcpdump
+    dig
   ];
 
   users.users.root = {
