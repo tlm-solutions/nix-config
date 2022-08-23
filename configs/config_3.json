@@ -1,7 +1,7 @@
 {
-    "name": "",
+    "name": "Wundstr. 9",
     "lat": 0,
     "lon": 0,
-    "station_id": 3,
-    "region": "dresden"
+    "station_id": "00000000-0000-0000-0000-000000000000",
+    "region": 0
 }
