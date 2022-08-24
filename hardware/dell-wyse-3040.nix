@@ -8,8 +8,8 @@
   networking.interfaces.enp1s0.useDHCP = true;
   boot.tmpOnTmpfsSize = "25%";
 
-    boot.kernelModules = [ "kvm-intel" ];
-    hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  boot.kernelModules = [ "kvm-intel" ];
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 1;

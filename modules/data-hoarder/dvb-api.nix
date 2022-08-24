@@ -1,7 +1,8 @@
 { config, ... }:
 let
   service_number = 1;
-in {
+in
+{
   dump-dvb.api = {
     enable = true;
     GRPC = {

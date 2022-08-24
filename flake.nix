@@ -82,7 +82,8 @@
       );
 
       id_list = [
-        { # Barkhausen Bau
+        {
+          # Barkhausen Bau
           id = 0;
           arch = "x86_64-linux";
           extraModules = [
@@ -90,7 +91,8 @@
             diskModule
           ];
         }
-        { # Zentralwerk
+        {
+          # Zentralwerk
           id = 1;
           arch = "x86_64-linux";
           extraModules = [
@@ -98,7 +100,8 @@
             diskModule
           ];
         }
-        { # Chemnitz
+        {
+          # Chemnitz
           id = 2;
           arch = "x86_64-linux";
           extraModules = [
@@ -186,5 +189,5 @@
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
-   };
+    };
 }

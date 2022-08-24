@@ -1,4 +1,4 @@
-{ config,  ... }:
+{ config, ... }:
 let
   clicky-bunty-user = config.dump-dvb.clickyBuntyServer.user;
   data-accumulator-user = config.dump-dvb.dataAccumulator.user;

@@ -7,11 +7,11 @@
     hypervisor = "cloud-hypervisor";
     mem = 4096;
     vcpu = 8;
-    interfaces = [ {
+    interfaces = [{
       type = "tap";
       id = "serv-dvb-prod";
       mac = "02:db:db:db:db:db";
-    } ];
+    }];
     shares = [
       {
         source = "/nix/store";
@@ -26,7 +26,7 @@
         tag = "etc";
         proto = "virtiofs";
         socket = "etc.socket";
-      } 
+      }
       {
         source = "/var/lib/microvms/data-hoarder/var";
         mountPoint = "/var";
