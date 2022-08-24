@@ -3,6 +3,9 @@
   boot = {
     loader = {
       grub.enable = false;
+      raspberryPi.firmwareConfig = ''
+        hdmi_force_hotplug = 1
+        '';
       # raspberryPi = {
       #   enable = true;
       #   version = 4;
