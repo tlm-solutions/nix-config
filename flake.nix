@@ -86,7 +86,7 @@
           id = 0;
           arch = "x86_64-linux";
           extraModules = [
-            ./hardware/configuration-dell-wyse-3040.nix
+            ./hardware/dell-wyse-3040.nix
             diskModule
           ];
         }
@@ -94,7 +94,7 @@
           id = 1;
           arch = "x86_64-linux";
           extraModules = [
-            ./hardware/configuration-dell-wyse-3040.nix
+            ./hardware/dell-wyse-3040.nix
             diskModule
           ];
         }
@@ -102,7 +102,7 @@
           id = 2;
           arch = "x86_64-linux";
           extraModules = [
-            ./hardware/configuration-dell-wyse-3040.nix
+            ./hardware/dell-wyse-3040.nix
             diskModule
           ];
         }
@@ -111,7 +111,7 @@
           arch = "aarch64-linux";
           extraModules = [
             (import "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix")
-            ./hardware/configuration-rpi-3b.nix
+            ./hardware/rpi-3b-4b.nix
             ./modules/user-stop-box/user.nix
           ];
         }
@@ -143,10 +143,10 @@
             dump-dvb.nixosModules.default
             ./hosts/mobile-box/configuration.nix
             ./hosts/mobile-box/hardware-configuration.nix
-            ./hardware/configuration-dell-wyse-3040.nix
+            ./hardware/dell-wyse-3040.nix
             ./modules/base.nix
             ./modules/user-stop-box/user.nix
-            ./modules/traffic-stop-boxes/mobile-box-dresden.nix
+            ./modules/mobile-box/dresden.nix
             ./modules/dump-dvb
             sops-nix.nixosModules.sops
             {

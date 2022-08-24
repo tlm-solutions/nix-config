@@ -7,7 +7,7 @@
         frequency = 170795000;
         offset = 19550;
         RF = 14;
-        IF = 32; 
+        IF = 32;
         BB = 42;
       };
       telegramDecoder = {
