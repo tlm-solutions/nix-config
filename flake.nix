@@ -59,7 +59,7 @@
       };
 
       # function that generates a system with the given number
-      generate_system = (id: hostname: arch: extraModules:
+      generate_system = (id: arch: extraModules:
         {
           "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem {
             system = arch;
@@ -118,7 +118,7 @@
       ];
 
       # attribute set of all traffic stop boxes
-      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y.id y.hostname y.arch y.extraModules)) { } id_list;
+      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y.id y.arch y.extraModules)) { } id_list;
 
       packages = {
         default = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
