@@ -13,7 +13,7 @@
     peers = [{
       publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY=";
       allowedIPs = [ "10.13.37.0/24" ];
-      endpoint = "academicstrokes.com:51820";
+      endpoint = "81.201.149.152:51820";
       persistentKeepalive = 25;
     }];
 
