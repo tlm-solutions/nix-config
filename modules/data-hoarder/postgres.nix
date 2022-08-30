@@ -52,7 +52,50 @@
           data bytea not null
       );
       ALTER TABLE raw_telegrams OWNER TO telegrams;
+      
+      \c dvbdump
 
+      CREATE TABLE users (
+          id UUID PRIMARY KEY,
+          name TEXT NOT NULL,
+          email TEXT NOT NULL,
+          password VARCHAR(100) NOT NULL,
+          role INT NOT NULL,
+          email_setting INT NOT NULL,
+          deactivated BOOL NOT NULL
+      );
+      ALTER TABLE users OWNER TO dvbdump;
+
+      CREATE TABLE regions (
+          id SERIAL PRIMARY KEY,
+          name TEXT NOT NULL,
+          transport_company TEXT NOT NULL,
+          regional_company TEXT,
+          frequency BIGINT,
+          r09_type INT,
+          encoding INT
+      );
+      ALTER TABLE regions OWNER TO dvbdump;
+
+      CREATE TABLE stations (
+          id UUID PRIMARY KEY,
+          token VARCHAR(36),
+          name TEXT NOT NULL,
+          lat DOUBLE PRECISION NOT NULL,
+          lon DOUBLE PRECISION NOT NULL,
+          region SERIAL REFERENCES regions(id) NOT NULL,
+          owner UUID REFERENCES users(id) NOT NULL,
+          approved BOOL NOT NULL,
+          deactivated BOOL NOT NULL,
+          public BOOL NOT NULL,
+          radio INT,
+          architecture INT,
+          device INT,
+          elevation DOUBLE PRECISION,
+          telegram_decoder_version INT[],
+          antenna Int
+      );
+      ALTER TABLE stations OWNER TO dvbdump;
     '';
   };
 
