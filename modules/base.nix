@@ -1,4 +1,23 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
+let
+  regMotd = ''
+     _._     _,-'""`-._
+    (,-.`._,'(       |\`-/|  Be vewy vewy quiet!
+        `-.-' \ )-`( , o o)  We're hunting tewegwams!
+              `-    \`_`"'-
+  '';
+  prodMotd = ''
+                   .-o=o-.  <===== THIS IS FUCKING PROD YOU PLAYIN' WITH
+               ,  /=o=o=o=\ .--.
+              _|\|=o=O=o=O=|    \
+          __.'  a`\=o=o=o=(`\   /
+          '.   a 4/`|.-""'`\ \ ;'`)   .---.
+            \   .'  /   .--'  |_.'   / .-._)
+             `)  _.'   /     /`-.__.' /
+          jgs `'-.____;     /'-.___.-'
+                       `"""`
+    '';
+in
 {
   nix = {
     package = pkgs.nixFlakes;
@@ -59,12 +78,7 @@
     passwordAuthentication = false;
   };
   programs.mosh.enable = true;
-  users.motd = ''
-     _._     _,-'""`-._
-    (,-.`._,'(       |\`-/|  Be vewy vewy quiet!
-        `-.-' \ )-`( , o o)  We're hunting tewegwams!
-              `-    \`_`"'-
-  '';
+  users.motd = if config.networking.hostName == "data-hoarder" then prodMotd else regMotd;
 
   dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
   dump-dvb.graphJson = "${pkgs.stops}/json/graph.json";
