@@ -118,6 +118,15 @@
             ./modules/user-stop-box/user.nix
           ];
         }
+        {
+          # Wundstr. 9
+          id = 4;
+          arch = "x86_64-linux";
+          extraModules = [
+            ./hardware/dell-wyse-3040.nix
+            diskModule
+          ];
+        }
       ];
 
       # attribute set of all traffic stop boxes

@@ -14,7 +14,7 @@ keys:
   - &traffic-stop-box-2 age1l8773krx0tuu85hv8wgrwdutgadv5efdxw0yzyq7taslhnpl9fxseuysne
   # staging boxes
   - &traffic-stop-box-3 age173wya6aezrjwtff0y77ltstmaylskr992swjr8mjxypslt478uqq6kh4up
-  - &traffic-stop-box-4 age1l8773krx0tuu85hv8wgrwdutgadv5efdxw0yzyq7taslhnpl9fxseuysne
+  - &traffic-stop-box-4 age1l6l5ln6455sxm85npeydlt4w6mem45kq90z7990wv488slp2m4vs3xf3hv
   # - &mobile-box
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
