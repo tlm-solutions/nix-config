@@ -24,7 +24,7 @@ in
   };
   dump-dvb.telegramDecoder = {
     enable = true;
-    server = [ "http://10.13.37.1:8080" ];
+    server = [ "http://10.13.37.1:8080" "http://10.13.37.5:8080" ];
     configFile = file;
     authTokenFile = config.sops.secrets.telegram-decoder-token.path;
   };
