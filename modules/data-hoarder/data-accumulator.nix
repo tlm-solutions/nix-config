@@ -4,12 +4,10 @@
     enable = true;
     host = "0.0.0.0";
     port = 8080;
-    DB = {
-      backend = "POSTGRES";
+    database = {
       host = "127.0.0.1";
       port = config.services.postgresql.port;
-      telegramsPasswordFile = config.sops.secrets.postgres_password_telegrams.path;
-      dvbPasswordFile = config.sops.secrets.postgres_password_dvbdump.path;
+      passwordFile = config.sops.secrets.postgres_password.path;
     };
     GRPC = [
       {

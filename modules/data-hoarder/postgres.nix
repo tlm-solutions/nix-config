@@ -8,12 +8,7 @@
       CREATE DATABASE dvbdump;
       CREATE USER dvbdump;
       GRANT ALL PRIVILEGES ON DATABASE dvbdump TO dvbdump;
-      ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_dvbdump.path})';
-
-      CREATE DATABASE telegrams;
-      CREATE USER telegrams;
-      GRANT ALL PRIVILEGES ON DATABASE telegrams TO telegrams;
-      ALTER ROLE telegrams WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_telegrams.path})';
+      ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})';
 
       CREATE USER grafana;
       GRANT CONNECT ON DATABASE telegrams TO grafana;

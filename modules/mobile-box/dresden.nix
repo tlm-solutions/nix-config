@@ -15,14 +15,6 @@
       server = [ "http://127.0.0.1:8080" ];
       offline = true;
     };
-    dataAccumulator = {
-      enable = true;
-      host = "0.0.0.0";
-      port = 8080;
-      DB.backend = "CSVFILE";
-      R09CsvFile = "/var/lib/data-accumulator/formatted.csv";
-      offline = true;
-    };
   };
   networking.firewall.allowedTCPPorts = [ 80 config.dump-dvb.wartrammer.port ];
   dump-dvb.wartrammer.enable = true;

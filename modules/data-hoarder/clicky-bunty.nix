@@ -5,7 +5,7 @@
     port = 8070;
     postgresHost = "127.0.0.1";
     postgresPort = config.services.postgresql.port;
-    postgresPasswordFile = config.sops.secrets.postgres_password_dvbdump.path;
+    postgresPasswordFile = config.sops.secrets.postgres_password.path;
     saltFile = config.sops.secrets.postgres_password_hash_salt.path;
     user = "clicky-bunty-server";
     group = config.users.groups.postgres-dvbdump.name;

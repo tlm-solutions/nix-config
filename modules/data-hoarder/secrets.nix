@@ -23,11 +23,7 @@ in
     postgres_password_hash_salt = {
       owner = clicky-bunty-user;
     };
-    postgres_password_dvbdump = {
-      group = config.users.groups.postgres-dvbdump.name;
-      mode = "0440";
-    };
-    postgres_password_telegrams = {
+    postgres_password = {
       group = config.users.groups.postgres-dvbdump.name;
       mode = "0440";
     };
