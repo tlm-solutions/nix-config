@@ -55,6 +55,11 @@ in
     wget
     git-crypt
     iftop
+    tcpdump
+    dig
+    usbutils
+    rtl-sdr
+    hackrf
   ];
 
   users.users.root = {

@@ -1,6 +1,7 @@
 {
-    "name": "",
-    "lat": 0,
-    "lon": 0,
-    "station_id": 3
+    "name": "Wundstr. 9",
+    "lat": 51.02857,
+    "lon": 13.74961,
+    "id": "97d028ec-43e2-4473-98ac-39f2c8ef7ce2",
+    "region": 0
 }

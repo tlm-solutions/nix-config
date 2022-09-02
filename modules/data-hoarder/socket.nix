@@ -1,7 +1,8 @@
-{ config, ... }: 
+{ config, ... }:
 let
   serice_number = 2;
-in {
+in
+{
   dump-dvb.funnel = {
     enable = true;
     GRPC = {

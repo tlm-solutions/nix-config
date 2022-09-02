@@ -7,12 +7,12 @@ with lib; {
       description = "number of the system";
     };
 
-  dump-dvb.domain = mkOption {
-    type = types.str;
-    default = "dvb.solutions";
-    description = "domain the server is running on";
+    dump-dvb.domain = mkOption {
+      type = types.str;
+      default = "dvb.solutions";
+      description = "domain the server is running on";
+    };
   };
-};
 }
 
 
