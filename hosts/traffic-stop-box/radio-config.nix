@@ -6,7 +6,7 @@ let
     { frequency = 170795000; offset = 19550; device = "hackrf=0"; RF = 14; IF = 8; BB = 42; } # dresden - barkhausen
     { frequency = 170795000; offset = 19400; device = "hackrf=0"; RF = 14; IF = 8; BB = 42; } # dresden - zentralwerk
     { frequency = 153850000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # chemnitz
-    { frequency = 170795000; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; } # dresden unused
+    { frequency = 170795000; offset = 19400; device = ""; RF = 14; IF = 32; BB = 42; } # dresden unused
     { frequency = 170790000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # dresden Wundstr. 9
   ];
 
