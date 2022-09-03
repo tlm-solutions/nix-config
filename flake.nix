@@ -39,6 +39,11 @@
         {
           nixpkgs.overlays = [
             dump-dvb.overlays.default
+            (final: pref: {
+              options-docs = (pkgs.nixosOptionsDoc {
+                options = self.nixosConfigurations.data-hoarder.options;
+              }).optionsCommonMark;
+            })
           ];
         }
       ];
