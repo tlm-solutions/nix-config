@@ -63,7 +63,7 @@
         {
           "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem {
             system = arch;
-            specialArgs = { inherit inputs; };
+            specialArgs = inputs;
             modules = [
               sops-nix.nixosModules.sops
               dump-dvb.nixosModules.default
@@ -149,7 +149,7 @@
       nixosConfigurations = stop_boxes // {
         mobile-box = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = inputs;
           modules = [
             diskModule
             dump-dvb.nixosModules.default
@@ -168,7 +168,7 @@
         };
         data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = inputs;
           modules = [
             microvm.nixosModules.microvm
             ./hosts/data-hoarder/configuration.nix
@@ -177,7 +177,7 @@
         };
         staging-data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
+          specialArgs = inputs;
           modules = [
             ./hosts/staging/configuration.nix
             microvm.nixosModules.microvm

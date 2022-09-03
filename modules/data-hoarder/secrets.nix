@@ -9,11 +9,11 @@ in
   users.groups = {
     postgres-dvbdump = {
       name = "postgres-dvbdump";
-      members = [ clicky-bunty-user data-accumulator-user ];
+      members = [ clicky-bunty-user data-accumulator-user "postgres" ];
     };
     postgres-telegrams = {
       name = "postgres-telegrams";
-      members = [ clicky-bunty-user data-accumulator-user ];
+      members = [ clicky-bunty-user data-accumulator-user "postgres" ];
     };
 
   };
