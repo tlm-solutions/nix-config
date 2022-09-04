@@ -124,34 +124,12 @@
         "type": "github"
       }
     },
-    "docs": {
-      "inputs": {
-        "nixpkgs": [
-          "dump-dvb",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1662221632,
-        "narHash": "sha256-5JV2JYS2QEyB0cewIOLl7iqpcagyCP/expnExyi5E/Q=",
-        "owner": "dump-dvb",
-        "repo": "documentation",
-        "rev": "4c6a265ef894a57da94b753e7e5464c143ed2a53",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dump-dvb",
-        "repo": "documentation",
-        "type": "github"
-      }
-    },
     "dump-dvb": {
       "inputs": {
         "click": "click",
         "clicky-bunty-server": "clicky-bunty-server",
         "data-accumulator": "data-accumulator",
         "decode-server": "decode-server",
-        "docs": "docs",
         "dump-dvb-rs": "dump-dvb-rs",
         "dvb-api": "dvb-api",
         "funnel": "funnel",
@@ -167,11 +145,11 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1662237154,
-        "narHash": "sha256-eLcobXrKce9CLvCRHI+fvAlD13qSUxJLFn5A1P39AFI=",
+        "lastModified": 1662313810,
+        "narHash": "sha256-H9pnNGw/vy6tflh2WFqTyHH8xoZaioEqQ5+GVO4tIUc=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.nix",
-        "rev": "8c760cc0feec89b6d13bef93518706d253434517",
+        "rev": "1028e20b9e718aa6b5379a0f0c12df4748a02957",
         "type": "github"
       },
       "original": {
@@ -188,11 +166,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662217018,
-        "narHash": "sha256-ehuiNyp0Uc+zRaTVZG+Bo9rhn3px7uTEHh/6Qh9qY8s=",
+        "lastModified": 1662312677,
+        "narHash": "sha256-zUmc8x+eQCjYO+Hbh+4R/iDUlOvTi2uXvp9R00lzy90=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.rs",
-        "rev": "e25a510217122e924ca5b5b57b4518735d2ed580",
+        "rev": "79ec772792c45e2fa36997ae36cf0f4bc9f7a102",
         "type": "github"
       },
       "original": {
@@ -370,11 +348,11 @@
     },
     "nixpkgs-22_05": {
       "locked": {
-        "lastModified": 1661656705,
-        "narHash": "sha256-1ujNuL1Tx1dt8dC/kuYS329ZZgiXXmD96axwrqsUY7w=",
+        "lastModified": 1662221733,
+        "narHash": "sha256-dw1xjYyQ0JidXIpzeQh/gQX+ih1sJO1zBHKs5QSYp8Q=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "290dbaacc1f0b783fd8e271b585ec2c8c3b03954",
+        "rev": "013e8d86d9a3f33074c903c8ffcab0d34087b1ed",
         "type": "github"
       },
       "original": {
@@ -442,11 +420,11 @@
         "nixpkgs-22_05": "nixpkgs-22_05"
       },
       "locked": {
-        "lastModified": 1661660105,
-        "narHash": "sha256-3ITdkYwsNDh2DRqi7FZOJ92ui92NmcO6Nhj49u+JjWY=",
+        "lastModified": 1662265707,
+        "narHash": "sha256-nSCTmU6Ol02JMUzueAQGq1B/TC8JLrhrYivFzEmV0iQ=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "d92fba1bfc9f64e4ccb533701ddd8590c0d8c74a",
+        "rev": "00da5de7380e0fc01e009e7ea9eb3f391d4b6e02",
         "type": "github"
       },
       "original": {
