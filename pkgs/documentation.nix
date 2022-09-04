@@ -6,15 +6,14 @@ stdenv.mkDerivation {
     src = pkgs.fetchFromGitHub {
       owner = "dump-dvb";
       repo = "documentation";
-      rev = "2161bae8e9d423c5e963b87d585d2a11c9e2827b"; #TODO: use tag
-      sha256 = "sha256-8YnV8PVU/fnHwszhLrlppI/PXCrq6EoYcl45dlOZVvE=";
+      rev = "2c9496f5744ccde46468018e1ec976dae515d557"; #TODO: use tag
+      sha256 = "sha256-C+FLylLVTadbpeYebeb6jVTyMNah/44CwFPvm7WsVo4=";
     };
 
     nativeBuildInputs = [ mdbook mdbook-mermaid ];
 
     patchPhase =  ''
-      cp ${options-docs} src/chapter_2_3_nixos_options.md
-      ls -alh src/
+      cp ${options-docs} src/chapter_5_3_nixos_options.md
     '';
 
     buildPhase = ''
