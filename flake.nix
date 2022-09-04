@@ -41,7 +41,7 @@
             dump-dvb.overlays.default
             (final: pref: {
               options-docs = (pkgs.nixosOptionsDoc {
-                options = self.nixosConfigurations.data-hoarder.options;
+                options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
               }).optionsCommonMark;
             })
           ];
@@ -146,6 +146,11 @@
         mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
+        docs = pkgs.callPackage ./pkgs/documentation.nix {
+          options-docs = (pkgs.nixosOptionsDoc {
+                options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
+          }).optionsCommonMark;
+        };
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
     in
     {
