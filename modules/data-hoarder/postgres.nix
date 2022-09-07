@@ -25,8 +25,6 @@
     $PSQL -c "GRANT CONNECT ON DATABASE dvbdump TO grafana;"
     $PSQL -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO grafana";
 
-    $PSQL -c "GRANT readonly to grafana;"
-
     $PSQL -c "ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})';" 
     $PSQL -c "ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_grafana.path})';" 
 
