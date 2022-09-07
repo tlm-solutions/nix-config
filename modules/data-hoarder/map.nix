@@ -17,7 +17,7 @@
               index = "index.html";
             };
             "/stops/" = {
-              root = "${pkgs.stops}/json/";
+              root = "${pkgs.stops}/stop/";
             };
             "/graph/" = {
               root = "${pkgs.stops}/graph/";
