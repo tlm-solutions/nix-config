@@ -80,6 +80,6 @@ in
   programs.mosh.enable = true;
   users.motd = if config.networking.hostName == "data-hoarder" then prodMotd else regMotd;
 
-  dump-dvb.stopsJson = "${pkgs.stops}/json/stops.json";
-  dump-dvb.graphJson = "${pkgs.stops}/json/graph.json";
+  dump-dvb.stopsJson = "${pkgs.stops}/stop/all.json";
+  dump-dvb.graphJson = "${pkgs.stops}/graph/all.json";
 }
