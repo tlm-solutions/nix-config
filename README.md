@@ -1,33 +1,23 @@
-# Traffic Stop Box
+# Nix-Config
 
-Is a mobile radio antenna which is built to capture traffic stop telegrams which are sent
-by trams or buses in the dresden germany area.
+![](https://img.shields.io/endpoint?url=https%3A%2F%2Fhydra.hq.c3d2.de%2Fjob%2Fdvb-dump%2Fnix-config%2Fdata-hoarder.x86_64-linux%2Fshield)
+[![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
+**Contact:** <dump@dvb.solutions>
 
 ## Building with nix
 
-This will build a vm which can be used for integration testing.
+This flake has a lot of output you maybe be interested in:
 
-```
-    $ nix build
-```
+- `packages.x86_64-linux.traffic-stop-box`
+- `packages.x86_64-linux.staging-data-hoarder`
+- `packages.x86_64-linux.staging-data-hoarder`
+- `packages.x86_64-linux.data-hoarder`
+- `packages.x86_64-linux.mobule-box-vm`
+- `packages.x86_64-linux.mobule-box-disk`
+- `packages.x86_64-linux.staging-microvm`
+- `packages.x86_64-linux.docs`
 
-for building the `traffic-stop-box-${n}` config.
-
-
-## Todos
-
-- [x] easily create and deploy new boxes
-- [ ] systemd unit running gnu radio scripts
-- [ ] decode server
-- [ ] secrets managment
-- [ ] monitoring
-- [ ] remote deploying
-
-### Rad10 Experimental radio antenna
-
-- Joystick Left
-- Turn On
-- Joystick Down
-- Joystick Puch In
+Those are primary system configurations that we run. If you are interested in hosting a station
+take a look into the [docs](https://docs.dvb.solutions).
 
