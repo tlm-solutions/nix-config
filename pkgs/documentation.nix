@@ -6,8 +6,8 @@ stdenv.mkDerivation {
     src = pkgs.fetchFromGitHub {
       owner = "dump-dvb";
       repo = "documentation";
-      rev = "0bc9d67a2015dcce0088256d7dc938e689b1a0b5"; #TODO: use tag
-      sha256 = "sha256-7DunKbDwzozQLLiYF8RK2t+i0QdqL4bQz5FYMuVWyGg=";
+      rev = "8393cd4a965aa6b75f3e0fff6f82ba1365515290"; #TODO: use tag
+      sha256 = "sha256-HppCT0UfshDxm3UNXACilpHTdvtjFs2vqpH8vbLmHTg=";
     };
 
     nativeBuildInputs = [ mdbook mdbook-mermaid ];
