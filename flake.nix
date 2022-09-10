@@ -104,7 +104,6 @@
           arch = "aarch64-linux";
           extraModules = [
             ./hardware/rpi-3b-4b.nix
-            ./modules/user-stop-box/user.nix
           ];
         }
         {
