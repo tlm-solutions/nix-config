@@ -103,7 +103,6 @@
           id = 3;
           arch = "aarch64-linux";
           extraModules = [
-            (import "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix")
             ./hardware/rpi-3b-4b.nix
             ./modules/user-stop-box/user.nix
           ];

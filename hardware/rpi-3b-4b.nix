@@ -1,12 +1,16 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, modulesPath,  ... }:
 {
+  imports = [
+    (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
+  ];
+
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = lib.mkForce [ "vfat" "ext4" ];
   };
 
-  networking.useDHCP = false;
-  networking.interfaces.eth0.useDHCP = true;
+  networking.useDHCP = lib.mkDefault true;
+  networking.interfaces.eth0.useDHCP = lib.mkDefault true;
 
   sdImage = lib.mkForce {
     populateFirmwareCommands =
