@@ -12,11 +12,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1658183882,
-        "narHash": "sha256-pGyYUJix8ofkc5uDo2EqTUSPKwDQn03jDq14LcXWZcI=",
+        "lastModified": 1662676776,
+        "narHash": "sha256-l3cokTnNg85CKD02bNsNlMUeOG7/+DtDZ2MEv1rIOUE=",
         "owner": "dump-dvb",
         "repo": "click",
-        "rev": "5c0a8e1f0bd773b7a1ba6682172198519098c3b6",
+        "rev": "98cb7330a35d5ee9879859f7f6240b01b6f444bf",
         "type": "github"
       },
       "original": {
@@ -35,21 +35,17 @@
           "dump-dvb",
           "nixpkgs"
         ],
-        "stops": [
-          "dump-dvb",
-          "stops-no-flake"
-        ],
         "utils": [
           "dump-dvb",
           "utils"
         ]
       },
       "locked": {
-        "lastModified": 1662237118,
-        "narHash": "sha256-57dRdzNa3oMm1iQieAFuV6ZgZo8pPe5/kaVFRb/CNiY=",
+        "lastModified": 1662652396,
+        "narHash": "sha256-7Q0jj0Nj30dUlNUfhk/4bYg+hUbU+LA3mDaqMd9lq9E=",
         "owner": "dump-dvb",
         "repo": "clicky-bunty-server",
-        "rev": "329964d3e4e410265cbfdcfca741de5a6ffb4480",
+        "rev": "8c102e73b04fda6f3bc94691399d8b1cfcd5530f",
         "type": "github"
       },
       "original": {
@@ -97,21 +93,17 @@
           "dump-dvb",
           "nixpkgs"
         ],
-        "stops": [
-          "dump-dvb",
-          "stops-no-flake"
-        ],
         "utils": [
           "dump-dvb",
           "utils"
         ]
       },
       "locked": {
-        "lastModified": 1662154682,
-        "narHash": "sha256-hdWJDAdwe+bjVVUPxWzoXxitK6et9RKz6A//VqoM/Pg=",
+        "lastModified": 1662762327,
+        "narHash": "sha256-Qqr1XFfDFRAF0Ujh+s5vQtswYJlRKSBo5OENkviGrhA=",
         "owner": "dump-dvb",
         "repo": "decode-server",
-        "rev": "69457bc9cdcdd2fbd27746d89a971c3740d394cf",
+        "rev": "99d774dc3390bc2822281e0d326e2e7efe40a8da",
         "type": "github"
       },
       "original": {
@@ -135,18 +127,17 @@
         ],
         "radio-conf": "radio-conf",
         "stops": "stops",
-        "stops-no-flake": "stops-no-flake",
         "tracy": "tracy",
         "utils": "utils_2",
         "wartrammer": "wartrammer",
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1662722718,
-        "narHash": "sha256-jA45yfoFKpEvhZ3MqV8Hv6wSOGlbGEGoUkn907LexLQ=",
+        "lastModified": 1662817637,
+        "narHash": "sha256-lrruA7Cc8e7q0amOQVmOOaXnsxamAtKyJVDx5g3I3O8=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.nix",
-        "rev": "37f272bc35817b27e430e4a69908672966789492",
+        "rev": "330934995a6208b4981db60935304b95dd97fbd1",
         "type": "github"
       },
       "original": {
@@ -163,11 +154,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662579396,
-        "narHash": "sha256-cwGzNno58h0PedZ/ve7Ax0Zwa5ygNfXKEDQp3GHN4zs=",
+        "lastModified": 1662652805,
+        "narHash": "sha256-y1bDLNgodXYSoQPecmFa5okY1sjYjhshYCxmUK8oi3s=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.rs",
-        "rev": "0c54becd842f165d54dd9fcfc14641c1bf69c84d",
+        "rev": "ce5c4a2b9f5e81fbc669e73e4923cf43aa3b8ae1",
         "type": "github"
       },
       "original": {
@@ -208,11 +199,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662584694,
-        "narHash": "sha256-TmEfq85aMkH9jQb1XRxI+jO33uFeiZKvfU6CnlMTfbA=",
+        "lastModified": 1662761957,
+        "narHash": "sha256-rg4pyErMizk7gr+TyrDPABgLiAadWMJgL/U2l7vhn6s=",
         "owner": "dump-dvb",
         "repo": "dvb-api",
-        "rev": "9e0ef48aa884f572d99ac79d0131c33625bd2cc1",
+        "rev": "99c52b03c1e195a24a5ced64e1ab6f6be6c4b4ef",
         "type": "github"
       },
       "original": {
@@ -272,11 +263,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1661006543,
-        "narHash": "sha256-uRVmm3Mhl8oMcHrPd7pC3kMIyqm1T9hCRyp6b+iMUwI=",
+        "lastModified": 1662762215,
+        "narHash": "sha256-K8CpuwFoGifbR7jg9hplS7iyPbPlWf35skMCS/ltPQk=",
         "owner": "dump-dvb",
         "repo": "funnel",
-        "rev": "4d5cd1b488789633d80fb0342d253d09fa5f122c",
+        "rev": "5ec433229c7307a455970a3e2360bcf44d9007db",
         "type": "github"
       },
       "original": {
@@ -371,11 +362,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662550015,
-        "narHash": "sha256-Ffyv3nU+lWvU/QBPHvNXKIlsP432kmW7wf6L0Y19VoQ=",
+        "lastModified": 1662762828,
+        "narHash": "sha256-gOIGsnCHRx/64V1Lt3UO5JG1RjZwzDTIRSQFWRSBfnc=",
         "owner": "dump-dvb",
         "repo": "radio-conf",
-        "rev": "6b955fb966c8586e64d232ae75a507031cc941b9",
+        "rev": "a90150ac128bc1851025f7b4e6d825c1f9ede83f",
         "type": "github"
       },
       "original": {
@@ -447,27 +438,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662587207,
-        "narHash": "sha256-vUiP07kIEW63rLqBE4uqVHcsXULqr+Pt6zzDSNNi7HI=",
+        "lastModified": 1662587866,
+        "narHash": "sha256-RGmh+zMli1rSD6uKlB4pm1WVPUupJ9f7foibrO0k1jY=",
         "owner": "dump-dvb",
         "repo": "stop-names",
-        "rev": "be8460c53697edd84af93718b8cf9ebfda54ebe3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dump-dvb",
-        "repo": "stop-names",
-        "type": "github"
-      }
-    },
-    "stops-no-flake": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1662587207,
-        "narHash": "sha256-vUiP07kIEW63rLqBE4uqVHcsXULqr+Pt6zzDSNNi7HI=",
-        "owner": "dump-dvb",
-        "repo": "stop-names",
-        "rev": "be8460c53697edd84af93718b8cf9ebfda54ebe3",
+        "rev": "ae192f2705008587fce8a910583d9bf0cf39cd32",
         "type": "github"
       },
       "original": {
@@ -573,11 +548,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1662587029,
-        "narHash": "sha256-kNCAECTqjOMlsADZyCG8+K8ZsHfKT5h/vhmiQbNW2gk=",
+        "lastModified": 1662736161,
+        "narHash": "sha256-piQA7/tmx4Y6UuqpWgiOrreEvaRejdjgWSuqoeHOrBU=",
         "owner": "dump-dvb",
         "repo": "windshield",
-        "rev": "de0462e83b7e144f0ad28807bd5a2c7579b09d48",
+        "rev": "bba48f785ba92a383cb01fd7bd7ce9c0906aa8a7",
         "type": "github"
       },
       "original": {

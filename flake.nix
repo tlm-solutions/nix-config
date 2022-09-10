@@ -48,21 +48,6 @@
         }
       ];
 
-      diskModule = { config, lib, pkgs, ... }: {
-        boot.growPartition = true;
-        system.build.diskImage = import ./modules/make-disk-image.nix {
-          name = "${config.networking.hostName}-disk";
-          partitionTableType = "efi";
-          additionalSpace = "0G";
-          copyChannel = false;
-          inherit config lib pkgs;
-          postVM = ''
-            mkdir -p $out/nix-support
-            echo file binary-dist $diskImage >> $out/nix-support/hydra-build-products
-          '';
-        };
-      };
-
       # function that generates a system with the given number
       generate_system = (id: arch: extraModules:
         {
@@ -93,7 +78,7 @@
           arch = "x86_64-linux";
           extraModules = [
             ./hardware/dell-wyse-3040.nix
-            diskModule
+            dump-dvb.nixosModules.disk-module
           ];
         }
         {
@@ -102,7 +87,7 @@
           arch = "x86_64-linux";
           extraModules = [
             ./hardware/dell-wyse-3040.nix
-            diskModule
+            dump-dvb.nixosModules.disk-module
           ];
         }
         {
@@ -111,7 +96,7 @@
           arch = "x86_64-linux";
           extraModules = [
             ./hardware/dell-wyse-3040.nix
-            diskModule
+            dump-dvb.nixosModules.disk-module
           ];
         }
         {
@@ -129,7 +114,7 @@
           arch = "x86_64-linux";
           extraModules = [
             ./hardware/dell-wyse-3040.nix
-            diskModule
+            dump-dvb.nixosModules.disk-module
           ];
         }
       ];
@@ -161,7 +146,7 @@
           system = "x86_64-linux";
           specialArgs = inputs;
           modules = [
-            diskModule
+            dump-dvb.nixosModules.disk-module
             dump-dvb.nixosModules.default
             ./hosts/mobile-box/configuration.nix
             ./hosts/mobile-box/hardware-configuration.nix
