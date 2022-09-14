@@ -26,4 +26,23 @@
     after = [ "postgresql.service" ];
     wants = [ "postgresql.service" ];
   };
+
+  services = {
+    nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      virtualHosts = {
+        "dump.${config.dump-dvb.domain}" = {
+          forceSSL = true;
+          enableACME = true;
+          locations = {
+            "/" = {
+              proxyPass = with config.dump-dvb.dataAccumulator; "http://${host}:${toString port}/";
+            };
+          };
+        };
+      };
+    };
+  };
+
 }
