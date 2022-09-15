@@ -23,9 +23,6 @@ in
         "api.${config.dump-dvb.domain}" = {
           forceSSL = true;
           enableACME = true;
-          extraConfig = ''
-            add_header Access-Control-Allow-Origin: *;
-          '';
           locations = {
             "/" = {
               proxyPass = with config.dump-dvb.api; "http://127.0.0.1:${toString port}/";

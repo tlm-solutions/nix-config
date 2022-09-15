@@ -1,11 +1,6 @@
-{ ... }: {
-  security.acme.acceptTerms = true;
-  security.acme.defaults.email = "dump-dvb@protonmail.com";
-  services.nginx = {
-    recommendedTlsSettings = true;
-    recommendedOptimisation = true;
-    recommendedGzipSettings = true;
-    commonHttpConfig = ''
+{ pkgs, config, lib, ... }:
+let
+  default-headers = ''
       # Permissions Policy - gps only
       add_header Permissions-Policy "geolocation=()";
 
@@ -24,6 +19,19 @@
 
       # STS
       add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
-    '';
-  };
+  '';
+  data-hoarder-headers = if lib.hasSuffix "data-hoarder" config.networking.hostName then ''
+    add_header Access-Control-Allow-Origin: *;
+  '' else '''';
+  headers = default-headers + data-hoarder-headers;
+in
+  {
+    security.acme.acceptTerms = true;
+    security.acme.defaults.email = "dump-dvb@protonmail.com";
+    services.nginx = {
+      recommendedTlsSettings = true;
+      recommendedOptimisation = true;
+      recommendedGzipSettings = true;
+      commonHttpConfig = headers;
+    };
 }
