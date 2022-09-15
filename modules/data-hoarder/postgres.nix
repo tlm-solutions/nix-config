@@ -41,10 +41,10 @@
     script = ''
       TMPFILE=$(mktemp)
 
-      psql -d telegrams -c "COPY (SELECT id, to_char(time::timestamp at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS') time, station, region, telegram_type, delay, reporting_point, junction, direction, request_status, priority, direction_request, line, run_number, destination_number, train_length, vehicle_number, operator FROM r09_telegrams) TO '$TMPFILE' DELIMITER ',' HEADER CSV;"
+      psql -d dvbdump -c "COPY (SELECT id, to_char(time::timestamp at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS') time, station, telegram_type, delay, reporting_point, junction, direction, request_status, priority, direction_request, line, run_number, destination_number, train_length, vehicle_number, operator FROM r09_telegrams) TO '$TMPFILE' DELIMITER ',' HEADER CSV;"
 
       cp $TMPFILE /var/lib/data-accumulator/telegram-dump.csv
-      rm $TMPFILE
+      rm -f $TMPFILE
 
       chmod a+r /var/lib/data-accumulator/telegram-dump.csv
     '';
