@@ -7,7 +7,7 @@
         "files.${config.dump-dvb.domain}" = {
           enableACME = true;
           forceSSL = true;
-          root = "/var/lib/data-accumulator/";
+          root = "/var/lib/pub-files/";
           extraConfig = ''
             autoindex on;
           '';
