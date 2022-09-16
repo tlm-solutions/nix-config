@@ -8,6 +8,15 @@
         root = "${pkgs.click}/web/";
         index = "index.html";
       };
+      locations."/regions" = {
+        alias = "/";
+      };
+      locations."/stations" = {
+        alias = "/";
+      };
+      locations."/public" = {
+        alias = "/";
+      };
     };
   };
 }
