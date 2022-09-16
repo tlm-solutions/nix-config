@@ -9,7 +9,8 @@
         index = "index.html";
       };
       locations."/regions" = {
-        alias = "/";
+        root = "${pkgs.click}/web/";
+        index = "index.html";
       };
       locations."/stations" = {
         alias = "/";
