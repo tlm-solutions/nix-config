@@ -196,11 +196,23 @@
             }
           ] ++ data-hoarder-modules;
         };
+        display = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = inputs;
+          modules = [
+            dump-dvb.nixosModules.default
+            dump-dvb.nixosModules.disk-module
+            ./hosts/display
+            ./modules/base.nix
+            ./hardware/dell-wyse-3040.nix
+          ];
+        };
       };
 
       hydraJobs = (lib.mapAttrs (name: value: { ${value.config.system.build.toplevel.system} = value.config.system.build.toplevel; }) self.nixosConfigurations) // {
         traffic-stop-box-3-disk."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-3.config.system.build.sdImage;
         mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
+        display-disk."x86_64-linux" = self.nixosConfigurations.display.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
     };
