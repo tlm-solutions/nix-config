@@ -9,13 +9,13 @@
         index = "index.html";
       };
       locations."/regions" = {
-        alias = "/";
+        alias = "/${pkgs.click}/web/";
       };
       locations."/stations" = {
-        alias = "/";
+        alias = "/${pkgs.click}/web/";
       };
       locations."/public" = {
-        alias = "/";
+        alias = "/${pkgs.click}/web/";
       };
     };
   };
