@@ -7,9 +7,7 @@
       locations."/" = {
         root = "${pkgs.click}/web/";
         index = "index.html";
-        extraConfig = ''
-          try_files /index.html;
-        '';
+        tryFiles = "$uri /index.html";
       };
       locations."/regions/" = {
         alias = "/${pkgs.click}/web/";
