@@ -8,14 +8,14 @@
         root = "${pkgs.click}/web/";
         index = "index.html";
       };
-      locations."/regions" = {
-        alias = "/${pkgs.click}/web/index.html";
+      locations."/regions/" = {
+        alias = "/${pkgs.click}/web/";
       };
-      locations."/stations" = {
-        alias = "/${pkgs.click}/web/index.html";
+      locations."/stations/" = {
+        alias = "/${pkgs.click}/web/";
       };
-      locations."/public" = {
-        alias = "/${pkgs.click}/web/index.html";
+      locations."/public/" = {
+        alias = "/${pkgs.click}/web/";
       };
     };
   };
