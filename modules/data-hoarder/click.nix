@@ -8,7 +8,7 @@
         root = "${pkgs.click}/web/";
         index = "index.html";
         extraConfig = ''
-          try_files ${pkgs.click}/web/index.html;
+          try_files /index.html;
         '';
       };
       locations."/regions/" = {
