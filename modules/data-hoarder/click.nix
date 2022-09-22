@@ -15,7 +15,7 @@
       locations."/stations/" = {
         alias = "/${pkgs.click}/web/";
       };
-      locations."/public/" = {
+      locations."/mystations/" = {
         alias = "/${pkgs.click}/web/";
       };
     };
