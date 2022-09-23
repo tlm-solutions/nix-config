@@ -67,7 +67,7 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 
-  dump-dvb.domain = "staging.dvb.solutions";
+  ddvbDeployment.domain = "staging.dvb.solutions";
   networking.wg-quick.interfaces.wg-dvb = {
     address = [ "10.13.37.5/32" ];
     privateKeyFile = config.sops.secrets.wg-seckey.path;

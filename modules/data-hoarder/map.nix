@@ -4,7 +4,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "map.${config.dump-dvb.domain}" = {
+        "map.${config.ddvbDeployment.domain}" = {
           forceSSL = true;
           enableACME = true;
           extraConfig = ''
@@ -13,7 +13,7 @@
 
           locations = {
             "/" = {
-              root = if (config.dump-dvb.domain == "dvb.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
+              root = if (config.ddvbDeployment.domain == "dvb.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
               index = "index.html";
             };
             "~ \.(json)" = {

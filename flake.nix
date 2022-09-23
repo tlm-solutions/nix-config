@@ -69,7 +69,7 @@
             specialArgs = inputs;
             modules = [
               {
-                dump-dvb.systemNumber = id;
+                ddvbDeployment.systemNumber = id;
               }
             ] ++ extraModules ++ stop-box-modules;
           };

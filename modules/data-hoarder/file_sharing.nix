@@ -4,7 +4,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "files.${config.dump-dvb.domain}" = {
+        "files.${config.ddvbDeployment.domain}" = {
           enableACME = true;
           forceSSL = true;
           root = "/var/lib/pub-files/";

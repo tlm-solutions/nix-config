@@ -21,8 +21,8 @@
           allowedIPs = [ "10.13.37.3/32" ];
           persistentKeepalive = 25;
         }
-        # data hoarder staging
         {
+          # data hoarder staging
           publicKey = "48hc7DVnUh2DHYhrxrNtNzj05MRecJO52j2niPImvkU=";
           allowedIPs = [ "10.13.37.5/32" ];
           persistentKeepalive = 25;
@@ -85,5 +85,3 @@
     };
   };
 }
-
-

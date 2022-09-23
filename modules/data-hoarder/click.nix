@@ -1,7 +1,7 @@
 { pkgs, config, ... }: {
   services.nginx = {
     enable = true;
-    virtualHosts."click.${config.dump-dvb.domain}" = {
+    virtualHosts."click.${config.ddvbDeployment.domain}" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {

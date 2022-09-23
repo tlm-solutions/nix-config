@@ -32,7 +32,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "dump.${config.dump-dvb.domain}" = {
+        "dump.${config.ddvbDeployment.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {

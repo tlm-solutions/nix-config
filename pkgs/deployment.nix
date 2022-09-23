@@ -2,7 +2,7 @@
 let
 
   installScript = (system:
-    let ip = "10.13.37.${toString (system.config.dump-dvb.systemNumber + 100)}";
+    let ip = "10.13.37.${toString (system.config.ddvbDeployment.systemNumber + 100)}";
     in
     (pkgs.writeScriptBin "deploy" ''
       #!${pkgs.runtimeShell}

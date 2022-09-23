@@ -3,7 +3,7 @@
 {
   boot.tmpOnTmpfs = true;
 
-  networking.hostName = "traffic-stop-box-${toString config.dump-dvb.systemNumber}"; # Define your hostname.
+  networking.hostName = "traffic-stop-box-${toString config.ddvbDeployment.systemNumber}"; # Define your hostname.
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
