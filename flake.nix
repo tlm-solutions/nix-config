@@ -48,13 +48,7 @@
         }
       ];
 
-      # function that generates a system with the given number
-      generate_system = (id: arch: extraModules:
-        {
-          "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem {
-            system = arch;
-            specialArgs = inputs;
-            modules = [
+      stop-box-modules = [
               sops-nix.nixosModules.sops
               dump-dvb.nixosModules.default
               ./hosts/traffic-stop-box
@@ -64,9 +58,20 @@
                 nixpkgs.overlays = [
                   dump-dvb.overlays.default
                 ];
+              }
+      ];
+
+      # function that generates a system with the given number
+      generate_system = (id: arch: extraModules:
+        {
+          "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem {
+            system = arch;
+            specialArgs = inputs;
+            modules = [
+              {
                 dump-dvb.systemNumber = id;
               }
-            ] ++ extraModules;
+            ] ++ extraModules ++ stop-box-modules;
           };
         }
       );
@@ -100,6 +105,7 @@
           ];
         }
         {
+          # unused
           id = 3;
           arch = "aarch64-linux";
           extraModules = [
