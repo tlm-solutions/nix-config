@@ -65,7 +65,7 @@
         }
         {
           # traffic-stop-box-6
-          publicKey = "bsxlLLEbnt/73PSRJBKSj0M5Aj8vpbVULe1NWUvt/D0=";
+          publicKey = "NuLDNmxuHHzDXJSIOPSoihEhLWjARRtavuQvWirNR2I=";
           allowedIPs = [ "10.13.37.106/32" ];
           persistentKeepalive = 25;
         }
