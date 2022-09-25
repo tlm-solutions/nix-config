@@ -143,13 +143,7 @@
           arch = "x86_64-linux";
           extraModules = [
             ./hardware/dell-wyse-3040.nix
-          ];
-        }
-        {
-          id = 7;
-          arch = "x86_64-linux";
-          extraModules = [
-            ./hardware/dell-wyse-3040.nix
+            dump-dvb.nixosModules.disk-module
           ];
         }
       ];
@@ -168,7 +162,6 @@
         mobile-box-muenster-disk = self.nixosConfigurations.mobile-box-muenster.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
-        traffic-stop-box-6-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-6.config.system.build.sdImage;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
           options-docs = (pkgs.nixosOptionsDoc {
                 options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
@@ -195,8 +188,8 @@
         mobile-box-dresden = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = inputs;
-          modules = mobile-box-modules ++ [ 
-            ./modules/mobile-box/dresden.nix 
+          modules = mobile-box-modules ++ [
+            ./modules/mobile-box/dresden.nix
             {
               dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box_dresden.json";
             }
@@ -205,8 +198,8 @@
         mobile-box-muenster = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = inputs;
-          modules = mobile-box-modules ++ [ 
-            ./modules/mobile-box/muenster.nix 
+          modules = mobile-box-modules ++ [
+            ./modules/mobile-box/muenster.nix
             {
               dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box_muenster.json";
             }
