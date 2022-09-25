@@ -139,6 +139,13 @@
             ./hardware/dell-wyse-3040.nix
           ];
         }
+        {
+          id = 7;
+          arch = "x86_64-linux";
+          extraModules = [
+            ./hardware/dell-wyse-3040.nix
+          ];
+        }
       ];
 
       # attribute set of all traffic stop boxes
