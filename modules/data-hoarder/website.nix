@@ -9,7 +9,6 @@
           "/" = {
             extraConfig = ''
               return 307 https://docs.dvb.solutions;
-              add_header Access-Control-Allow-Origin *;
             '';
           };
         };
