@@ -64,6 +64,12 @@
           persistentKeepalive = 25;
         }
         {
+          # traffic-stop-box-6
+          publicKey = "bsxlLLEbnt/73PSRJBKSj0M5Aj8vpbVULe1NWUvt/D0=";
+          allowedIPs = [ "10.13.37.106/32" ];
+          persistentKeepalive = 25;
+        }
+        {
           # marenz
           publicKey = "XJddbPj6Zdtn4roi6UWGuR2EA81juMmlaUOuMSLi2FM=";
           allowedIPs = [ "10.13.37.4/32" ];
