@@ -15,6 +15,7 @@ keys:
   # staging boxes
   - &traffic-stop-box-3 age173wya6aezrjwtff0y77ltstmaylskr992swjr8mjxypslt478uqq6kh4up
   - &traffic-stop-box-4 age1l6l5ln6455sxm85npeydlt4w6mem45kq90z7990wv488slp2m4vs3xf3hv
+  # muenster
   - &traffic-stop-box-6 age1sgd9lvwgda2rgmhfxkve5u3ljdgjcrs79a2juq766jkvz23v34usgt039z
   # - &mobile-box
 creation_rules:
@@ -115,4 +116,4 @@ creation_rules:
         - *admin_marenz-1
         - *admin_marenz-2
         age:
-        - *traffic-stop-box-4
+        - *traffic-stop-box-6
