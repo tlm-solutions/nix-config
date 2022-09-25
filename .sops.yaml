@@ -106,3 +106,12 @@ creation_rules:
         - *admin_marenz-2
         age:
         - *traffic-stop-box-4
+  - path_regex: secrets/traffic-stop-box-6/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *traffic-stop-box-4

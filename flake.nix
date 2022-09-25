@@ -149,8 +149,10 @@
         traffic-stop-box = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
         staging-data-hoarder = self.nixosConfigurations.staging-data-hoarder.config.system.build.vm;
         data-hoarder = self.nixosConfigurations.data-hoarder.config.system.build.vm;
-        mobile-box-vm = self.nixosConfigurations.mobile-box.config.system.build.vm;
-        mobile-box-disk = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
+        mobile-box-dresden-vm = self.nixosConfigurations.mobile-box-dresden.config.system.build.vm;
+        mobile-box-dresden-disk = self.nixosConfigurations.mobile-box-dresden.config.system.build.diskImage;
+        mobile-box-muenster-vm = self.nixosConfigurations.mobile-box-muenster.config.system.build.vm;
+        mobile-box-muenster-disk = self.nixosConfigurations.mobile-box-muenster.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
@@ -159,30 +161,44 @@
           }).optionsCommonMark;
         };
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
+
+      mobile-box-modules = [
+          dump-dvb.nixosModules.disk-module
+          dump-dvb.nixosModules.default
+          ./hosts/mobile-box/configuration.nix
+          ./hosts/mobile-box/hardware-configuration.nix
+          ./hardware/dell-wyse-3040.nix
+          ./modules/base.nix
+          ./modules/user-stop-box/user.nix
+          ./modules/dump-dvb
+          sops-nix.nixosModules.sops
+        ];
     in
     {
       packages."x86_64-linux" = packages;
 
       nixosConfigurations = stop_boxes // {
-        mobile-box = nixpkgs.lib.nixosSystem {
+        mobile-box-dresden = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = inputs;
-          modules = [
-            dump-dvb.nixosModules.disk-module
-            dump-dvb.nixosModules.default
-            ./hosts/mobile-box/configuration.nix
-            ./hosts/mobile-box/hardware-configuration.nix
-            ./hardware/dell-wyse-3040.nix
-            ./modules/base.nix
-            ./modules/user-stop-box/user.nix
-            ./modules/mobile-box/dresden.nix
-            ./modules/dump-dvb
-            sops-nix.nixosModules.sops
+          modules = mobile-box-modules ++ [ 
+            ./modules/mobile-box/dresden.nix 
             {
-              dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box.json";
+              dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box_dresden.json";
             }
           ];
         };
+        mobile-box-muenster = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = inputs;
+          modules = mobile-box-modules ++ [ 
+            ./modules/mobile-box/muenster.nix 
+            {
+              dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box_muenster.json";
+            }
+          ];
+        };
+
         data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = inputs;
@@ -218,7 +234,7 @@
 
       hydraJobs = (lib.mapAttrs (name: value: { ${value.config.system.build.toplevel.system} = value.config.system.build.toplevel; }) self.nixosConfigurations) // {
         traffic-stop-box-3-disk."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-3.config.system.build.sdImage;
-        mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box.config.system.build.diskImage;
+        mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box-dresden.config.system.build.diskImage;
         display-disk."x86_64-linux" = self.nixosConfigurations.display.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
