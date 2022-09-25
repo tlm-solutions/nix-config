@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, ... }:
 let reciever_conf = { frequency = 153850000; offset = 25000; device = ""; RF = 14; IF = 32; BB = 42; }; # chemnitz
 in {
   dump-dvb = {

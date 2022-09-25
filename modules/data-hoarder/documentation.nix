@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }: 
+{ pkgs, config, ... }: 
 let
   documentation-package = pkgs.callPackage ../../pkgs/documentation.nix { };
 in {

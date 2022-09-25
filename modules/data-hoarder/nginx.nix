@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ ... }:
 let
   headers = ''
       # Permissions Policy - gps only
