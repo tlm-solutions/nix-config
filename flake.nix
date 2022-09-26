@@ -146,6 +146,14 @@
             dump-dvb.nixosModules.disk-module
           ];
         }
+        {
+          id = 7;
+          arch = "x86_64-linux";
+          extraModules = [
+            ./hardware/dell-wyse-3040.nix
+            dump-dvb.nixosModules.disk-module
+          ];
+        }
       ];
 
       # attribute set of all traffic stop boxes
