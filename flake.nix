@@ -144,6 +144,12 @@
           extraModules = [
             ./hardware/dell-wyse-3040.nix
             dump-dvb.nixosModules.disk-module
+            {
+              openssh.authorizedKeys.keyFiles = config.openssh.authorizedKeys.keyFiles ++ [
+                ./keys/ssh/felix1
+                ./keys/ssh/felix1
+              ];
+            }
           ];
         }
         {
@@ -152,6 +158,12 @@
           extraModules = [
             ./hardware/dell-wyse-3040.nix
             dump-dvb.nixosModules.disk-module
+            {
+              openssh.authorizedKeys.keyFiles = config.openssh.authorizedKeys.keyFiles ++ [
+                ./keys/ssh/felix1
+                ./keys/ssh/felix1
+              ];
+            }
           ];
         }
       ];
