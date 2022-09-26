@@ -8,6 +8,7 @@ let
     { frequency = 153850000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # chemnitz
     { frequency = 170795000; offset = 19400; device = ""; RF = 14; IF = 32; BB = 42; } # dresden unused
     { frequency = 170790000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # dresden Wundstr. 9
+    { frequency = 170790000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # dresden test box
     { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; } # warpzone münster
     { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; } # drehturm aachen
   ];

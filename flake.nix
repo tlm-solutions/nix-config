@@ -162,7 +162,7 @@
         mobile-box-muenster-disk = self.nixosConfigurations.mobile-box-muenster.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
-        traffic-stop-box-6-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-6.config.system.build.sdImage;
+        #traffic-stop-box-6-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-6.config.system.build.sdImage;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
           options-docs = (pkgs.nixosOptionsDoc {
                 options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
