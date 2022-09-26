@@ -48,13 +48,7 @@
         }
       ];
 
-      # function that generates a system with the given number
-      generate_system = (id: arch: extraModules:
-        {
-          "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem {
-            system = arch;
-            specialArgs = inputs;
-            modules = [
+      stop-box-modules = [
               sops-nix.nixosModules.sops
               dump-dvb.nixosModules.default
               ./hosts/traffic-stop-box
@@ -64,9 +58,20 @@
                 nixpkgs.overlays = [
                   dump-dvb.overlays.default
                 ];
+              }
+      ];
+
+      # function that generates a system with the given number
+      generate_system = (id: arch: extraModules:
+        {
+          "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem {
+            system = arch;
+            specialArgs = inputs;
+            modules = [
+              {
                 dump-dvb.systemNumber = id;
               }
-            ] ++ extraModules;
+            ] ++ extraModules ++ stop-box-modules;
           };
         }
       );
@@ -100,6 +105,7 @@
           ];
         }
         {
+          # unused
           id = 3;
           arch = "aarch64-linux";
           extraModules = [
@@ -137,13 +143,7 @@
           arch = "x86_64-linux";
           extraModules = [
             ./hardware/dell-wyse-3040.nix
-          ];
-        }
-        {
-          id = 7;
-          arch = "x86_64-linux";
-          extraModules = [
-            ./hardware/dell-wyse-3040.nix
+            dump-dvb.nixosModules.disk-module
           ];
         }
       ];
@@ -162,7 +162,6 @@
         mobile-box-muenster-disk = self.nixosConfigurations.mobile-box-muenster.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
-        #traffic-stop-box-6-disk."x86_64-linux" = self.nixosConfigurations.traffic-stop-box-6.config.system.build.sdImage;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
           options-docs = (pkgs.nixosOptionsDoc {
                 options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
@@ -189,8 +188,8 @@
         mobile-box-dresden = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = inputs;
-          modules = mobile-box-modules ++ [ 
-            ./modules/mobile-box/dresden.nix 
+          modules = mobile-box-modules ++ [
+            ./modules/mobile-box/dresden.nix
             {
               dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box_dresden.json";
             }
@@ -199,8 +198,8 @@
         mobile-box-muenster = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = inputs;
-          modules = mobile-box-modules ++ [ 
-            ./modules/mobile-box/muenster.nix 
+          modules = mobile-box-modules ++ [
+            ./modules/mobile-box/muenster.nix
             {
               dump-dvb.telegramDecoder.configFile = "${self}/configs/mobile_box_muenster.json";
             }

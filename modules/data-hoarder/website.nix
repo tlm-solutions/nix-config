@@ -8,7 +8,6 @@
         locations = {
           "/" = {
             extraConfig = ''
-              add_header Access-Control-Allow-Origin *;
               return 307 https://docs.dvb.solutions;
             '';
           };
