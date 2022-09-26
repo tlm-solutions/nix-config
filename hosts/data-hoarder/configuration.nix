@@ -1,7 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
+{ self, ... }:
 {
   microvm = {
     hypervisor = "cloud-hypervisor";
@@ -54,7 +51,7 @@
   networking.defaultGateway = "172.20.73.1";
   networking.nameservers = [ "172.20.73.8" "9.9.9.9" ];
 
-  sops.defaultSopsFile = ../../secrets/data-hoarder/secrets.yaml;
+  sops.defaultSopsFile = self + /secrets/data-hoarder/secrets.yaml;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 80 443 22 51820 ];

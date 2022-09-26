@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, self, ... }:
 let
   regMotd = ''
      _._     _,-'""`-._
@@ -26,6 +26,8 @@ in
     '';
     autoOptimiseStore = true;
   };
+
+  #networking.useNetworkd = true;
 
   console = {
     font = "Lat2-Terminus16";
@@ -64,12 +66,12 @@ in
 
   users.users.root = {
     openssh.authorizedKeys.keyFiles = [
-      ../keys/ssh/revol-xut
-      ../keys/ssh/oxa
-      ../keys/ssh/oxa1
-      ../keys/ssh/marenz1
-      ../keys/ssh/marenz2
-      ../keys/ssh/astro
+      "${self}/keys/ssh/revol-xut"
+      "${self}/keys/ssh/oxa"
+      "${self}/keys/ssh/oxa1"
+      "${self}/keys/ssh/marenz1"
+      "${self}/keys/ssh/marenz2"
+      "${self}/keys/ssh/astro"
     ];
   };
   services.openssh = {

@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ config, lib, self, ... }: {
 
   services = {
     # metrics collector
@@ -14,7 +14,7 @@
           port = 9502;
         };
 
-        # used for pinging services and checking their healthiness
+        # used for pinging services and checking their health
         blackbox = {
           enable = true;
           configFile = ../../services/blackbox.yaml;
@@ -69,14 +69,14 @@
     promtail = {
       enable = true;
       # doesn't have a configFile option so this has to do
-      configuration = builtins.fromJSON (lib.readFile ../../services/promtail.json);
+      configuration = builtins.fromJSON (lib.readFile "${self}/services/promtail.json");
     };
 
 
     # exports systemd logs and other
     loki = {
       enable = true;
-      configFile = ../../services/loki.yaml;
+      configFile = self + /services/loki.yaml;
     };
 
     # visualizer
@@ -85,13 +85,6 @@
       domain = "monitoring.${config.ddvbDeployment.domain}";
       port = 2342;
       addr = "127.0.0.1";
-
-      #provision = {
-      #  enable = true;
-      #dashboards = [
-      #  { options.path = "${../../services/dashboards}"; }
-      #];
-      #};
     };
 
     # reverse proxy for grafana

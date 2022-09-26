@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, self, ... }:
 
 {
   microvm = {
@@ -56,9 +56,7 @@
   networking.defaultGateway = "172.20.73.1";
   networking.nameservers = [ "172.20.73.8" "9.9.9.9" ];
 
-  sops.defaultSopsFile = ../../secrets/data-hoarder-staging/secrets.yaml;
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  sops.defaultSopsFile = self + /secrets/data-hoarder-staging/secrets.yaml;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 80 443 22 51820 ];
