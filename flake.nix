@@ -31,7 +31,7 @@
       lib = pkgs.lib;
 
       data-hoarder-modules = [
-        ./modules/base.nix
+        ./modules/base
         ./modules/data-hoarder
         ./modules/dump-dvb
         sops-nix.nixosModules.sops
@@ -52,7 +52,7 @@
         sops-nix.nixosModules.sops
         dump-dvb.nixosModules.default
         ./hosts/traffic-stop-box
-        ./modules/base.nix
+        ./modules/base
         ./modules/dump-dvb
         {
           nixpkgs.overlays = [
@@ -202,7 +202,7 @@
         ./hosts/mobile-box/configuration.nix
         ./hosts/mobile-box/hardware-configuration.nix
         ./hardware/dell-wyse-3040.nix
-        ./modules/base.nix
+        ./modules/base
         ./modules/user-stop-box/user.nix
         ./modules/dump-dvb
         sops-nix.nixosModules.sops
@@ -260,7 +260,7 @@
             dump-dvb.nixosModules.default
             dump-dvb.nixosModules.disk-module
             ./hosts/display
-            ./modules/base.nix
+            ./modules/base
             ./hardware/dell-wyse-3040.nix
           ];
         };
