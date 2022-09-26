@@ -1,7 +1,8 @@
-{ pkgs, config, ... }: 
+{ pkgs, config, ... }:
 let
   documentation-package = pkgs.callPackage ../../pkgs/documentation.nix { };
-in {
+in
+{
   services = {
     nginx = {
       enable = true;

@@ -49,16 +49,16 @@
       ];
 
       stop-box-modules = [
-              sops-nix.nixosModules.sops
-              dump-dvb.nixosModules.default
-              ./hosts/traffic-stop-box
-              ./modules/base.nix
-              ./modules/dump-dvb
-              {
-                nixpkgs.overlays = [
-                  dump-dvb.overlays.default
-                ];
-              }
+        sops-nix.nixosModules.sops
+        dump-dvb.nixosModules.default
+        ./hosts/traffic-stop-box
+        ./modules/base.nix
+        ./modules/dump-dvb
+        {
+          nixpkgs.overlays = [
+            dump-dvb.overlays.default
+          ];
+        }
       ];
 
       # function that generates a system with the given number
@@ -160,7 +160,7 @@
             dump-dvb.nixosModules.disk-module
             {
               users.users.root.openssh.authorizedKeys.keys = [
-"sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaili3ylty7fwvohtwx8511v+gbtlzzmuv505fi1pj53v6aaaabhnzado="
+                "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaili3ylty7fwvohtwx8511v+gbtlzzmuv505fi1pj53v6aaaabhnzado="
                 "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaipzbd00cbfpxzuc8eb6sljaafnf1hgs6vci1rzcncyocaaaabhnzado="
               ];
             }
@@ -184,22 +184,22 @@
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
           options-docs = (pkgs.nixosOptionsDoc {
-                options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
+            options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
           }).optionsCommonMark;
         };
       } // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; });
 
       mobile-box-modules = [
-          dump-dvb.nixosModules.disk-module
-          dump-dvb.nixosModules.default
-          ./hosts/mobile-box/configuration.nix
-          ./hosts/mobile-box/hardware-configuration.nix
-          ./hardware/dell-wyse-3040.nix
-          ./modules/base.nix
-          ./modules/user-stop-box/user.nix
-          ./modules/dump-dvb
-          sops-nix.nixosModules.sops
-        ];
+        dump-dvb.nixosModules.disk-module
+        dump-dvb.nixosModules.default
+        ./hosts/mobile-box/configuration.nix
+        ./hosts/mobile-box/hardware-configuration.nix
+        ./hardware/dell-wyse-3040.nix
+        ./modules/base.nix
+        ./modules/user-stop-box/user.nix
+        ./modules/dump-dvb
+        sops-nix.nixosModules.sops
+      ];
     in
     {
       packages."x86_64-linux" = packages;

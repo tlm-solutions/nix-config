@@ -1,4 +1,4 @@
-{ lib, pkgs, config, modulesPath,  ... }:
+{ lib, pkgs, config, modulesPath, ... }:
 {
   imports = [
     (modulesPath + "/installer/sd-card/sd-image-aarch64.nix")
