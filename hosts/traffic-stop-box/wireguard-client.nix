@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  networking.firewall.allowedUDPPorts = [ 51820 ];
-
   networking.wg-quick.interfaces.wg-dvb = {
     address = [ "10.13.37.${toString (config.ddvbDeployment.systemNumber + 100)}/32" ];
     privateKeyFile = config.sops.secrets.wg-seckey.path;

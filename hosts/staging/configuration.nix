@@ -58,13 +58,6 @@
 
   sops.defaultSopsFile = self + /secrets/data-hoarder-staging/secrets.yaml;
 
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 80 443 22 51820 ];
-  networking.firewall.trustedInterfaces = [ "wg-dvb" ];
-  networking.firewall.allowedUDPPorts = [ 22 51820 ];
-  # Or disable the firewall altogether.
-  networking.firewall.enable = true;
-
   ddvbDeployment.domain = "staging.dvb.solutions";
   networking.wg-quick.interfaces.wg-dvb = {
     address = [ "10.13.37.5/32" ];

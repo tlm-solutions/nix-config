@@ -1,13 +1,17 @@
 { config, ... }:
-
+let
+  port = 51820;
+in
 {
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
+
+  networking.firewall.allowedUDPPorts = [ port ];
 
   networking.wg-quick.interfaces = {
     wg-dvb = {
       address = [ "10.13.37.1/32" ];
       privateKeyFile = config.sops.secrets.wg-seckey.path;
-      listenPort = 51820;
+      listenPort = port;
       peers = [
         {
           # Tassilo

@@ -1,4 +1,4 @@
-{ pkgs, config, self, ... }:
+{ pkgs, config, self, lib, ... }:
 let
   regMotd = ''
      _._     _,-'""`-._
@@ -64,6 +64,8 @@ in
     hackrf
   ];
 
+  networking.firewall.enable = lib.mkDefault true;
+  networking.firewall.allowedTCPPorts = [ 22 ];
   users.users.root = {
     openssh.authorizedKeys.keyFiles = [
       "${self}/keys/ssh/revol-xut"
@@ -80,6 +82,7 @@ in
     passwordAuthentication = false;
   };
   programs.mosh.enable = true;
+
   users.motd = if config.networking.hostName == "data-hoarder" then prodMotd else regMotd;
 
   dump-dvb.stopsJson = "${pkgs.stops}/stop/all.json";
