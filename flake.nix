@@ -145,6 +145,9 @@
             ./hardware/dell-wyse-3040.nix
             dump-dvb.nixosModules.disk-module
             {
+              services.openssh.ciphers = [
+                "ed25519-sk"
+              ];
               users.users.root.openssh.authorizedKeys.keys = [
                 "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaili3ylty7fwvohtwx8511v+gbtlzzmuv505fi1pj53v6aaaabhnzado="
                 "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaipzbd00cbfpxzuc8eb6sljaafnf1hgs6vci1rzcncyocaaaabhnzado="
@@ -159,6 +162,9 @@
             ./hardware/dell-wyse-3040.nix
             dump-dvb.nixosModules.disk-module
             {
+              services.openssh.ciphers = [
+                "ed25519-sk"
+              ];
               users.users.root.openssh.authorizedKeys.keys = [
                 "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaili3ylty7fwvohtwx8511v+gbtlzzmuv505fi1pj53v6aaaabhnzado="
                 "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaipzbd00cbfpxzuc8eb6sljaafnf1hgs6vci1rzcncyocaaaabhnzado="
