@@ -19,7 +19,6 @@ keys:
   - &traffic-stop-box-6 age1sgd9lvwgda2rgmhfxkve5u3ljdgjcrs79a2juq766jkvz23v34usgt039z
   # aachen
   - &traffic-stop-box-7 age1z5n0seu0qpt3y86gmz92mnmts0x8jd0a646e9ld2x5dqvvu5kgzsu93um4
-  # - &mobile-box
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:

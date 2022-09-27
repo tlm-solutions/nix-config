@@ -146,7 +146,7 @@
             dump-dvb.nixosModules.disk-module
             {
               services.openssh.extraConfig = ''
-                PubkeyAcceptedKeyTypes sk-ecdsa-sha2-nistp256@openssh.com,sk-ssh-ed25519@openssh.com
+                PubkeyAcceptedKeyTypes sk-ecdsa-sha2-nistp256@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512
               '';
               users.users.root.openssh.authorizedKeys.keys = [
                 "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaili3ylty7fwvohtwx8511v+gbtlzzmuv505fi1pj53v6aaaabhnzado="
@@ -163,7 +163,7 @@
             dump-dvb.nixosModules.disk-module
             {
               services.openssh.extraConfig = ''
-                PubkeyAcceptedKeyTypes sk-ecdsa-sha2-nistp256@openssh.com,sk-ssh-ed25519@openssh.com
+                PubkeyAcceptedKeyTypes sk-ecdsa-sha2-nistp256@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512
               '';
               users.users.root.openssh.authorizedKeys.keys = [
                 "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaili3ylty7fwvohtwx8511v+gbtlzzmuv505fi1pj53v6aaaabhnzado="
@@ -186,6 +186,7 @@
         mobile-box-dresden-disk = self.nixosConfigurations.mobile-box-dresden.config.system.build.diskImage;
         mobile-box-muenster-vm = self.nixosConfigurations.mobile-box-muenster.config.system.build.vm;
         mobile-box-muenster-disk = self.nixosConfigurations.mobile-box-muenster.config.system.build.diskImage;
+        traffic-stop-box-7 = self.nixosConfigurations.traffic-stop-box-7.config.system.build.diskImage;
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
