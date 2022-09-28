@@ -21,7 +21,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "management-backend.${config.ddvbDeployment.domain}" = {
+        "management-backend.${config.deployment-dvb.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {

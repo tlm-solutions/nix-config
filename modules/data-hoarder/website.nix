@@ -2,7 +2,7 @@
   services.nginx = {
     enable = true;
     virtualHosts = {
-      "${config.ddvbDeployment.domain}" = {
+      "${config.deployment-dvb.domain}" = {
         enableACME = true;
         forceSSL = true;
         locations = {

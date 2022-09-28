@@ -20,7 +20,7 @@ in
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "api.${config.ddvbDeployment.domain}" = {
+        "api.${config.deployment-dvb.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {

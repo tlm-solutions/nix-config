@@ -2,7 +2,7 @@
 
 {
   networking.wg-quick.interfaces.wg-dvb = {
-    address = [ "10.13.37.${toString (config.ddvbDeployment.systemNumber + 100)}/32" ];
+    address = [ "10.13.37.${toString (config.deployment-dvb.systemNumber + 100)}/32" ];
     privateKeyFile = config.sops.secrets.wg-seckey.path;
     postUp = ''
       ${pkgs.iputils}/bin/ping -c 10 10.13.37.1 || true

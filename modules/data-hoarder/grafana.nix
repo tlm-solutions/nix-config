@@ -54,7 +54,7 @@
           params = { module = [ "http_2xx" ]; };
           static_configs = [{
             targets = [
-              "api.${config.ddvbDeployment.domain}"
+              "api.${config.deployment-dvb.domain}"
             ];
           }];
           relabel_configs = [
@@ -82,7 +82,7 @@
     # visualizer
     grafana = {
       enable = true;
-      domain = "monitoring.${config.ddvbDeployment.domain}";
+      domain = "monitoring.${config.deployment-dvb.domain}";
       port = 2342;
       addr = "127.0.0.1";
     };

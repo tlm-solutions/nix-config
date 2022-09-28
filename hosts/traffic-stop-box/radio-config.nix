@@ -1,7 +1,7 @@
 { config, lib, self, ... }:
 let
 
-  file = "${self}/configs/config_${toString config.ddvbDeployment.systemNumber}.json";
+  file = "${self}/configs/config_${toString config.deployment-dvb.systemNumber}.json";
   receiver_configs = [
     { frequency = 170795000; offset = 19550; device = "hackrf=0"; RF = 14; IF = 8; BB = 42; } # dresden - barkhausen
     { frequency = 170795000; offset = 19400; device = "hackrf=0"; RF = 14; IF = 8; BB = 42; } # dresden - zentralwerk
@@ -13,7 +13,7 @@ let
     { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; } # drehturm aachen
   ];
 
-  receiver_config = lib.elemAt receiver_configs config.ddvbDeployment.systemNumber;
+  receiver_config = lib.elemAt receiver_configs config.deployment-dvb.systemNumber;
 in
 {
   dump-dvb.gnuradio = {

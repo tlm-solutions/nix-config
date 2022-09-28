@@ -58,7 +58,6 @@
 
   sops.defaultSopsFile = self + /secrets/data-hoarder-staging/secrets.yaml;
 
-  ddvbDeployment.domain = "staging.dvb.solutions";
   networking.wg-quick.interfaces.wg-dvb = {
     address = [ "10.13.37.5/32" ];
     privateKeyFile = config.sops.secrets.wg-seckey.path;
@@ -73,6 +72,7 @@
     ];
   };
 
+  deployment-dvb.domain = "staging.dvb.solutions";
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

@@ -27,7 +27,7 @@ in
     autoOptimiseStore = true;
   };
 
-  #networking.useNetworkd = true;
+  networking.useNetworkd = true;
 
   console = {
     font = "Lat2-Terminus16";
@@ -65,6 +65,7 @@ in
   ];
 
   networking.firewall.enable = lib.mkDefault true;
+
   networking.firewall.allowedTCPPorts = [ 22 ];
   users.users.root = {
     openssh.authorizedKeys.keyFiles = [
