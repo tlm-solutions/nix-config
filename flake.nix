@@ -48,10 +48,6 @@
       ];
 
       stop-box-modules = [
-        sops-nix.nixosModules.sops
-        dump-dvb.nixosModules.default
-        ./hosts/traffic-stop-box
-        ./modules/dump-dvb
         {
           nixpkgs.overlays = [
             dump-dvb.overlays.default
@@ -60,16 +56,24 @@
       ];
 
       # function that generates a system with the given number
-      generate_system = (id: arch: extraModules:
+      generate_system = (id: arch:
         {
           "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem {
             system = arch;
             specialArgs = inputs;
             modules = [
+              # box-specific config
+              ./hosts/traffic-stop-box/${toString id}.nix
+
+              # default modules
+              sops-nix.nixosModules.sops
+              dump-dvb.nixosModules.default
+              ./modules/traffic-stop-box
+              ./modules/dump-dvb
               {
-                ddvbDeployment.systemNumber = id;
+                deployment-dvb.systemNumber = id;
               }
-            ] ++ extraModules ++ stop-box-modules;
+            ] ++ stop-box-modules;
           };
         }
       );
@@ -79,101 +83,39 @@
           # Barkhausen Bau
           id = 0;
           arch = "x86_64-linux";
-          extraModules = [
-            ./hardware/dell-wyse-3040.nix
-            dump-dvb.nixosModules.disk-module
-          ];
         }
         {
           # Zentralwerk
           id = 1;
           arch = "x86_64-linux";
-          extraModules = [
-            ./hardware/dell-wyse-3040.nix
-            dump-dvb.nixosModules.disk-module
-          ];
         }
         {
           # Chemnitz
           id = 2;
           arch = "x86_64-linux";
-          extraModules = [
-            ./hardware/dell-wyse-3040.nix
-            dump-dvb.nixosModules.disk-module
-          ];
         }
         {
           # unused
           id = 3;
           arch = "aarch64-linux";
-          extraModules = [
-            ./hardware/rpi-3b-4b.nix
-          ];
         }
         {
           # Wundstr. 9
           id = 4;
           arch = "x86_64-linux";
-          extraModules = [
-            ./hardware/dell-wyse-3040.nix
-            dump-dvb.nixosModules.disk-module
-            {
-
-              networking = nixpkgs.lib.mkForce {
-                useDHCP = false;
-                defaultGateway = "141.30.30.129";
-                nameservers = [ "141.30.1.1" ];
-                interfaces.enp1s0 = {
-                  useDHCP = false;
-                  ipv4.addresses = [
-                    {
-                      address = "141.30.30.149";
-                      prefixLength = 25;
-                    }
-                  ];
-                };
-              };
-            }
-          ];
         }
         {
           id = 6;
           arch = "x86_64-linux";
-          extraModules = [
-            ./hardware/dell-wyse-3040.nix
-            dump-dvb.nixosModules.disk-module
-            {
-              services.openssh.extraConfig = ''
-                PubkeyAcceptedKeyTypes sk-ecdsa-sha2-nistp256@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512
-              '';
-              users.users.root.openssh.authorizedKeys.keys = [
-                "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaili3ylty7fwvohtwx8511v+gbtlzzmuv505fi1pj53v6aaaabhnzado="
-                "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaipzbd00cbfpxzuc8eb6sljaafnf1hgs6vci1rzcncyocaaaabhnzado="
-              ];
-            }
-          ];
         }
         {
           id = 7;
           arch = "x86_64-linux";
-          extraModules = [
-            ./hardware/dell-wyse-3040.nix
-            dump-dvb.nixosModules.disk-module
-            {
-              services.openssh.extraConfig = ''
-                PubkeyAcceptedKeyTypes sk-ecdsa-sha2-nistp256@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,ssh-rsa,rsa-sha2-256,rsa-sha2-512
-              '';
-              users.users.root.openssh.authorizedKeys.keys = [
-                "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaili3ylty7fwvohtwx8511v+gbtlzzmuv505fi1pj53v6aaaabhnzado="
-                "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaipzbd00cbfpxzuc8eb6sljaafnf1hgs6vci1rzcncyocaaaabhnzado="
-              ];
-            }
-          ];
         }
       ];
 
       # attribute set of all traffic stop boxes
-      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y.id y.arch y.extraModules)) { } id_list;
+      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y.id y.arch)) { } id_list;
 
       packages = {
         default = self.nixosConfigurations.traffic-stop-box-0.config.system.build.vm;
@@ -237,7 +179,6 @@
           modules = [
             microvm.nixosModules.microvm
             ./hosts/data-hoarder/configuration.nix
-            ./hosts/data-hoarder/wireguard_server.nix
           ] ++ data-hoarder-modules;
         };
         staging-data-hoarder = nixpkgs.lib.nixosSystem {
@@ -256,7 +197,6 @@
           specialArgs = inputs;
           modules = [
             dump-dvb.nixosModules.default
-            dump-dvb.nixosModules.disk-module
             ./hosts/display
             ./modules/dump-dvb
             ./hardware/dell-wyse-3040.nix
@@ -265,8 +205,6 @@
       };
 
       hydraJobs = (lib.mapAttrs (name: value: { ${value.config.system.build.toplevel.system} = value.config.system.build.toplevel; }) self.nixosConfigurations) // {
-        traffic-stop-box-3-disk."aarch64-linux" = self.nixosConfigurations.traffic-stop-box-3.config.system.build.sdImage;
-        mobile-box-disk."x86_64-linux" = self.nixosConfigurations.mobile-box-dresden.config.system.build.diskImage;
         display-disk."x86_64-linux" = self.nixosConfigurations.display.config.system.build.diskImage;
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
