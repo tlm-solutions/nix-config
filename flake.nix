@@ -39,7 +39,7 @@
         {
           nixpkgs.overlays = [
             dump-dvb.overlays.default
-            (final: pref: {
+            (final: prev: {
               options-docs = (pkgs.nixosOptionsDoc {
                 options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
               }).optionsCommonMark;
@@ -155,7 +155,7 @@
         };
       };
 
-      hydraJobs = (lib.mapAttrs (name: value: { ${value.config.system.build.toplevel.system} = value.config.system.build.toplevel; }) self.nixosConfigurations) // {
+      hydraJobs = (lib.mapAttrs (_name: value: { ${value.config.system.build.toplevel.system} = value.config.system.build.toplevel; }) self.nixosConfigurations) // {
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
     };

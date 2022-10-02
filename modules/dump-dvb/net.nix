@@ -1,4 +1,4 @@
-{ lib, config, checks, utils, ... }:
+{ lib, config, utils, ... }:
 let
   cfg = config.deployment-dvb.net;
 in

@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 # pubkey of the box goes to hosts/traffic-stop-box/${id}.nix!
 {
   networking.useNetworkd = lib.mkForce true;

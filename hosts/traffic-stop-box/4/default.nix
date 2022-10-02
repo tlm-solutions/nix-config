@@ -1,4 +1,4 @@
-{ self, lib, ... }:
+{ self, ... }:
 let eth = "enp1s0"; in
 {
   imports = [
