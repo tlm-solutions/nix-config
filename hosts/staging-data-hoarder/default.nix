@@ -52,7 +52,7 @@
     iface.uplink = {
       name = "eth0";
       useDHCP = false;
-      addr4 = "172.20.73.69/25";
+      addr4 = "172.20.73.64/25";
       dns = [ "172.20.73.8" "9.9.9.9" ];
       routes = [
         {
