@@ -37,7 +37,12 @@ in
 
       config = let
         upname = "30-${cfg.iface.uplink.name}";
-        upconf = if cfg.iface.uplink.useDHCP == false then {
+        upconf = if cfg.iface.uplink.useDHCP then {
+          matchConfig = { Name = "${cfg.iface.uplink.name}"; };
+          networkConfig = {
+            DHCP = "yes";
+          };
+        } else {
           matchConfig = { Name = "${cfg.iface.uplink.name}"; };
           networkConfig = {
             DHCP = "no";
@@ -45,11 +50,6 @@ in
             DNS = cfg.iface.uplink.dns;
           };
           routes = cfg.iface.uplink.routes;
-        } else {
-          matchConfig = { Name = "${cfg.iface.uplink.name}"; };
-          networkConfig = {
-            DHCP = "yes";
-          };
         };
       in
       {
