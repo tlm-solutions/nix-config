@@ -54,5 +54,8 @@ in
       in
       {
         systemd.network.networks."${upname}" = upconf;
+
+        networking.interfaces.${cfg.iface.uplink.name}.useDHCP = if !cfg.iface.uplink.useDHCP then (lib.mkForce false) else  (lib.mkDefault true);
+        networking.useDHCP = if !cfg.iface.uplink.useDHCP then (lib.mkForce false) else  (lib.mkDefault true);
       };
     }
