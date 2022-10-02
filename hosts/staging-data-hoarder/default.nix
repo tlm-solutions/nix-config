@@ -58,6 +58,7 @@
         {
           routeConfig = {
             Gateway = "172.20.73.1";
+            GatewayOnLink = true;
             Destination = "0.0.0.0/0";
           };
         }
