@@ -1,13 +1,23 @@
-{ config, lib, ... }:
+{ config, lib, dump-dvb, ... }:
 
 {
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-
+  imports = [
+    dump-dvb.nixosModules.disk-module
+  ];
   networking = {
-    interfaces.enp1s0.useDHCP = true;
-    useDHCP = true;
+    interfaces.enp1s0.useDHCP = lib.mkDefault true;
+    useDHCP = lib.mkDefault true;
+  };
+
+  networking.useNetworkd = true;
+  networking.wireguard.enable = true;
+
+  deployment-dvb.net.iface.uplink = {
+    name = lib.mkDefault "enp1s0";
+    useDHCP = lib.mkDefault true;
   };
 
   boot.tmpOnTmpfsSize = "25%";

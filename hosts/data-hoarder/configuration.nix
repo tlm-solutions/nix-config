@@ -38,18 +38,21 @@
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
-  networking.interfaces.eth0 = {
-    useDHCP = false;
-    ipv4.addresses = [
+
+  deployment-dvb.net.iface.uplink = {
+    name = "eth0";
+    addr4 = "172.20.73.69/25";
+    dns = [ "172.20.73.8" "9.9.9.9" ];
+    routes = [
       {
-        address = "172.20.73.69";
-        prefixLength = 25;
+        routeConfig = {
+          Gateway = "172.20.73.1";
+          Destination = "0.0.0.0/0";
+        };
       }
     ];
   };
 
-  networking.defaultGateway = "172.20.73.1";
-  networking.nameservers = [ "172.20.73.8" "9.9.9.9" ];
 
   sops.defaultSopsFile = self + /secrets/data-hoarder/secrets.yaml;
 

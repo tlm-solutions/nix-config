@@ -1,19 +1,14 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
+# pubkey of the box goes to hosts/traffic-stop-box/${id}.nix!
 {
-  networking.wg-quick.interfaces.wg-dvb = {
-    address = [ "10.13.37.${toString (config.deployment-dvb.systemNumber + 100)}/32" ];
-    privateKeyFile = config.sops.secrets.wg-seckey.path;
-    postUp = ''
-      ${pkgs.iputils}/bin/ping -c 10 10.13.37.1 || true
-    '';
+  networking.useNetworkd = lib.mkForce true;
 
-    peers = [{
-      publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY=";
-      allowedIPs = [ "10.13.37.0/24" ];
-      endpoint = "81.201.149.152:51820";
-      persistentKeepalive = 25;
-    }];
-
+  sops.secrets.wg-seckey = {
+      owner = config.users.users.systemd-network.name;
+  };
+  deployment-dvb.net.wg = {
+    addr4 = lib.mkDefault "10.13.37.${toString (config.deployment-dvb.systemNumber + 100)}";
+    prefix4 = 24;
+    privateKeyFile = lib.mkDefault config.sops.secrets.wg-seckey.path;
   };
 }

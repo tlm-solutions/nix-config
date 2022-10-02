@@ -19,7 +19,9 @@ in
   };
 
   sops.secrets = {
-    wg-seckey = { };
+    wg-seckey = {
+      owner = config.users.users.systemd-network.name;
+    };
     postgres_password_hash_salt = {
       owner = clicky-bunty-user;
     };

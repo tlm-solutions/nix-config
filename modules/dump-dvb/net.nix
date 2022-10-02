@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, checks, utils, ... }:
 let
   cfg = config.deployment-dvb.net;
 in
@@ -6,16 +6,16 @@ in
     options.deployment-dvb.net = with lib; {
       iface.uplink = {
         name = mkOption {
-          type = types.str;
-          default = "";
+          type = types.nullOr types.str;
+          default = null;
         };
         useDHCP = mkOption {
           type = types.bool;
           default = true;
         };
         addr4 = mkOption {
-          type = types.str;
-          default = "";
+          type = types.nullOr types.str;
+          default = null;
           description = "address with prefix in CIDR notation";
         };
         routes =
@@ -23,7 +23,8 @@ in
           with utils.systemdUtils.lib;
           with lib;
           mkOption {
-            type = with types; listOf (submodule routeOptions);
+            #type = with types; listOf (submodule routeOptions);
+            type = types.listOf (types.attrsOf unitOption);
             default = [ ];
             description = "default gateway";
           };
@@ -34,27 +35,24 @@ in
         };
       };
 
-
       config = let
         upname = "30-${cfg.iface.uplink.name}";
         upconf = if cfg.iface.uplink.useDHCP == false then {
-          MatchConfig = { Name = "${cfg.iface.uplink.name}"; };
+          matchConfig = { Name = "${cfg.iface.uplink.name}"; };
           networkConfig = {
             DHCP = "no";
             Address = cfg.iface.uplink.addr4;
-            DNS = cfg.iface.uplink.DNS;
+            DNS = cfg.iface.uplink.dns;
           };
           routes = cfg.iface.uplink.routes;
         } else {
-          MatchConfig = { Name = "${cfg.iface.uplink.name}"; };
+          matchConfig = { Name = "${cfg.iface.uplink.name}"; };
           networkConfig = {
             DHCP = "yes";
           };
         };
-
       in
       {
-        networking.useSystemd = true;
-        systemd.networks.
+        systemd.network.networks."${upname}" = upconf;
       };
     }

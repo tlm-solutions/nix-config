@@ -64,7 +64,7 @@
             specialArgs = inputs;
             modules = [
               # box-specific config
-              ./hosts/traffic-stop-box/${toString id}.nix
+              ./hosts/traffic-stop-box/${toString id}
 
               # default modules
               sops-nix.nixosModules.sops
@@ -141,7 +141,7 @@
           specialArgs = inputs;
           modules = [
             microvm.nixosModules.microvm
-            ./hosts/data-hoarder/configuration.nix
+            ./hosts/data-hoarder
           ] ++ data-hoarder-modules;
         };
 
@@ -149,7 +149,7 @@
           system = "x86_64-linux";
           specialArgs = inputs;
           modules = [
-            ./hosts/staging/configuration.nix
+            ./hosts/staging-data-hoarder
             microvm.nixosModules.microvm
           ] ++ data-hoarder-modules;
         };

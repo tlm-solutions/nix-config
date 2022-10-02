@@ -1,7 +1,7 @@
 { config, lib, self, ... }:
 let
 
-  file = "${self}/configs/config_${toString config.deployment-dvb.systemNumber}.json";
+  file = with config.deployment-dvb; "${self}/hosts/traffic-stop-box/${toString systemNumber}/config_${toString systemNumber}.json";
   receiver_configs = [
     { frequency = 170795000; offset = 19550; device = "hackrf=0"; RF = 14; IF = 8; BB = 42; } # dresden - barkhausen
     { frequency = 170795000; offset = 19400; device = "hackrf=0"; RF = 14; IF = 8; BB = 42; } # dresden - zentralwerk

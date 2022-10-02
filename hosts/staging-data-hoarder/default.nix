@@ -40,39 +40,41 @@
       }];
   };
 
-  networking.hostName = "staging-data-hoarder"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "staging-data-hoarder";
 
-  # Set your time zone.
   time.timeZone = "Europe/Berlin";
-  networking.interfaces.eth0 = {
-    useDHCP = false;
-    ipv4.addresses = [{
-      address = "172.20.73.64";
-      prefixLength = 25;
-    }];
-  };
 
-  networking.defaultGateway = "172.20.73.1";
-  networking.nameservers = [ "172.20.73.8" "9.9.9.9" ];
+  networking.useNetworkd = true;
+
 
   sops.defaultSopsFile = self + /secrets/data-hoarder-staging/secrets.yaml;
+  deployment-dvb.net = {
+    iface.uplink = {
+      name = "eth0";
+      useDHCP = false;
+      addr4 = "172.20.73.69/25";
+      dns = [ "172.20.73.8" "9.9.9.9" ];
+      routes = [
+        {
+          routeConfig = {
+            Gateway = "172.20.73.1";
+            Destination = "0.0.0.0/0";
+          };
+        }
+      ];
+    };
 
-  networking.wg-quick.interfaces.wg-dvb = {
-    address = [ "10.13.37.5/32" ];
-    privateKeyFile = config.sops.secrets.wg-seckey.path;
-    postUp = '' ${pkgs.iputils}/bin/ping -c 10 10.13.37.1 || true '';
-    peers = [
-      {
-        publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY=";
-        allowedIPs = [ "10.13.37.0/24" ];
-        endpoint = "academicstrokes.com:51820";
-        persistentKeepalive = 25;
-      }
-    ];
+    wg = {
+      addr4 = "10.13.37.5";
+      prefix4 = 24;
+      privateKeyFile = config.sops.secrets.wg-seckey.path;
+      publicKey = "48hc7DVnUh2DHYhrxrNtNzj05MRecJO52j2niPImvkU=";
+    };
+
   };
 
   deployment-dvb.domain = "staging.dvb.solutions";
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

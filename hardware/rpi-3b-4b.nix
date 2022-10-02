@@ -12,6 +12,11 @@
   networking.useDHCP = lib.mkDefault true;
   networking.interfaces.eth0.useDHCP = lib.mkDefault true;
 
+  deployment-dvb.net.iface.uplink = {
+    name = lib.mkDefault "eth0";
+    useDHCP = lib.mkDefault true;
+  };
+
   sdImage = lib.mkForce {
     populateFirmwareCommands =
       let
