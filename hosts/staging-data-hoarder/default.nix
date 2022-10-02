@@ -50,7 +50,7 @@
   sops.defaultSopsFile = self + /secrets/data-hoarder-staging/secrets.yaml;
   deployment-dvb.net = {
     iface.uplink = {
-      name = "eth0";
+      name = "ens3";
       useDHCP = false;
       addr4 = "172.20.73.64/25";
       dns = [ "172.20.73.8" "9.9.9.9" ];
