@@ -26,12 +26,6 @@ in
           addr4 = "10.13.37.3";
         }
         {
-          # traffic-stop-box-7
-          publicKey = "sMsdY7dSjlYeIFMqjkh4pJ/ftAYXlyRuxDGbdnGLpEQ=";
-          allowedIPs = [ "10.13.37.107/32" ];
-          persistentKeepalive = 25;
-        }
-        {
           # marenz
           publicKey = "XJddbPj6Zdtn4roi6UWGuR2EA81juMmlaUOuMSLi2FM=";
           addr4 = "10.13.37.4";
