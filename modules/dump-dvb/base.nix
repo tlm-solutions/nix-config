@@ -45,6 +45,7 @@ in
     git
     htop
     tmux
+    screen
     (vim_configurable.override {
       guiSupport = false;
       luaSupport = false;
@@ -85,6 +86,16 @@ in
   programs.mosh.enable = true;
 
   users.motd = if config.networking.hostName == "data-hoarder" then prodMotd else regMotd;
+
+  programs.screen.screenrc = ''
+    defscrollback 10000
+
+    startup_message off
+
+    hardstatus on
+    hardstatus alwayslastline
+    hardstatus string "%w"
+  '';
 
   dump-dvb.stopsJson = "${pkgs.stops}/stop/all.json";
   dump-dvb.graphJson = "${pkgs.stops}/graph/all.json";
