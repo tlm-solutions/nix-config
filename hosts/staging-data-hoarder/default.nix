@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, self, ... }:
-
+let
+  mac_addr = "00:de:5b:f9:e2:3d";
+in
 {
   microvm = {
     vcpu = 4;
@@ -14,7 +16,7 @@
     interfaces = [{
       type = "tap";
       id = "serv-dvb-stag";
-      mac = "00:de:5b:f9:e2:3d";
+      mac = mac_addr;
     }];
 
     shares = [{
@@ -51,6 +53,8 @@
   deployment-dvb.net = {
     iface.uplink = {
       name = "ens3";
+      mac = mac_addr;
+      matchOn = "mac";
       useDHCP = false;
       addr4 = "172.20.73.64/25";
       dns = [ "172.20.73.8" "9.9.9.9" ];

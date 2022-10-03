@@ -9,6 +9,15 @@ in
           type = types.nullOr types.str;
           default = null;
         };
+        mac = mkOption {
+          type = types.nullOr types.str;
+          default = null;
+        };
+        matchOn = mkOption {
+          type = types.enum [ "name" "mac" ];
+          default = "name";
+        };
+
         useDHCP = mkOption {
           type = types.bool;
           default = true;
@@ -36,14 +45,15 @@ in
       };
 
       config = let
+        match = if cfg.iface.uplink.matchOn == "name" then { Name = cfg.iface.uplink.name; } else { MACAddress = cfg.iface.uplink.mac; };
         upname = "30-${cfg.iface.uplink.name}";
         upconf = if cfg.iface.uplink.useDHCP then {
-          matchConfig = { Name = "${cfg.iface.uplink.name}"; };
+          matchConfig = match;
           networkConfig = {
             DHCP = "yes";
           };
         } else {
-          matchConfig = { Name = "${cfg.iface.uplink.name}"; };
+          matchConfig = match;
           networkConfig = {
             DHCP = "no";
             Address = cfg.iface.uplink.addr4;

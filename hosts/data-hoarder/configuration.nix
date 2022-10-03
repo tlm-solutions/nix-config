@@ -1,4 +1,7 @@
 { self, ... }:
+let
+  mac_addr =  "02:db:db:db:db:db";
+in
 {
   microvm = {
     hypervisor = "cloud-hypervisor";
@@ -7,7 +10,7 @@
     interfaces = [{
       type = "tap";
       id = "serv-dvb-prod";
-      mac = "02:db:db:db:db:db";
+      mac = mac_addr;
     }];
     shares = [
       {
@@ -41,6 +44,8 @@
 
   deployment-dvb.net.iface.uplink = {
     name = "eth0";
+    mac = mac_addr;
+    matchOn = "mac";
     addr4 = "172.20.73.69/25";
     dns = [ "172.20.73.8" "9.9.9.9" ];
     routes = [
