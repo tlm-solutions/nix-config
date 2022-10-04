@@ -22,7 +22,7 @@ let
   '';
 in
 {
-  networking.firewall.allowedTCPPorts = [ 80 433 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "dump-dvb@protonmail.com";
