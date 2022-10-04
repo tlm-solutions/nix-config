@@ -107,6 +107,8 @@ in {
     lib.mkIf (!isNull cfg.addr4) {
       networking.wireguard.enable = true;
 
+      networking.firewall.trustedInterfaces = [ dvbwg-name ];
+
       systemd.network.netdevs."30-${dvbwg-name}" = {
         netdevConfig = dvbwg-netdev;
         wireguardConfig = dvbwg-wireguard;
