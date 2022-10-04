@@ -1,4 +1,4 @@
-{ pkgs, lib, stdenv, mdbook-mermaid, mdbook, documentation-src, options-docs, fetchFromGitHub }:
+{ lib, stdenv, mdbook-mermaid, mdbook, documentation-src, options-docs, fetchFromGitHub }:
 stdenv.mkDerivation {
   pname = "dvb-dump-docs";
   version = "0.1.0";
