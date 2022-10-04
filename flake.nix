@@ -16,6 +16,11 @@
       url = github:Mic92/sops-nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    documentation-src = {
+      url = github:dump-dvb/documentation;
+      flake = false;
+    };
   };
 
   outputs =
@@ -24,6 +29,7 @@
     , microvm
     , nixpkgs
     , sops-nix
+    , documentation-src
     , ...
     }:
     let
@@ -40,6 +46,7 @@
           nixpkgs.overlays = [
             dump-dvb.overlays.default
             (final: prev: {
+              inherit documentation-src;
               options-docs = (pkgs.nixosOptionsDoc {
                 options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
               }).optionsCommonMark;
@@ -122,6 +129,7 @@
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
+          inherit documentation-src;
           options-docs = (pkgs.nixosOptionsDoc {
             options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
           }).optionsCommonMark;

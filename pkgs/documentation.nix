@@ -1,14 +1,9 @@
-{ pkgs, lib, stdenv, mdbook-mermaid, mdbook, options-docs, fetchFromGitHub }:
+{ pkgs, lib, stdenv, mdbook-mermaid, mdbook, documentation-src, options-docs, fetchFromGitHub }:
 stdenv.mkDerivation {
   pname = "dvb-dump-docs";
   version = "0.1.0";
 
-  src = pkgs.fetchFromGitHub {
-    owner = "dump-dvb";
-    repo = "documentation";
-    rev = "8393cd4a965aa6b75f3e0fff6f82ba1365515290"; #TODO: use tag
-    sha256 = "sha256-HppCT0UfshDxm3UNXACilpHTdvtjFs2vqpH8vbLmHTg=";
-  };
+  src = documentation-src;
 
   nativeBuildInputs = [ mdbook mdbook-mermaid ];
 

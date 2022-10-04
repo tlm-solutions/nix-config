@@ -112,6 +112,22 @@
         "type": "github"
       }
     },
+    "documentation-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1664745127,
+        "narHash": "sha256-kq0qvmXz/gaJPtU4O43chNZulP4haXRXunjJF2gpKZk=",
+        "owner": "dump-dvb",
+        "repo": "documentation",
+        "rev": "be20b49cc2b25e2b77c3d9ac25044121d7d4dfe0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "dump-dvb",
+        "repo": "documentation",
+        "type": "github"
+      }
+    },
     "dump-dvb": {
       "inputs": {
         "click": "click",
@@ -377,6 +393,7 @@
     },
     "root": {
       "inputs": {
+        "documentation-src": "documentation-src",
         "dump-dvb": "dump-dvb",
         "microvm": "microvm",
         "nixpkgs": "nixpkgs",
