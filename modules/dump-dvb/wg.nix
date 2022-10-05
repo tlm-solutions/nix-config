@@ -92,7 +92,8 @@ in {
 
       dvbwg-wireguard = {
         PrivateKeyFile = cfg.privateKeyFile;
-      };
+      } //
+        (if !isNull cfg.ownEndpoint.host then { ListenPort = cfg.ownEndpoint.port; } else {});
 
       expeers = map (x: {
         wireguardPeerConfig = {
