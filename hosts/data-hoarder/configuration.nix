@@ -44,6 +44,7 @@ in
 
   deployment-dvb.net.iface.uplink = {
     name = "eth0";
+    useDHCP = false;
     mac = mac_addr;
     matchOn = "mac";
     addr4 = "172.20.73.69/25";
