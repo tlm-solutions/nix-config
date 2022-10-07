@@ -13,6 +13,6 @@
     ./secrets.nix
     ./socket.nix
     ./website.nix
-    ./tracy.nix
+    ./trekkie.nix
   ];
 }

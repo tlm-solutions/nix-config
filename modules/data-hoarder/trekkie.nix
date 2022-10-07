@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  dump-dvb.tracy = {
+  dump-dvb.trekkie = {
     enable = true;
     host = "0.0.0.0";
     port = 8060;
@@ -10,7 +10,7 @@
       passwordFile = config.sops.secrets.postgres_password.path;
     };
   };
-  systemd.services."tracy" = {
+  systemd.services."trekkie" = {
     after = [ "postgresql.service" ];
     wants = [ "postgresql.service" ];
   };
