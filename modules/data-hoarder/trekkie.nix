@@ -14,4 +14,24 @@
     after = [ "postgresql.service" ];
     wants = [ "postgresql.service" ];
   };
+
+  services = {
+    nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      virtualHosts = {
+        "trekkie.${config.deployment-dvb.domain}" = {
+          forceSSL = true;
+          enableACME = true;
+          locations = {
+            "/" = {
+              proxyPass = with config.dump-dvb.trekkie; "http://${host}:${toString port}/";
+            };
+          };
+        };
+      };
+    };
+  };
+
+
 }
