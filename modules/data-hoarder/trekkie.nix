@@ -3,6 +3,7 @@
   dump-dvb.trekkie = {
     enable = true;
     host = "0.0.0.0";
+    saltPath = config.sops.secrets.postgres_password_hash_salt.path;
     port = 8060;
     database = {
       host = "127.0.0.1";
