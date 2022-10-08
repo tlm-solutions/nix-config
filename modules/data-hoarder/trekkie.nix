@@ -10,6 +10,10 @@
       port = config.services.postgresql.port;
       passwordFile = config.sops.secrets.postgres_password.path;
     };
+    redis = {
+      port = 6379;
+      host = "127.0.0.1";
+    };
     logLevel = "info";
   };
   systemd.services."trekkie" = {
@@ -18,8 +22,10 @@
   };
 
   services = {
-    redis.servers."" = {
+    redis.servers."trekkie" = {
       enable = true;
+      bind = config.dump-dvb.trekkie.redis.host;
+      port = config.dump-dvb.trekkie.redis.port;
     };
 
     nginx = {
@@ -38,6 +44,4 @@
       };
     };
   };
-
-
 }
