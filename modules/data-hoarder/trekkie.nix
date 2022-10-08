@@ -10,6 +10,7 @@
       port = config.services.postgresql.port;
       passwordFile = config.sops.secrets.postgres_password.path;
     };
+    logLevel = "info";
   };
   systemd.services."trekkie" = {
     after = [ "postgresql.service" ];
