@@ -18,6 +18,10 @@
   };
 
   services = {
+    redis.servers."" = {
+      enable = true;
+    };
+
     nginx = {
       enable = true;
       recommendedProxySettings = true;
