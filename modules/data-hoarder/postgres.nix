@@ -20,18 +20,26 @@
 
   environment.systemPackages = [ dump-dvb.packages.x86_64-linux.run-database-migration ];
 
-  systemd.services.postgresql.postStart = lib.mkAfter ''
+  systemd.services.postgresql = {
+    unitConfig = {
+      TimeoutStartSec=3000;
+    };
+    serviceConfig = {
+      TimeoutSec = lib.mkForce 3000;
+    };
+    postStart = lib.mkAfter ''
     # TODO: make shure grafana can't read tokens...
-    $PSQL -c "GRANT CONNECT ON DATABASE dvbdump TO grafana;"
-    $PSQL -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO grafana";
+      $PSQL -c "GRANT CONNECT ON DATABASE dvbdump TO grafana;"
+      $PSQL -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO grafana";
 
-    $PSQL -c "ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})';"
-    $PSQL -c "ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_grafana.path})';"
+      $PSQL -c "ALTER ROLE dvbdump WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})';"
+      $PSQL -c "ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_grafana.path})';"
 
-    export DATABASE_URL=postgres:///dvbdump
-    ${dump-dvb.packages.x86_64-linux.run-database-migration}/bin/run-migration
-    unset DATABASE_URL
-  '';
+      export DATABASE_URL=postgres:///dvbdump
+      ${dump-dvb.packages.x86_64-linux.run-database-migration}/bin/run-migration
+      unset DATABASE_URL
+    '';
+  };
 
   systemd.services.dump-csv = {
     path = [ config.services.postgresql.package ];
