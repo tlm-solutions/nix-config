@@ -48,19 +48,24 @@
     };
     script = ''
       TMPFILE=$(mktemp)
+      OUT_FOLDER=/var/lib/pub-files/postgres-dumps/$(date -d"$(date) - 1 day" +"%Y-%m")
+      CSV_FILENAME=$(date -d"$(date) - 1 day" +"%Y-%m-%d").csv
 
-      psql -d dvbdump -c "COPY (SELECT id, to_char(time::timestamp at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS') time, station, telegram_type, delay, reporting_point, junction, direction, request_status, priority, direction_request, line, run_number, destination_number, train_length, vehicle_number, operator, region FROM r09_telegrams ORDER BY time) TO '$TMPFILE' DELIMITER ',' HEADER CSV;"
+      psql -d dvbdump -c "COPY (SELECT id, to_char(time::timestamp at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS') time, station, telegram_type, delay, reporting_point, junction, direction, request_status, priority, direction_request, line, run_number, destination_number, train_length, vehicle_number, operator, region FROM r09_telegrams WHERE time::date = current_date - 1 ORDER BY time) TO '$TMPFILE' DELIMITER ',' HEADER CSV;"
 
-      cp $TMPFILE /var/lib/pub-files/postgres-dumps/telegram-dump.csv
+      mkdir -p $OUT_FOLDER
+      chmod a+xr $OUT_FOLDER
+
+      cp $TMPFILE $OUT_FOLDER/$CSV_FILENAME
+      chmod a+r $OUT_FOLDER/$CSV_FILENAME
+
       rm -f $TMPFILE
-
-      chmod a+r /var/lib/pub-files/postgres-dumps/telegram-dump.csv
     '';
   };
 
   systemd.timers.dump-csv = {
     partOf = [ "dump-csv.service" ];
     wantedBy = [ "timers.target" ];
-    timerConfig.OnCalendar = "hourly";
+    timerConfig.OnCalendar = "*-*-* 03:00:00";
   };
 }
