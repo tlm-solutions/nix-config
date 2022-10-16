@@ -18,7 +18,7 @@
 
               tryFiles = "$uri /index.html =404";
             };
-            "~ /stop/*.(json)" = {
+            "~ ^/stop/.*\.json$" = {
               root = "${pkgs.stops}/";
             };
           };
