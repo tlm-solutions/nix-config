@@ -66,6 +66,6 @@
   systemd.timers.dump-csv = {
     partOf = [ "dump-csv.service" ];
     wantedBy = [ "timers.target" ];
-    timerConfig.OnCalendar = "*-*-* 03:00:00";
+    timerConfig.OnCalendar = "*-*-* 03:11:19";
   };
 }
