@@ -13,7 +13,7 @@
 
           locations = {
             "/" = {
-              root = if (config.deployment-dvb.domain == "dvb.solutions") then "${pkgs.windshield}/tarballs/" else "${pkgs.windshield-staging}/bin/";
+              root = if (config.deployment-dvb.domain == "dvb.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
               index = "index.html";
 
               tryFiles = "$uri /index.html =404";
