@@ -13,6 +13,7 @@ in
       host = "127.0.0.1";
       port = 9000 + serice_number;
     };
+    metrics.port = 9010;
   };
   services = {
     nginx = {

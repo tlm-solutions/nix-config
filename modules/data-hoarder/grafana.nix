@@ -30,6 +30,16 @@
           }];
         }
 
+        # funnel connection metrics
+        {
+          job_name = "funnel-connections";
+          static_configs = [
+            {
+              targets = [ "127.0.0.1:${toString config.dump-dvb.funnel.metrics.port}"];
+            }
+          ];
+        }
+
         # checks if the data-accumulator server is running
         {
           job_name = "blackbox-data-accumulator";
