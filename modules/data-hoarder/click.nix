@@ -5,7 +5,7 @@
       enableACME = true;
       forceSSL = true;
       locations."/" = {
-        root = "${pkgs.click}/web/";
+        root = if (config.deployment-dvb.domain == "dvb.solutions") then "${pkgs.click}/web/" else "${pkgs.click-staging}/web/";
         index = "index.html";
         tryFiles = "$uri /index.html";
       };
