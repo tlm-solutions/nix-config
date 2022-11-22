@@ -113,6 +113,7 @@
           arch = "x86_64-linux";
         }
         {
+          # Warpzone
           id = 6;
           arch = "x86_64-linux";
         }
