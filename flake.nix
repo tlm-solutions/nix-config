@@ -125,6 +125,10 @@
           id = 8;
           arch = "aarch64-linux";
         }
+        {
+          id = 9;
+          arch = "aarch64-linux";
+        }
       ];
 
       # attribute set of all traffic stop boxes

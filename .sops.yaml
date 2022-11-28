@@ -20,7 +20,9 @@ keys:
   # aachen
   - &traffic-stop-box-7 age1z5n0seu0qpt3y86gmz92mnmts0x8jd0a646e9ld2x5dqvvu5kgzsu93um4
   # C3H
-  - &traffic-stop-box-8 age1z5n0seu0qpt3y86gmz92mnmts0x8jd0a646e9ld2x5dqvvu5kgzsu93um4
+  - &traffic-stop-box-8 age1cchq3tzcl2jnvq4pc9y8yusak9a2552fnrhhll4q22agm8ncycuqesj3rg
+  # dumpdvb_bugdorf
+  - &traffic-stop-box-9 age1ger9j5fk5v7hcnnl688g9rcnt9uu7c6605ptgcl338l6xl3u9q8s5p7kys
 creation_rules:
   - path_regex: secrets/[^/]+\.yaml$
     key_groups:
@@ -138,3 +140,12 @@ creation_rules:
         - *admin_marenz-2
         age:
         - *traffic-stop-box-8
+  - path_regex: secrets/traffic-stop-box-9/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *traffic-stop-box-9
