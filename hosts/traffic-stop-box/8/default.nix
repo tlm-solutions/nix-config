@@ -1,6 +1,6 @@
 { self, ... }: {
   imports = [
-    "${self}/hardware/dell-wyse-3040.nix"
+    "${self}/hardware/rpi-3b-4b.nix"
   ];
 
   services.openssh.extraConfig = ''
