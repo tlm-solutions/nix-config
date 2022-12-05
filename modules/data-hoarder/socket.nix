@@ -14,6 +14,7 @@ in
       port = 9000 + serice_number;
     };
     metrics.port = 9010;
+    apiAddress = "127.0.0.1:${toString config.dump-dvb.api.port}";
   };
   services = {
     nginx = {
