@@ -1,4 +1,7 @@
-{ self, ... }: {
+{ self, ... }: 
+let
+  mac_addr =  "02:db:db:db:db:db";
+in {
   microvm = {
     hypervisor = "cloud-hypervisor";
     mem = 4096;
