@@ -171,6 +171,14 @@
           ] ++ data-hoarder-modules;
         };
       };
+      watch-me-senpai = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = inputs;
+        modules = [
+          ./hosts/watch-me-senpai
+          microvm.nixosModules.microvm
+        ];
+      };
 
       hydraJobs = (lib.mapAttrs (_name: value: { ${value.config.system.build.toplevel.system} = value.config.system.build.toplevel; }) self.nixosConfigurations) // {
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
