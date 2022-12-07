@@ -174,8 +174,23 @@
           system = "x86_64-linux";
           specialArgs = inputs;
           modules = [
+            ./modules/dump-dvb
             ./hosts/watch-me-senpai
+            ./modules/watch-me-senpai/secrets.nix
             microvm.nixosModules.microvm
+            sops-nix.nixosModules.sops
+            dump-dvb.nixosModules.default
+            {
+              nixpkgs.overlays = [
+                dump-dvb.overlays.default
+                (final: prev: {
+                  inherit documentation-src;
+                  options-docs = (pkgs.nixosOptionsDoc {
+                    options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
+                  }).optionsCommonMark;
+                })
+              ];
+            }
           ];
         };
       };
@@ -184,4 +199,4 @@
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
       };
     };
-  }
+}

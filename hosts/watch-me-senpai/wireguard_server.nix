@@ -1,6 +1,7 @@
 { config, ... }:
 let
   port = 51820;
+  mac_addr =  "03:db:db:db:db:db";
 in
 {
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
@@ -30,7 +31,7 @@ in
       addr4 = "10.13.37.6";
       prefix4 = 24;
       privateKeyFile = config.sops.secrets.wg-seckey.path;
-      publicKey = "zaMM8Fa/PK0Fq4pYl0KAyOYkOjHBrZ4RVgfqqFIzq3I=";
+      publicKey = "aNd+oXT3Im3cA0EqK+xL+MRjIx4l7qcXZk+Pe2vmRS8=";
     };
   };
 
