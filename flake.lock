@@ -149,11 +149,11 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1670447874,
-        "narHash": "sha256-8D06pnC0Reyn5e/Uef/aNvqSmu7myyJJ0N0Zyr1Lmto=",
+        "lastModified": 1670452537,
+        "narHash": "sha256-G5gQkhucey0iOKDyKOH0KRwKA5b8vm1AYKUdOhuALO8=",
         "owner": "dump-dvb",
         "repo": "dump-dvb.nix",
-        "rev": "18bacc5c80036863e3f4d1a1df8c67dff1bd56d5",
+        "rev": "5837235bf5b90e7e5c1464f4bfc696d4d0639571",
         "type": "github"
       },
       "original": {
@@ -599,11 +599,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1669581176,
-        "narHash": "sha256-S4Ytlr4Vt3BEV8tnuWYUJ3KnlndfyEEzKAS3r7PsynY=",
+        "lastModified": 1670441050,
+        "narHash": "sha256-1bCPe0jNd0lQZ59DAdtceEJQuEbvAW+BgxvSD5LhgAw=",
         "owner": "dump-dvb",
         "repo": "windshield",
-        "rev": "df01efadfb08e7bfbefa6f66365f02774b27701c",
+        "rev": "4185946b336f9d61fe2bbdad39c646c337dcc3bb",
         "type": "github"
       },
       "original": {
