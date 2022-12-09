@@ -91,21 +91,23 @@
 
     # visualizer
     grafana = {
+      settings.server = {
+        domain = "monitoring.${config.deployment-dvb.domain}";
+        port = 2342;
+        addr = "127.0.0.1";
+      };
       enable = true;
-      domain = "monitoring.${config.deployment-dvb.domain}";
-      port = 2342;
-      addr = "127.0.0.1";
     };
 
     # reverse proxy for grafana
     nginx = {
       enable = true;
       virtualHosts = {
-        "${toString config.services.grafana.domain}" = {
+        "${toString config.services.grafana.settings.server.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations."/" = {
-            proxyPass = "http://127.0.0.1:${toString config.services.grafana.port}";
+            proxyPass = "http://127.0.0.1:${toString config.services.grafana.settings.server.port}";
             proxyWebsockets = true;
           };
         };

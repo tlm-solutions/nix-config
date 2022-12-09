@@ -11,14 +11,14 @@
     };
     GRPC = [
       {
-        name = "FUNNEL";
-        host = config.dump-dvb.funnel.GRPC.host;
-        port = config.dump-dvb.funnel.GRPC.port;
-      }
-      {
         name = "API";
         host = config.dump-dvb.api.GRPC.host;
         port = config.dump-dvb.api.GRPC.port;
+      }
+      {
+        name = "FUNNEL";
+        host = config.dump-dvb.funnel.GRPC.host;
+        port = config.dump-dvb.funnel.GRPC.port;
       }
     ];
   };

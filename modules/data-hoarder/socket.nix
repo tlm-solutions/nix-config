@@ -13,7 +13,10 @@ in
       host = "127.0.0.1";
       port = 9000 + serice_number;
     };
-    metrics.port = 9010;
+    metrics = {
+      port = 9010;
+      host = "0.0.0.0";
+    };
     apiAddress = "127.0.0.1:${toString config.dump-dvb.api.port}";
   };
   services = {
