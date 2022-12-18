@@ -5,8 +5,8 @@ in
 {
   microvm = {
     hypervisor = "cloud-hypervisor";
-    mem = 4096;
-    vcpu = 8;
+    mem = 6144;
+    vcpu = 12;
     interfaces = [{
       type = "tap";
       id = "serv-dvb-prod";

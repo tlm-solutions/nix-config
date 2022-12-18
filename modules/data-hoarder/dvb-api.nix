@@ -13,6 +13,7 @@ in
     port = 9000 + service_number;
     graphFile = config.dump-dvb.graphJson;
     stopsFile = config.dump-dvb.stopsJson;
+    workerCount = 6;
   };
 
   services = {
