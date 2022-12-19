@@ -109,7 +109,7 @@
           locations."/" = let 
             cfg = config.services.grafana;
           in {
-            proxyPass = "http://${cfg.settings.settings.http_addr}:${toString cfg.settings.server.http_port}";
+            proxyPass = "http://${cfg.settings.server.http_addr}:${toString cfg.settings.server.http_port}";
             proxyWebsockets = true;
           };
         };
