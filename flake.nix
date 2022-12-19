@@ -183,12 +183,6 @@
             {
               nixpkgs.overlays = [
                 dump-dvb.overlays.default
-                (final: prev: {
-                  inherit documentation-src;
-                  options-docs = (pkgs.nixosOptionsDoc {
-                    options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
-                  }).optionsCommonMark;
-                })
               ];
             }
           ];

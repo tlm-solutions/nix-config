@@ -4,7 +4,7 @@ let
 in {
   microvm = {
     hypervisor = "qemu";
-    mem = 2096;
+    mem = 2048;
     vcpu = 2;
     interfaces = [{
       type = "tap";
