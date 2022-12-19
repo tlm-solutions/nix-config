@@ -3,8 +3,8 @@ let
   mac_addr =  "03:db:db:db:db:db";
 in {
   microvm = {
-    hypervisor = "cloud-hypervisor";
-    mem = 4096;
+    hypervisor = "qemu";
+    mem = 2096;
     vcpu = 2;
     interfaces = [{
       type = "tap";
@@ -43,5 +43,5 @@ in {
 
   sops.defaultSopsFile = self + /secrets/watch-me-senpai/secrets.yaml;
 
-  system.stateVersion = "22.05";
+  system.stateVersion = "22.11";
 }
