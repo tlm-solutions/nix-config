@@ -9,6 +9,7 @@ in
   networking.firewall.allowedUDPPorts = [ port ];
 
   deployment-dvb.net = {
+    /*
     iface.uplink = {
       name = "ens3";
       mac = mac_addr;
@@ -25,7 +26,8 @@ in
           };
         }
       ];
-    };
+      };
+      */
 
     wg = {
       addr4 = "10.13.37.6";
