@@ -1,6 +1,6 @@
 {
   imports = [
     ./configuration.nix
-    ./wireguard_server.nix
+    #./wireguard_server.nix
   ];
 }
