@@ -189,7 +189,7 @@
         };
       };
 
-      nixosModules."x86_64-linux".watch-me-senpai = pkgs.callPackage ./modules/watch-me-senpai {};
+      nixosModules."x86_64-linux".watch-me-senpai = import ./modules/watch-me-senpai;
 
       hydraJobs = (lib.mapAttrs (_name: value: { ${value.config.system.build.toplevel.system} = value.config.system.build.toplevel; }) self.nixosConfigurations) // {
         sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
