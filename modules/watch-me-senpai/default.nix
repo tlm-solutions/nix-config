@@ -1,6 +1,7 @@
 {pkgs, config, lib, ...}: {
   imports = [
     ../dump-dvb/base.nix
+    ./secrets.nix
   ];
 
   sops.defaultSopsFile = ../../secrets/watch-me-senpai/secrets.yaml;
