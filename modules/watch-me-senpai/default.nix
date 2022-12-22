@@ -1,6 +1,6 @@
 {pkgs, config, lib, ...}: {
   imports = [
-    ../dump-dvb/base.nix
+    ../dump-dvb/default.nix
     ./secrets.nix
   ];
 
