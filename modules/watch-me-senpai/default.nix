@@ -3,7 +3,7 @@
     ../dump-dvb/base.nix
   ];
 
-  sops.defaultSopsFile = self + /secrets/watch-me-senpai/secrets.yaml;
+  sops.defaultSopsFile = ../../secrets/watch-me-senpai/secrets.yaml;
   deployment-dvb.net = {
     wg = {
       addr4 = "10.13.37.6";
