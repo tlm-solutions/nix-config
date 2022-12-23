@@ -1,5 +1,5 @@
 { config, ... }: {
-  dump-dvb.clickyBuntyServer = {
+  dump-dvb.datacare = {
     enable = true;
     host = "127.0.0.1";
     port = 8070;
@@ -7,10 +7,10 @@
     postgresPort = config.services.postgresql.port;
     postgresPasswordFile = config.sops.secrets.postgres_password.path;
     saltFile = config.sops.secrets.postgres_password_hash_salt.path;
-    user = "clicky-bunty-server";
+    user = "datacare";
     group = config.users.groups.postgres-dvbdump.name;
   };
-  systemd.services."clicky-bunty-server" = {
+  systemd.services."datacare" = {
     after = [ "postgresql.service" ];
     wants = [ "postgresql.service" ];
   };
@@ -21,12 +21,12 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "management-backend.${config.deployment-dvb.domain}" = {
+        "datacare.${config.deployment-dvb.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.dump-dvb.clickyBuntyServer; "http://${host}:${toString port}/";
+              proxyPass = with config.dump-dvb.datacare; "http://${host}:${toString port}/";
               proxyWebsockets = true;
             };
           };

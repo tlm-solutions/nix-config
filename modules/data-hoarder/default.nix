@@ -1,7 +1,7 @@
 {
   imports = [
     ./click.nix
-    ./clicky-bunty.nix
+    ./datacare.nix
     ./data-accumulator.nix
     ./documentation.nix
     ./dvb-api.nix
