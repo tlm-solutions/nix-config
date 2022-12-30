@@ -8,7 +8,7 @@ in
 
   networking.firewall.allowedUDPPorts = [ port ];
 
-  deployment-dvb.net = {
+  deployment-TLMS.net = {
     /*
     iface.uplink = {
       name = "ens3";

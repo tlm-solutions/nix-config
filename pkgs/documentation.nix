@@ -23,6 +23,6 @@ stdenv.mkDerivation {
 
   meta = with lib; {
     description = "Documentation for DVB-Dump project";
-    homepage = "https://github.com/dump-dvb/documentation";
+    homepage = "https://github.com/TLMS/documentation";
   };
 }

@@ -1,8 +1,8 @@
 { config, ... }:
 let
-  datacare-user = config.dump-dvb.datacare.user;
-  data-accumulator-user = config.dump-dvb.dataAccumulator.user;
-  trekkie-user = config.dump-dvb.trekkie.user;
+  datacare-user = config.TLMS.datacare.user;
+  data-accumulator-user = config.TLMS.dataAccumulator.user;
+  trekkie-user = config.TLMS.trekkie.user;
 in
 {
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];

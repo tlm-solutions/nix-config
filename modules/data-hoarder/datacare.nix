@@ -1,5 +1,5 @@
 { config, ... }: {
-  dump-dvb.datacare = {
+  TLMS.datacare = {
     enable = true;
     host = "127.0.0.1";
     port = 8070;
@@ -21,12 +21,12 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "datacare.${config.deployment-dvb.domain}" = {
+        "datacare.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.dump-dvb.datacare; "http://${host}:${toString port}/";
+              proxyPass = with config.TLMS.datacare; "http://${host}:${toString port}/";
               proxyWebsockets = true;
             };
           };

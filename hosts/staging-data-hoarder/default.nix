@@ -50,7 +50,7 @@ in
 
 
   sops.defaultSopsFile = self + /secrets/data-hoarder-staging/secrets.yaml;
-  deployment-dvb.net = {
+  deployment-TLMS.net = {
     iface.uplink = {
       name = "ens3";
       mac = mac_addr;
@@ -78,7 +78,7 @@ in
 
   };
 
-  deployment-dvb.domain = "staging.dvb.solutions";
+  deployment-TLMS.domain = "staging.dvb.solutions";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

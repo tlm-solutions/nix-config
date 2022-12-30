@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  dump-dvb.trekkie = {
+  TLMS.trekkie = {
     enable = true;
     host = "0.0.0.0";
     saltPath = config.sops.secrets.postgres_password_hash_salt.path;
@@ -24,20 +24,20 @@
   services = {
     redis.servers."trekkie" = {
       enable = true;
-      bind = config.dump-dvb.trekkie.redis.host;
-      port = config.dump-dvb.trekkie.redis.port;
+      bind = config.TLMS.trekkie.redis.host;
+      port = config.TLMS.trekkie.redis.port;
     };
 
     nginx = {
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "trekkie.${config.deployment-dvb.domain}" = {
+        "trekkie.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.dump-dvb.trekkie; "http://${host}:${toString port}/";
+              proxyPass = with config.TLMS.trekkie; "http://${host}:${toString port}/";
             };
           };
         };

@@ -35,7 +35,7 @@
           job_name = "funnel-connections";
           static_configs = [
             {
-              targets = [ "127.0.0.1:${toString config.dump-dvb.funnel.metrics.port}"];
+              targets = [ "127.0.0.1:${toString config.TLMS.funnel.metrics.port}"];
             }
           ];
         }
@@ -64,7 +64,7 @@
           params = { module = [ "http_2xx" ]; };
           static_configs = [{
             targets = [
-              "api.${config.deployment-dvb.domain}"
+              "api.${config.deployment-TLMS.domain}"
             ];
           }];
           relabel_configs = [
@@ -92,7 +92,7 @@
     # visualizer
     grafana = {
       settings.server = {
-        domain = "monitoring.${config.deployment-dvb.domain}";
+        domain = "monitoring.${config.deployment-TLMS.domain}";
         http_port = 2342;
         http_addr = "127.0.0.1";
       };

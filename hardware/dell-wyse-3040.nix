@@ -1,11 +1,11 @@
-{ config, lib, dump-dvb, ... }:
+{ config, lib, TLMS, ... }:
 
 {
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   imports = [
-    dump-dvb.nixosModules.disk-module
+    TLMS.nixosModules.disk-module
   ];
   networking = {
     interfaces.enp1s0.useDHCP = lib.mkDefault true;
@@ -15,7 +15,7 @@
   networking.useNetworkd = true;
   networking.wireguard.enable = true;
 
-  deployment-dvb.net.iface.uplink = {
+  deployment-TLMS.net.iface.uplink = {
     name = lib.mkDefault "enp1s0";
     useDHCP = lib.mkDefault true;
   };

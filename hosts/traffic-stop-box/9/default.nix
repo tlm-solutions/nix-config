@@ -10,5 +10,5 @@
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJO/8PRzEqW20vnADv5xJrV5AlQ9bS8251AyQACyFMz+ dumbdvb_clarity"
   ];
 
-  deployment-dvb.net.wg.publicKey = "j2hGr2rVv7T9kJE15c2IFWjmk0dXuJPev2BXiHZUKk8=";
+  deployment-TLMS.net.wg.publicKey = "j2hGr2rVv7T9kJE15c2IFWjmk0dXuJPev2BXiHZUKk8=";
 }

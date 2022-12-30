@@ -97,6 +97,6 @@ in
     hardstatus string "%w"
   '';
 
-  dump-dvb.stopsJson = "${pkgs.stops}/stop/all.json";
-  dump-dvb.graphJson = "${pkgs.stops}/graph/all.json";
+  TLMS.stopsJson = "${pkgs.stops}/stop/all.json";
+  TLMS.graphJson = "${pkgs.stops}/graph/all.json";
 }

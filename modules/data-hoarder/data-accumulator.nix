@@ -1,6 +1,6 @@
 { config, ... }:
 {
-  dump-dvb.dataAccumulator = {
+  TLMS.dataAccumulator = {
     enable = true;
     host = "0.0.0.0";
     port = 8080;
@@ -12,13 +12,13 @@
     GRPC = [
       {
         name = "API";
-        host = config.dump-dvb.api.GRPC.host;
-        port = config.dump-dvb.api.GRPC.port;
+        host = config.TLMS.api.GRPC.host;
+        port = config.TLMS.api.GRPC.port;
       }
       {
         name = "FUNNEL";
-        host = config.dump-dvb.funnel.GRPC.host;
-        port = config.dump-dvb.funnel.GRPC.port;
+        host = config.TLMS.funnel.GRPC.host;
+        port = config.TLMS.funnel.GRPC.port;
       }
     ];
   };
@@ -32,12 +32,12 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "dump.${config.deployment-dvb.domain}" = {
+        "dump.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.dump-dvb.dataAccumulator; "http://${host}:${toString port}/";
+              proxyPass = with config.TLMS.dataAccumulator; "http://${host}:${toString port}/";
             };
           };
         };

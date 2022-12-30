@@ -3,7 +3,7 @@ let
   service_number = 1;
 in
 {
-  dump-dvb.api = {
+  TLMS.api = {
     enable = true;
     GRPC = {
       host = "127.0.0.1";
@@ -11,8 +11,8 @@ in
     };
 
     port = 9000 + service_number;
-    graphFile = config.dump-dvb.graphJson;
-    stopsFile = config.dump-dvb.stopsJson;
+    graphFile = config.TLMS.graphJson;
+    stopsFile = config.TLMS.stopsJson;
     workerCount = 6;
   };
 
@@ -21,12 +21,12 @@ in
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "api.${config.deployment-dvb.domain}" = {
+        "api.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.dump-dvb.api; "http://127.0.0.1:${toString port}/";
+              proxyPass = with config.TLMS.api; "http://127.0.0.1:${toString port}/";
               proxyWebsockets = true;
             };
           };

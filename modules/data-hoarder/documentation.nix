@@ -8,7 +8,7 @@ in
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "docs.${config.deployment-dvb.domain}" = {
+        "docs.${config.deployment-TLMS.domain}" = {
           enableACME = true;
           forceSSL = true;
           locations = {

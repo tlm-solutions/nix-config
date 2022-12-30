@@ -1,8 +1,8 @@
 { lib, config, self, ... }:
 let
-  cfg = config.deployment-dvb.net.wg;
+  cfg = config.deployment-TLMS.net.wg;
 in {
-    options.deployment-dvb.net.wg = with lib; {
+    options.deployment-TLMS.net.wg = with lib; {
 
       ownEndpoint.host = mkOption {
         type = types.nullOr types.str;
@@ -53,22 +53,22 @@ in {
       keepalive = 25;
 
       # helpers
-      peer-systems = (lib.filter (x: (x.config.deployment-dvb.net.wg.addr4 != cfg.addr4) && (!isNull x.config.deployment-dvb.net.wg.addr4))
+      peer-systems = (lib.filter (x: (x.config.deployment-TLMS.net.wg.addr4 != cfg.addr4) && (!isNull x.config.deployment-TLMS.net.wg.addr4))
       (lib.attrValues self.nixosConfigurations));
 
       endpoint =
         let
           ep = (lib.filter (x:
-          x.config.deployment-dvb.net.wg.addr4 != cfg.addr4
-          && (!isNull x.config.deployment-dvb.net.wg.ownEndpoint.host))
+          x.config.deployment-TLMS.net.wg.addr4 != cfg.addr4
+          && (!isNull x.config.deployment-TLMS.net.wg.ownEndpoint.host))
           (lib.attrValues self.nixosConfigurations));
         in
         assert lib.assertMsg (lib.length ep == 1) "there should be exactly one endpoint"; ep;
 
          peers = map (x: {
           wireguardPeerConfig = {
-            PublicKey = x.config.deployment-dvb.net.wg.publicKey;
-            AllowedIPs = [ "${x.config.deployment-dvb.net.wg.addr4}/32" ];
+            PublicKey = x.config.deployment-TLMS.net.wg.publicKey;
+            AllowedIPs = [ "${x.config.deployment-TLMS.net.wg.addr4}/32" ];
             PersistentKeepalive = keepalive;
           };
         }) peer-systems;
@@ -76,9 +76,9 @@ in {
         ep = [ {
           wireguardPeerConfig =
             let x = lib.elemAt endpoint 0; in {
-            PublicKey = x.config.deployment-dvb.net.wg.publicKey;
-            AllowedIPs = [ "${x.config.deployment-dvb.net.wg.addr4}/${toString cfg.prefix4}" ];
-            Endpoint = with x.config.deployment-dvb.net.wg.ownEndpoint; "${host}:${toString port}";
+            PublicKey = x.config.deployment-TLMS.net.wg.publicKey;
+            AllowedIPs = [ "${x.config.deployment-TLMS.net.wg.addr4}/${toString cfg.prefix4}" ];
+            Endpoint = with x.config.deployment-TLMS.net.wg.ownEndpoint; "${host}:${toString port}";
             PersistentKeepalive = keepalive;
           };
         } ];
@@ -87,7 +87,7 @@ in {
       dvbwg-netdev = {
         Kind = "wireguard";
         Name = dvbwg-name;
-        Description = "dump-dvb enterprise, highly available, biocomputing-neural-network maintained, converged network";
+        Description = "TLMS enterprise, highly available, biocomputing-neural-network maintained, converged network";
       };
 
       dvbwg-wireguard = {

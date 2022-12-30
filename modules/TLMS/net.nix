@@ -1,9 +1,9 @@
 { lib, config, utils, ... }:
 let
-  cfg = config.deployment-dvb.net;
+  cfg = config.deployment-TLMS.net;
 in
   {
-    options.deployment-dvb.net = with lib; {
+    options.deployment-TLMS.net = with lib; {
       iface.uplink = {
         name = mkOption {
           type = types.nullOr types.str;

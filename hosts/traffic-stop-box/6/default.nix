@@ -11,5 +11,5 @@
     "sk-ssh-ed25519@openssh.com aaaagnnrlxnzac1lzdi1nte5qg9wzw5zc2guy29taaaaipzbd00cbfpxzuc8eb6sljaafnf1hgs6vci1rzcncyocaaaabhnzado="
   ];
 
-  deployment-dvb.net.wg.publicKey = "NuLDNmxuHHzDXJSIOPSoihEhLWjARRtavuQvWirNR2I=";
+  deployment-TLMS.net.wg.publicKey = "NuLDNmxuHHzDXJSIOPSoihEhLWjARRtavuQvWirNR2I=";
 }

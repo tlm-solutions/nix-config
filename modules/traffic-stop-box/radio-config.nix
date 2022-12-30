@@ -1,7 +1,7 @@
 { config, lib, self, ... }:
 let
 
-  file = with config.deployment-dvb; "${self}/hosts/traffic-stop-box/${toString systemNumber}/config_${toString systemNumber}.json";
+  file = with config.deployment-TLMS; "${self}/hosts/traffic-stop-box/${toString systemNumber}/config_${toString systemNumber}.json";
   receiver_configs = [
     { frequency = 170795000; offset = 19550; device = "hackrf=0"; RF = 14; IF = 8; BB = 42; } # dresden - barkhausen
     { frequency = 170795000; offset = 19400; device = "hackrf=0"; RF = 14; IF = 8; BB = 42; } # dresden - zentralwerk
@@ -15,10 +15,10 @@ let
     { frequency = 152830000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # Hannover-greater-area
   ];
 
-  receiver_config = lib.elemAt receiver_configs config.deployment-dvb.systemNumber;
+  receiver_config = lib.elemAt receiver_configs config.deployment-TLMS.systemNumber;
 in
 {
-  dump-dvb.gnuradio = {
+  TLMS.gnuradio = {
     enable = true;
     frequency = receiver_config.frequency;
     offset = receiver_config.offset;
@@ -27,7 +27,7 @@ in
     IF = receiver_config.IF;
     BB = receiver_config.BB;
   };
-  dump-dvb.telegramDecoder = {
+  TLMS.telegramDecoder = {
     enable = true;
     server = [ "http://10.13.37.1:8080" "http://10.13.37.5:8080" ];
     configFile = file;

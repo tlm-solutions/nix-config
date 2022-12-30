@@ -4,7 +4,7 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "map.${config.deployment-dvb.domain}" = {
+        "map.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;
           extraConfig = ''
@@ -35,7 +35,7 @@
             '';
           in {
             "/" = {
-              root = if (config.deployment-dvb.domain == "dvb.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
+              root = if (config.deployment-TLMS.domain == "dvb.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
               index = "index.html";
 
               tryFiles = "$uri /index.html =404";

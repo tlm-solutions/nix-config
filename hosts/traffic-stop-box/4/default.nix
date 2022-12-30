@@ -8,7 +8,7 @@ let eth = "enp1s0"; in
   networking.useDHCP = false;
   networking.interfaces."${eth}".useDHCP = false;
 
-  deployment-dvb.net.iface.uplink = {
+  deployment-TLMS.net.iface.uplink = {
     name = eth;
     useDHCP = false;
     addr4 = "141.30.30.149/25";
@@ -23,6 +23,6 @@ let eth = "enp1s0"; in
     ];
   };
 
-  deployment-dvb.net.wg.publicKey = "B0wPH0jUxaatRncHMkgDEQ+DzvlbTBrVJY4etxqQgG8=";
+  deployment-TLMS.net.wg.publicKey = "B0wPH0jUxaatRncHMkgDEQ+DzvlbTBrVJY4etxqQgG8=";
 
 }

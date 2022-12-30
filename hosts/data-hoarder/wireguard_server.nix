@@ -7,7 +7,7 @@ in
 
   networking.firewall.allowedUDPPorts = [ port ];
 
-    deployment-dvb.net.wg = {
+    deployment-TLMS.net.wg = {
       ownEndpoint.host = "endpoint.dvb.solutions";
       ownEndpoint.port = port;
       addr4 = "10.13.37.1";

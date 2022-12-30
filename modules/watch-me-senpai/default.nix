@@ -3,12 +3,12 @@ let
   mac_addr = "00:de:5b:f9:e2:3d";
 in {
   imports = [
-    ../dump-dvb/default.nix
+    ../TLMS/default.nix
     ./secrets.nix
   ];
 
   sops.defaultSopsFile = ../../secrets/watch-me-senpai/secrets.yaml;
-  deployment-dvb.net = {
+  deployment-TLMS.net = {
     iface.uplink = {
       name = "eth0";
       mac = mac_addr;
@@ -35,5 +35,5 @@ in {
 
   };
 
-  deployment-dvb.domain = "dvb.solutions";
+  deployment-TLMS.domain = "dvb.solutions";
 }

@@ -42,7 +42,7 @@ in
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  deployment-dvb.net.iface.uplink = {
+  deployment-TLMS.net.iface.uplink = {
     name = "eth0";
     useDHCP = false;
     mac = mac_addr;

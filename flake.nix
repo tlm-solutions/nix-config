@@ -1,7 +1,7 @@
 {
   inputs = {
-    dump-dvb = {
-      url = github:dump-dvb/dump-dvb.nix;
+    TLMS = {
+      url = github:tlm-solutions/TLMS.nix;
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -18,14 +18,14 @@
     };
 
     documentation-src = {
-      url = github:dump-dvb/documentation;
+      url = github:tlm-solutions/documentation;
       flake = false;
     };
   };
 
   outputs =
     inputs@{ self
-    , dump-dvb
+    , TLMS
     , microvm
     , nixpkgs
     , sops-nix
@@ -39,16 +39,16 @@
 
       data-hoarder-modules = [
         ./modules/data-hoarder
-        ./modules/dump-dvb
+        ./modules/TLMS
         sops-nix.nixosModules.sops
-        dump-dvb.nixosModules.default
+        TLMS.nixosModules.default
         {
           nixpkgs.overlays = [
-            dump-dvb.overlays.default
+            TLMS.overlays.default
             (final: prev: {
               inherit documentation-src;
               options-docs = (pkgs.nixosOptionsDoc {
-                options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
+                options = self.nixosConfigurations.data-hoarder.options.TLMS;
               }).optionsCommonMark;
             })
           ];
@@ -58,7 +58,7 @@
       stop-box-modules = [
         {
           nixpkgs.overlays = [
-            dump-dvb.overlays.default
+            TLMS.overlays.default
           ];
         }
       ];
@@ -75,11 +75,11 @@
 
               # default modules
               sops-nix.nixosModules.sops
-              dump-dvb.nixosModules.default
+              TLMS.nixosModules.default
               ./modules/traffic-stop-box
-              ./modules/dump-dvb
+              ./modules/TLMS
               {
-                deployment-dvb.systemNumber = id;
+                deployment-TLMS.systemNumber = id;
               }
             ] ++ stop-box-modules;
           };
@@ -140,7 +140,7 @@
         docs = pkgs.callPackage ./pkgs/documentation.nix {
           inherit documentation-src;
           options-docs = (pkgs.nixosOptionsDoc {
-            options = self.nixosConfigurations.data-hoarder.options.dump-dvb;
+            options = self.nixosConfigurations.data-hoarder.options.TLMS;
           }).optionsCommonMark;
         };
       }
@@ -174,15 +174,15 @@
           system = "x86_64-linux";
           specialArgs = inputs;
           modules = [
-            ./modules/dump-dvb
+            ./modules/TLMS
             ./hosts/watch-me-senpai
             ./modules/watch-me-senpai/secrets.nix
             microvm.nixosModules.microvm
             sops-nix.nixosModules.sops
-            dump-dvb.nixosModules.default
+            TLMS.nixosModules.default
             {
               nixpkgs.overlays = [
-                dump-dvb.overlays.default
+                TLMS.overlays.default
               ];
             }
           ];
