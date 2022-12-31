@@ -170,23 +170,6 @@
             microvm.nixosModules.microvm
           ] ++ data-hoarder-modules;
         };
-        watch-me-senpai = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = inputs;
-          modules = [
-            ./modules/TLMS
-            ./hosts/watch-me-senpai
-            ./modules/watch-me-senpai/secrets.nix
-            microvm.nixosModules.microvm
-            sops-nix.nixosModules.sops
-            TLMS.nixosModules.default
-            {
-              nixpkgs.overlays = [
-                TLMS.overlays.default
-              ];
-            }
-          ];
-        };
       };
 
       nixosModules."x86_64-linux".watch-me-senpai = import ./modules/watch-me-senpai;

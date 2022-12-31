@@ -21,11 +21,11 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1672420816,
-        "narHash": "sha256-BEO2nrq/Zi0ZxevFt4CVrCj5R1LfkoC+aPM80lehKEY=",
+        "lastModified": 1672499904,
+        "narHash": "sha256-0Uv11aoksbu34WFfbruF03EIFk+53xX0J4KIs78E1GU=",
         "owner": "tlm-solutions",
         "repo": "TLMS.nix",
-        "rev": "a24c94b0d77a32394e16300527f19dacecd9a606",
+        "rev": "13e0234e5cb67e4795ecea4529e9546ae90d1520",
         "type": "github"
       },
       "original": {
