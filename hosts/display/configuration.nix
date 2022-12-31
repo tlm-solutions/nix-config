@@ -12,7 +12,7 @@
   documentation.nixos.enable = false;
 
   nix = {
-    buildCores = 1;
+    settings.build-cores = 1;
     gc = {
       automatic = true;
       dates = "daily";
