@@ -28,7 +28,7 @@
       TimeoutSec = lib.mkForce 3000;
     };
     postStart = lib.mkAfter ''
-    # TODO: make shure grafana can't read tokens...
+      # TODO: make shure grafana can't read tokens...
       $PSQL -c "GRANT CONNECT ON DATABASE dvbdump TO grafana;"
       $PSQL -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO grafana";
 

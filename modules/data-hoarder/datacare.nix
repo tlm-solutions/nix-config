@@ -3,9 +3,13 @@
     enable = true;
     host = "127.0.0.1";
     port = 8070;
-    postgresHost = "127.0.0.1";
-    postgresPort = config.services.postgresql.port;
-    postgresPasswordFile = config.sops.secrets.postgres_password.path;
+    database = {
+      host = "127.0.0.1";
+      port = config.services.postgresql.port;
+      user = "dvbdump";
+      database = "dvbdump";
+      passwordFile = config.sops.secrets.postgres_password.path;
+    };
     saltFile = config.sops.secrets.postgres_password_hash_salt.path;
     user = "datacare";
     group = config.users.groups.postgres-dvbdump.name;
