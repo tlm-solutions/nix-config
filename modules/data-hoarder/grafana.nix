@@ -51,6 +51,17 @@
           ];
         }
 
+        # metrics from state-api
+        {
+          job_name = "state-api";
+          metrics_path = "/metrics";
+          static_configs = [
+            {
+              targets = [ "127.0.0.1:${toString config.TLMS.api.port}"];
+            }
+          ];
+        }
+
         # checks if the data-accumulator server is running
         {
           job_name = "blackbox-data-accumulator";
