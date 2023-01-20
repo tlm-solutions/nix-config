@@ -24,7 +24,7 @@
       scrapeConfigs = [
         # hardware information
         {
-          job_name = "data-hoarder hardware";
+          job_name = "data-hoarder-hardware";
           static_configs = [{
             targets = [ "127.0.0.1:${toString config.services.prometheus.exporters.node.port}" ];
           }];
@@ -36,6 +36,17 @@
           static_configs = [
             {
               targets = [ "127.0.0.1:${toString config.TLMS.funnel.metrics.port}"];
+            }
+          ];
+        }
+
+        # metrics from data-accumulator
+        {
+          job_name = "data-accumulator";
+          metrics_path = "/metrics";
+          static_configs = [
+            {
+              targets = [ "127.0.0.1:${toString config.TLMS.data-accumulator.port}"];
             }
           ];
         }
