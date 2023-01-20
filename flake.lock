@@ -21,11 +21,11 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1674235501,
-        "narHash": "sha256-/ZFGfXjwP3zJ2i9/yp5rWny45iqeU2XE/Oq3ayL6/rk=",
+        "lastModified": 1674253831,
+        "narHash": "sha256-mLWydtJVOwBFmal8EsaMNmM5UcUb8xyD82ioHY1QzgM=",
         "owner": "tlm-solutions",
         "repo": "TLMS.nix",
-        "rev": "8042241c605b7856cf87c2bdd9bd6c76e1f77e7d",
+        "rev": "40a7f8a72c5c680877dc9bc2b1b2e4fac7542f19",
         "type": "github"
       },
       "original": {
@@ -149,11 +149,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1670368765,
-        "narHash": "sha256-ZUH8slE8/h2M+sEcJaMbno6qFHcv6afjdhf+8RfN370=",
+        "lastModified": 1674253720,
+        "narHash": "sha256-RfXj+E52Abw6RZTZS1Qc+uwMaO1YTy+uGv5OzF78PLI=",
         "owner": "tlm-solutions",
         "repo": "dvb-api",
-        "rev": "ce9925d5675c3ae372324694f73872df97c30a00",
+        "rev": "1c8a9fd89a1a5e9c9a0584498976184b45185f4e",
         "type": "github"
       },
       "original": {
@@ -472,11 +472,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1674234480,
-        "narHash": "sha256-NtiUF4eFG4IXccXM2BpFaYBCf6josUboY1o7CTtJJfo=",
+        "lastModified": 1674248404,
+        "narHash": "sha256-oIWX3KTjYU6btb9VAZl64l/OG7TrMG71pEuBPgPbsIc=",
         "owner": "tlm-solutions",
         "repo": "tlms.rs",
-        "rev": "009ea490a6b833c1fe0b6b6d63b8455511f945c3",
+        "rev": "394d5a1bdccf2c561aa3245dc14ba6af10fd3282",
         "type": "github"
       },
       "original": {
