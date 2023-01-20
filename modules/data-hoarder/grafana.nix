@@ -46,7 +46,7 @@
           metrics_path = "/metrics";
           static_configs = [
             {
-              targets = [ "127.0.0.1:${toString config.TLMS.data-accumulator.port}"];
+              targets = [ "127.0.0.1:${toString config.TLMS.dataAccumulator.port}"];
             }
           ];
         }
