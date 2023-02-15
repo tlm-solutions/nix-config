@@ -21,6 +21,11 @@
       url = github:tlm-solutions/documentation;
       flake = false;
     };
+
+    trekkie = {
+      url = "github:tlm-solutions/trekkie";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -30,6 +35,7 @@
     , nixpkgs
     , sops-nix
     , documentation-src
+    , trekkie
     , ...
     }:
     let
@@ -42,9 +48,11 @@
         ./modules/TLMS
         sops-nix.nixosModules.sops
         TLMS.nixosModules.default
+        trekkie.nixosModules.default
         {
           nixpkgs.overlays = [
             TLMS.overlays.default
+            trekkie.overlays.default
             (final: prev: {
               inherit documentation-src;
               options-docs = (pkgs.nixosOptionsDoc {
