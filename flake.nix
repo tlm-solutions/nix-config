@@ -1,24 +1,24 @@
 {
   inputs = {
     TLMS = {
-      url = github:tlm-solutions/TLMS.nix;
+      url = "github:tlm-solutions/TLMS.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     microvm = {
-      url = github:astro/microvm.nix;
+      url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs.url = github:NixOS/nixpkgs/nixos-22.11;
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     sops-nix = {
-      url = github:Mic92/sops-nix;
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     documentation-src = {
-      url = github:tlm-solutions/documentation;
+      url = "github:tlm-solutions/documentation";
       flake = false;
     };
 
@@ -26,10 +26,16 @@
       url = "github:tlm-solutions/trekkie";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    datacare = {
+      url = "github:tlm-solutions/datacare";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs@{ self
+    , datacare
     , TLMS
     , microvm
     , nixpkgs
@@ -47,11 +53,13 @@
         ./modules/data-hoarder
         ./modules/TLMS
         sops-nix.nixosModules.sops
+        datacare.nixosModules.default
         TLMS.nixosModules.default
         trekkie.nixosModules.default
         {
           nixpkgs.overlays = [
             TLMS.overlays.default
+            datacare.overlays.default
             trekkie.overlays.default
             (final: prev: {
               inherit documentation-src;

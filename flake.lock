@@ -4,7 +4,6 @@
       "inputs": {
         "click": "click",
         "data-accumulator": "data-accumulator",
-        "datacare": "datacare",
         "dvb-api": "dvb-api",
         "funnel": "funnel",
         "gnuradio-decoder": "gnuradio-decoder",
@@ -20,11 +19,11 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1676454687,
-        "narHash": "sha256-/d7WPMdUyz1QLCFzY/Bwvx4Ck9ge9YC2heVEiA3Bp40=",
+        "lastModified": 1676841932,
+        "narHash": "sha256-WuK50IC5gJ6WHN732fgJKZn6T4XzFFijTD8KoLpezEw=",
         "owner": "tlm-solutions",
         "repo": "TLMS.nix",
-        "rev": "1360ec3c523fd4b08362c30cf1e1cccb98105dd0",
+        "rev": "697ea145dd0d92f645e324fa8a137d68a15d27a6",
         "type": "github"
       },
       "original": {
@@ -89,25 +88,18 @@
     },
     "datacare": {
       "inputs": {
-        "naersk": [
-          "TLMS",
-          "naersk"
-        ],
+        "naersk": "naersk_2",
         "nixpkgs": [
-          "TLMS",
           "nixpkgs"
         ],
-        "utils": [
-          "TLMS",
-          "utils"
-        ]
+        "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1674308692,
-        "narHash": "sha256-z8CMp1T7pMgddbcQ8dt+xbweXxBwYWVHRF5W1Xus3xk=",
+        "lastModified": 1676841993,
+        "narHash": "sha256-RuQLTQtiSkszWWZ0eCsA2fJT1mGuF5Wu9Uh0EdemKew=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "6a35814d6a9b3ac740a923d2377cbaa509c9d143",
+        "rev": "a4d80df16f76047427f72457127af98b93d2eac5",
         "type": "github"
       },
       "original": {
@@ -312,6 +304,27 @@
     "naersk_2": {
       "inputs": {
         "nixpkgs": [
+          "datacare",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1671096816,
+        "narHash": "sha256-ezQCsNgmpUHdZANDCILm3RvtO1xH8uujk/+EqNvzIOg=",
+        "owner": "nix-community",
+        "repo": "naersk",
+        "rev": "d998160d6a076cfe8f9741e56aeec7e267e3e114",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "naersk_3": {
+      "inputs": {
+        "nixpkgs": [
           "trekkie",
           "nixpkgs"
         ]
@@ -332,11 +345,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1676375384,
-        "narHash": "sha256-6HI3jZiuJX+KLz05cocYy2mBAWlISEKHU84ftYfxHZ8=",
+        "lastModified": 1676718858,
+        "narHash": "sha256-giQecvcifVLNHCC9lMfTGP09tNxXhOMw+d/aql7MhRw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c43f676c938662072772339be6269226c77b51b8",
+        "rev": "e6d5772f3515b8518d50122471381feae7cbae36",
         "type": "github"
       },
       "original": {
@@ -348,11 +361,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1676162277,
-        "narHash": "sha256-GK3cnvKNo1l0skGYXXiLJ/TLqdKyIYXd7jOlo0gN+Qw=",
+        "lastModified": 1676771332,
+        "narHash": "sha256-YYn2K0AwyIyCzvP7C+xzEt64rlCRPyrllRPGNNu+50M=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d863ca850a06d91365c01620dcac342574ecf46f",
+        "rev": "f27a4e2f6a3a23b843ca1c736e6043fb8b99acc1",
         "type": "github"
       },
       "original": {
@@ -381,6 +394,7 @@
     "root": {
       "inputs": {
         "TLMS": "TLMS",
+        "datacare": "datacare",
         "documentation-src": "documentation-src",
         "microvm": "microvm",
         "nixpkgs": "nixpkgs",
@@ -413,11 +427,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1676171095,
-        "narHash": "sha256-2laeSjBAAJ9e/C3uTIPb287iX8qeVLtWiilw1uxqG+A=",
+        "lastModified": 1676776227,
+        "narHash": "sha256-CSBeyGiDMYDw/nmafLfuu0ErVu7rzGoWIQwm2NkQQKY=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "c5dab21d8706afc7ceb05c23d4244dcb48d6aade",
+        "rev": "1da7257baa1d6801c45d9d3dedae7ce79c0e6498",
         "type": "github"
       },
       "original": {
@@ -506,6 +520,27 @@
         "type": "github"
       }
     },
+    "tlms-rs_2": {
+      "inputs": {
+        "nixpkgs": [
+          "trekkie",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1675891590,
+        "narHash": "sha256-68b+CrLyhYhOltprZsXEkCACH58RRiW1Bk4eZqEZHFA=",
+        "owner": "tlm-solutions",
+        "repo": "tlms.rs",
+        "rev": "9a9d288131302bef137141de23d871a6f18ec8b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tlm-solutions",
+        "repo": "tlms.rs",
+        "type": "github"
+      }
+    },
     "tlms-rust": {
       "flake": false,
       "locked": {
@@ -524,18 +559,19 @@
     },
     "trekkie": {
       "inputs": {
-        "naersk": "naersk_2",
+        "naersk": "naersk_3",
         "nixpkgs": [
           "nixpkgs"
         ],
-        "utils": "utils_2"
+        "tlms-rs": "tlms-rs_2",
+        "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1676454604,
-        "narHash": "sha256-kkaTM7CvSku/TR59mKrkAEhPGkOrlA1ykVcJLzkl2Ao=",
+        "lastModified": 1676742803,
+        "narHash": "sha256-RPYKicPEUUgqJWdNh8cOltWC1fOd4v/oxnWFqlGxtf8=",
         "owner": "tlm-solutions",
         "repo": "trekkie",
-        "rev": "639a1990b3c7b38d5068beb543aef1e71fc3f0ac",
+        "rev": "2293f6270a987295788b9eb583f95904bee638b0",
         "type": "github"
       },
       "original": {
@@ -560,6 +596,21 @@
       }
     },
     "utils_2": {
+      "locked": {
+        "lastModified": 1667395993,
+        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_3": {
       "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
