@@ -19,11 +19,11 @@
         "windshield": "windshield"
       },
       "locked": {
-        "lastModified": 1676841932,
-        "narHash": "sha256-WuK50IC5gJ6WHN732fgJKZn6T4XzFFijTD8KoLpezEw=",
+        "lastModified": 1677108389,
+        "narHash": "sha256-0Ow+syHlJ21i5ad3VEeAFTpDfIzHqKv2wQJI4dz2Oms=",
         "owner": "tlm-solutions",
         "repo": "TLMS.nix",
-        "rev": "697ea145dd0d92f645e324fa8a137d68a15d27a6",
+        "rev": "e0ac277d0895678fd989515c53a0ee6d87cf882d",
         "type": "github"
       },
       "original": {
@@ -92,14 +92,15 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "tlms-rs": "tlms-rs_2",
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1676841993,
-        "narHash": "sha256-RuQLTQtiSkszWWZ0eCsA2fJT1mGuF5Wu9Uh0EdemKew=",
+        "lastModified": 1677085175,
+        "narHash": "sha256-FWJw1NxAhgO6g0g35utbXSumyMOa/vnUa8XRCPXfwzs=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "a4d80df16f76047427f72457127af98b93d2eac5",
+        "rev": "0b7a2e0bacfd6a5d9587bd7fb6d34323ddd2a76f",
         "type": "github"
       },
       "original": {
@@ -345,11 +346,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1676718858,
-        "narHash": "sha256-giQecvcifVLNHCC9lMfTGP09tNxXhOMw+d/aql7MhRw=",
+        "lastModified": 1676998680,
+        "narHash": "sha256-61gxdL3bqHWnRSiYq+sKWbSX6tuwaRnYfPvhpRK011s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e6d5772f3515b8518d50122471381feae7cbae36",
+        "rev": "a3d745e701c337e65ef467d5a9400d9336a303a1",
         "type": "github"
       },
       "original": {
@@ -427,11 +428,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1676776227,
-        "narHash": "sha256-CSBeyGiDMYDw/nmafLfuu0ErVu7rzGoWIQwm2NkQQKY=",
+        "lastModified": 1676959847,
+        "narHash": "sha256-KZS6sIsMXiNyN7jW45MrEo95iEXj6nMLKvxgxO181no=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "1da7257baa1d6801c45d9d3dedae7ce79c0e6498",
+        "rev": "2c5828439d718a6cddd9a511997d9ac7626a4aff",
         "type": "github"
       },
       "original": {
@@ -523,6 +524,27 @@
     "tlms-rs_2": {
       "inputs": {
         "nixpkgs": [
+          "datacare",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1675891590,
+        "narHash": "sha256-68b+CrLyhYhOltprZsXEkCACH58RRiW1Bk4eZqEZHFA=",
+        "owner": "tlm-solutions",
+        "repo": "tlms.rs",
+        "rev": "9a9d288131302bef137141de23d871a6f18ec8b7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tlm-solutions",
+        "repo": "tlms.rs",
+        "type": "github"
+      }
+    },
+    "tlms-rs_3": {
+      "inputs": {
+        "nixpkgs": [
           "trekkie",
           "nixpkgs"
         ]
@@ -563,7 +585,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "tlms-rs": "tlms-rs_2",
+        "tlms-rs": "tlms-rs_3",
         "utils": "utils_3"
       },
       "locked": {
@@ -582,11 +604,11 @@
     },
     "utils": {
       "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "lastModified": 1676283394,
+        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
         "type": "github"
       },
       "original": {
@@ -597,11 +619,11 @@
     },
     "utils_2": {
       "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "lastModified": 1676283394,
+        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
         "type": "github"
       },
       "original": {
@@ -667,11 +689,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1676027395,
-        "narHash": "sha256-rjpI8KFYhDt+N9DYtBe15A6XcNkFyajIvXZpSg4GW+s=",
+        "lastModified": 1677108150,
+        "narHash": "sha256-Ji+NwkpWDHSydJj93LfNkgdzLoOL1Uqtf6GE253spKs=",
         "owner": "tlm-solutions",
         "repo": "windshield",
-        "rev": "98d44746127e3a716834a34b69b51f9cc5b5fbe0",
+        "rev": "1c47f3793f6949eb724360c8b5c725beaf486ee6",
         "type": "github"
       },
       "original": {
