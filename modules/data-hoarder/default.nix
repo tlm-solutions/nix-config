@@ -1,6 +1,6 @@
 {
   imports = [
-    ./click.nix
+    ./kindergarten.nix
     ./datacare.nix
     ./data-accumulator.nix
     ./documentation.nix

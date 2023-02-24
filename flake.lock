@@ -260,6 +260,27 @@
         "type": "github"
       }
     },
+    "kindergarten": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils_3"
+      },
+      "locked": {
+        "lastModified": 1677244616,
+        "narHash": "sha256-RD97cxI3pyZSv5xiMGOldn8uscRIlsYgkytZJqr0CIw=",
+        "owner": "tlm-solutions",
+        "repo": "kindergarten",
+        "rev": "7832ff8e595143e6db37d766a6ce43fe05d10d1f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tlm-solutions",
+        "repo": "kindergarten",
+        "type": "github"
+      }
+    },
     "microvm": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -397,6 +418,7 @@
         "TLMS": "TLMS",
         "datacare": "datacare",
         "documentation-src": "documentation-src",
+        "kindergarten": "kindergarten",
         "microvm": "microvm",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
@@ -586,7 +608,7 @@
           "nixpkgs"
         ],
         "tlms-rs": "tlms-rs_3",
-        "utils": "utils_3"
+        "utils": "utils_4"
       },
       "locked": {
         "lastModified": 1676742803,
@@ -633,6 +655,21 @@
       }
     },
     "utils_3": {
+      "locked": {
+        "lastModified": 1676283394,
+        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_4": {
       "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",

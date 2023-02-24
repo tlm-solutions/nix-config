@@ -31,6 +31,11 @@
       url = "github:tlm-solutions/datacare";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    kindergarten = {
+      url = "github:tlm-solutions/kindergarten";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -42,6 +47,7 @@
     , sops-nix
     , documentation-src
     , trekkie
+    , kindergarten
     , ...
     }:
     let
@@ -60,6 +66,7 @@
           nixpkgs.overlays = [
             TLMS.overlays.default
             datacare.overlays.default
+            kindergarten.overlays.default
             trekkie.overlays.default
             (final: prev: {
               inherit documentation-src;
