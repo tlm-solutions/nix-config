@@ -1,7 +1,7 @@
 { pkgs, config, ... }: {
   services.nginx = {
     enable = true;
-    virtualHosts."kindergarten.${config.deployment-TLMS.domain}" = {
+    virtualHosts."kid.${config.deployment-TLMS.domain}" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
