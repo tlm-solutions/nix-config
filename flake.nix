@@ -55,6 +55,15 @@
       url = "github:tlm-solutions/kindergarten";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    telegram-decoder = {
+      url = "github:tlm-solutions/telegram-decoder";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        naersk.follows = "naersk";
+        utils.follows = "utils";
+      };
+    };
   };
 
   outputs =
