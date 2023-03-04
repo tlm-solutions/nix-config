@@ -1,5 +1,18 @@
 {
   inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+
+    # naersk and flake utils are not used by this flake directly, but needed
+    # for the follows in all the other ones.
+    naersk = {
+      url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    utils = {
+      url = "github:numtide/flake-utils";
+    };
+
     TLMS = {
       url = "github:tlm-solutions/TLMS.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -9,8 +22,6 @@
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -24,12 +35,20 @@
 
     trekkie = {
       url = "github:tlm-solutions/trekkie";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        naersk.follows = "naersk";
+        utils.follows = "utils";
+      };
     };
 
     datacare = {
       url = "github:tlm-solutions/datacare";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        naersk.follows = "naersk";
+        utils.follows = "utils";
+      };
     };
 
     kindergarten = {
