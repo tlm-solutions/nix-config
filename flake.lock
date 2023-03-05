@@ -11,11 +11,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1677980571,
-        "narHash": "sha256-hVZQgRAJKFPmQFEUqq2n74olh2yQTge1+DhrvMk/4MY=",
+        "lastModified": 1678022411,
+        "narHash": "sha256-k+Ib2Srt8XwspHgs1lfZsswv8cARdUOzE1xjTWUxvtI=",
         "owner": "tlm-solutions",
         "repo": "data-accumulator",
-        "rev": "693d000b4011c7d90f51893b76afd803706aa6ba",
+        "rev": "5a9917004286ef7b6b3f8af0b515311901ae1b62",
         "type": "github"
       },
       "original": {
@@ -38,11 +38,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1677986236,
-        "narHash": "sha256-R5dGTNNVPvh4W+oFzLqE03OfSRziuzFVhT+uZzJ575Q=",
+        "lastModified": 1678024875,
+        "narHash": "sha256-35bsl5PdR6R8y4A7N5DDOqk5CCdH4wMBaf7nTvBx6FE=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "b0d750553514ab1e56717a6ac8314ef65e46cc6f",
+        "rev": "0acf987a56f99f79d82e5a15458d6cbd720d0e25",
         "type": "github"
       },
       "original": {

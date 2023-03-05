@@ -6,13 +6,13 @@
     database = {
       host = "127.0.0.1";
       port = config.services.postgresql.port;
-      user = "dvbdump";
-      database = "dvbdump";
+      user = "tlms";
+      database = "tlms";
       passwordFile = config.sops.secrets.postgres_password.path;
     };
     saltFile = config.sops.secrets.postgres_password_hash_salt.path;
     user = "datacare";
-    group = config.users.groups.postgres-dvbdump.name;
+    group = config.users.groups.postgres-tlms.name;
   };
   systemd.services."datacare" = {
     after = [ "postgresql.service" ];
