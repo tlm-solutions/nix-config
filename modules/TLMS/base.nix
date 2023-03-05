@@ -1,4 +1,4 @@
-{ pkgs, config, self, lib, ... }:
+{ pkgs, config, lib, inputs, ... }:
 let
   regMotd = ''
      _._     _,-'""`-._
@@ -72,12 +72,12 @@ in
   networking.firewall.allowedTCPPorts = [ 22 ];
   users.users.root = {
     openssh.authorizedKeys.keyFiles = [
-      "${self}/keys/ssh/revol-xut"
-      "${self}/keys/ssh/oxa"
-      "${self}/keys/ssh/oxa1"
-      "${self}/keys/ssh/marenz1"
-      "${self}/keys/ssh/marenz2"
-      "${self}/keys/ssh/astro"
+      ../../keys/ssh/revol-xut
+      ../../keys/ssh/oxa
+      ../../keys/ssh/oxa1
+      ../../keys/ssh/marenz1
+      ../../keys/ssh/marenz2
+      ../../keys/ssh/astro
     ];
   };
   services.openssh = {
@@ -99,6 +99,6 @@ in
     hardstatus string "%w"
   '';
 
-  TLMS.stopsJson = "${pkgs.stops}/stop/all.json";
-  TLMS.graphJson = "${pkgs.stops}/graph/all.json";
+  TLMS.stopsJson = "/var/lib/json_dump/stop-all.json";
+  TLMS.graphJson = "/var/lib/json_dump/graph-all.json";
 }

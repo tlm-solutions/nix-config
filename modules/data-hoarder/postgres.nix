@@ -1,4 +1,4 @@
-{ lib, pkgs, config, TLMS, ... }: {
+{ lib, pkgs, config, inputs, ... }: {
 
   services.postgresql = {
     enable = true;
@@ -18,7 +18,7 @@
     ];
   };
 
-  environment.systemPackages = [ TLMS.packages.x86_64-linux.run-database-migration ];
+  environment.systemPackages = [ inputs.tlms-rs.packages.x86_64-linux.run-migration ];
 
   systemd.services.postgresql = {
     unitConfig = {
@@ -36,7 +36,7 @@
       $PSQL -c "ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_grafana.path})';"
 
       export DATABASE_URL=postgres:///dvbdump
-      ${TLMS.packages.x86_64-linux.run-database-migration}/bin/run-migration
+      ${inputs.tlms-rs.packages.x86_64-linux.run-migration}/bin/run-migration
       unset DATABASE_URL
     '';
   };

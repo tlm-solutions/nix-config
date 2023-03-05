@@ -32,7 +32,8 @@
               # STS
               add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
               add_header "Access-Control-Allow-Origin" "*";
-            '';
+              '';
+              json_dump = "/var/lib/json_dump/";
           in {
             "/" = {
               root = if (config.deployment-TLMS.domain == "dvb.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
@@ -41,15 +42,15 @@
               tryFiles = "$uri /index.html =404";
             };
             "~ ^/stop/.*\.json$" = {
-              root = "${pkgs.stops}/";
+              root = json_dump;
               extraConfig = nginx_config;
             };
             "~ ^/graph/.*\.json$" = {
-              root = "${pkgs.stops}/";
+              root = json_dump;
               extraConfig = nginx_config;
             };
             "~ ^/region/.*\.json$" = {
-              root = "${pkgs.stops}/";
+              root = json_dump;
               extraConfig = nginx_config;
             };
           };
