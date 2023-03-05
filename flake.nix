@@ -23,6 +23,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## TLMS stuff below
     documentation-src = {
       url = "github:tlm-solutions/documentation";
       flake = false;
@@ -49,6 +50,7 @@
     kindergarten = {
       url = "github:tlm-solutions/kindergarten";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
     };
 
     telegram-decoder = {
