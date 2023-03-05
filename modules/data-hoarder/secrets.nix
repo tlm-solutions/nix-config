@@ -8,8 +8,8 @@ in
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   users.groups = {
-    postgres-dvbdump = {
-      name = "postgres-dvbdump";
+    postgres-tlms  = {
+      name = "postgres-tlms";
       members = [ datacare-user data-accumulator-user trekkie-user "postgres" ];
     };
 
@@ -35,11 +35,11 @@ in
       mode = "0440";
     };
     postgres_password = {
-      group = config.users.groups.postgres-dvbdump.name;
+      group = config.users.groups.postgres-tlms.name;
       mode = "0440";
     };
     postgres_password_grafana = {
-      group = config.users.groups.postgres-dvbdump.name;
+      group = config.users.groups.postgres-tlms.name;
       mode = "0440";
     };
 
