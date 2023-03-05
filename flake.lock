@@ -388,11 +388,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1678030266,
-        "narHash": "sha256-3AOPZYE289xe66XDH6eaPvz4Fa7UBONpVQli2zp+KHY=",
+        "lastModified": 1678031966,
+        "narHash": "sha256-aXGBG/xzXZf0i3CSDrjiZnI2/rD2v+VrRkalkX9sSrI=",
         "owner": "tlm-solutions",
         "repo": "tlms.rs",
-        "rev": "9a4653c3d62f4c7aa4fe66c2697afeba3af75db1",
+        "rev": "9cf9526e9323e2bf65fe2e41983214f8a79ecf23",
         "type": "github"
       },
       "original": {
