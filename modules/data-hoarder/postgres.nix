@@ -19,7 +19,7 @@
     ];
   };
 
-  environment.systemPackages = [ inputs.tlms-rs.packages.x86_64-linux.run-migration ];
+  environment.systemPackages = [ inputs.tlms-rs.packages.x86_64-linux.run-migration  inputs.tlms-rs.packages.x86_64-linux.run-migration-based ];
 
   systemd.services.postgresql = {
     unitConfig = {
@@ -37,7 +37,7 @@
       $PSQL -c "ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_grafana.path})';"
 
       export DATABASE_URL=postgres:///tlms
-      ${inputs.tlms-rs.packages.x86_64-linux.run-migration}/bin/run-migration
+      ${inputs.tlms-rs.packages.x86_64-linux.run-migration-based}/bin/run-migration
 
       # fixup permissions
       $PSQL -c "GRANT ALL ON DATABASE tlms TO tlms;"
@@ -45,6 +45,18 @@
       $PSQL -d tlms -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO tlms;"
 
       unset DATABASE_URL
+
+      export DATABASE_URL=postgres:///dvbdump
+
+      ${inputs.tlms-rs.packages.x86_64-linux.run-migration}/bin/run-migration
+
+      # fixup permissions
+      $PSQL -c "GRANT ALL ON DATABASE dvbdump TO dvbdump;"
+      $PSQL -d dvbdump -c "GRANT ALL ON ALL TABLES IN SCHEMA public TO dvbdump;"
+      $PSQL -d dvbdump -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO dvbdump;"
+
+      unset DATABASE_URL
+
     '';
   };
 
