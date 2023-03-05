@@ -13,6 +13,7 @@
         name = "tlms";
         ensurePermissions = {
           "DATABASE tlms" = "ALL PRIVILEGES";
+          "ALL TABLES IN SCHEMA public" = "ALL";
         };
       }
     ];
@@ -37,6 +38,12 @@
 
       export DATABASE_URL=postgres:///tlms
       ${inputs.tlms-rs.packages.x86_64-linux.run-migration}/bin/run-migration
+
+      # fixup permissions
+      $PSQL -c "GRANT ALL ON DATABASE tlms TO dvbdump;"
+      $PSQL -d tlms -c "GRANT ALL ON ALL TABLES IN SCHEMA public TO dvbdump;"
+      $PSQL -d tlms -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO dvbdump;"
+
       unset DATABASE_URL
     '';
   };
