@@ -40,9 +40,9 @@
       ${inputs.tlms-rs.packages.x86_64-linux.run-migration}/bin/run-migration
 
       # fixup permissions
-      $PSQL -c "GRANT ALL ON DATABASE tlms TO dvbdump;"
-      $PSQL -d tlms -c "GRANT ALL ON ALL TABLES IN SCHEMA public TO dvbdump;"
-      $PSQL -d tlms -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO dvbdump;"
+      $PSQL -c "GRANT ALL ON DATABASE tlms TO tlms;"
+      $PSQL -d tlms -c "GRANT ALL ON ALL TABLES IN SCHEMA public TO tlms;"
+      $PSQL -d tlms -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO tlms;"
 
       unset DATABASE_URL
     '';
