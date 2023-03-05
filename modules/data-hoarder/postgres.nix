@@ -19,7 +19,7 @@
     ];
   };
 
-  environment.systemPackages = [ inputs.tlms-rs.packages.x86_64-linux.run-migration  inputs.tlms-rs.packages.x86_64-linux.run-migration-based ];
+  environment.systemPackages = [ inputs.tlms-rs.packages.x86_64-linux.run-migration  inputs.tlms-rs.packages.x86_64-linux.run-migration-based inputs.tlms-rs.packages.x86_64-linux.yeet-data];
 
   systemd.services.postgresql = {
     unitConfig = {
@@ -57,6 +57,21 @@
 
       unset DATABASE_URL
 
+      $PSQL -d dvbdump -c "COPY users TO '/tmp/users.csv'  WITH DELIMITER ',' CSV HEADER;"
+      $PSQL -d dvbdump -c "COPY regions TO '/tmp/regions.csv'  WITH DELIMITER ',' CSV HEADER;"
+      $PSQL -d dvbdump -c "COPY stations TO '/tmp/stations.csv'  WITH DELIMITER ',' CSV HEADER;"
+      $PSQL -d dvbdump -c "COPY trekkie_runs TO '/tmp/trekkie_runs.csv'  WITH DELIMITER ',' CSV HEADER;"
+      $PSQL -d dvbdump -c "COPY gps_points TO '/tmp/gps_points.csv'  WITH DELIMITER ',' CSV HEADER;"
+      $PSQL -d dvbdump -c "COPY raw_telegrams TO '/tmp/raw_telegrams.csv'  WITH DELIMITER ',' CSV HEADER;"
+      $PSQL -d dvbdump -c "COPY r09_telegrams TO '/tmp/r09_telegrams.csv'  WITH DELIMITER ',' CSV HEADER;"
+    
+      COPY persons(*) FROM '/tmp/users.csv' DELIMITER ',' CSV HEADER;
+      COPY regions(*) FROM '/tmp/regions.csv' DELIMITER ',' CSV HEADER;
+      COPY stations(*) FROM '/tmp/stations.csv' DELIMITER ',' CSV HEADER;
+      COPY trekkie_runs(*) FROM '/tmp/stations.csv' DELIMITER ',' CSV HEADER;
+      COPY gps_points(*) FROM '/tmp/gps_points.csv' DELIMITER ',' CSV HEADER;
+      COPY raw_telegrams(*) FROM '/tmp/raw_telegrams.csv' DELIMITER ',' CSV HEADER;
+      COPY r09_telegrams(*) FROM '/tmp/r09_telegrams.csv' DELIMITER ',' CSV HEADER;
     '';
   };
 
