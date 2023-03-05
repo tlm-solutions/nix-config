@@ -9,15 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    utils = {
-      url = "github:numtide/flake-utils";
-    };
-
-    TLMS = {
-      url = "github:tlm-solutions/TLMS.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     microvm = {
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ## TLMS stuff below
     documentation-src = {
       url = "github:tlm-solutions/documentation";
       flake = false;
@@ -38,7 +30,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
-        utils.follows = "utils";
+        tlms-rs.follows = "tlms-rs";
       };
     };
 
@@ -47,7 +39,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
-        utils.follows = "utils";
+        tlms-rs.follows = "tlms-rs";
       };
     };
 
@@ -61,21 +53,64 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
-        utils.follows = "utils";
       };
+    };
+
+    gnuradio-decoder = {
+      url = "github:tlm-solutions/gnuradio-decoder";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    data-accumulator = {
+      url = "github:tlm-solutions/data-accumulator";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+    };
+
+    state-api = {
+      url = "github:tlm-solutions/state-api";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+    };
+
+    funnel = {
+      url = "github:tlm-solutions/funnel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    windshield = {
+      url = "github:tlm-solutions/windshield";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    wartrammer = {
+      url = "github:tlm-solutions/wartrammer-40k";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+    };
+
+    tlms-rs = {
+      url = "github:tlm-solutions/tlms.rs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs =
     inputs@{ self
+    , data-accumulator
     , datacare
-    , TLMS
+    , documentation-src
+    , funnel
+    , gnuradio-decoder
+    , kindergarten
     , microvm
     , nixpkgs
     , sops-nix
-    , documentation-src
+    , state-api
+    , telegram-decoder
     , trekkie
-    , kindergarten
+    , wartrammer
+    , windshield
     , ...
     }:
     let
@@ -86,16 +121,21 @@
       data-hoarder-modules = [
         ./modules/data-hoarder
         ./modules/TLMS
-        sops-nix.nixosModules.sops
+        data-accumulator.nixosModules.default
         datacare.nixosModules.default
-        TLMS.nixosModules.default
+        funnel.nixosModules.default
+        sops-nix.nixosModules.sops
+        state-api.nixosModules.default
         trekkie.nixosModules.default
         {
           nixpkgs.overlays = [
-            TLMS.overlays.default
             datacare.overlays.default
             kindergarten.overlays.default
             trekkie.overlays.default
+            state-api.overlays.default
+            funnel.overlays.default
+            data-accumulator.overlays.default
+            windshield.overlays.default
             (final: prev: {
               inherit documentation-src;
               options-docs = (pkgs.nixosOptionsDoc {
@@ -107,9 +147,13 @@
       ];
 
       stop-box-modules = [
+        ./modules/TLMS
+        telegram-decoder.nixosModules.default
+        gnuradio-decoder.nixosModules.default
         {
           nixpkgs.overlays = [
-            TLMS.overlays.default
+            telegram-decoder.overlays.default
+            gnuradio-decoder.overlays.default
           ];
         }
       ];
@@ -126,7 +170,6 @@
 
               # default modules
               sops-nix.nixosModules.sops
-              TLMS.nixosModules.default
               ./modules/traffic-stop-box
               ./modules/TLMS
               {
@@ -206,7 +249,7 @@
 
         data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = inputs;
+          specialArgs = { inherit inputs self; };
           modules = [
             microvm.nixosModules.microvm
             ./hosts/data-hoarder
@@ -215,7 +258,7 @@
 
         staging-data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = inputs;
+          specialArgs = { inherit inputs self; };
           modules = [
             ./hosts/staging-data-hoarder
             microvm.nixosModules.microvm
