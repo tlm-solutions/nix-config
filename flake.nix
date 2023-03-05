@@ -13,11 +13,6 @@
       url = "github:numtide/flake-utils";
     };
 
-    TLMS = {
-      url = "github:tlm-solutions/TLMS.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     microvm = {
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -69,13 +64,13 @@
   outputs =
     inputs@{ self
     , datacare
-    , TLMS
     , microvm
     , nixpkgs
     , sops-nix
     , documentation-src
     , trekkie
     , kindergarten
+    , telegram-decoder
     , ...
     }:
     let
@@ -88,14 +83,14 @@
         ./modules/TLMS
         sops-nix.nixosModules.sops
         datacare.nixosModules.default
-        TLMS.nixosModules.default
         trekkie.nixosModules.default
+        telegram-decoder.nixosModules.default
         {
           nixpkgs.overlays = [
-            TLMS.overlays.default
             datacare.overlays.default
             kindergarten.overlays.default
             trekkie.overlays.default
+            telegram-decoder.overlays.default
             (final: prev: {
               inherit documentation-src;
               options-docs = (pkgs.nixosOptionsDoc {
@@ -107,9 +102,10 @@
       ];
 
       stop-box-modules = [
+        telegram-decoder.nixosModules.default
         {
           nixpkgs.overlays = [
-            TLMS.overlays.default
+            telegram-decoder.overlays.default
           ];
         }
       ];
@@ -126,7 +122,6 @@
 
               # default modules
               sops-nix.nixosModules.sops
-              TLMS.nixosModules.default
               ./modules/traffic-stop-box
               ./modules/TLMS
               {

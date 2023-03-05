@@ -1,90 +1,5 @@
 {
   "nodes": {
-    "TLMS": {
-      "inputs": {
-        "click": "click",
-        "data-accumulator": "data-accumulator",
-        "dvb-api": "dvb-api",
-        "funnel": "funnel",
-        "gnuradio-decoder": "gnuradio-decoder",
-        "naersk": "naersk",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "stops": "stops",
-        "tlms-rs": "tlms-rs",
-        "utils": "utils",
-        "wartrammer": "wartrammer",
-        "windshield": "windshield"
-      },
-      "locked": {
-        "lastModified": 1677969729,
-        "narHash": "sha256-BMQtIGCbtdIyn/y4DGlbufxvftBvlthb4oAra2velZk=",
-        "owner": "tlm-solutions",
-        "repo": "TLMS.nix",
-        "rev": "4d57da4411e6c738d83028d54c298794a764cf73",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "TLMS.nix",
-        "type": "github"
-      }
-    },
-    "click": {
-      "inputs": {
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ],
-        "utils": [
-          "TLMS",
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1670369433,
-        "narHash": "sha256-8dnqgBTs11RKG1wPxLX9KGlgEA3TO9cv77kai1TjZe4=",
-        "owner": "tlm-solutions",
-        "repo": "click",
-        "rev": "aef03393401e39d38afa5c9f316da150c9d32f42",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "click",
-        "type": "github"
-      }
-    },
-    "data-accumulator": {
-      "inputs": {
-        "naersk": [
-          "TLMS",
-          "naersk"
-        ],
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ],
-        "utils": [
-          "TLMS",
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1676052348,
-        "narHash": "sha256-YlPv6DzSW5afbq6KsyJsU3NSyTT9hLlY1CJ1S+PamzA=",
-        "owner": "tlm-solutions",
-        "repo": "data-accumulator",
-        "rev": "eed592d1d9c62a580a2ff51676139f3959f87253",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "data-accumulator",
-        "type": "github"
-      }
-    },
     "datacare": {
       "inputs": {
         "naersk": [
@@ -93,7 +8,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "tlms-rs": "tlms-rs_2",
+        "tlms-rs": "tlms-rs",
         "utils": [
           "utils"
         ]
@@ -128,65 +43,13 @@
         "type": "github"
       }
     },
-    "dvb-api": {
-      "inputs": {
-        "naersk": [
-          "TLMS",
-          "naersk"
-        ],
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ],
-        "utils": [
-          "TLMS",
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1674253720,
-        "narHash": "sha256-RfXj+E52Abw6RZTZS1Qc+uwMaO1YTy+uGv5OzF78PLI=",
-        "owner": "tlm-solutions",
-        "repo": "dvb-api",
-        "rev": "1c8a9fd89a1a5e9c9a0584498976184b45185f4e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "dvb-api",
-        "type": "github"
-      }
-    },
     "fenix": {
-      "inputs": {
-        "nixpkgs": [
-          "TLMS",
-          "stops",
-          "nixpkgs"
-        ],
-        "rust-analyzer-src": "rust-analyzer-src"
-      },
-      "locked": {
-        "lastModified": 1670566996,
-        "narHash": "sha256-M+KsSE2D8ByDf3HZhnvLRpytg8aXScoWhg+NrdHjeeE=",
-        "owner": "nix-community",
-        "repo": "fenix",
-        "rev": "ab24d0ad17a733624b99f5d6466e71b8c239a001",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "fenix",
-        "type": "github"
-      }
-    },
-    "fenix_2": {
       "inputs": {
         "nixpkgs": [
           "microvm",
           "nixpkgs"
         ],
-        "rust-analyzer-src": "rust-analyzer-src_2"
+        "rust-analyzer-src": "rust-analyzer-src"
       },
       "locked": {
         "lastModified": 1677219923,
@@ -217,80 +80,12 @@
         "type": "github"
       }
     },
-    "funnel": {
-      "inputs": {
-        "json-structs": "json-structs",
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ],
-        "tlms-rust": "tlms-rust",
-        "utils": [
-          "TLMS",
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1672329711,
-        "narHash": "sha256-I4Sx4iwrfp0T/Vg+wCSquNuE46Yt+Zd5xmrkV9a3KNM=",
-        "owner": "tlm-solutions",
-        "repo": "funnel",
-        "rev": "e49f2f4f1b9cdc3c887be0f35f2a45281b1c67c4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "funnel",
-        "type": "github"
-      }
-    },
-    "gnuradio-decoder": {
-      "inputs": {
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ],
-        "utils": [
-          "TLMS",
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1665616750,
-        "narHash": "sha256-LKkr9h805FuJ+wXUatQ+cz7Vt59S9I7gN/1yzwmraZE=",
-        "owner": "tlm-solutions",
-        "repo": "gnuradio-decoder",
-        "rev": "f6f42736cc1a1024c5da4cce69d56042499d81d3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "gnuradio-decoder",
-        "type": "github"
-      }
-    },
-    "json-structs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1671005252,
-        "narHash": "sha256-U7rrOmDxigZFVxRQDj9g7S9WgLbrPeHZ+UKuZz+eGVU=",
-        "owner": "jorgen",
-        "repo": "json_struct",
-        "rev": "09a790818c47c9d748c2381d37b94a697a53d2cd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jorgen",
-        "repo": "json_struct",
-        "type": "github"
-      }
-    },
     "kindergarten": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ],
-        "utils": "utils_2"
+        "utils": "utils"
       },
       "locked": {
         "lastModified": 1677702784,
@@ -308,7 +103,7 @@
     },
     "microvm": {
       "inputs": {
-        "fenix": "fenix_2",
+        "fenix": "fenix",
         "flake-utils": "flake-utils",
         "nixpkgs": [
           "nixpkgs"
@@ -329,27 +124,6 @@
       }
     },
     "naersk": {
-      "inputs": {
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1671096816,
-        "narHash": "sha256-ezQCsNgmpUHdZANDCILm3RvtO1xH8uujk/+EqNvzIOg=",
-        "owner": "nix-community",
-        "repo": "naersk",
-        "rev": "d998160d6a076cfe8f9741e56aeec7e267e3e114",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "naersk",
-        "type": "github"
-      }
-    },
-    "naersk_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -401,55 +175,21 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1665643254,
-        "narHash": "sha256-IBVWNJxGCsshwh62eRfR6+ry3bSXmulB3VQRzLQo3hk=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "ba187fbdc5e35322c7dff556ef2c47bddfd6e8d7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
-        "TLMS": "TLMS",
         "datacare": "datacare",
         "documentation-src": "documentation-src",
         "kindergarten": "kindergarten",
         "microvm": "microvm",
-        "naersk": "naersk_2",
+        "naersk": "naersk",
         "nixpkgs": "nixpkgs",
         "sops-nix": "sops-nix",
         "telegram-decoder": "telegram-decoder",
         "trekkie": "trekkie",
-        "utils": "utils_3"
+        "utils": "utils_2"
       }
     },
     "rust-analyzer-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1670426523,
-        "narHash": "sha256-Zh+pAuj4PmBmISXCz+54yVSwSXZwbn+ZELgM85xVUE0=",
-        "owner": "rust-lang",
-        "repo": "rust-analyzer",
-        "rev": "6e8a54d0f68702cf7981c8299357838eb0f4d5b2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rust-lang",
-        "ref": "nightly",
-        "repo": "rust-analyzer",
-        "type": "github"
-      }
-    },
-    "rust-analyzer-src_2": {
       "flake": false,
       "locked": {
         "lastModified": 1676976502,
@@ -487,36 +227,6 @@
         "type": "github"
       }
     },
-    "stops": {
-      "inputs": {
-        "fenix": "fenix",
-        "naersk": [
-          "TLMS",
-          "naersk"
-        ],
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ],
-        "utils": [
-          "TLMS",
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1670618313,
-        "narHash": "sha256-kWvB6v3qJbX+UfcR+lTTJBHo7GUA/9BljBufAlVSkrk=",
-        "owner": "tlm-solutions",
-        "repo": "stop-names",
-        "rev": "b04e91e0f3f74f6f92626a5af513abfdf8b989df",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "stop-names",
-        "type": "github"
-      }
-    },
     "telegram-decoder": {
       "inputs": {
         "naersk": [
@@ -530,11 +240,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677964001,
-        "narHash": "sha256-Ky2DC5rL/k26XcQa+QdQFdt6yRErVLEUd3123upZ1TA=",
+        "lastModified": 1677971164,
+        "narHash": "sha256-sgR/EUHpVP7gKQFTrIuxpSbV1wLVM2er+t4JullhXzY=",
         "owner": "tlm-solutions",
         "repo": "telegram-decoder",
-        "rev": "2627366690d02cb51759f366da9d256c41fce254",
+        "rev": "648267734863b5b6a073fc0dcac46b360605941d",
         "type": "github"
       },
       "original": {
@@ -544,27 +254,6 @@
       }
     },
     "tlms-rs": {
-      "inputs": {
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1677272203,
-        "narHash": "sha256-ad9W085FHeGUIQI7Iv+15EjueUvvTGgkTnZZVDesUwc=",
-        "owner": "tlm-solutions",
-        "repo": "tlms.rs",
-        "rev": "7bbc276be2e46d83d8cac63f546ff6539c4be5b4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "tlms.rs",
-        "type": "github"
-      }
-    },
-    "tlms-rs_2": {
       "inputs": {
         "nixpkgs": [
           "datacare",
@@ -585,7 +274,7 @@
         "type": "github"
       }
     },
-    "tlms-rs_3": {
+    "tlms-rs_2": {
       "inputs": {
         "nixpkgs": [
           "trekkie",
@@ -606,22 +295,6 @@
         "type": "github"
       }
     },
-    "tlms-rust": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1672266054,
-        "narHash": "sha256-yyqWR5PP2RemsJA+QFtdKHGOsE84snDS80Joilbm3Hk=",
-        "owner": "tlm-solutions",
-        "repo": "tlms.rs",
-        "rev": "a179ab4ca1cd7349eafd624533648eb5169fd4d5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "tlms.rs",
-        "type": "github"
-      }
-    },
     "trekkie": {
       "inputs": {
         "naersk": [
@@ -630,7 +303,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "tlms-rs": "tlms-rs_3",
+        "tlms-rs": "tlms-rs_2",
         "utils": [
           "utils"
         ]
@@ -676,76 +349,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "utils_3": {
-      "locked": {
-        "lastModified": 1676283394,
-        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "wartrammer": {
-      "inputs": {
-        "naersk": [
-          "TLMS",
-          "naersk"
-        ],
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ],
-        "nixpkgs-unstable": "nixpkgs-unstable",
-        "utils": [
-          "TLMS",
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1665780943,
-        "narHash": "sha256-4tnTVfz25GzY/1vCAITMeWkMqrzVRJUmpSMfqxcU0C4=",
-        "owner": "tlm-solutions",
-        "repo": "wartrammer-40k",
-        "rev": "896550451f1e3b33c7fa8a08922efa3b6b73e4ad",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "wartrammer-40k",
-        "type": "github"
-      }
-    },
-    "windshield": {
-      "inputs": {
-        "nixpkgs": [
-          "TLMS",
-          "nixpkgs"
-        ],
-        "utils": [
-          "TLMS",
-          "utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1677278629,
-        "narHash": "sha256-Zd+B3jcCjKQipUv427JmUWH4QjhNNyzj5JEr0p1czNQ=",
-        "owner": "tlm-solutions",
-        "repo": "windshield",
-        "rev": "3c00e1cebdcc4ce05931ec3c8f5673c901684bfb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "windshield",
         "type": "github"
       }
     }
