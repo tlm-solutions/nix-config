@@ -38,11 +38,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1678470164,
-        "narHash": "sha256-h1VbESdFHTtsES3/AKntlasxpSMoPxiFoe5bUcnl+EI=",
+        "lastModified": 1678473203,
+        "narHash": "sha256-bckUcj4racsaxQ+ftrX9aT1s1/IPwKaqaE7+JnZTMD8=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "2f20ffa4d41590f141b4ef1bf5139d1f7705f40f",
+        "rev": "0cfd85e66dccf5678f2b372f7210c48aceaa7a1a",
         "type": "github"
       },
       "original": {
