@@ -431,11 +431,11 @@
         "utils": "utils_8"
       },
       "locked": {
-        "lastModified": 1678472517,
-        "narHash": "sha256-ojRs8GT2KAyUAn3OKy27hh3iobds5KuuvF89PsM+UrA=",
+        "lastModified": 1678482138,
+        "narHash": "sha256-35grAe63A9cXgokL91mxhgqOpW2albuoOuNTwQrcGeQ=",
         "owner": "tlm-solutions",
         "repo": "trekkie",
-        "rev": "a39cdcba92c78f97a6ded5a9913542604fa76011",
+        "rev": "7df9a109c68aedd54fe910f12676bb3415fea886",
         "type": "github"
       },
       "original": {
