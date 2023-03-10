@@ -11,11 +11,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1678022411,
-        "narHash": "sha256-k+Ib2Srt8XwspHgs1lfZsswv8cARdUOzE1xjTWUxvtI=",
+        "lastModified": 1678328499,
+        "narHash": "sha256-02MUHiApaBDxK7MjHekyWkAY3M6i+1TsXY0lKpbeKGg=",
         "owner": "tlm-solutions",
         "repo": "data-accumulator",
-        "rev": "5a9917004286ef7b6b3f8af0b515311901ae1b62",
+        "rev": "66014ff90a9ea164a3221d7e11e4dd8df3667f2a",
         "type": "github"
       },
       "original": {
@@ -38,11 +38,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1678024875,
-        "narHash": "sha256-35bsl5PdR6R8y4A7N5DDOqk5CCdH4wMBaf7nTvBx6FE=",
+        "lastModified": 1678470164,
+        "narHash": "sha256-h1VbESdFHTtsES3/AKntlasxpSMoPxiFoe5bUcnl+EI=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "0acf987a56f99f79d82e5a15458d6cbd720d0e25",
+        "rev": "2f20ffa4d41590f141b4ef1bf5139d1f7705f40f",
         "type": "github"
       },
       "original": {
@@ -135,11 +135,11 @@
         "utils": "utils_4"
       },
       "locked": {
-        "lastModified": 1677980088,
-        "narHash": "sha256-9vHvfDT9ZEGB+TI5LdiWDFrgyLH9OwXZeGCDgG6hZhw=",
+        "lastModified": 1678306615,
+        "narHash": "sha256-fteaj/hQnnIp7Fw+ShzZgwFYWz9CWhGMnrWszuuqqOY=",
         "owner": "tlm-solutions",
         "repo": "gnuradio-decoder",
-        "rev": "6306579f6fc8d126aaadcce19d742b7575f6e5e4",
+        "rev": "e4d753bc45724ef74d61f24927d2321f85578e8b",
         "type": "github"
       },
       "original": {
@@ -194,11 +194,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1677288898,
-        "narHash": "sha256-FWlKhpGsoMOxYw5wzAuMWvBvJm/aajrVylFLndy1B+g=",
+        "lastModified": 1678238157,
+        "narHash": "sha256-sQgwrJHMk1RML3xuXTU6QTG0wxN1wig1oGABm456DHA=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "7632603a876686f9c869b04d25911d4f5e7951c6",
+        "rev": "108f0c561eb4b140cac1ac7da7ba72867f62d174",
         "type": "github"
       },
       "original": {
@@ -229,11 +229,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1677779205,
-        "narHash": "sha256-6DBjL9wjq86p2GczmwnHtFRnWPBPItc67gapWENBgX8=",
+        "lastModified": 1678230755,
+        "narHash": "sha256-SFAXgNjNTXzcAideXcP0takfUGVft/VR5CACmYHg+Fc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "96e18717904dfedcd884541e5a92bf9ff632cf39",
+        "rev": "a7cc81913bb3cd1ef05ed0ece048b773e1839e51",
         "type": "github"
       },
       "original": {
@@ -320,11 +320,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1677987270,
-        "narHash": "sha256-NRqhY8jbrmP1C6oiVqv1T0T1r560eo4ZpmEdHoQmKj4=",
+        "lastModified": 1678440572,
+        "narHash": "sha256-zfL09Yy6H7QQwfacCPL0gOfWpVkTbE5jXJh5oZmGf8g=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "7cff56b43952edc5a2c212076d5fc922f764240f",
+        "rev": "1568702de0d2488c1e77011a9044de7fadec80c4",
         "type": "github"
       },
       "original": {
@@ -344,11 +344,11 @@
         "utils": "utils_6"
       },
       "locked": {
-        "lastModified": 1677981726,
-        "narHash": "sha256-5Xq2XKYA5dEOdqvBvBS5texdsLeE1pCs4qwEeEP7vxY=",
+        "lastModified": 1678323666,
+        "narHash": "sha256-0AaMjGCfALV65HG/92ZklEzQIHvIZiY4f5unnDrdVWo=",
         "owner": "tlm-solutions",
         "repo": "state-api",
-        "rev": "0503becdb8be66af65288a848d4199b66379a5fc",
+        "rev": "a9bb70afeb06cf524eddc2e26a1575836fee2213",
         "type": "github"
       },
       "original": {
@@ -368,11 +368,11 @@
         "utils": "utils_7"
       },
       "locked": {
-        "lastModified": 1677979421,
-        "narHash": "sha256-D8olZTuDOaZ+y3JluMRFuk29GmUmLM8k0x03WhOj28M=",
+        "lastModified": 1678328168,
+        "narHash": "sha256-3Ekz6Ocy2MEJHd1S67lBKsm/ndTNsdJ29bHqvVnKqAo=",
         "owner": "tlm-solutions",
         "repo": "telegram-decoder",
-        "rev": "a68ef7e52492e248038b4ebfa4cde82f43c340a5",
+        "rev": "b95ffffd623b1a3004e48b19f37d0d558ce7970b",
         "type": "github"
       },
       "original": {
@@ -388,11 +388,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1678038613,
-        "narHash": "sha256-JAHn3kLdDzEGYn4lFWUb/s3hG+8DfLMYxAJCKPXppGg=",
+        "lastModified": 1678460962,
+        "narHash": "sha256-nmnu5kec1cfaRzkQ+nITeSVnYfvQSDSl2hQOFafj0vE=",
         "owner": "tlm-solutions",
         "repo": "tlms.rs",
-        "rev": "078def3c685baebd65f732635bfa7540fd83307b",
+        "rev": "4dc76ffa4af0722dc62399a79b9225f82798b706",
         "type": "github"
       },
       "original": {
@@ -431,11 +431,11 @@
         "utils": "utils_8"
       },
       "locked": {
-        "lastModified": 1677985143,
-        "narHash": "sha256-VbshNjoXCBQm12Nr4k4Q7f5hr7KONiHAtNFfjgo/vTw=",
+        "lastModified": 1678305751,
+        "narHash": "sha256-26fBf8pcjx5sZom/+Bwu2cvLAmpfjRNc/NqEQtXwAQA=",
         "owner": "tlm-solutions",
         "repo": "trekkie",
-        "rev": "5b0f4ea3c7886fd1a986b3f3abb2bf4bfeb4c306",
+        "rev": "03368d13b9f8d8aeeaa94d08f5246ef311d2752f",
         "type": "github"
       },
       "original": {
@@ -446,11 +446,11 @@
     },
     "utils": {
       "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
+        "lastModified": 1676283394,
+        "narHash": "sha256-XX2f9c3iySLCw54rJ/CZs+ZK6IQy7GXNY4nSOyu2QG4=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
+        "rev": "3db36a8b464d0c4532ba1c7dda728f4576d6d073",
         "type": "github"
       },
       "original": {
