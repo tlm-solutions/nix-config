@@ -9,7 +9,7 @@
         index = "index.html";
         tryFiles = "$uri /index.html =404";
 	    extraConfig = ''
-          Access-Control-Allow-Credentials true
+          more_set_headers "Access-Control-Allow-Credentials: true";
 	    '';
       };
     };

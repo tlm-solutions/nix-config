@@ -32,9 +32,9 @@
             "/" = {
               proxyPass = with config.TLMS.datacare; "http://${host}:${toString port}/";
               proxyWebsockets = true;
-	      extraConfig = ''
-	        Access-Control-Allow-Credentials true
-	      '';
+              extraConfig = ''
+                more_set_headers "Access-Control-Allow-Credentials: true";
+	          '';
             };
           };
         };
