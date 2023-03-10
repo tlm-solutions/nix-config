@@ -8,9 +8,9 @@
         root = if (config.deployment-TLMS.domain == "dvb.solutions") then "${pkgs.kindergarten}/bin/" else "${pkgs.kindergarten-staging}/bin/";
         index = "index.html";
         tryFiles = "$uri /index.html =404";
-	extraConfig = ''
+	    extraConfig = ''
           Access-Control-Allow-Credentials true
-	'';
+	    '';
       };
     };
   };
