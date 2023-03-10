@@ -172,11 +172,11 @@
         "utils": "utils_5"
       },
       "locked": {
-        "lastModified": 1677977617,
-        "narHash": "sha256-wwJzYzK7gc0h70uxDMZvz+etcT9WmZ0zXg8s8RHXrZM=",
+        "lastModified": 1678484240,
+        "narHash": "sha256-u+a/y/0i6Cr+Zlj6zD6avoHtvHQaefT3rF74nBP4R6k=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "bc315a7adf9390b31bbaba69bdd57b594a3d951f",
+        "rev": "22decf3bb08720d63e1c918447ca14e254b4e889",
         "type": "github"
       },
       "original": {
@@ -431,11 +431,11 @@
         "utils": "utils_8"
       },
       "locked": {
-        "lastModified": 1678483548,
-        "narHash": "sha256-oQQFxzdu17WWLFtC/mGiqB0Zf0hJ4qb9HrJSK+cq038=",
+        "lastModified": 1678485606,
+        "narHash": "sha256-zkz6l/R0/H2Bs2z8Riaa3yp8e+eSEgXpgDs27QAkzEc=",
         "owner": "tlm-solutions",
         "repo": "trekkie",
-        "rev": "8e0943cce2ac99b130c8aa7abaebb5e7f7f7bb8f",
+        "rev": "b2a0e20d4a7a7fa9b8ef09ae800e736441bdf6f2",
         "type": "github"
       },
       "original": {
