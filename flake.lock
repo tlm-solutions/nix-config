@@ -344,11 +344,11 @@
         "utils": "utils_6"
       },
       "locked": {
-        "lastModified": 1678323666,
-        "narHash": "sha256-0AaMjGCfALV65HG/92ZklEzQIHvIZiY4f5unnDrdVWo=",
+        "lastModified": 1678546543,
+        "narHash": "sha256-yIPALEs4CHjTdj1imfKboJscZ79WTpUEZmvpzOHjEis=",
         "owner": "tlm-solutions",
         "repo": "state-api",
-        "rev": "a9bb70afeb06cf524eddc2e26a1575836fee2213",
+        "rev": "fd6ebd8529b2daee33260e101ea37d78c0d0a8d3",
         "type": "github"
       },
       "original": {
