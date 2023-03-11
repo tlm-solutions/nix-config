@@ -13,6 +13,7 @@ let
     { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; } # drehturm aachen
     { frequency = 150827500; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # C3H
     { frequency = 152830000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # Hannover-greater-area
+    { frequency = 153850000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } #  CLT
   ];
 
   receiver_config = lib.elemAt receiver_configs config.deployment-TLMS.systemNumber;
