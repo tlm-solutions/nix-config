@@ -3,7 +3,7 @@
 ![](https://img.shields.io/endpoint?url=https%3A%2F%2Fhydra.hq.c3d2.de%2Fjob%2Ftlm-solutions%2Fnix-config%2Fdata-hoarder.x86_64-linux%2Fshield)
 [![built with nix](https://builtwithnix.org/badge.svg)](https://builtwithnix.org)
 
-**Contact:** <dump@dvb.solutions>
+**Contact:** <hello@tlm.solutions>
 
 ## Building with nix
 
