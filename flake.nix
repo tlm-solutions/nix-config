@@ -9,9 +9,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    utils.url = github:numtide/flake-utils;
+
     microvm = {
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "utils";
     };
 
     sops-nix = {
@@ -31,6 +34,7 @@
         nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
         tlms-rs.follows = "tlms-rs";
+        utils.follows = "utils";
       };
     };
 
@@ -40,12 +44,14 @@
         nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
         tlms-rs.follows = "tlms-rs";
+        utils.follows = "utils";
       };
     };
 
     kindergarten = {
       url = "github:tlm-solutions/kindergarten";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
     };
 
     telegram-decoder = {
@@ -53,40 +59,47 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
+        utils.follows = "utils";
       };
     };
 
     gnuradio-decoder = {
       url = "github:tlm-solutions/gnuradio-decoder";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
     };
 
     data-accumulator = {
       url = "github:tlm-solutions/data-accumulator";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "utils";
     };
 
     state-api = {
       url = "github:tlm-solutions/state-api";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "utils";
     };
 
     funnel = {
       url = "github:tlm-solutions/funnel";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
     };
 
     windshield = {
       url = "github:tlm-solutions/windshield";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "utils";
     };
 
     wartrammer = {
       url = "github:tlm-solutions/wartrammer-40k";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "utils";
     };
 
     tlms-rs = {
