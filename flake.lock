@@ -9,7 +9,7 @@
           "nixpkgs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -38,7 +38,7 @@
           "tlms-rs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -93,6 +93,21 @@
         "type": "github"
       }
     },
+    "flake-utils": {
+      "locked": {
+        "lastModified": 1678901627,
+        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "funnel": {
       "inputs": {
         "json-structs": "json-structs",
@@ -101,7 +116,7 @@
         ],
         "tlms-rust": "tlms-rust",
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -124,7 +139,7 @@
           "nixpkgs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -163,7 +178,7 @@
           "nixpkgs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -184,7 +199,7 @@
       "inputs": {
         "fenix": "fenix",
         "flake-utils": [
-          "utils"
+          "flake-utils"
         ],
         "nixpkgs": [
           "nixpkgs"
@@ -277,6 +292,7 @@
         "data-accumulator": "data-accumulator",
         "datacare": "datacare",
         "documentation-src": "documentation-src",
+        "flake-utils": "flake-utils",
         "funnel": "funnel",
         "gnuradio-decoder": "gnuradio-decoder",
         "kindergarten": "kindergarten",
@@ -288,7 +304,6 @@
         "telegram-decoder": "telegram-decoder",
         "tlms-rs": "tlms-rs",
         "trekkie": "trekkie",
-        "utils": "utils",
         "wartrammer": "wartrammer",
         "windshield": "windshield"
       }
@@ -340,7 +355,7 @@
           "nixpkgs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -366,7 +381,7 @@
           "nixpkgs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -431,7 +446,7 @@
           "tlms-rs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -448,21 +463,6 @@
         "type": "github"
       }
     },
-    "utils": {
-      "locked": {
-        "lastModified": 1678901627,
-        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "wartrammer": {
       "inputs": {
         "naersk": [
@@ -473,7 +473,7 @@
         ],
         "nixpkgs-unstable": "nixpkgs-unstable",
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
@@ -496,7 +496,7 @@
           "nixpkgs"
         ],
         "utils": [
-          "utils"
+          "flake-utils"
         ]
       },
       "locked": {
