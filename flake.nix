@@ -93,6 +93,11 @@
       url = "github:tlm-solutions/tlms.rs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    chemo = {
+      url = "github:tlm-solutions/chemo";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -111,6 +116,7 @@
     , trekkie
     , wartrammer
     , windshield
+    , chemo
     , ...
     }:
     let
@@ -127,6 +133,7 @@
         sops-nix.nixosModules.sops
         state-api.nixosModules.default
         trekkie.nixosModules.default
+        chemo.nixosModules.default
         {
           nixpkgs.overlays = [
             datacare.overlays.default
@@ -136,6 +143,7 @@
             funnel.overlays.default
             data-accumulator.overlays.default
             windshield.overlays.default
+            chemo.overlays.default
             (final: prev: {
               inherit documentation-src;
               options-docs = (pkgs.nixosOptionsDoc {

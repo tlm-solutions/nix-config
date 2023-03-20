@@ -13,14 +13,9 @@
     };
     GRPC = [
       {
-        name = "API";
-        host = config.TLMS.api.GRPC.host;
-        port = config.TLMS.api.GRPC.port;
-      }
-      {
-        name = "FUNNEL";
-        host = config.TLMS.funnel.GRPC.host;
-        port = config.TLMS.funnel.GRPC.port;
+        name = "CHEMO";
+        host = config.TLMS.chmo.host;
+        port = config.TLMS.chemo.port;
       }
     ];
   };
