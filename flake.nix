@@ -9,9 +9,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # DO NOT remame this to utils
+    flake-utils.url = github:numtide/flake-utils;
+
     microvm = {
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     sops-nix = {
@@ -31,6 +35,7 @@
         nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
         tlms-rs.follows = "tlms-rs";
+        utils.follows = "flake-utils";
       };
     };
 
@@ -40,12 +45,14 @@
         nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
         tlms-rs.follows = "tlms-rs";
+        utils.follows = "flake-utils";
       };
     };
 
     kindergarten = {
       url = "github:tlm-solutions/kindergarten";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
     };
 
     telegram-decoder = {
@@ -53,40 +60,47 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
+        utils.follows = "flake-utils";
       };
     };
 
     gnuradio-decoder = {
       url = "github:tlm-solutions/gnuradio-decoder";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
     };
 
     data-accumulator = {
       url = "github:tlm-solutions/data-accumulator";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "flake-utils";
     };
 
     state-api = {
       url = "github:tlm-solutions/state-api";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "flake-utils";
     };
 
     funnel = {
       url = "github:tlm-solutions/funnel";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
     };
 
     windshield = {
       url = "github:tlm-solutions/windshield";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
     };
 
     wartrammer = {
       url = "github:tlm-solutions/wartrammer-40k";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "flake-utils";
     };
 
     tlms-rs = {

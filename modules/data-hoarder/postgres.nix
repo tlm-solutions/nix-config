@@ -29,10 +29,7 @@
       TimeoutSec = lib.mkForce 3000;
     };
     postStart = lib.mkAfter ''
-      # TODO: make shure grafana can't read tokens...
-      $PSQL -c "GRANT CONNECT ON DATABASE tlms TO grafana;"
-      $PSQL -c "GRANT SELECT ON ALL TABLES IN SCHEMA public TO grafana";
-
+      # set pw for the users
       $PSQL -c "ALTER ROLE tlms WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})';"
       $PSQL -c "ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_grafana.path})';"
 
@@ -40,23 +37,16 @@
       ${inputs.tlms-rs.packages.x86_64-linux.run-migration-based}/bin/run-migration
 
       # fixup permissions
+      # tlms is practically root, we need to FIXME something about it
       $PSQL -c "GRANT ALL ON DATABASE tlms TO tlms;"
       $PSQL -d tlms -c "GRANT ALL ON ALL TABLES IN SCHEMA public TO tlms;"
       $PSQL -d tlms -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO tlms;"
 
-      unset DATABASE_URL
-
-      export DATABASE_URL=postgres:///dvbdump
-
-      ${inputs.tlms-rs.packages.x86_64-linux.run-migration}/bin/run-migration
-
-      # fixup permissions
-      $PSQL -c "GRANT ALL ON DATABASE dvbdump TO dvbdump;"
-      $PSQL -d dvbdump -c "GRANT ALL ON ALL TABLES IN SCHEMA public TO dvbdump;"
-      $PSQL -d dvbdump -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO dvbdump;"
+      # Get graphana to SELECT from tables that might be interesting for it
+      $PSQL -c "GRANT CONNECT ON DATABASE tlms TO grafana;"
+      $PSQL -d tlms -c "GRANT SELECT ON r09_telegrams, raw_telegrams, gps_points, trekkie_runs, regions TO grafana;"
 
       unset DATABASE_URL
-
     '';
   };
 
