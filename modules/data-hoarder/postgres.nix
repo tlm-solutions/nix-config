@@ -33,8 +33,6 @@
       $PSQL -c "ALTER ROLE tlms WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})';"
       $PSQL -c "ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_grafana.path})';"
 
-      ##################### New DB #####################
-
       export DATABASE_URL=postgres:///tlms
       ${inputs.tlms-rs.packages.x86_64-linux.run-migration-based}/bin/run-migration
 
@@ -46,24 +44,9 @@
 
       # Get graphana to SELECT from tables that might be interesting for it
       $PSQL -c "GRANT CONNECT ON DATABASE tlms TO grafana;"
-      $PSQL -c "GRANT SELECT ON r09_telegrams, raw_telegrams, gps_points, trekkie_runs, regions TO grafana;"
-
-
-      unset DATABASE_URL
-
-      ##################### Old DB #####################
-      # this is old, shit and legacy at this point
-      export DATABASE_URL=postgres:///dvbdump
-
-      ${inputs.tlms-rs.packages.x86_64-linux.run-migration}/bin/run-migration
-
-      # fixup permissions
-      $PSQL -c "GRANT ALL ON DATABASE dvbdump TO dvbdump;"
-      $PSQL -d dvbdump -c "GRANT ALL ON ALL TABLES IN SCHEMA public TO dvbdump;"
-      $PSQL -d dvbdump -c "GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO dvbdump;"
+      $PSQL -d tlms -c "GRANT SELECT ON r09_telegrams, raw_telegrams, gps_points, trekkie_runs, regions TO grafana;"
 
       unset DATABASE_URL
-
     '';
   };
 
