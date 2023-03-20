@@ -14,7 +14,7 @@
     GRPC = [
       {
         name = "CHEMO";
-        host = config.TLMS.chmo.host;
+        host = config.TLMS.chemo.host;
         port = config.TLMS.chemo.port;
       }
     ];
