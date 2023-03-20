@@ -14,5 +14,6 @@
     ./socket.nix
     ./website.nix
     ./trekkie.nix
+    ./chemo.nix
   ];
 }
