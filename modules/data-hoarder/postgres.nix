@@ -19,7 +19,7 @@
     ];
   };
 
-  environment.systemPackages = [ inputs.tlms-rs.packages.x86_64-linux.run-migration  inputs.tlms-rs.packages.x86_64-linux.run-migration-based inputs.tlms-rs.packages.x86_64-linux.yeet-data];
+  environment.systemPackages = [ inputs.tlms-rs.packages.x86_64-linux.run-migration-based ];
 
   systemd.services.postgresql = {
     unitConfig = {
