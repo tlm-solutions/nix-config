@@ -3,7 +3,7 @@ let
   datacare-user = config.TLMS.datacare.user;
   data-accumulator-user = config.TLMS.dataAccumulator.user;
   trekkie-user = config.TLMS.trekkie.user;
-  chmeo-user = config.TLMS.chemo.user;
+  chemo-user = config.TLMS.chemo.user;
 in
 {
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
