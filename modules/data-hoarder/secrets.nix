@@ -3,6 +3,7 @@ let
   datacare-user = config.TLMS.datacare.user;
   data-accumulator-user = config.TLMS.dataAccumulator.user;
   trekkie-user = config.TLMS.trekkie.user;
+  chmeo-user = config.TLMS.chemo.user;
 in
 {
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
@@ -10,7 +11,7 @@ in
   users.groups = {
     postgres-tlms  = {
       name = "postgres-tlms";
-      members = [ datacare-user data-accumulator-user trekkie-user "postgres" ];
+      members = [ datacare-user data-accumulator-user trekkie-user chemo-user "postgres" ];
     };
 
     password-salt = {
