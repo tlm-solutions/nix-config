@@ -9,11 +9,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1679280550,
-        "narHash": "sha256-dcThjjB1nq8+pRCk88jpem9pE8xgcNBmcXD9Mof2MtY=",
+        "lastModified": 1680111830,
+        "narHash": "sha256-npPMqxrCsHBl7ZDeRYHK3shRWdkp0BMZWwGpZiXpoY4=",
         "owner": "tlm-solutions",
         "repo": "chemo",
-        "rev": "31d61f1b4ab5e2ef2f7e1cf8fd8f27a5280dea6c",
+        "rev": "39ab60d290cb205f06db3649665666ff62c5cbd4",
         "type": "github"
       },
       "original": {
@@ -498,11 +498,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680109728,
-        "narHash": "sha256-uLPExKOs1xFxGRJeqXNb+BQspaqarl/nAfgXPamnG3E=",
+        "lastModified": 1680113063,
+        "narHash": "sha256-XMID+UNGlEKASn+tNBc73c33OSHZw7fzVidNigt7OuU=",
         "owner": "tlm-solutions",
         "repo": "tlms.rs",
-        "rev": "c896abe3705d67002227e1c87512899c566ca7a1",
+        "rev": "dcba7e38b090f23cf64918e985a4bfa3dffa20b0",
         "type": "github"
       },
       "original": {
@@ -543,11 +543,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679871499,
-        "narHash": "sha256-OhsMcecQhasH+WOKPfAbePHrnCrGVJK7ZRoEFFoDD28=",
+        "lastModified": 1680113307,
+        "narHash": "sha256-VDLeE8CahsHpOCqwiE56C36nN2Jv3xRUTcs0Rmy1LxQ=",
         "owner": "tlm-solutions",
         "repo": "trekkie",
-        "rev": "bfd1d88ce0699ca4cdc402c0c0c3ad7ee573f68a",
+        "rev": "8b90e8e9c5e28562f7ba61597e029d652dee063f",
         "type": "github"
       },
       "original": {
