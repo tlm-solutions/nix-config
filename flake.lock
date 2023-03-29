@@ -62,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679592919,
-        "narHash": "sha256-xPcijB6vGlUlelVHo1+3UIUG5g8BGYRZfAjG5mHXcTo=",
+        "lastModified": 1680102969,
+        "narHash": "sha256-q+MQQrvTomuqc0W7AE++qsyY7HjFn5ww85ibJx7ufFE=",
         "owner": "tlm-solutions",
         "repo": "data-accumulator",
-        "rev": "ffd8dccaafd5553e0fd204371dc32b9bc2477e0e",
+        "rev": "bb20e628f56d2d9f03606cf5d529979b82430612",
         "type": "github"
       },
       "original": {
@@ -91,11 +91,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679927198,
-        "narHash": "sha256-sgpu0ODtMx44yB45d6Q64jnig/i2yf5Lf+9tg3bILDA=",
+        "lastModified": 1680103416,
+        "narHash": "sha256-9fVsE6gFzbZ1XtSvT3Q+YK9EWtbMO8fVA09MPRV9uiw=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "96c7a639b0ddd95563529a5157e489a194af0ccc",
+        "rev": "d426062151645f95ace2c80e3e6660517c53559a",
         "type": "github"
       },
       "original": {
@@ -185,11 +185,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1678020126,
-        "narHash": "sha256-lTMEZJ9khdBPgNjbl3z9C32kxk0Cl3yizaOGP7oBeJQ=",
+        "lastModified": 1680103362,
+        "narHash": "sha256-j4VbtrZh07NsPwtik6g4M/CNvE+WMVBpBl6n4E0TJOc=",
         "owner": "tlm-solutions",
         "repo": "funnel",
-        "rev": "b1768749c2b2e2d5c1c8860af4b201e01a24976a",
+        "rev": "16418d865a1a5fff4a89e30234157c47010cf657",
         "type": "github"
       },
       "original": {
@@ -498,11 +498,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679870731,
-        "narHash": "sha256-Wmhz5gYmA8rxYx9OvoVgjRobWwqzjGIDlkvg/ljOJvs=",
+        "lastModified": 1680101323,
+        "narHash": "sha256-rhELrrWaHFFvQYQ35JVyJlLcY9rMU/wt/J0Af0C+x0o=",
         "owner": "tlm-solutions",
         "repo": "tlms.rs",
-        "rev": "6c572290ce4141ab90eddbb6bfc80aae91c61241",
+        "rev": "c2e29033a697b8963058b41049a08718c04347df",
         "type": "github"
       },
       "original": {
@@ -514,11 +514,11 @@
     "tlms-rust": {
       "flake": false,
       "locked": {
-        "lastModified": 1677980059,
-        "narHash": "sha256-bPTKW80qgJLv14Th5USYM+S3pt7irsfhnJMxZhQp9eo=",
+        "lastModified": 1680101323,
+        "narHash": "sha256-rhELrrWaHFFvQYQ35JVyJlLcY9rMU/wt/J0Af0C+x0o=",
         "owner": "tlm-solutions",
         "repo": "tlms.rs",
-        "rev": "99be81df55035ff8645a38983911bd862a8aa281",
+        "rev": "c2e29033a697b8963058b41049a08718c04347df",
         "type": "github"
       },
       "original": {
