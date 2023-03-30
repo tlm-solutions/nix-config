@@ -2,7 +2,7 @@
 {
   TLMS.chemo = {
     enable = true;
-    host = "0.0.0.0"; # this is the receiving grps part
+    host = "127.0.0.1";
     port = 8090;
     database = {
       host = "127.0.0.1";
