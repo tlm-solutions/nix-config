@@ -9,11 +9,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1680192717,
-        "narHash": "sha256-90hd7U+DKyY4FPr5gQO/emQ9E93ijUPUWWVQfW4MaZQ=",
+        "lastModified": 1680196365,
+        "narHash": "sha256-yOOSoZqg1bNw4EOhBlD3Nc1YMIeQj6vYx6QWPJfC/ac=",
         "owner": "tlm-solutions",
         "repo": "chemo",
-        "rev": "1a653b12f89cb9e6ef702f63fe2922d3c0762e96",
+        "rev": "9fc8eb844e16aa47c4a625cf18f76b0dfbfea04d",
         "type": "github"
       },
       "original": {
@@ -62,11 +62,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680102969,
-        "narHash": "sha256-q+MQQrvTomuqc0W7AE++qsyY7HjFn5ww85ibJx7ufFE=",
+        "lastModified": 1680195633,
+        "narHash": "sha256-Pd8HaHOw2/SkTTxvmg08Bt4KsPNuNa61o5Bgsc/xU94=",
         "owner": "tlm-solutions",
         "repo": "data-accumulator",
-        "rev": "bb20e628f56d2d9f03606cf5d529979b82430612",
+        "rev": "ebd612862f6f69f1b9103cc5e6e0d2a06ce0414b",
         "type": "github"
       },
       "original": {
