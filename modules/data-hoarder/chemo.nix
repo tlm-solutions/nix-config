@@ -3,7 +3,7 @@
   TLMS.chemo = {
     enable = true;
     host = "127.0.0.1";
-    port = 8090;
+    port = 50053;
     database = {
       host = "127.0.0.1";
       port = config.services.postgresql.port;
