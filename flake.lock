@@ -9,11 +9,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1680297171,
-        "narHash": "sha256-BVO73kcejhDfU90NmrWPTPEXTq6t701IoQK0xIXP+QI=",
+        "lastModified": 1680297883,
+        "narHash": "sha256-1ov+tc7gIUonC+KbvNomTgRKbPA+In5hVCroeGskK7A=",
         "owner": "tlm-solutions",
         "repo": "chemo",
-        "rev": "e887244de157bc7e70503e0f05231c3fde29ff2b",
+        "rev": "799d1994338cbe595ccdca507ffa252e12944d72",
         "type": "github"
       },
       "original": {
