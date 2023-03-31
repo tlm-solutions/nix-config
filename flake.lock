@@ -185,11 +185,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680103362,
-        "narHash": "sha256-j4VbtrZh07NsPwtik6g4M/CNvE+WMVBpBl6n4E0TJOc=",
+        "lastModified": 1680305437,
+        "narHash": "sha256-+x4w/sde4O/Vu/U9Oh9/qvUkDfxJDWQcbGt/ZdVbDPE=",
         "owner": "tlm-solutions",
         "repo": "funnel",
-        "rev": "16418d865a1a5fff4a89e30234157c47010cf657",
+        "rev": "17bc7e988093535afdd2593dfecd3c4de975a213",
         "type": "github"
       },
       "original": {
@@ -514,11 +514,11 @@
     "tlms-rust": {
       "flake": false,
       "locked": {
-        "lastModified": 1680101323,
-        "narHash": "sha256-rhELrrWaHFFvQYQ35JVyJlLcY9rMU/wt/J0Af0C+x0o=",
+        "lastModified": 1680282394,
+        "narHash": "sha256-cBbVSomnp/EYGmdUOgAynullg46Od/iYtoPmmuhn7yU=",
         "owner": "tlm-solutions",
         "repo": "tlms.rs",
-        "rev": "c2e29033a697b8963058b41049a08718c04347df",
+        "rev": "6aec5457b0bf397a8d74b516e1288b44c651af6f",
         "type": "github"
       },
       "original": {
