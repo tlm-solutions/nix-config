@@ -91,11 +91,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680551999,
-        "narHash": "sha256-WWSwVH0YwGe9OCjJORo5xMPYDAt1gXKoGw9hLRobLlo=",
+        "lastModified": 1680703462,
+        "narHash": "sha256-IQbMgqYjOwhIKfZ4ek6mfr0mbFmuCbY5fEedkU8LwTk=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "961892996490cea192812c6c43fc6d89b501efc0",
+        "rev": "d1867f46ddd5ef57409cd27a67d0907ae1d0072e",
         "type": "github"
       },
       "original": {
@@ -225,11 +225,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680633662,
-        "narHash": "sha256-YAVoT8qYc3cYjx00Yk0s+Il74uDatpwxVDqhgTLU8yc=",
+        "lastModified": 1680702544,
+        "narHash": "sha256-TU+KCbfuf73occgL06jDF8YQIMbOPtdEM5RzPO374kY=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "dfe2b5ed1643904d3f9a540b7b6db853e3876bf5",
+        "rev": "7964beccb8e3b5308598abfab1eb4ec82d43fe2f",
         "type": "github"
       },
       "original": {
@@ -283,11 +283,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1680498889,
-        "narHash": "sha256-4nGFBm+oILOO6DPoKTPxVlfkZSxCOY4W25zSRHESK48=",
+        "lastModified": 1680588688,
+        "narHash": "sha256-SW95w50Pdw3nivgTuCebtbbPqaCTp9ctnFMNj24vdck=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "799d153e4f316143a9db0eb869ecf44d8d4c0356",
+        "rev": "3e01f83884b8ed7cbafa784727fb343f1876d56f",
         "type": "github"
       },
       "original": {
@@ -458,11 +458,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680452626,
-        "narHash": "sha256-pJ06eiSugD+tecmvQKN5L7v3eurU0k3McvViPo+T/Gc=",
+        "lastModified": 1680698358,
+        "narHash": "sha256-OLnEQDuZSd90jhYZiDbvqIahDVxodj22LVEKJYIPc6M=",
         "owner": "tlm-solutions",
         "repo": "tlms.rs",
-        "rev": "5a3eede9972d59c50e90efc8f521f3f413122f44",
+        "rev": "abd4a31d7d68176a32180342a69d164f1b5873ec",
         "type": "github"
       },
       "original": {
@@ -503,11 +503,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680286591,
-        "narHash": "sha256-Lrnj3ckQi4SvqGrAbmCn3EV2eN1DYo2d5v0B5X1hOIU=",
+        "lastModified": 1680677585,
+        "narHash": "sha256-+eoi4rt5PdTajvfZ+TDts0rz/xR703XsTm9AJ0AZw1g=",
         "owner": "tlm-solutions",
         "repo": "trekkie",
-        "rev": "c0a481ec83564d5710af58830208ecee8d0fc9cd",
+        "rev": "38ca29108b27fd8c1ddb13f2b60a3b5e77438e00",
         "type": "github"
       },
       "original": {
