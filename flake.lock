@@ -91,11 +91,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680882530,
-        "narHash": "sha256-0DKyO/F0NMCsoedoyk73+qmZBhSJHhgMPqIOKR06j8I=",
+        "lastModified": 1680883597,
+        "narHash": "sha256-v9X31Hy9Jmz7py8H2hTKgxP1n+mEDbATt1AOiBgS9WM=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "729a0b752dd6dc6232e716fd23bec89e08e8b3f7",
+        "rev": "b584e0dc04f08b61d394e4f5d8fd588a0901a259",
         "type": "github"
       },
       "original": {
@@ -225,11 +225,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680707121,
-        "narHash": "sha256-wrztgYlS19CZDsPJO95azbjQSVsFV/t6jfLpxofO1Wg=",
+        "lastModified": 1680883402,
+        "narHash": "sha256-09WGAOil5iQj/+UPYJpRdvJH4mZC35Pp0wEbYsfQs9o=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "8a26bbca044d1e7d9c48041acc0633b456af99c5",
+        "rev": "0f45d5b5a298d8e1abd32a6f4317606af8033f2b",
         "type": "github"
       },
       "original": {
