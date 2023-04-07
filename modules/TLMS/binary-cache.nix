@@ -12,11 +12,11 @@
     nix.settings = {
       substituters = [
         "https://tlm-solutions.cachix.org"
-        "https://hydra.hq.c3d2.de"
+        "https://nix-cache.hq.c3d2.de"
       ];
       trusted-public-keys = [
         "tlm-solutions.cachix.org-1:J7qT6AvoNWPSj+59ed5bNESj35DLJNaROqga1EjVIoA="
-        "nix-serve.hq.c3d2.de:KZRGGnwOYzys6pxgM8jlur36RmkJQ/y8y62e52fj1ps="
+        "nix-cache.hq.c3d2.de:KZRGGnwOYzys6pxgM8jlur36RmkJQ/y8y62e52fj1ps="
       ];
     };
   };
