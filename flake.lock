@@ -91,11 +91,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680883597,
-        "narHash": "sha256-v9X31Hy9Jmz7py8H2hTKgxP1n+mEDbATt1AOiBgS9WM=",
+        "lastModified": 1680885130,
+        "narHash": "sha256-TslYkvbRCZ6y7OVWWbr4wTH28gYevCPZU6xAXQYxddQ=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "b584e0dc04f08b61d394e4f5d8fd588a0901a259",
+        "rev": "5382f290e5ae6490b2def1f361c93c5e0f2d637b",
         "type": "github"
       },
       "original": {
