@@ -138,11 +138,11 @@
     },
     "flake-utils": {
       "locked": {
-        "lastModified": 1680776469,
-        "narHash": "sha256-3CXUDK/3q/kieWtdsYpDOBJw3Gw4Af6x+2EiSnIkNQw=",
+        "lastModified": 1680946745,
+        "narHash": "sha256-KqGlwg9UTDsFBZZB8wzXgMnc8XQm95LtSbFvBsnqkPI=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "411e8764155aa9354dbcd6d5faaeb97e9e3dce24",
+        "rev": "946da791763db1c306b86a8bd3828bf5814a1247",
         "type": "github"
       },
       "original": {
@@ -225,11 +225,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680899299,
-        "narHash": "sha256-iHvu9fa3bunLw3QGWvl8LVp8x+RD27jgIK6nBIqGsPs=",
+        "lastModified": 1680936077,
+        "narHash": "sha256-eAs9pYR8hhhI04PPWPvBqZ4u4bJxXo0iH1zaTlJz7K4=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "7be822dff4123b87af537c58965672214b778eb9",
+        "rev": "48eed68e255814eb23e5bb25eaec62ac04d1f9f6",
         "type": "github"
       },
       "original": {
@@ -248,11 +248,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680735035,
-        "narHash": "sha256-tXoCugL9NkKu2rN0HgAngd3n0wbDhYFvJ5yjWe3MuKU=",
+        "lastModified": 1680857447,
+        "narHash": "sha256-Jee+435Hf5y4LAB5j2xVd+KrDKL/OKkIaO2EvB0F5Uc=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "d05d2b2e5ae938184efba4be575ef2d7bdf1ee5b",
+        "rev": "2187b3029920181db3e3bd9f6cf6b41de9a28d3f",
         "type": "github"
       },
       "original": {
