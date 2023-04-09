@@ -9,6 +9,7 @@
       host = "127.0.0.1";
       port = config.services.postgresql.port;
       passwordFile = config.sops.secrets.postgres_password.path;
+      user = "tlms";
     };
     redis = {
       port = 6379;
