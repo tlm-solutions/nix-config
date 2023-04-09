@@ -91,11 +91,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681038642,
-        "narHash": "sha256-IwwdmUPbuxEuOIl16NkwRWYtpDHQSHxJ2u4Ykdl47C8=",
+        "lastModified": 1681041172,
+        "narHash": "sha256-rO2FPiyU35oMBO9pAlPvrZQfjuZFgQTI4QTzdxpAlc0=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "b2709f6ffcbf7a9e0af10445856fa32f9d541c71",
+        "rev": "fbdca9b0373ebf14efd4ca131ecc89bd9b0492be",
         "type": "github"
       },
       "original": {
@@ -228,11 +228,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681033701,
-        "narHash": "sha256-hkqA6Q7psZDCv9avej/TRMWzFwPDKLQoRKy2PLwjNEI=",
+        "lastModified": 1681045945,
+        "narHash": "sha256-Zm4x/w99mJj1lG7HmnTqWEGiwAfKTA6r3KHV4JO1kNA=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "c02fb01009196c62cec909a2f4ce39434049a43f",
+        "rev": "18bd6292078645522cf611084ecb368668675097",
         "type": "github"
       },
       "original": {
@@ -251,11 +251,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681039178,
-        "narHash": "sha256-OSGAtor0sZ4mhOY1MJDC6C5oFpi6Htji48EqWOEDjJQ=",
+        "lastModified": 1681060130,
+        "narHash": "sha256-gTIX9uKFYchzPmHk1JkIKRy5PRU/n1bLfoco+OVNAjo=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "bd4a75424ad30071178c567d42ab924632cec12c",
+        "rev": "4f9088ab2d95bb2e94a1c33b9f6550924b11e6aa",
         "type": "github"
       },
       "original": {
@@ -586,15 +586,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1678530041,
-        "narHash": "sha256-EjEKmKOe9vuC7Eptc6+RwH7cUEBgb4KqCCrdTFqeKIQ=",
+        "lastModified": 1681063248,
+        "narHash": "sha256-WW9wsxJbfalJoqLMq3znC7oEZXQK2PfIXZ/8vq/hE+8=",
         "owner": "tlm-solutions",
         "repo": "windshield",
-        "rev": "424f06443fb18d32d7b6c92b22d0989340fcb874",
+        "rev": "3ae131e0b58794d3beb317628c6ffac68388fba3",
         "type": "github"
       },
       "original": {
         "owner": "tlm-solutions",
+        "ref": "hotfix",
         "repo": "windshield",
         "type": "github"
       }

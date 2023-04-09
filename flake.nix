@@ -91,7 +91,7 @@
     };
 
     windshield = {
-      url = "github:tlm-solutions/windshield";
+      url = "github:tlm-solutions/windshield/hotfix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
     };
