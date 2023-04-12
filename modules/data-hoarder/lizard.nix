@@ -3,20 +3,27 @@ let
   service_number = 1;
 in
 {
-  TLMS.api = {
+  TLMS.lizard = {
     enable = true;
-    GRPC = {
+    http = {
       host = "127.0.0.1";
-      port = 50050 + service_number;
+      port = 9000 + service_number;
+    };
+ 
+    redis = {
+      http = config.services.redis.servers."state".bind;
+      port = config.services.redis.servers."state".port;
     };
 
-    port = 9000 + service_number;
-    graphFile = config.TLMS.graphJson;
-    stopsFile = config.TLMS.stopsJson;
     workerCount = 6;
   };
 
   services = {
+    redis.servers."state" = {
+      enable = true;
+      bind = "127.0.0.1";
+      port = 5314; 
+    };
     nginx = {
       enable = true;
       recommendedProxySettings = true;

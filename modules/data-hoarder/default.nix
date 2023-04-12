@@ -4,7 +4,8 @@
     ./datacare.nix
     ./data-accumulator.nix
     ./documentation.nix
-    ./dvb-api.nix
+    ./lizard.nix
+    ./bureaucrat.nix
     ./file_sharing.nix
     ./grafana.nix
     ./map.nix

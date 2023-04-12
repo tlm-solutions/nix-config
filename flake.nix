@@ -77,8 +77,15 @@
       inputs.utils.follows = "flake-utils";
     };
 
-    state-api = {
-      url = "github:tlm-solutions/state-api";
+    lizard = {
+      url = "github:tlm-solutions/lizard";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.naersk.follows = "naersk";
+      inputs.utils.follows = "flake-utils";
+    };
+
+    bureaucrat = {
+      url = "github:tlm-solutions/bureaucrat";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.naersk.follows = "naersk";
       inputs.utils.follows = "flake-utils";
@@ -125,7 +132,8 @@
     , microvm
     , nixpkgs
     , sops-nix
-    , state-api
+    , lizard
+    , bureaucrat
     , telegram-decoder
     , trekkie
     , wartrammer
@@ -145,7 +153,8 @@
         datacare.nixosModules.default
         funnel.nixosModules.default
         sops-nix.nixosModules.sops
-        state-api.nixosModules.default
+        lizard.nixosModules.default
+        bureaucrat.nixosModules.default
         trekkie.nixosModules.default
         chemo.nixosModules.default
         {
@@ -153,7 +162,8 @@
             datacare.overlays.default
             kindergarten.overlays.default
             trekkie.overlays.default
-            state-api.overlays.default
+            lizard.overlays.default
+            bureaucrat.overlays.default
             funnel.overlays.default
             data-accumulator.overlays.default
             windshield.overlays.default
