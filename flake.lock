@@ -362,11 +362,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681332721,
-        "narHash": "sha256-Gda4R27gDdHik7ELmRFgCDu7RslPEeMA/5gLF3yEYeE=",
+        "lastModified": 1681333349,
+        "narHash": "sha256-Hro26LAd8cTkJSLF1tSXVM/C4vLB70psoSth31sUpVE=",
         "owner": "tlm-solutions",
         "repo": "lizard",
-        "rev": "651af551df20cb0faec32938fd45bb10b226fe6b",
+        "rev": "93028327777f8e8ec66dfdfa1c02246f5167dc33",
         "type": "github"
       },
       "original": {
