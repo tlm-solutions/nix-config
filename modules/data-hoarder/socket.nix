@@ -17,7 +17,6 @@ in
       port = 9010;
       host = "0.0.0.0";
     };
-    apiAddress = "127.0.0.1:${toString config.TLMS.api.port}";
   };
   services = {
     nginx = {

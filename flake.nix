@@ -80,14 +80,12 @@
     lizard = {
       url = "github:tlm-solutions/lizard";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.naersk.follows = "naersk";
       inputs.utils.follows = "flake-utils";
     };
 
     bureaucrat = {
       url = "github:tlm-solutions/bureaucrat";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.naersk.follows = "naersk";
       inputs.utils.follows = "flake-utils";
     };
 

@@ -11,7 +11,7 @@ in
     };
  
     redis = {
-      http = config.services.redis.servers."state".bind;
+      host = config.services.redis.servers."state".bind;
       port = config.services.redis.servers."state".port;
     };
 
@@ -28,12 +28,12 @@ in
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "api.${config.deployment-TLMS.domain}" = {
+        "lizard.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.TLMS.api; "http://127.0.0.1:${toString port}/";
+              proxyPass = with config.TLMS.lizard.http; "http://${host}:${toString port}/";
               proxyWebsockets = true;
             };
           };

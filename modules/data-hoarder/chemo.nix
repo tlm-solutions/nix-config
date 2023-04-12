@@ -13,9 +13,9 @@
     };
     GRPC = [
       {
-        name = "API";
-        host = config.TLMS.api.GRPC.host;
-        port = config.TLMS.api.GRPC.port;
+        name = "BUREAUCRAT";
+        host = config.TLMS.bureaucrat.grpc.host;
+        port = config.TLMS.bureaucrat.grpc.port;
       }
       {
         name = "FUNNEL";

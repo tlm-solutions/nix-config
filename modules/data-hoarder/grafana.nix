@@ -51,13 +51,24 @@
           ];
         }
 
-        # metrics from state-api
+        # metrics from lizard
         {
-          job_name = "state-api";
+          job_name = "lizard";
           metrics_path = "/metrics";
           static_configs = [
             {
-              targets = [ "127.0.0.1:${toString config.TLMS.api.port}"];
+              targets = [ "${config.TLMS.lizard.http.host}:${toString config.TLMS.lizard.http.port}"];
+            }
+          ];
+        }
+
+        # metrics from datacare
+        {
+          job_name = "datacare";
+          metrics_path = "/metrics";
+          static_configs = [
+            {
+              targets = [ "${config.TLMS.datacare.host}:${toString config.TLMS.datacare.port}"];
             }
           ];
         }

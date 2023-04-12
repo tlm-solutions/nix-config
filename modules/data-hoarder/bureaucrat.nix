@@ -10,7 +10,7 @@ in
       port = 50050 + service_number;
     };
     redis = {
-      http = config.services.redis.servers."state".bind;
+      host = config.services.redis.servers."state".bind;
       port = config.services.redis.servers."state".port;
     };
   };
