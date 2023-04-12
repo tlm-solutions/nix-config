@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681312169,
-        "narHash": "sha256-B5Uc4y0ysuvsHt27v63SciVnvl46dSmTELIbUqKLEKo=",
+        "lastModified": 1681319004,
+        "narHash": "sha256-8uFE8fDhNr35Kh1/sga4LPqSI6cfK/HrtnXjWo7L3bE=",
         "owner": "tlm-solutions",
         "repo": "bureaucrat",
-        "rev": "78779278186fbda7b649d2365ac4e4dd5d54daf7",
+        "rev": "87b96f36351233131e8bf91f773bd4141f7ae60c",
         "type": "github"
       },
       "original": {
