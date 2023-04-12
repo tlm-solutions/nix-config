@@ -14,7 +14,7 @@ in
       host = config.services.redis.servers."state".bind;
       port = config.services.redis.servers."state".port;
     };
-
+    logLevel = "debug";
     workerCount = 6;
   };
 
