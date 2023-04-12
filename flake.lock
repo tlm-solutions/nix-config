@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681319004,
-        "narHash": "sha256-8uFE8fDhNr35Kh1/sga4LPqSI6cfK/HrtnXjWo7L3bE=",
+        "lastModified": 1681320446,
+        "narHash": "sha256-LcaY5ndPnNgZBHsiY9Qr7b+hzZP5DlNiYPZSPeZxe/s=",
         "owner": "tlm-solutions",
         "repo": "bureaucrat",
-        "rev": "87b96f36351233131e8bf91f773bd4141f7ae60c",
+        "rev": "0d3cc9c72b67beff6780f03eeff3fe745887bed2",
         "type": "github"
       },
       "original": {
@@ -362,11 +362,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681315740,
-        "narHash": "sha256-SBYAOk92EkWkqE5D4x0acsfhakhG51NOpSzK8/Z+g5c=",
+        "lastModified": 1681320594,
+        "narHash": "sha256-0ve7JjSbcr+jp3nnjRv4C/pUbaEaxJT3/HsHcP5m0dE=",
         "owner": "tlm-solutions",
         "repo": "lizard",
-        "rev": "c441077f82e30f10f6e1bd025734f7a340b71526",
+        "rev": "3d907faa55d3f49d47349be68f07f1b37b9e49b2",
         "type": "github"
       },
       "original": {
