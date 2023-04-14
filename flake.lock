@@ -33,11 +33,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1681382498,
-        "narHash": "sha256-85svkqYWhedolZ3hVhSWqPfmPQyg4pSogeV9T0wcocU=",
+        "lastModified": 1681457996,
+        "narHash": "sha256-WNDvRWWosJBT4YHtHm1jWi1U9Bp9bPo15v2YcU3BOoc=",
         "owner": "tlm-solutions",
         "repo": "chemo",
-        "rev": "fb073e036c483ca3e7b985ed77019e5bc5158023",
+        "rev": "490addd636e2a6bdcf4532521508323e55379ff5",
         "type": "github"
       },
       "original": {
@@ -338,11 +338,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681135885,
-        "narHash": "sha256-F8nlY/JkJDuRAEwt4JrUJddLeBzNQQjEtxa79cMhJEU=",
+        "lastModified": 1681413546,
+        "narHash": "sha256-4z9o7HgD6PwAQcotOowUKN2l+7zbgvEzuiFk9A0TDgc=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "b5e854ce52769ac86705744d78e4f8d0f5841fb1",
+        "rev": "a2d16026787ba04ccabb1ee9653a0f057cc7c27a",
         "type": "github"
       },
       "original": {
