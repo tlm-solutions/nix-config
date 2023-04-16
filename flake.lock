@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681336197,
-        "narHash": "sha256-IAUoDRmJIuRrJhdLwPIgbWmLdSD55jvTyuEl+9T6010=",
+        "lastModified": 1681673614,
+        "narHash": "sha256-3KQSBxe/Wm4cFLe0cqEoizxceZ5gb76ek+3FcgXvCGQ=",
         "owner": "tlm-solutions",
         "repo": "bureaucrat",
-        "rev": "491fd8b10a91036cd3ae5237a3028f62955c46f4",
+        "rev": "6c8cdbcc549e8fa3828ef1cc9cbc6598c38a3475",
         "type": "github"
       },
       "original": {
@@ -338,11 +338,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681657086,
-        "narHash": "sha256-bM4PzOCi7fdrNGq46OPDZ2DQqAJj06vlyVFjy353fhI=",
+        "lastModified": 1681675448,
+        "narHash": "sha256-MZROMuhBDdkkR1Zg+L1kXQ1dzopdUH9uNGqFdO+hEUs=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "03c24d2d49469b3f5a9e8b7baf9298d00ee54369",
+        "rev": "102c0c7b2f74c8e82384acf9bbe02aa5b92950fe",
         "type": "github"
       },
       "original": {
@@ -362,11 +362,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681333349,
-        "narHash": "sha256-Hro26LAd8cTkJSLF1tSXVM/C4vLB70psoSth31sUpVE=",
+        "lastModified": 1681674127,
+        "narHash": "sha256-VqlTD3qs5ZmlTNu0eGSNFja+fAoyovgf6vTFtM8Qr+A=",
         "owner": "tlm-solutions",
         "repo": "lizard",
-        "rev": "93028327777f8e8ec66dfdfa1c02246f5167dc33",
+        "rev": "0ef0fbdf8d239458b6ff28661cf928e4cf110855",
         "type": "github"
       },
       "original": {
