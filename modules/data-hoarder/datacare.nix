@@ -25,6 +25,13 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
+      "datacare.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+        enableACME = true;
+        forceSSL = true;
+        extraConfig = ''
+              rewrite ^ https://datacare.${config.deployment-TLMS.domain}$request_uri permanent;
+        '';
+      };
         "datacare.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;

@@ -33,6 +33,13 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
+      "trekkie.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+        enableACME = true;
+        forceSSL = true;
+        extraConfig = ''
+              rewrite ^ https://trekkie.${config.deployment-TLMS.domain}$request_uri permanent;
+        '';
+      };
         "trekkie.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;

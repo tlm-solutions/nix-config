@@ -4,6 +4,13 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
+      "map.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+        enableACME = true;
+        forceSSL = true;
+        extraConfig = ''
+              rewrite ^ https://map.${config.deployment-TLMS.domain}$request_uri permanent;
+        '';
+      };
         "map.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;

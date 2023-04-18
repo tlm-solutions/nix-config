@@ -136,10 +136,17 @@
     nginx = {
       enable = true;
       virtualHosts = {
+      "${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] (toString config.services.grafana.settings.server.domain))}" = {
+        enableACME = true;
+        forceSSL = true;
+        extraConfig = ''
+              rewrite ^ https://${toString config.services.grafana.settings.server.domain}$request_uri permanent;
+        '';
+      };
         "${toString config.services.grafana.settings.server.domain}" = {
           forceSSL = true;
           enableACME = true;
-          locations."/" = let 
+          locations."/" = let
             cfg = config.services.grafana;
           in {
             proxyPass = "http://${cfg.settings.server.http_addr}:${toString cfg.settings.server.http_port}";

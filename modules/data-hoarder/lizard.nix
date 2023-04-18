@@ -28,6 +28,13 @@ in
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
+      "lizard.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+        enableACME = true;
+        forceSSL = true;
+        extraConfig = ''
+              rewrite ^ https://lizard.${config.deployment-TLMS.domain}$request_uri permanent;
+        '';
+      };
         "lizard.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;
