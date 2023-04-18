@@ -44,7 +44,6 @@
 
       # Get graphana to SELECT from tables that might be interesting for it
       $PSQL -c "GRANT CONNECT ON DATABASE tlms TO grafana;"
-      $PSQL -c "GRANT SELECT ON r09_transmission_locations TO grafana;"
       $PSQL -d tlms -c "GRANT SELECT ON r09_telegrams, raw_telegrams, gps_points, trekkie_runs, regions TO grafana;"
 
       unset DATABASE_URL
