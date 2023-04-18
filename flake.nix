@@ -265,7 +265,7 @@
       packages = {
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
-        fuck-microvm = self.nixosConfigurations.fuck.config.microvm.declaredRunner;
+        fuck-microvm = self.nixosConfigurations.fuck.config.system.build.vm;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
           inherit documentation-src;
           options-docs = (pkgs.nixosOptionsDoc {
@@ -288,9 +288,9 @@
               echo
 
               set -x
-              export QEMU_NET_OPTS="hostfwd=tcp::2223-:22,hostfwd=tcp::8050-:${toString cfg.TLMS.trekkie.port},hostfwd=tcp::8060-:${toString cfg.TLMS.datacare.port},hostfwd=tcp::8070-:${toString cfg.TLMS.dataAccumulator.port},hostfwd=tcp::8070-:${toString cfg.TLMS.funnel.defaultWebsocket.port}"
+              export QEMU_NET_OPTS="hostfwd=tcp::2223-:22,hostfwd=tcp::8050-:${toString cfg.TLMS.trekkie.port},hostfwd=tcp::8060-:${toString cfg.TLMS.datacare.port},hostfwd=tcp::8070-:${toString cfg.TLMS.dataAccumulator.port},hostfwd=tcp::8080-:${toString cfg.TLMS.funnel.defaultWebsocket.port}"
               echo "running the vm now..."
-              ${self.packages."x86_64-linux".fuck-microvm}/bin/run-nixos-vm
+              ${self.packages."x86_64-linux".fuck-microvm}/bin/run-staging-data-hoarder-vm
             '');
       }
       // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; })

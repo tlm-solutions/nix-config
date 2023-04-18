@@ -1,4 +1,4 @@
-{ inputs, lib, modulesPath, ... }:
+{self, inputs, lib, modulesPath, ... }:
 {
   imports = [
     "${modulesPath}/virtualisation/qemu-vm.nix"
@@ -41,7 +41,7 @@
 
   have fun!
   '';
-
+  sops.defaultSopsFile = (lib.mkForce (self + /secrets/mctest/secrets.yaml));
 
   networking.firewall.enable = false;
 
