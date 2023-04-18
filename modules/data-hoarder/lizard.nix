@@ -9,7 +9,7 @@ in
       host = "127.0.0.1";
       port = 9000 + service_number;
     };
- 
+
     redis = {
       host = config.services.redis.servers."state".bind;
       port = config.services.redis.servers."state".port;
@@ -22,19 +22,19 @@ in
     redis.servers."state" = {
       enable = true;
       bind = "127.0.0.1";
-      port = 5314; 
+      port = 5314;
     };
     nginx = {
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-      "lizard.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
-        enableACME = true;
-        forceSSL = true;
-        extraConfig = ''
-              rewrite ^ https://lizard.${config.deployment-TLMS.domain}$request_uri permanent;
-        '';
-      };
+        "lizard.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+          enableACME = true;
+          forceSSL = true;
+          extraConfig = ''
+            rewrite ^ https://lizard.${config.deployment-TLMS.domain}$request_uri permanent;
+          '';
+        };
         "lizard.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;

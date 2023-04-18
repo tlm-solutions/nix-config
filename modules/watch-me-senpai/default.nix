@@ -1,7 +1,8 @@
-{pkgs, config, lib, ...}: 
+{ pkgs, config, lib, ... }:
 let
   mac_addr = "00:de:5b:f9:e2:3d";
-in {
+in
+{
   imports = [
     ../TLMS/default.nix
     ./secrets.nix

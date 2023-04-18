@@ -1,4 +1,4 @@
-{self, inputs, lib, modulesPath, ... }:
+{ self, inputs, lib, modulesPath, ... }:
 {
   imports = [
     "${modulesPath}/virtualisation/qemu-vm.nix"
@@ -28,18 +28,18 @@
     autologinUser = "root";
   };
   users.motd = ''
-  McTest: enterprise-grade, free-range, grass-fed testing vm
-  Now with 100% less graphics!
+    McTest: enterprise-grade, free-range, grass-fed testing vm
+    Now with 100% less graphics!
 
-  Services exposed to the host:
-  datacare: 8070
-  SSH: 2223
-  postgres: 8889
-  redis: 8062
+    Services exposed to the host:
+    datacare: 8070
+    SSH: 2223
+    postgres: 8889
+    redis: 8062
 
-  root password is "lol"
+    root password is "lol"
 
-  have fun!
+    have fun!
   '';
   sops.defaultSopsFile = (lib.mkForce (self + /secrets/mctest/secrets.yaml));
 

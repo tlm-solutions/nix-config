@@ -35,7 +35,7 @@
           job_name = "funnel-connections";
           static_configs = [
             {
-              targets = [ "127.0.0.1:${toString config.TLMS.funnel.metrics.port}"];
+              targets = [ "127.0.0.1:${toString config.TLMS.funnel.metrics.port}" ];
             }
           ];
         }
@@ -46,7 +46,7 @@
           metrics_path = "/metrics";
           static_configs = [
             {
-              targets = [ "127.0.0.1:${toString config.TLMS.dataAccumulator.port}"];
+              targets = [ "127.0.0.1:${toString config.TLMS.dataAccumulator.port}" ];
             }
           ];
         }
@@ -57,7 +57,7 @@
           metrics_path = "/metrics";
           static_configs = [
             {
-              targets = [ "${config.TLMS.lizard.http.host}:${toString config.TLMS.lizard.http.port}"];
+              targets = [ "${config.TLMS.lizard.http.host}:${toString config.TLMS.lizard.http.port}" ];
             }
           ];
         }
@@ -68,7 +68,7 @@
           metrics_path = "/metrics";
           static_configs = [
             {
-              targets = [ "${config.TLMS.datacare.host}:${toString config.TLMS.datacare.port}"];
+              targets = [ "${config.TLMS.datacare.host}:${toString config.TLMS.datacare.port}" ];
             }
           ];
         }
@@ -136,22 +136,24 @@
     nginx = {
       enable = true;
       virtualHosts = {
-      "${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] (toString config.services.grafana.settings.server.domain))}" = {
-        enableACME = true;
-        forceSSL = true;
-        extraConfig = ''
-              rewrite ^ https://${toString config.services.grafana.settings.server.domain}$request_uri permanent;
-        '';
-      };
+        "${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] (toString config.services.grafana.settings.server.domain))}" = {
+          enableACME = true;
+          forceSSL = true;
+          extraConfig = ''
+            rewrite ^ https://${toString config.services.grafana.settings.server.domain}$request_uri permanent;
+          '';
+        };
         "${toString config.services.grafana.settings.server.domain}" = {
           forceSSL = true;
           enableACME = true;
-          locations."/" = let
-            cfg = config.services.grafana;
-          in {
-            proxyPass = "http://${cfg.settings.server.http_addr}:${toString cfg.settings.server.http_port}";
-            proxyWebsockets = true;
-          };
+          locations."/" =
+            let
+              cfg = config.services.grafana;
+            in
+            {
+              proxyPass = "http://${cfg.settings.server.http_addr}:${toString cfg.settings.server.http_port}";
+              proxyWebsockets = true;
+            };
         };
       };
     };

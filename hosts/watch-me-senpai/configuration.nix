@@ -1,7 +1,8 @@
-{ self, ... }: 
+{ self, ... }:
 let
-  mac_addr =  "03:db:db:db:db:db";
-in {
+  mac_addr = "03:db:db:db:db:db";
+in
+{
   microvm = {
     hypervisor = "qemu";
     mem = 2048;

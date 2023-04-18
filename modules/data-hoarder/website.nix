@@ -6,7 +6,7 @@
         enableACME = true;
         forceSSL = true;
         extraConfig = ''
-              rewrite ^ https://map.${config.deployment-TLMS.domain}$request_uri permanent;
+          rewrite ^ https://map.${config.deployment-TLMS.domain}$request_uri permanent;
         '';
       };
       "${config.deployment-TLMS.domain}" = {

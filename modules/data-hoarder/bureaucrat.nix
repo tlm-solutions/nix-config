@@ -19,7 +19,7 @@ in
     redis.servers."state" = {
       enable = true;
       bind = "127.0.0.1";
-      port = 5314; 
+      port = 5314;
     };
   };
 }

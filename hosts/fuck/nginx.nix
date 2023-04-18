@@ -1,4 +1,4 @@
-{pkgs, config, lib, ...}: {
+{ pkgs, config, lib, ... }: {
   services.nginx.enable = lib.mkForce false;
 
 }

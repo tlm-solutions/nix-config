@@ -25,13 +25,13 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-      "datacare.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
-        enableACME = true;
-        forceSSL = true;
-        extraConfig = ''
-              rewrite ^ https://datacare.${config.deployment-TLMS.domain}$request_uri permanent;
-        '';
-      };
+        "datacare.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+          enableACME = true;
+          forceSSL = true;
+          extraConfig = ''
+            rewrite ^ https://datacare.${config.deployment-TLMS.domain}$request_uri permanent;
+          '';
+        };
         "datacare.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;
@@ -40,8 +40,8 @@
               proxyPass = with config.TLMS.datacare; "http://${host}:${toString port}/";
               proxyWebsockets = true;
               extraConfig = ''
-                more_set_headers "Access-Control-Allow-Credentials: true";
-	          '';
+                                more_set_headers "Access-Control-Allow-Credentials: true";
+                	          '';
             };
           };
         };

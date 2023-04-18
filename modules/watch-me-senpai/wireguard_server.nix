@@ -1,7 +1,7 @@
 { config, ... }:
 let
   port = 51820;
-  mac_addr =  "03:db:db:db:db:db";
+  mac_addr = "03:db:db:db:db:db";
 in
 {
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
@@ -10,7 +10,7 @@ in
 
   deployment-TLMS.net = {
     /*
-    iface.uplink = {
+      iface.uplink = {
       name = "ens3";
       mac = mac_addr;
       matchOn = "mac";

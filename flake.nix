@@ -272,9 +272,11 @@
             options = self.nixosConfigurations.data-hoarder.options.TLMS;
           }).optionsCommonMark;
         };
-        test-vm-wrapper = let 
-          cfg = self.nixosConfigurations.fuck.config;
-        in (pkgs.writeScript "datacare-test-vm-wrapper"
+        test-vm-wrapper =
+          let
+            cfg = self.nixosConfigurations.fuck.config;
+          in
+          (pkgs.writeScript "datacare-test-vm-wrapper"
             ''
               set -e
               echo Datacare-McTest: enterprise-grade, free-range, grass-fed testing vm

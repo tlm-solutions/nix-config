@@ -23,7 +23,7 @@
 
   systemd.services.postgresql = {
     unitConfig = {
-      TimeoutStartSec=3000;
+      TimeoutStartSec = 3000;
     };
     serviceConfig = {
       TimeoutSec = lib.mkForce 3000;

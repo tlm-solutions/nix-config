@@ -29,13 +29,13 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-      "dump.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
-        enableACME = true;
-        forceSSL = true;
-        extraConfig = ''
-              rewrite ^ https://dump.${config.deployment-TLMS.domain}$request_uri permanent;
-        '';
-      };
+        "dump.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+          enableACME = true;
+          forceSSL = true;
+          extraConfig = ''
+            rewrite ^ https://dump.${config.deployment-TLMS.domain}$request_uri permanent;
+          '';
+        };
         "dump.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;

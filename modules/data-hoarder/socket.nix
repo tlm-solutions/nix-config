@@ -23,13 +23,13 @@ in
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-      "socket.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
-        enableACME = true;
-        forceSSL = true;
-        extraConfig = ''
-              rewrite ^ https://socket.${config.deployment-TLMS.domain}$request_uri permanent;
-        '';
-      };
+        "socket.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+          enableACME = true;
+          forceSSL = true;
+          extraConfig = ''
+            rewrite ^ https://socket.${config.deployment-TLMS.domain}$request_uri permanent;
+          '';
+        };
         "socket.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
           enableACME = true;
