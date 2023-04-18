@@ -26,9 +26,10 @@ in
         "socket.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
           enableACME = true;
           forceSSL = true;
-          extraConfig = ''
-            rewrite ^ https://socket.${config.deployment-TLMS.domain}$request_uri permanent;
-          '';
+          locations."/" = {
+            proxyWebsockets = true;
+            proxyPass = with config.TLMS.funnel.defaultWebsocket; "http://${host}:${toString port}/";
+          };
         };
         "socket.${config.deployment-TLMS.domain}" = {
           forceSSL = true;
