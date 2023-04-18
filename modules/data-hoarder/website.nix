@@ -8,7 +8,7 @@
         locations = {
           "/" = {
             extraConfig = ''
-              rewrite ^ https://$subdomain.${config.deployemnt-TLMS.domain}$request_uri permanent;
+              rewrite ^ https://$subdomain.${config.deployment-TLMS.domain}$request_uri permanent;
             '';
           };
         };
