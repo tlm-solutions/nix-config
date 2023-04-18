@@ -1,7 +1,15 @@
 { pkgs, config, ... }: {
   services.nginx = {
     enable = true;
-    virtualHosts."kid.${config.deployment-TLMS.domain}" = {
+    virtualHosts = {
+      "kid.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+        enableACME = true;
+        forceSSL = true;
+        extraConfig = ''
+              rewrite ^ https://kid.${config.deployment-TLMS.domain}$request_uri permanent;
+        '';
+      };
+      "kid.${config.deployment-TLMS.domain}" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
@@ -14,4 +22,5 @@
       };
     };
   };
+};
 }
