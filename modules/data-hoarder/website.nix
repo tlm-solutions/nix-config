@@ -6,19 +6,15 @@
         enableACME = true;
         forceSSL = true;
         extraConfig = ''
-          rewrite ^ https://map.${config.deployment-TLMS.domain}$request_uri permanent;
+          rewrite ^ https://kid.${config.deployment-TLMS.domain}/ permanent;
         '';
       };
       "${config.deployment-TLMS.domain}" = {
         enableACME = true;
         forceSSL = true;
-        locations = {
-          "/" = {
-            extraConfig = ''
-              return 307 https://map.tlm.solutions;
-            '';
-          };
-        };
+        extraConfig = ''
+          rewrite https://kid.${config.deployment-TLMS.domain}/ permanent;
+        '';
       };
     };
   };
