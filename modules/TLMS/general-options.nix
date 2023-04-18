@@ -9,7 +9,7 @@ with lib; {
 
     deployment-TLMS.domain = mkOption {
       type = types.str;
-      default = "dvb.solutions";
+      default = "tlm.solutions";
       description = "domain the server is running on";
     };
   };

@@ -36,7 +36,7 @@
               json_dump = "/var/lib/json_dump/";
           in {
             "/" = {
-              root = if (config.deployment-TLMS.domain == "dvb.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
+              root = if (config.deployment-TLMS.domain == "tlm.solutions") then "${pkgs.windshield}/bin/" else "${pkgs.windshield-staging}/bin/";
               index = "index.html";
 
               tryFiles = "$uri /index.html =404";

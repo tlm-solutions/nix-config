@@ -8,7 +8,7 @@
         locations = {
           "/" = {
             extraConfig = ''
-              return 307 https://map.dvb.solutions;
+              return 307 https://map.tlm.solutions;
             '';
           };
         };
