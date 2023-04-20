@@ -338,11 +338,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1682014853,
-        "narHash": "sha256-0tN9N5A2cIBSa37sbWMpub3NSpvikL4Fiq7bZE2KCCI=",
+        "lastModified": 1682028315,
+        "narHash": "sha256-MShz22b5dwUwSquKGdBHy0YXe6Ik3M3CLPQvWl6wDOk=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "e23d6f450189f23d6ce4c57f21b66466a56b49ed",
+        "rev": "8dd04ee6df68837c6b5cb75f46d4b6d490685b71",
         "type": "github"
       },
       "original": {
