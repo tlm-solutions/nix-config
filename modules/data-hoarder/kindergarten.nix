@@ -40,9 +40,9 @@
           ~*^en en;
       }
       
-      map $1 $language_folder {
-          ~*^de de-DE;
-          ~*^en en-US;
+      map $uri $language_folder {
+          ~*^/de de-DE;
+          ~*^/en en-US;
       }
     '';
   };
