@@ -26,11 +26,6 @@
           '';
         };
         extraConfig = ''
-          map $http_accept_language $accept_language {
-            ~*^de de;
-            ~*^en en;
-          }
-          
           if ($accept_language ~ "^$") {
             set $accept_language "en";
           }
@@ -39,5 +34,11 @@
         '';
       };
     };
+    commonHttpConfig = ''
+      map $http_accept_language $accept_language {
+          ~*^de de;
+          ~*^en en;
+      }
+    '';
   };
 }
