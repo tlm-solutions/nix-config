@@ -20,7 +20,7 @@
             more_set_headers "Access-Control-Allow-Credentials: true";
           '';
         };
-        locations."^\/(?!en|de)" = {
+        locations."~ ^/(?!en|de)" = {
           extraConfig = ''
             rewrite ^ /en$request_uri last;
           '';
