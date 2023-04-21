@@ -14,8 +14,8 @@
         forceSSL = true;
         locations."~ ^/(de|en)" = {
           root = if (config.deployment-TLMS.domain == "tlm.solutions") then "${pkgs.kindergarten}/bin/" else "${pkgs.kindergarten-staging}/bin/";
-          index = "index.html";
-          tryFiles = "$uri /$language_folder/index.html?$args =404";
+          # index = "index.html";
+          tryFiles = "$uri /$language_folder/index.html =404";
           extraConfig = ''
             more_set_headers "Access-Control-Allow-Credentials: true";
           '';
