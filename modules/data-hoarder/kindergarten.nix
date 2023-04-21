@@ -17,8 +17,8 @@
           index = "index.html";
           tryFiles = "$uri /$1/index.html?$args =404";
           extraConfig = ''
-                      more_set_headers "Access-Control-Allow-Credentials: true";
-            	    '';
+            more_set_headers "Access-Control-Allow-Credentials: true";
+          '';
         };
         locations."^\/(?!en|de)" = {
           extraConfig = ''
