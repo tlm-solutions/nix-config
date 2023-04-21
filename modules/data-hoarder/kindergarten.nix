@@ -15,7 +15,7 @@
         locations."~ ^/(de|en)" = {
           root = if (config.deployment-TLMS.domain == "tlm.solutions") then "${pkgs.kindergarten}/bin/" else "${pkgs.kindergarten-staging}/bin/";
           # index = "index.html";
-          tryFiles = "$uri /$language_folder/index.html =404";
+          tryFiles = "$uri /$1/index.html =404";
           extraConfig = ''
             more_set_headers "Access-Control-Allow-Credentials: true";
           '';
@@ -30,7 +30,7 @@
             set $accept_language "en";
           }
           
-          rewrite ^/$ /$accept_language permanent;
+          rewrite ^/$ /$accept_language last;
         '';
       };
     };
@@ -38,11 +38,6 @@
       map $http_accept_language $accept_language {
           ~*^de de;
           ~*^en en;
-      }
-      
-      map $uri $language_folder {
-          ~*^/de de-DE;
-          ~*^/en en-US;
       }
     '';
   };
