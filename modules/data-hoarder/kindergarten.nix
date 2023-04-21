@@ -22,7 +22,7 @@
         };
         locations."^\/(?!en|de)" = {
           extraConfig = ''
-            rewrite ^ /en$request_uri temporarily;
+            rewrite ^ /en$request_uri break;
           '';
         };
         extraConfig = ''
