@@ -12,14 +12,31 @@
       "kid.${config.deployment-TLMS.domain}" = {
         enableACME = true;
         forceSSL = true;
-        locations."/" = {
+        locations."~ ^/(de|en)" = {
           root = if (config.deployment-TLMS.domain == "tlm.solutions") then "${pkgs.kindergarten}/bin/" else "${pkgs.kindergarten-staging}/bin/";
           index = "index.html";
-          tryFiles = "$uri /index.html =404";
+          tryFiles = "$uri /$1/index.html?$args =404";
           extraConfig = ''
                       more_set_headers "Access-Control-Allow-Credentials: true";
             	    '';
         };
+        locations."^\/(?!en|de)" = {
+          extraConfig = ''
+            rewrite ^ /en$request_uri temporarily;
+          '';
+        };
+        extraConfig = ''
+          map $http_accept_language $accept_language {
+            ~*^de de;
+            ~*^en en;
+          }
+          
+          if ($accept_language ~ "^$") {
+            set $accept_language "en";
+          }
+          
+          rewrite ^/$ /$accept_language permanent;
+        '';
       };
     };
   };
