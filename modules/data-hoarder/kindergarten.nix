@@ -20,6 +20,11 @@
                       more_set_headers "Access-Control-Allow-Credentials: true";
             	    '';
         };
+        locations."^\/(?!en|de)" = {
+          extraConfig = ''
+            rewrite ^ /en$request_uri temporarily;
+          '';
+        };
         extraConfig = ''
           map $http_accept_language $accept_language {
             ~*^de de;
