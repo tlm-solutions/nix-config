@@ -19,7 +19,7 @@
           extraConfig = ''
                       more_set_headers "Access-Control-Allow-Credentials: true";
             	    '';
-        },
+        };
         extraConfig = ''
           map $http_accept_language $accept_language {
             ~*^de de;
