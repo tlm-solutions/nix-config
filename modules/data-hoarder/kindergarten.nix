@@ -12,7 +12,7 @@
       "kid.${config.deployment-TLMS.domain}" = {
         enableACME = true;
         forceSSL = true;
-        locations."~ ^/(fr|de|en)" = {
+        locations."~ ^/(de|en)" = {
           root = if (config.deployment-TLMS.domain == "tlm.solutions") then "${pkgs.kindergarten}/bin/" else "${pkgs.kindergarten-staging}/bin/";
           index = "index.html";
           tryFiles = "$uri /$1/index.html?$args =404";
@@ -23,7 +23,6 @@
         extraConfig = ''
           map $http_accept_language $accept_language {
             ~*^de de;
-            ~*^fr fr;
             ~*^en en;
           }
           
