@@ -33,11 +33,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1682190928,
-        "narHash": "sha256-sqgXz72LK8aGFZ2cZpszJDAFqRILZCoI+knbucyj+ps=",
+        "lastModified": 1682196547,
+        "narHash": "sha256-SfBE7bFYxFESIKDZLdgha6XkOF7mm5VAaz8vMUg8gyg=",
         "owner": "tlm-solutions",
         "repo": "chemo",
-        "rev": "5587814c090801bb0c293373766ee236cce4efa2",
+        "rev": "76f11cd828e19a48370be66b3d6ce9c610c8375c",
         "type": "github"
       },
       "original": {
@@ -699,11 +699,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1682195249,
-        "narHash": "sha256-t+i5P2Jsw0dbenr+qw00J7N/n3dHkr8ndVa/QAvdZnY=",
+        "lastModified": 1682196279,
+        "narHash": "sha256-pq72KKXSZ4PX+aQjXbKVtBoRKjJuH8SeXqyU1vfyN4s=",
         "owner": "tlm-solutions",
         "repo": "trekkie",
-        "rev": "a77c61b07d45bda3ca449d654861362f846e6569",
+        "rev": "aa0510f8366593abef82a5ecbd8b31703a65acf5",
         "type": "github"
       },
       "original": {
