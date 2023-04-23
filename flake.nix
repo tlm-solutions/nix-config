@@ -332,6 +332,16 @@
           ] ++ data-hoarder-modules;
         };
 
+        notice-me-senpai = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs self; };
+          modules = [
+            sops-nix.nixosModules.sops
+            ./modules/TLMS
+            ./hosts/notice-me-senpai
+          ];
+        };
+
       };
       apps."x86_64-linux".mctest = {
         type = "app";
