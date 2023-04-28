@@ -33,7 +33,7 @@ in
       {
         # marcel
         publicKey = "Txd/qTDazvKcB1bIavm0Kilr/O7RkFwi9YGjjv88u2I=";
-        add4 = "10.13.37.5";
+        add4 = "10.13.37.6";
       }
     ];
   };
