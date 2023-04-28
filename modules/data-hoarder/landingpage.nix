@@ -8,7 +8,7 @@
           enableACME = true;
           forceSSL = true;
           extraConfig = ''
-            rewrite ^ https://kid.${config.deployment-TLMS.domain}/en/map/ temporary;
+            rewrite ^ https://kid.${config.deployment-TLMS.domain}/en/map/ redirect;
           '';
         };
       };
