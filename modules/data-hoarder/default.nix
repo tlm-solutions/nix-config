@@ -16,5 +16,6 @@
     ./website.nix
     ./trekkie.nix
     ./chemo.nix
+    ./landingpage.nix
   ];
 }

@@ -77,7 +77,7 @@ in
       ../../keys/ssh/oxa1
       ../../keys/ssh/marenz1
       ../../keys/ssh/marenz2
-      ../../keys/ssh/astro
+      ../../keys/ssh/marcel
     ];
   };
   services.openssh = {
