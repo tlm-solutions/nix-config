@@ -30,6 +30,11 @@ in
         publicKey = "XJddbPj6Zdtn4roi6UWGuR2EA81juMmlaUOuMSLi2FM=";
         addr4 = "10.13.37.4";
       }
+      {
+        # marcel
+        publicKey = "Txd/qTDazvKcB1bIavm0Kilr/O7RkFwi9YGjjv88u2I=";
+        add4 = "10.13.37.5";
+      }
     ];
   };
 }
