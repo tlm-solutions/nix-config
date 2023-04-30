@@ -11,11 +11,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681673614,
-        "narHash": "sha256-3KQSBxe/Wm4cFLe0cqEoizxceZ5gb76ek+3FcgXvCGQ=",
+        "lastModified": 1682860226,
+        "narHash": "sha256-NPm5avL5u4B+/5hOsPzSSU/PheCr+nI7DFyvWu9uckg=",
         "owner": "tlm-solutions",
         "repo": "bureaucrat",
-        "rev": "6c8cdbcc549e8fa3828ef1cc9cbc6598c38a3475",
+        "rev": "f14fea77a78d89ab8baf7eca3b35ac9308e659aa",
         "type": "github"
       },
       "original": {
@@ -33,11 +33,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1682196547,
-        "narHash": "sha256-SfBE7bFYxFESIKDZLdgha6XkOF7mm5VAaz8vMUg8gyg=",
+        "lastModified": 1682860295,
+        "narHash": "sha256-dMJgZXORea/IdtnnnJNfU4r7HBaka1ycYvep613X7uk=",
         "owner": "tlm-solutions",
         "repo": "chemo",
-        "rev": "76f11cd828e19a48370be66b3d6ce9c610c8375c",
+        "rev": "d7d927d51c7527244e15d5c499553c541292d418",
         "type": "github"
       },
       "original": {
@@ -60,11 +60,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1680584903,
-        "narHash": "sha256-uraq+D3jcLzw/UVk0xMHcnfILfIMa0DLrtAEq2nNlxU=",
+        "lastModified": 1682796879,
+        "narHash": "sha256-X0oDZylzDXBt7RBtYXBvFexARRFvousej15feeemAx0=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "65d3f6a3970cd46bef5eedfd458300f72c56b3c5",
+        "rev": "db21a44eb056ef65a33d9d2648ecc964b4acaddc",
         "type": "github"
       },
       "original": {
@@ -87,11 +87,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1681680516,
-        "narHash": "sha256-EB8Adaeg4zgcYDJn9sR6UMjN/OHdIiMMK19+3LmmXQY=",
+        "lastModified": 1682796879,
+        "narHash": "sha256-X0oDZylzDXBt7RBtYXBvFexARRFvousej15feeemAx0=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "54b63c8eae4c50172cb50b612946ff1d2bc1c75c",
+        "rev": "db21a44eb056ef65a33d9d2648ecc964b4acaddc",
         "type": "github"
       },
       "original": {
@@ -169,11 +169,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1682839227,
-        "narHash": "sha256-1rxw7aMjQvgysbSsJiBYyvodRgypDpruGcW8DDFsp9I=",
+        "lastModified": 1682859980,
+        "narHash": "sha256-BEyhUnvGZmjN0enScLD7MJBq7O2DBNL7xzbXeP/zOE0=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "6da2c65400e3ab389bbd8bbd6db59e793a164612",
+        "rev": "cc1bebade7f6519ce38118b837c330fe707c9b72",
         "type": "github"
       },
       "original": {
@@ -276,11 +276,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1681312528,
-        "narHash": "sha256-VqnuJBhElqTXVXtAhXGqv6DQISYgcnnqDlgX859YF9g=",
+        "lastModified": 1682860141,
+        "narHash": "sha256-0hDOPmRndMPne+aUl5500w2efhc/q6GqnG7MVo5k0yM=",
         "owner": "tlm-solutions",
         "repo": "funnel",
-        "rev": "aea33049e85be0e8a28f97e58038e350c3493f78",
+        "rev": "659c7e7a656118760b2e696ef5eab076910285d0",
         "type": "github"
       },
       "original": {
@@ -670,11 +670,11 @@
     "tlms-rust": {
       "flake": false,
       "locked": {
-        "lastModified": 1681162284,
-        "narHash": "sha256-1mrJH7rw0+ZUW0kCXcBNUuQ/zilWISRTYklne7JAcDI=",
+        "lastModified": 1682716698,
+        "narHash": "sha256-52O3ySR/CrGTOc+qONN8EIWB9np44KhnRMXcknyzG2w=",
         "owner": "tlm-solutions",
         "repo": "tlms.rs",
-        "rev": "b538416be0be7cb42c4d22e83f717ca88ca838d4",
+        "rev": "e2be80d8808a0f709c15b7bce963abb48e8605bc",
         "type": "github"
       },
       "original": {
