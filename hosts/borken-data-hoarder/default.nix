@@ -52,7 +52,7 @@ in
       mac = mac_addr;
       matchOn = "mac";
       useDHCP = false;
-      # FIXME
+      addr4 = "172.20.73.39/25";
       dns = [ "172.20.73.8" "9.9.9.9" ];
       routes = [
         {
