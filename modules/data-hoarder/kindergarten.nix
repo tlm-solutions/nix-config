@@ -29,7 +29,7 @@
           if ($accept_language ~ "^$") {
             set $accept_language "en";
           }
-          
+
           rewrite ^/$ /$accept_language last;
         '';
       };

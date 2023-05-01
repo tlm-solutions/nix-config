@@ -264,6 +264,7 @@
 
       packages = {
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
+        borken-microvm = self.nixosConfigurations.borken-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
         fuck-microvm = self.nixosConfigurations.fuck.config.system.build.vm;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
@@ -318,6 +319,15 @@
           specialArgs = { inherit inputs self; };
           modules = [
             ./hosts/staging-data-hoarder
+            microvm.nixosModules.microvm
+          ] ++ data-hoarder-modules;
+        };
+
+        borken-data-hoarder = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs self; };
+          modules = [
+            ./hosts/borken-data-hoarder
             microvm.nixosModules.microvm
           ] ++ data-hoarder-modules;
         };

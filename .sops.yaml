@@ -3,13 +3,15 @@ keys:
   - &admin_revol-xut 91EBE87016391323642A6803B966009D57E69CC6
   - &admin_marenz-1 069836A578F7939612DB4934F77D0F7E247A1EE4
   - &admin_marenz-2 ED06986DFAAE6A61B751DC2F537F97DFB394C433
-  
+
   # test key
   - &test age1925katzy5gws3f9hnvnlwspu6trxf488arwt6ayw3urg2mgumqhszxnmqh
 
   - &data-hoarder age1djp5hk6vpm5glzqy9h2e2cgam5xydx888glgs85kvs57spaf8v0sfm0pa2
   - &data-hoarder-staging age1m4g4y5ga2m8xdvs7rarda3tyk4gtkyta6pfyq2n3xmy47z20kfxq73m8r8
+  - &data-hoarder-borken age1rps5wanz2dvme5nfkyzq5rtesxdl3p2gku2vsj2s745mr9gqf5rsufv5fr
   - &notice-me-senpai age1t8ktl8tkkpa7s5f2a4crhgpr8c72c942vqht9l8m9y35fhppv4ks8gjqnn
+
   # turmlabor
   - &traffic-stop-box-0 age1yxtur968m4xe0m3kj0waqpm2kuuywpp9f6t0rxl4f0262ze9n9jqehw0k5
   # zw
@@ -72,6 +74,16 @@ creation_rules:
         age:
         - *data-hoarder
         - *data-hoarder-staging
+  - path_regex: secrets/data-hoarder-borken/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
+        age:
+        - *data-hoarder
+        - *data-hoarder-borken
   - path_regex: secrets/notice-me-senpai/[^/]+\.yaml$
     key_groups:
       - pgp:
