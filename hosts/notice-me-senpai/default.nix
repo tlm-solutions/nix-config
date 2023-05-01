@@ -1,1 +1,9 @@
-{ imports = [ ./configuration.nix ./uplink.nix ./wg.nix ]; }
+{ ... }:
+{
+  imports = [
+    ./configuration.nix
+    ./hardware-configuration.nix
+    ./uplink.nix
+    ./wg.nix
+  ];
+}
