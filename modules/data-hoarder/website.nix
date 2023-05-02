@@ -13,10 +13,9 @@
         enableACME = true;
         forceSSL = true;
         extraConfig = ''
-          rewrite https://kid.${config.deployment-TLMS.domain}/ permanent;
+          return 302 $scheme://kid.${config.deployment-TLMS.domain};
         '';
       };
     };
   };
 }
-
