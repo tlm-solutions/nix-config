@@ -7,7 +7,6 @@
     ./lizard.nix
     ./bureaucrat.nix
     ./file_sharing.nix
-    ./grafana.nix
     ./map.nix
     ./nginx.nix
     ./postgres.nix
