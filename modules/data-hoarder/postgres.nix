@@ -2,6 +2,7 @@
 
   services.postgresql = {
     enable = true;
+    enableTCPIP = true;
     port = 5432;
     package = pkgs.postgresql_14;
     ensureDatabases = [ "tlms" ];
