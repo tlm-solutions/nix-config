@@ -1,9 +1,19 @@
-{ lib, pkgs, config, inputs, ... }: {
+{ lib, pkgs, config, inputs, self, ... }: {
 
   services.postgresql = {
     enable = true;
     enableTCPIP = true;
     port = 5432;
+    authentication =
+      let
+        senpai-ip = self.nixosConfigurations.notice-me-senpai.config.deployment-TLMS.net.wg.addr4;
+      in
+      pkgs.lib.mkOverride 10 ''
+        local	all	all	trust
+        host	all	all	127.0.0.1/32	trust
+        host	all	all	::1/128	trust
+        host	tlms	grafana	${senpai-ip}/32	trust
+      '';
     package = pkgs.postgresql_14;
     ensureDatabases = [ "tlms" ];
     ensureUsers = [
