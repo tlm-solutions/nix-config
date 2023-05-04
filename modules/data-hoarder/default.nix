@@ -15,6 +15,5 @@
     ./website.nix
     ./trekkie.nix
     ./chemo.nix
-    ./prometheus-exporter.nix
   ];
 }
