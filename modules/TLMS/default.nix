@@ -7,6 +7,6 @@
       ./json.nix
       ./net.nix
       ./wg.nix
-      ./node-exporter.nix
+      ./monitoring.nix
     ];
 }
