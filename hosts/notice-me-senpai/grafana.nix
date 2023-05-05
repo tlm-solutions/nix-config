@@ -19,6 +19,9 @@ in
         enable = true;
         port = 9501;
         listenAddress = config.deployment-TLMS.net.wg.addr4;
+        globalConfig = {
+          scrape_interval = "17s";
+        };
         scrapeConfigs =
           let
             prometheus_listen_address = config.deployment-TLMS.net.wg.addr4;
