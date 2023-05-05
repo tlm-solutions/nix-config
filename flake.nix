@@ -189,24 +189,33 @@
       ];
 
       # function that generates a system with the given number
-      generate_system = (id: arch:
+      generate_system = (id: arch: monitoring:
         {
-          "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem {
-            system = arch;
-            specialArgs = inputs;
-            modules = [
-              # box-specific config
-              ./hosts/traffic-stop-box/${toString id}
+          "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem
+            {
+              system = arch;
+              specialArgs = inputs;
+              modules =
+                let
+                  monitoring-mod =
+                    if monitoring
+                    then { deployment-TLMS.monitoring.enable = true; }
+                    else { deployment-TLMS.monitoring.enable = false; };
+                in
+                [
+                  # box-specific config
+                  ./hosts/traffic-stop-box/${toString id}
 
-              # default modules
-              sops-nix.nixosModules.sops
-              ./modules/traffic-stop-box
-              ./modules/TLMS
-              {
-                deployment-TLMS.systemNumber = id;
-              }
-            ] ++ stop-box-modules;
-          };
+                  # default modules
+                  sops-nix.nixosModules.sops
+                  ./modules/traffic-stop-box
+                  ./modules/TLMS
+                  {
+                    deployment-TLMS.systemNumber = id;
+                  }
+                  monitoring-mod
+                ] ++ stop-box-modules;
+            };
         }
       );
 
@@ -215,52 +224,62 @@
           # Barkhausen Bau
           id = 0;
           arch = "x86_64-linux";
+          monitoring = true;
         }
         {
           # Zentralwerk
           id = 1;
           arch = "x86_64-linux";
+          monitoring = true;
         }
         {
           # Chemnitz
           id = 2;
           arch = "x86_64-linux";
+          monitoring = false;
         }
         {
           # unused
           id = 3;
           arch = "aarch64-linux";
+          monitoring = false;
         }
         {
           # Wundstr. 9
           id = 4;
           arch = "x86_64-linux";
+          monitoring = true;
         }
         {
           # Warpzone
           id = 6;
           arch = "x86_64-linux";
+          monitoring = true;
         }
         {
           id = 7;
           arch = "x86_64-linux";
+          monitoring = false;
         }
         {
           id = 8;
           arch = "aarch64-linux";
+          monitoring = false;
         }
         {
           id = 9;
           arch = "aarch64-linux";
+          monitoring = false;
         }
         {
           id = 10;
           arch = "x86_64-linux";
+          monitoring = false;
         }
       ];
 
       # attribute set of all traffic stop boxes
-      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y.id y.arch)) { } id_list;
+      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y.id y.arch y.monitoring)) { } id_list;
 
       packages = {
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
@@ -336,9 +355,12 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs self; };
           modules = [
+            microvm.nixosModules.microvm
             ./hosts/staging-data-hoarder
             ./hosts/fuck
-            microvm.nixosModules.microvm
+            {
+              deployment-TLMS.monitoring.enable = false;
+            }
           ] ++ data-hoarder-modules;
         };
 
