@@ -11,7 +11,7 @@ in
         Whether to enable TLMS default prometheus exporter and log collection
       '';
     };
-    monitoring.node-exporter = with lib; {
+    node-exporter = with lib; {
       port = mkOption {
         type = types.port;
         default = 8119;
@@ -34,7 +34,7 @@ in
       services.prometheus.exporters = {
         node = {
           enable = true;
-          port = 8119;
+          port = cfg.node-exporter.port;
           listenAddress = config.deployment-TLMS.net.wg.addr4;
           enabledCollectors = [
             "systemd"
