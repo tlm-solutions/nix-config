@@ -24,12 +24,9 @@ in
 
   config =
     let
-      wg-addr-pred = !isNull config.deployment-TLMS.net.wg.addr4;
-      check-wg = enabled:
-        lib.assertMsg (enabled && wg-addr-pred)
-          ''For monitoring to be working the system must be in wireguard. See config.deplayment-TLMS.net.wg'';
+      wg-addr-pred = lib.assertMsg (!(isNull config.deployment-TLMS.net.wg.addr4)) "to add system to monitoring, add it to TLMS wireguard first!";
     in
-    lib.mkIf (check-wg cfg.enable) {
+      lib.mkIf (cfg.enable && wg-addr-pred) {
       # prometheus node exporter
       services.prometheus.exporters = {
         node = {
