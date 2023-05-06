@@ -1,6 +1,7 @@
-{ lib, config, ... }:
+{ lib, config, self, ... }:
 let
   cfg = config.deployment-TLMS.monitoring;
+  monitoring-host = self.nixosConfigurations.notice-me-senpai.config;
 in
 {
   options.deployment-TLMS.monitoring = with lib; {
@@ -20,6 +21,13 @@ in
         '';
       };
     };
+    promtail-config = with lib; {
+      http_port = mkOption {
+        type = types.port;
+        default = 28183;
+        description = ''Default port for promtail log exporter'';
+      };
+    };
   };
 
   config =
@@ -36,6 +44,37 @@ in
           enabledCollectors = [
             "systemd"
           ];
+        };
+      };
+
+      # promtail log exporter
+      services.promtail = {
+        enable = true;
+        configuration = {
+          server = {
+            http_listen_port = cfg.promtail-config.http_port;
+            grpc_listen_port = 0;
+          };
+          positions = {
+            filename = "/tmp/positions.yaml";
+          };
+          clients = [{
+            url = "http://${monitoring-host.deployment-TLMS.net.wg.addr4}:${toString monitoring-host.services.loki.configuration.server.http_listen_port}/loki/api/v1/push";
+          }];
+          scrape_configs = [{
+            job_name = "journal";
+            journal = {
+              max_age = "24h";
+              labels = {
+                job = "systemd-journal";
+                host = config.networking.hostName;
+              };
+            };
+            relabel_configs = [{
+              source_labels = [ "__journal__systemd_unit" ];
+              target_label = "unit";
+            }];
+          }];
         };
       };
     };
