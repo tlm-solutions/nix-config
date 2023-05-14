@@ -448,22 +448,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-unstable": {
-      "locked": {
-        "lastModified": 1677932085,
-        "narHash": "sha256-+AB4dYllWig8iO6vAiGGYl0NEgmMgGHpy9gzWJ3322g=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "3c5319ad3aa51551182ac82ea17ab1c6b0f0df89",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1683928319,
@@ -499,7 +483,6 @@
         "telegram-decoder": "telegram-decoder",
         "tlms-rs": "tlms-rs",
         "trekkie": "trekkie",
-        "wartrammer": "wartrammer",
         "windshield": "windshield"
       }
     },
@@ -741,33 +724,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "wartrammer": {
-      "inputs": {
-        "naersk": [
-          "naersk"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nixpkgs-unstable": "nixpkgs-unstable",
-        "utils": [
-          "flake-utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1677985694,
-        "narHash": "sha256-IdkWaziDvHvmyjtJpc39tdF4HJUCrLFFzjqPp1XUnrQ=",
-        "owner": "tlm-solutions",
-        "repo": "wartrammer-40k",
-        "rev": "18b51aeb168883ac36a38598c30a94544d23e14d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "wartrammer-40k",
         "type": "github"
       }
     },
