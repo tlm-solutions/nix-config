@@ -41,12 +41,6 @@
 
     datacare = {
       url = "github:tlm-solutions/datacare";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        naersk.follows = "naersk";
-        tlms-rs.follows = "tlms-rs";
-        utils.follows = "flake-utils";
-      };
     };
 
     kindergarten = {
