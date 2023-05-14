@@ -42,7 +42,7 @@
     datacare = {
       url = "github:tlm-solutions/datacare";
       inputs = {
-        #nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
         tlms-rs.follows = "tlms-rs";
         utils.follows = "flake-utils";
