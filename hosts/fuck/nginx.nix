@@ -1,3 +1,3 @@
 { pkgs, config, lib, ... }: {
-  deployment-TLMS.domain = lib.mkForce "local.tlm.solutions"; 
+  deployment-TLMS.domain = lib.mkForce "local.tlm.solutions";
 }

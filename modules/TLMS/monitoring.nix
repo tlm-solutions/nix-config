@@ -34,7 +34,7 @@ in
     let
       wg-addr-pred = lib.assertMsg (!(isNull config.deployment-TLMS.net.wg.addr4)) "to add system to monitoring, add it to TLMS wireguard first!";
     in
-      lib.mkIf (cfg.enable && wg-addr-pred) {
+    lib.mkIf (cfg.enable && wg-addr-pred) {
       # prometheus node exporter
       services.prometheus.exporters = {
         node = {

@@ -1,8 +1,11 @@
 { config, ... }: {
   TLMS.datacare = {
     enable = true;
-    host = "127.0.0.1";
-    port = 8070;
+    http = {
+      host = "127.0.0.1";
+      port = 8070;
+
+    };
     database = {
       host = "127.0.0.1";
       port = config.services.postgresql.port;
@@ -37,11 +40,11 @@
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.TLMS.datacare; "http://${host}:${toString port}/";
+              proxyPass = with config.TLMS.datacare.http; "http://${host}:${toString port}/";
               proxyWebsockets = true;
               extraConfig = ''
-                                more_set_headers "Access-Control-Allow-Credentials: true";
-                	          '';
+                more_set_headers "Access-Control-Allow-Credentials: true";
+              '';
             };
           };
         };

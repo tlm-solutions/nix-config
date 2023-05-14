@@ -42,7 +42,7 @@
     datacare = {
       url = "github:tlm-solutions/datacare";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        #nixpkgs.follows = "nixpkgs";
         naersk.follows = "naersk";
         tlms-rs.follows = "tlms-rs";
         utils.follows = "flake-utils";
@@ -304,13 +304,13 @@
               echo -e "Service\t\tPort"
               echo -e "SSH:\t\t2223\troot:lol"
               echo -e "trekkie:\t${toString cfg.TLMS.trekkie.port}"
-              echo -e "datacare:\t${toString cfg.TLMS.datacare.port}"
+              echo -e "datacare:\t${toString cfg.TLMS.datacare.http.port}"
               echo -e "data-accumulator:\t${toString cfg.TLMS.dataAccumulator.port}"
               echo -e "funnel:\t${toString cfg.TLMS.funnel.defaultWebsocket.port}"
               echo
 
               set -x
-              export QEMU_NET_OPTS="hostfwd=tcp::2223-:22,hostfwd=tcp::80-:80,hostfwd=tcp::8050-:${toString cfg.TLMS.trekkie.port},hostfwd=tcp::8060-:${toString cfg.TLMS.datacare.port},hostfwd=tcp::8070-:${toString cfg.TLMS.dataAccumulator.port},hostfwd=tcp::8080-:${toString cfg.TLMS.funnel.defaultWebsocket.port}"
+              export QEMU_NET_OPTS="hostfwd=tcp::2223-:22,hostfwd=tcp::80-:80,hostfwd=tcp::8050-:${toString cfg.TLMS.trekkie.port},hostfwd=tcp::8060-:${toString cfg.TLMS.datacare.http.port},hostfwd=tcp::8070-:${toString cfg.TLMS.dataAccumulator.port},hostfwd=tcp::8080-:${toString cfg.TLMS.funnel.defaultWebsocket.port}"
               echo "running the vm now..."
               ${self.packages."x86_64-linux".fuck-microvm}/bin/run-staging-data-hoarder-vm
             '');
