@@ -1,4 +1,4 @@
-{ pkgs, lib, config, inputs, ... }: {
+{ inputs, ... }: {
   services.postgresql = {
     enable = true;
     port = 5432;

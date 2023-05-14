@@ -24,8 +24,6 @@ in
         };
         scrapeConfigs =
           let
-            prometheus_listen_address = config.deployment-TLMS.net.wg.addr4;
-
             ### Autogenerate prometheus scraper config
             # currently only wireguard-connected machines are getting scraped.
             filterWgHosts = k: v: !(builtins.isNull v.config.deployment-TLMS.net.wg.addr4);

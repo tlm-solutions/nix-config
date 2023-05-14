@@ -1,4 +1,4 @@
-{ pkgs, config, lib, inputs, ... }:
+{ pkgs, config, lib, ... }:
 let
   regMotd = ''
      _._     _,-'""`-._

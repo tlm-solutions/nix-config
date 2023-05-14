@@ -101,13 +101,6 @@
       inputs.utils.follows = "flake-utils";
     };
 
-    wartrammer = {
-      url = "github:tlm-solutions/wartrammer-40k";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.naersk.follows = "naersk";
-      inputs.utils.follows = "flake-utils";
-    };
-
     tlms-rs = {
       url = "github:tlm-solutions/tlms.rs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -134,7 +127,6 @@
     , bureaucrat
     , telegram-decoder
     , trekkie
-    , wartrammer
     , windshield
     , chemo
     , ...

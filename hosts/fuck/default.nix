@@ -1,4 +1,4 @@
-{ self, inputs, lib, modulesPath, ... }:
+{ self, lib, modulesPath, ... }:
 {
   imports = [
     "${modulesPath}/virtualisation/qemu-vm.nix"

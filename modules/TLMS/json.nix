@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, ... }:
 with lib; {
   options.TLMS = {
     stopsJson = mkOption {
