@@ -104,10 +104,15 @@
       url = "github:tlm-solutions/chemo";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    borzoi = {
+      url = "github:tlm-solutions/borzoi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     inputs@{ self
+    , borzoi
     , data-accumulator
     , datacare
     , documentation-src
@@ -357,6 +362,21 @@
             sops-nix.nixosModules.sops
             ./modules/TLMS
             ./hosts/notice-me-senpai
+          ];
+        };
+
+        tram-borzoi = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs self; };
+          modules = [
+            sops-nix.nixosModules.sops
+            microvm.nixosModules.microvm
+
+            borzoi.nixosModules.default
+            { nixpkgs.overlays = [ borzoi.overlays.default ]; }
+
+            ./modules/TLMS
+            ./hosts/tram-borzoi
           ];
         };
 
