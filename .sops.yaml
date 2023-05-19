@@ -11,7 +11,7 @@ keys:
   - &data-hoarder-staging age1m4g4y5ga2m8xdvs7rarda3tyk4gtkyta6pfyq2n3xmy47z20kfxq73m8r8
   - &data-hoarder-borken age10wj28zkuy3ewmv6hmup7849667qmevgdv4gxa8vyljye7mpu7shsjt4jeh
   - &notice-me-senpai age1wxewmzwlzgtsmr29tnu76n30kv29ra5p0ptvr2e3f3ymkqh569kqm07fv4
-  - &tram-borzoi age1wxewmzwlzgtsmr29tnu76n30kv29ra5p0ptvr2e3f3ymkqh569kqm07fv4
+  - &tram-borzoi age10sedt7xftzu383y8g4pxsj0hazht8tnnxhcngedcsl93s4v9uvvsk99er4
 
   # turmlabor
   - &traffic-stop-box-0 age1yxtur968m4xe0m3kj0waqpm2kuuywpp9f6t0rxl4f0262ze9n9jqehw0k5
