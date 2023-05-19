@@ -1,5 +1,27 @@
 {
   "nodes": {
+    "borzoi": {
+      "inputs": {
+        "naersk": "naersk",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": "utils"
+      },
+      "locked": {
+        "lastModified": 1684403585,
+        "narHash": "sha256-YdMKJEwyf+VTxLWx5eeVxpv39lsMvPAlHIhGx7kFoCc=",
+        "owner": "tlm-solutions",
+        "repo": "borzoi",
+        "rev": "a5ba8a9fd4c2d826593091945c3b29d65b614b73",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tlm-solutions",
+        "repo": "borzoi",
+        "type": "github"
+      }
+    },
     "bureaucrat": {
       "inputs": {
         "crane": "crane",
@@ -30,7 +52,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
-        "utils": "utils"
+        "utils": "utils_2"
       },
       "locked": {
         "lastModified": 1682901220,
@@ -156,10 +178,10 @@
     "datacare": {
       "inputs": {
         "fenix": "fenix",
-        "naersk": "naersk",
+        "naersk": "naersk_2",
         "nixpkgs": "nixpkgs_2",
         "tlms-rs": "tlms-rs",
-        "utils": "utils_2"
+        "utils": "utils_3"
       },
       "locked": {
         "lastModified": 1684100761,
@@ -413,7 +435,7 @@
     "naersk": {
       "inputs": {
         "nixpkgs": [
-          "datacare",
+          "borzoi",
           "nixpkgs"
         ]
       },
@@ -432,6 +454,27 @@
       }
     },
     "naersk_2": {
+      "inputs": {
+        "nixpkgs": [
+          "datacare",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1679567394,
+        "narHash": "sha256-ZvLuzPeARDLiQUt6zSZFGOs+HZmE+3g4QURc8mkBsfM=",
+        "owner": "nix-community",
+        "repo": "naersk",
+        "rev": "88cd22380154a2c36799fe8098888f0f59861a15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "naersk",
+        "type": "github"
+      }
+    },
+    "naersk_3": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -517,6 +560,7 @@
     },
     "root": {
       "inputs": {
+        "borzoi": "borzoi",
         "bureaucrat": "bureaucrat",
         "chemo": "chemo",
         "data-accumulator": "data-accumulator",
@@ -528,7 +572,7 @@
         "kindergarten": "kindergarten",
         "lizard": "lizard",
         "microvm": "microvm",
-        "naersk": "naersk_2",
+        "naersk": "naersk_3",
         "nixpkgs": "nixpkgs_3",
         "sops-nix": "sops-nix",
         "telegram-decoder": "telegram-decoder",
@@ -814,6 +858,21 @@
       }
     },
     "utils": {
+      "locked": {
+        "lastModified": 1680776469,
+        "narHash": "sha256-3CXUDK/3q/kieWtdsYpDOBJw3Gw4Af6x+2EiSnIkNQw=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "411e8764155aa9354dbcd6d5faaeb97e9e3dce24",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "utils_2": {
       "inputs": {
         "systems": "systems"
       },
@@ -831,7 +890,7 @@
         "type": "github"
       }
     },
-    "utils_2": {
+    "utils_3": {
       "inputs": {
         "systems": "systems_2"
       },
