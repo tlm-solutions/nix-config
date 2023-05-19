@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, self, ... }:
+{ config, lib, ... }:
 let
   mac_addr = "00:de:5b:f9:e2:fe";
 in
@@ -88,6 +88,8 @@ in
   };
 
   deployment-TLMS.domain = "staging.tlm.solutions";
+
+  users.motd = lib.mkForce (builtins.readFile ./motd.txt);
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
