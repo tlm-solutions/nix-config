@@ -39,8 +39,6 @@
     ];
   };
 
-  environment.systemPackages = [ inputs.tlms-rs.packages.x86_64-linux.run-migration-based ];
-
   systemd.services.postgresql = {
     unitConfig = {
       TimeoutStartSec = 3000;
