@@ -2,6 +2,8 @@
 
   sops.secrets.postgres-borzoi-pw = {
     owner = config.users.users.postgres.name;
+    group = config.users.groups.borzoi.name;
+    mode = "0440";
   };
   sops.secrets.postgres-borzoi-grafana-pw = {
     owner = config.users.users.postgres.name;
