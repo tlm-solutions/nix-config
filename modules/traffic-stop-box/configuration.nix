@@ -8,9 +8,6 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
-  documentation.enable = false;
-  documentation.nixos.enable = false;
-
   nix = {
     settings.build-cores = 1;
     gc = {
@@ -18,10 +15,6 @@
       dates = "daily";
     };
   };
-
-  services.journald.extraConfig = ''
-    SystemMaxUse=5M
-  '';
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

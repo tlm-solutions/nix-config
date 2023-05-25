@@ -48,15 +48,7 @@ in
     htop
     tmux
     screen
-    (vim_configurable.override {
-      guiSupport = false;
-      luaSupport = false;
-      perlSupport = false;
-      pythonSupport = false;
-      rubySupport = false;
-      cscopeSupport = false;
-      netbeansSupport = false;
-    })
+    neovim
     wget
     git-crypt
     iftop
@@ -98,7 +90,4 @@ in
     hardstatus alwayslastline
     hardstatus string "%w"
   '';
-
-  TLMS.stopsJson = "/var/lib/json_dump/stop-all.json";
-  TLMS.graphJson = "/var/lib/json_dump/graph-all.json";
 }
