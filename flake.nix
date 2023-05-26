@@ -354,8 +354,10 @@
 
       nixosModules."x86_64-linux".watch-me-senpai = import ./modules/watch-me-senpai;
 
-      hydraJobs = (lib.mapAttrs (_name: value: { ${value.config.system.build.toplevel.system} = value.config.system.build.toplevel; }) self.nixosConfigurations) // {
-        sops-binaries."x86_64-linux" = sops-nix.packages."x86_64-linux".sops-install-secrets;
+      hydraJobs =
+        let
+          get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
+        in
+        nixpkgs.lib.mapAttrs get-toplevel self.nixosConfigurations;
       };
-    };
 }
