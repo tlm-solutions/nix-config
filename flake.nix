@@ -10,7 +10,7 @@
     };
 
     # DO NOT remame this to utils
-    flake-utils.url = github:numtide/flake-utils;
+    flake-utils.url = "github:numtide/flake-utils";
 
     microvm = {
       url = "github:astro/microvm.nix";
@@ -89,12 +89,6 @@
       inputs.utils.follows = "flake-utils";
     };
 
-    windshield = {
-      url = "github:tlm-solutions/windshield/hotfix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
-    };
-
     tlms-rs = {
       url = "github:tlm-solutions/tlms.rs";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -126,7 +120,6 @@
     , bureaucrat
     , telegram-decoder
     , trekkie
-    , windshield
     , chemo
     , ...
     }:
@@ -155,7 +148,6 @@
             bureaucrat.overlays.default
             funnel.overlays.default
             data-accumulator.overlays.default
-            windshield.overlays.default
             chemo.overlays.default
             (final: prev: {
               inherit documentation-src;
@@ -223,18 +215,12 @@
           arch = "x86_64-linux";
           monitoring = true;
         }
-        {
-          # Chemnitz
-          id = 2;
-          arch = "x86_64-linux";
-          monitoring = false;
-        }
-        {
-          # unused
-          id = 3;
-          arch = "aarch64-linux";
-          monitoring = false;
-        }
+        # {
+        #   # Chemnitz
+        #   id = 2;
+        #   arch = "x86_64-linux";
+        #   monitoring = false;
+        # }
         {
           # Wundstr. 9
           id = 4;
@@ -246,26 +232,6 @@
           id = 6;
           arch = "x86_64-linux";
           monitoring = true;
-        }
-        {
-          id = 7;
-          arch = "x86_64-linux";
-          monitoring = false;
-        }
-        {
-          id = 8;
-          arch = "aarch64-linux";
-          monitoring = false;
-        }
-        {
-          id = 9;
-          arch = "aarch64-linux";
-          monitoring = false;
-        }
-        {
-          id = 10;
-          arch = "x86_64-linux";
-          monitoring = false;
         }
       ];
 

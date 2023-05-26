@@ -649,8 +649,7 @@
         "sops-nix": "sops-nix",
         "telegram-decoder": "telegram-decoder",
         "tlms-rs": "tlms-rs_2",
-        "trekkie": "trekkie",
-        "windshield": "windshield"
+        "trekkie": "trekkie"
       }
     },
     "rust-analyzer-src": {
@@ -1011,30 +1010,6 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "windshield": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": [
-          "flake-utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1681063248,
-        "narHash": "sha256-WW9wsxJbfalJoqLMq3znC7oEZXQK2PfIXZ/8vq/hE+8=",
-        "owner": "tlm-solutions",
-        "repo": "windshield",
-        "rev": "3ae131e0b58794d3beb317628c6ffac68388fba3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "ref": "hotfix",
-        "repo": "windshield",
         "type": "github"
       }
     }
