@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     # naersk and flake utils are not used by this flake directly, but needed
     # for the follows in all the other ones.
@@ -242,35 +242,12 @@
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         borken-microvm = self.nixosConfigurations.borken-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
-        fuck-microvm = self.nixosConfigurations.fuck.config.system.build.vm;
         docs = pkgs.callPackage ./pkgs/documentation.nix {
           inherit documentation-src;
           options-docs = (pkgs.nixosOptionsDoc {
             options = self.nixosConfigurations.data-hoarder.options.TLMS;
           }).optionsCommonMark;
         };
-        test-vm-wrapper =
-          let
-            cfg = self.nixosConfigurations.fuck.config;
-          in
-          (pkgs.writeScript "datacare-test-vm-wrapper"
-            ''
-              set -e
-              echo Datacare-McTest: enterprise-grade, free-range, grass-fed testing vm
-              echo "ALL RELEVANT SERVICES WILL BE EXPOSED TO THE HOST:"
-              echo -e "Service\t\tPort"
-              echo -e "SSH:\t\t2223\troot:lol"
-              echo -e "trekkie:\t${toString cfg.TLMS.trekkie.port}"
-              echo -e "datacare:\t${toString cfg.TLMS.datacare.http.port}"
-              echo -e "data-accumulator:\t${toString cfg.TLMS.dataAccumulator.port}"
-              echo -e "funnel:\t${toString cfg.TLMS.funnel.defaultWebsocket.port}"
-              echo
-
-              set -x
-              export QEMU_NET_OPTS="hostfwd=tcp::2223-:22,hostfwd=tcp::80-:80,hostfwd=tcp::8050-:${toString cfg.TLMS.trekkie.port},hostfwd=tcp::8060-:${toString cfg.TLMS.datacare.http.port},hostfwd=tcp::8070-:${toString cfg.TLMS.dataAccumulator.port},hostfwd=tcp::8080-:${toString cfg.TLMS.funnel.defaultWebsocket.port}"
-              echo "running the vm now..."
-              ${self.packages."x86_64-linux".fuck-microvm}/bin/run-staging-data-hoarder-vm
-            '');
       }
       // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; })
       // (lib.foldl (x: y: lib.mergeAttrs x { "${y.config.system.name}-vm" = y.config.system.build.vm; }) { } (lib.attrValues self.nixosConfigurations));
@@ -305,19 +282,6 @@
           modules = [
             ./hosts/borken-data-hoarder
             microvm.nixosModules.microvm
-          ] ++ data-hoarder-modules;
-        };
-
-        fuck = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs self; };
-          modules = [
-            microvm.nixosModules.microvm
-            ./hosts/staging-data-hoarder
-            ./hosts/fuck
-            {
-              deployment-TLMS.monitoring.enable = false;
-            }
           ] ++ data-hoarder-modules;
         };
 

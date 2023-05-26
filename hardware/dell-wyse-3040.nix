@@ -20,7 +20,7 @@
     useDHCP = lib.mkDefault true;
   };
 
-  boot.tmpOnTmpfsSize = "25%";
+  boot.tmp.tmpfsSize = "25%";
 
   boot.kernelModules = [ "kvm-intel" ];
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

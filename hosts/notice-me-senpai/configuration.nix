@@ -4,7 +4,7 @@
   networking.hostName = "notice-me-senpai";
 
   boot = {
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
     kernelPackages = pkgs.linuxPackages_latest;
   };
 

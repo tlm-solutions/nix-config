@@ -74,8 +74,10 @@ in
   };
   services.openssh = {
     enable = true;
-    permitRootLogin = "prohibit-password";
-    passwordAuthentication = false;
+    settings = {
+      permitRootLogin = "prohibit-password";
+      passwordAuthentication = false;
+    };
   };
   programs.mosh.enable = true;
 

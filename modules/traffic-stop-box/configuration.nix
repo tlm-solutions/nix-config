@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  boot.tmpOnTmpfs = true;
+  boot.tmp.useTmpfs = true;
 
   networking.hostName = "traffic-stop-box-${toString config.deployment-TLMS.systemNumber}"; # Define your hostname.
 

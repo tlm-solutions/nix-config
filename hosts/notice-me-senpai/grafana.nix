@@ -30,7 +30,7 @@ in
             wgHosts = lib.filterAttrs filterWgHosts self.nixosConfigurations;
 
             # collect active prometheus exporters
-            filterEnabledExporters = name: host: lib.filterAttrs (k: v: v.enable == true) host.config.services.prometheus.exporters;
+            filterEnabledExporters = name: host: lib.filterAttrs (k: v: (builtins.isAttrs v) && v.enable == true) host.config.services.prometheus.exporters;
             enabledExporters = lib.mapAttrs filterEnabledExporters wgHosts;
 
             # turns exporter config into scraper config
