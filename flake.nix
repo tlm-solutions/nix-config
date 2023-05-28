@@ -13,7 +13,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     microvm = {
-      url = "github:astro/microvm.nix";
+      url = "github:astro/microvm.nix?ref=v0.3.3";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-utils.follows = "flake-utils";
     };
