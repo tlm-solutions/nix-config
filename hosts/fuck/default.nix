@@ -49,6 +49,6 @@
   users.users.root.password = "lol";
   services.openssh = {
     enable = true;
-    permitRootLogin = lib.mkForce "yes";
+    PermitRootLogin = lib.mkForce "yes";
   };
 }

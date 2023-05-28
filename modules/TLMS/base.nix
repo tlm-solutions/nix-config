@@ -75,8 +75,8 @@ in
   services.openssh = {
     enable = true;
     settings = {
-      permitRootLogin = "prohibit-password";
-      passwordAuthentication = false;
+      PermitRootLogin = "prohibit-password";
+      PasswordAuthentication = false;
     };
   };
   programs.mosh.enable = true;
