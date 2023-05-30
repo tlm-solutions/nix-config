@@ -13,16 +13,23 @@ pkgs.dockerTools.buildImage {
   name = "stateful-jupyterlab";
   tag = "latest";
   fromImage = miniconda-alpine-dockerhub;
-  runAsRoot = ''
-  #!${pkgs.runtimeShell}
-  mkdir -p /workdir
+  runAsRoot = 
+    let
+      entrypoint = pkgs.writeScriptBin "entrypoint.sh" ''
+          #!/bin/bash
+          conda install ${packages} \
+                      jupyterlab
+
+        jupyter-lab --ip=0.0.0.0 --port=8080 --no-browser --allow-root"
+      '';
+    in
+    ''
+    #!${pkgs.runtimeShell}
+    mkdir -p /workdir
+    cp ${entrypoint}/bin/entrypoint.sh /entrypoint.sh
   '';
   config = {
     WorkingDir = "/workdir";
-    run = ''
-  conda install ${packages} \
-                jupyterlab
-    '';
-    Cmd = [ "jupyter-lab" "--ip=0.0.0.0" "--port=8080" "--no-browser" "--allow-root" ];
+    Entrypoint = "/entrypoint.sh";
   };
 }
