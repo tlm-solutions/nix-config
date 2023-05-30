@@ -13,8 +13,8 @@ in
   ];
 
   microvm = {
-    vcpu = 4;
-    mem = 1024 * 6;
+    vcpu = 16;
+    mem = 1024 * 24;
     hypervisor = "cloud-hypervisor";
     socket = "${config.networking.hostName}.socket";
 
