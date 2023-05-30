@@ -20,7 +20,7 @@ pkgs.dockerTools.buildImage {
   config = {
     WorkingDir = "/workdir";
     run = ''
-  /bin/bash conda install ${packages} \
+  conda install ${packages} \
                 jupyterlab
     '';
     Cmd = [ "jupyter-lab" "--ip=0.0.0.0" "--port=8080" "--no-browser" "--allow-root" ];
