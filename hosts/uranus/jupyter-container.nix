@@ -20,7 +20,7 @@ pkgs.dockerTools.buildImage {
         conda install ${packages} \
                       jupyterlab
 
-        jupyter-lab --ip=0.0.0.0 --port=8080 --no-browser --allow-root"
+        jupyter-lab --ip=0.0.0.0 --port=8080 --no-browser --allow-root
       '';
     in
     ''
