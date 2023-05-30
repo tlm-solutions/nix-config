@@ -15,7 +15,10 @@
     containers."jupyterlab-stateful" = {
       autoStart = true;
       ports = [ "8080:8080" ];
-      volumes = [ "/var/lib/jupyter-volume:/workdir" ];
+      volumes = [
+        "/var/lib/jupyter-volume:/workdir"
+        "/var/lib/root-home:/root"
+      ];
       imageFile = let
         package-string = lib.concatStringsSep " " [
           "numpy"
