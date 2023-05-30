@@ -310,6 +310,18 @@
           ];
         };
 
+        uranus = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs self; };
+          modules = [
+            sops-nix.nixosModules.sops
+            microvm.nixosModules.microvm
+
+            ./modules/TLMS
+            ./hosts/uranus
+          ];
+        };
+
       };
       apps."x86_64-linux".mctest = {
         type = "app";
