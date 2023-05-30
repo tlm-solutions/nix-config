@@ -19,15 +19,22 @@
         "/var/lib/jupyter-volume:/workdir"
         "/var/lib/root-home:/root"
       ];
-      imageFile = let
-        package-string = lib.concatStringsSep " " [
-          "numpy"
-          "scipy"
-          "pandas"
-          "matplotlib"
-        ];
-      in
-      (import ./jupyter-container.nix { inherit pkgs; packages = package-string; });
+      imageFile =
+        let
+          package-string = lib.concatStringsSep " " [
+            # alphabetically `:sort`ed plz
+            "geojson"
+            "matplotlib"
+            "numpy"
+            "pandas"
+            "scipy"
+            "seaborn"
+          ];
+        in
+        (import ./jupyter-container.nix {
+          inherit pkgs;
+          packages = package-string;
+        });
       image = "stateful-jupyterlab";
     };
   };

@@ -1,4 +1,4 @@
-{ pkgs, packages, ... }:
+{ pkgs, packages, bind-ip ? "0.0.0.0", bind-port ? 8080, ... }:
 let
   miniconda-alpine-dockerhub = pkgs.dockerTools.pullImage {
     imageName = "continuumio/miniconda3";
@@ -13,21 +13,21 @@ pkgs.dockerTools.buildImage {
   name = "stateful-jupyterlab";
   tag = "latest";
   fromImage = miniconda-alpine-dockerhub;
-  runAsRoot = 
+  runAsRoot =
     let
       entrypoint = pkgs.writeScriptBin "entrypoint.sh" ''
         #!/bin/bash
         conda install ${packages} \
                       jupyterlab
 
-        jupyter-lab --ip=0.0.0.0 --port=8080 --no-browser --allow-root
+        jupyter-lab --ip=${bind-ip} --port=${toString bind-port} --no-browser --allow-root
       '';
     in
     ''
-    #!${pkgs.runtimeShell}
-    mkdir -p /workdir
-    cp ${entrypoint}/bin/entrypoint.sh /entrypoint.sh
-  '';
+      #!${pkgs.runtimeShell}
+      mkdir -p /workdir
+      cp ${entrypoint}/bin/entrypoint.sh /entrypoint.sh
+    '';
   config = {
     WorkingDir = "/workdir";
     Entrypoint = "/entrypoint.sh";
