@@ -17,7 +17,7 @@ pkgs.dockerTools.buildImage {
     let
       entrypoint = pkgs.writeScriptBin "entrypoint.sh" ''
         #!/bin/bash
-        conda install ${packages} \
+        conda install -c conda-forge ${packages} \
                       jupyterlab
 
         jupyter-lab --ip=${bind-ip} --port=${toString bind-port} --no-browser --allow-root
