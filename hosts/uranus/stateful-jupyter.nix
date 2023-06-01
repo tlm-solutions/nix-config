@@ -23,10 +23,12 @@
         let
           package-string = lib.concatStringsSep " " [
             # alphabetically `:sort`ed plz
-            # "geojson"
+            "geojson"
             "matplotlib"
             "numpy"
             "pandas"
+            "pip"
+            "psycopg"
             "scipy"
             "seaborn"
           ];
