@@ -15,6 +15,8 @@
     authentication =
       let
         senpai-ip = self.nixosConfigurations.notice-me-senpai.config.deployment-TLMS.net.wg.addr4;
+        # TODO: fixme
+        uranus-ip = "10.13.37.9";
       in
       pkgs.lib.mkOverride 10 ''
         local	all	all	trust
@@ -22,6 +24,7 @@
         host	all	all	::1/128	trust
         host	tlms	grafana	${senpai-ip}/32	trust
         host	borzoi	grafana	${senpai-ip}/32	trust
+        host  borzoi  grafana ${uranus-ip}/32 scram-sha-256
       '';
     package = pkgs.postgresql_14;
     ensureDatabases = [ "borzoi" ];
