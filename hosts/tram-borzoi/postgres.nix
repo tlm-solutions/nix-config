@@ -20,8 +20,8 @@
         local	all	all	trust
         host	all	all	127.0.0.1/32	trust
         host	all	all	::1/128	trust
-        host	tlms	grafana	${senpai-ip}/32	trust
-        host	borzoi	grafana	${senpai-ip}/32	trust
+        host	tlms	grafana	${senpai-ip}/32	scram-sha-256
+        host	borzoi	grafana	${senpai-ip}/32	scram-sha-256
       '';
     package = pkgs.postgresql_14;
     ensureDatabases = [ "borzoi" ];
