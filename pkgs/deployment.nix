@@ -1,41 +1,43 @@
-{ self, pkgs, systems }:
+{ self, pkgs, lib }:
 let
+  # filter out deployable (aka not microvm or container) systems
+  filterHosts = k: v: !(builtins.hasAttr "microvm" v.config);
+  nonVmHosts = lib.filterAttrs filterHosts self.nixosConfigurations;
 
-  installScript = (system:
-    let ip = "10.13.37.${toString (system.config.deployment-TLMS.systemNumber + 100)}";
+  # the deployment script
+  deployScriptTemplate = (system: command:
+    let
+      ip = system.config.deployment-TLMS.net.wg.addr4;
+      host = system.config.networking.hostName;
     in
+
     (pkgs.writeScriptBin "deploy" ''
       #!${pkgs.runtimeShell}
-      ssh root@${ip} "ps cax | grep \"nixos-rebuild\" > /dev/null"
-      if [ $? -eq 0 ]
+      set -xe
+
+      echo -e "\033[0;33mChecking if ${host} is up (ip: ${ip})\033[0m"
+
+      if ping -c 1 ${ip} > /dev/null
       then
-          echo "\e[1;31m [!] nixos-rebuild is already running on ${ip}"
-          exit 1
+          echo -e "\033[0;32mRedeploying ${host} with \"${command}\"\033[0m"
+          nixos-rebuild --flake ${self}\#${system.config.networking.hostName} --target-host root@${ip} --use-substitutes ${command} -L
       else
-          nix copy --to ssh://root@${ip} ${self}
-          ssh root@${ip} -- nixos-rebuild switch --option narinfo-cache-negative-ttl 0 --flake ${self} -L
+          echo -e "\033[0;31m${ip} seems to be down!\033[0m"
+          exit 1
       fi
     ''));
 
-  installScripts = pkgs.lib.mapAttrs'
-    (name: system:
-      pkgs.lib.attrsets.nameValuePair ("deploy-" + name) (installScript system))
-    systems;
+  deployScriptWriter = (command:
+    pkgs.lib.mapAttrs'
+      (name: system:
+        lib.nameValuePair ("rebuild-" + command + "-" + name) (deployScriptTemplate system command))
+      nonVmHosts);
 
-  deployAllExecutablePathsConcatted =
-    pkgs.lib.strings.concatMapStringsSep " " (path: "${path}/bin/deploy")
-      (builtins.attrValues installScripts);
+  supported_commands = [
+    "switch"
+    "boot"
+  ];
 
-  deployAllScript = (name:
-    pkgs.writeScriptBin name (
-      ''
-        #!${pkgs.runtimeShell} -ex
-        ${pkgs.parallel}/bin/parallel --will-cite -j10 ::: ${deployAllExecutablePathsConcatted} || echo "Some deployment failed"
-      ''
-    ));
-
+  installScripts = lib.foldl (attr: cmd: lib.mergeAttrs attr (deployScriptWriter cmd)) { } supported_commands;
 in
-{
-  deploy-all = deployAllScript "deploy-all";
-  nuke-all = deployAllScript "nuke-all";
-} // installScripts
+installScripts

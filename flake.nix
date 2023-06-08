@@ -249,7 +249,7 @@
           }).optionsCommonMark;
         };
       }
-      // (import ./pkgs/deployment.nix { inherit self pkgs; systems = stop_boxes; })
+      // (import ./pkgs/deployment.nix { inherit self pkgs lib;})
       // (lib.foldl (x: y: lib.mergeAttrs x { "${y.config.system.name}-vm" = y.config.system.build.vm; }) { } (lib.attrValues self.nixosConfigurations));
 
     in
