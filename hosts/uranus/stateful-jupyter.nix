@@ -31,6 +31,7 @@
             "psycopg"
             "scipy"
             "seaborn"
+            "bitstring"
           ];
         in
         (import ./jupyter-container.nix {
