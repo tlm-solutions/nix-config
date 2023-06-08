@@ -249,7 +249,7 @@
           }).optionsCommonMark;
         };
       }
-      // (import ./pkgs/deployment.nix { inherit self pkgs lib;})
+      // (import ./pkgs/deployment.nix { inherit self pkgs lib; })
       // (lib.foldl (x: y: lib.mergeAttrs x { "${y.config.system.name}-vm" = y.config.system.build.vm; }) { } (lib.attrValues self.nixosConfigurations));
 
     in
@@ -319,6 +319,7 @@
 
             ./modules/TLMS
             ./hosts/uranus
+            { deployment-TLMS.monitoring.enable = true; }
           ];
         };
 
@@ -335,5 +336,5 @@
           get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
         in
         nixpkgs.lib.mapAttrs get-toplevel self.nixosConfigurations;
-      };
+    };
 }
