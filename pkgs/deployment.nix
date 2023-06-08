@@ -13,7 +13,7 @@ let
 
     (pkgs.writeScriptBin "deploy" ''
       #!${pkgs.runtimeShell}
-      set -xe
+      set -e
 
       echo -e "\033[0;33mChecking if ${host} is up (ip: ${ip})\033[0m"
 
