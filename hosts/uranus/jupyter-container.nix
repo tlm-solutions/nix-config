@@ -28,7 +28,7 @@ pkgs.dockerTools.buildImage {
                             -m \
                             ${if is-admin then "-G ${jupyterAdminGroup}" else ""} \
                             -p ${hashed-pw} \
-                            ${user}'');
+                            ${user} && ln -s /workdir /home/${user}/shared-workdir'');
 
       create-all-users-script = (lib.strings.concatStringsSep "\n" (builtins.map (u: (useradd-string u.username u.hashedPassword u.isAdmin)) jupyterUsers));
         jupyterhub-config = pkgs.writeText "jupyterhub-config.py" ''
@@ -68,6 +68,8 @@ pkgs.dockerTools.buildImage {
     ''
       #!${pkgs.runtimeShell}
       mkdir -p /workdir
+      chown root:${jupyterAdminGroup} /workdir
+      chmod g+rwx /workdir
       cp ${jupyterhub-config} /jupyterhub-config.py
       cp ${entrypoint}/bin/entrypoint.sh /entrypoint.sh
     '';
