@@ -50,6 +50,8 @@ pkgs.dockerTools.buildImage {
 
         # create jupyter group
         groupadd ${jupyterAdminGroup}
+        chown root:${jupyterAdminGroup} /workdir
+        chmod g+rwx /workdir
 
         # create all the users
         ${create-all-users-script}
@@ -68,8 +70,6 @@ pkgs.dockerTools.buildImage {
     ''
       #!${pkgs.runtimeShell}
       mkdir -p /workdir
-      chown root:${jupyterAdminGroup} /workdir
-      chmod g+rwx /workdir
       cp ${jupyterhub-config} /jupyterhub-config.py
       cp ${entrypoint}/bin/entrypoint.sh /entrypoint.sh
     '';
