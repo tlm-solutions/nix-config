@@ -37,7 +37,7 @@
           jupyterUsers = [
             {
               username = "0xa";
-              hashedPassword = "$y$j9T$yYVuPTQIOi3H1v2j.LErS0$TdAMvAYVhUITt6x9Im3oi5A5Q3cwZxuLANAdPEsykg7"; # just a test, plz ignore
+              hashedPassword = (lib.strings.escapeShellArg "$y$j9T$yYVuPTQIOi3H1v2j.LErS0$TdAMvAYVhUITt6x9Im3oi5A5Q3cwZxuLANAdPEsykg7"); # just a test, plz ignore
               isAdmin = true;
             }
           ];
