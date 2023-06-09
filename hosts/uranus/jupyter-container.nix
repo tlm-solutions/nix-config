@@ -54,7 +54,9 @@ pkgs.dockerTools.buildImage {
         ${create-all-users-script}
 
         # install the python environ
-        conda install -c conda-forge ${packages} \
+        conda install -c conda-forge mamba
+
+        mamba install -c conda-forge ${packages} \
                          jupyterlab \
                          jupyterhub
 
