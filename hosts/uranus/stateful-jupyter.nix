@@ -7,11 +7,12 @@ let
       isAdmin = true;
     }
   ];
+
+  # move the secrets to the volume
+  secret-setup = (lib.strings.concatStringsSep "\n" (builtins.map (u: "cp ${u.userPasswordFile} /var/lib/pw/") jupyterUsers));
 in
 {
-  sops.secrets.hashed-password-0xa = {
-    path = "/var/lib/pw/hashed-password-0xa";
-  };
+  sops.secrets.hashed-password-0xa = { };
 
   virtualisation.docker = {
     enable = true;
@@ -53,6 +54,13 @@ in
         });
       image = "stateful-jupyterlab";
     };
+  };
+
+  systemd.services.setup-docker-pws = {
+    description = "copy the user passwords to docker volume";
+    wantedBy = [ "jupyterlab-stateful.service" ];
+    serviceConfig.type = "oneshot";
+    script = secret-setup;
   };
 
 }
