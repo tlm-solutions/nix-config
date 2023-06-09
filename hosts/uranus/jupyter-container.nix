@@ -29,12 +29,7 @@ pkgs.dockerTools.buildImage {
                             -p ${hashed-pw} \
                             ${user}'');
 
-      create-all-users-script = pkgs.writeScriptBin "create-users"
-        (lib.strings.concatStringsSep "\n" (builtins.map (u: (useradd-string u.username u.hashedPassword u.isAdmin)) jupyterUsers));
-        # (lib.foldl
-        # (script: u: lib.strings.concatStringsSep "\n" script (useradd-string u.username u.hashedPassword u.isAdmin)) ''''
-        # jupyterUsers);
-
+      create-all-users-script = (lib.strings.concatStringsSep "\n" (builtins.map (u: (useradd-string u.username u.hashedPassword u.isAdmin)) jupyterUsers));
         jupyterhub-config = pkgs.writeText "jupyterhub-config.py" ''
           c = get_config()
 
@@ -56,7 +51,7 @@ pkgs.dockerTools.buildImage {
         groupadd ${jupyterAdminGroup}
 
         # create all the users
-        ${create-all-users-script}/bin/create-users
+        ${create-all-users-script}
 
         # install the python environ
         conda install -c conda-forge ${packages} \
