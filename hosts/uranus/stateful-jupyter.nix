@@ -18,10 +18,11 @@
       volumes = [
         "/var/lib/jupyter-volume:/workdir"
         "/var/lib/root-home:/root"
+        # "/var/lib/conda-persist:/opt/conda"
       ];
       imageFile =
         let
-          package-string = lib.concatStringsSep " " [
+          packages = lib.concatStringsSep " " [
             # alphabetically `:sort`ed plz
             "geojson"
             "matplotlib"
@@ -33,10 +34,16 @@
             "seaborn"
             "bitstring"
           ];
+          jupyterUsers = [
+            {
+              username = "0xa";
+              hashedPassword = "$y$j9T$vXyoscuYL2CUGnSXLBpw51$4TH60t.zpNwkb23jt/oEZSJDLxGaSni54sJxn1TXDfA"; # just a test, plz ignore
+              isAdmin = true;
+            }
+          ];
         in
         (import ./jupyter-container.nix {
-          inherit pkgs;
-          packages = package-string;
+          inherit pkgs lib jupyterUsers packages;
         });
       image = "stateful-jupyterlab";
     };
