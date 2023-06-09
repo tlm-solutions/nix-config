@@ -27,8 +27,8 @@ pkgs.dockerTools.buildImage {
       useradd-string = (user: is-admin: ''useradd \
                             -m \
                             ${if is-admin then "-G ${jupyterAdminGroup}" else ""} \
+                            -p $(printf "%q" $(cat /pw/hashed-password-${user})) \
                             ${user} \
-                            -p $(cat /pw/hashed-password-${user}) \
                             && ln -s /workdir /home/${user}/shared-workdir \
                             '');
 
