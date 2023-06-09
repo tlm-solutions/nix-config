@@ -25,6 +25,7 @@ pkgs.dockerTools.buildImage {
     let
       cont-interpreter = "/bin/bash";
       useradd-string = (user: hashed-pw: is-admin: ''useradd \
+                            -m \
                             ${if is-admin then "-G ${jupyterAdminGroup}" else ""} \
                             -p ${hashed-pw} \
                             ${user}'');
