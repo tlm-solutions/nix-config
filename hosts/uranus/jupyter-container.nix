@@ -24,13 +24,15 @@ pkgs.dockerTools.buildImage {
   runAsRoot =
     let
       cont-interpreter = "/bin/bash";
-      useradd-string = (user: hashed-pw: is-admin: ''useradd \
+      useradd-string = (user: is-admin: ''useradd \
                             -m \
                             ${if is-admin then "-G ${jupyterAdminGroup}" else ""} \
-                            -p ${hashed-pw} \
-                            ${user} && ln -s /workdir /home/${user}/shared-workdir'');
+                            ${user} \
+                            -p $(cat /pw/hashed-password-${user}) \
+                            && ln -s /workdir /home/${user}/shared-workdir \
+                            '');
 
-      create-all-users-script = (lib.strings.concatStringsSep "\n" (builtins.map (u: (useradd-string u.username u.hashedPassword u.isAdmin)) jupyterUsers));
+      create-all-users-script = (lib.strings.concatStringsSep "\n" (builtins.map (u: (useradd-string u.username u.isAdmin)) jupyterUsers));
         jupyterhub-config = pkgs.writeText "jupyterhub-config.py" ''
           c = get_config()
 
@@ -39,6 +41,8 @@ pkgs.dockerTools.buildImage {
           c.Spawner.notebook_dir='/workdir'
           c.Spawner.default_url='/lab'
         '';
+
+      copy-passwords = lib.concatStringsSep "\n" (builtins.map (u: "cp ${u.userPasswordFile} /pw/") jupyterUsers);
 
       entrypoint = pkgs.writeScriptBin "entrypoint.sh" ''
         #!${cont-interpreter}
@@ -56,12 +60,16 @@ pkgs.dockerTools.buildImage {
         # create all the users
         ${create-all-users-script}
 
+        # remove supplied passwords
+        rm -r /pw
+
         # install the python environ
         conda install -c conda-forge mamba
 
         mamba install -c conda-forge ${packages} \
                          jupyterlab \
                          jupyterhub
+
 
         # off to the races
         jupyterhub --ip=${bind-ip} --port=${toString bind-port} -f /jupyterhub-config.py
@@ -70,6 +78,14 @@ pkgs.dockerTools.buildImage {
     ''
       #!${pkgs.runtimeShell}
       mkdir -p /workdir
+
+      # make temp store for pw hashes
+      mkdir -p /pw
+
+      ${copy-passwords}
+
+      # populate with temp pw's
+
       cp ${jupyterhub-config} /jupyterhub-config.py
       cp ${entrypoint}/bin/entrypoint.sh /entrypoint.sh
     '';

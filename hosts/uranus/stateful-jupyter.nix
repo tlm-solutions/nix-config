@@ -1,5 +1,16 @@
-{ pkgs, lib, ... }:
+{ pkgs, config, lib, ... }:
+let
+  jupyterUsers = [
+    {
+      username = "0xa";
+      userPasswordFile = config.sops.secrets.hashed-password-0xa.path;
+      isAdmin = true;
+    }
+  ];
+in
 {
+  sops.secrets.hashed-password-0xa = { };
+
   virtualisation.docker = {
     enable = true;
     # magic from marenz to make it work on ceph
@@ -33,13 +44,6 @@
             "scipy"
             "seaborn"
             "bitstring"
-          ];
-          jupyterUsers = [
-            {
-              username = "0xa";
-              hashedPassword = (lib.strings.escapeShellArg "$y$j9T$yYVuPTQIOi3H1v2j.LErS0$TdAMvAYVhUITt6x9Im3oi5A5Q3cwZxuLANAdPEsykg7"); # just a test, plz ignore
-              isAdmin = true;
-            }
           ];
         in
         (import ./jupyter-container.nix {
