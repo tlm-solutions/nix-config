@@ -9,7 +9,9 @@ let
   ];
 in
 {
-  sops.secrets.hashed-password-0xa = { };
+  sops.secrets.hashed-password-0xa = {
+    path = "/var/lib/pw/hashed-password-0xa";
+  };
 
   virtualisation.docker = {
     enable = true;
@@ -29,7 +31,7 @@ in
       volumes = [
         "/var/lib/jupyter-volume:/workdir"
         "/var/lib/root-home:/root"
-        # "/var/lib/conda-persist:/opt/conda"
+        "/var/lib/pw:/pw"
       ];
       imageFile =
         let

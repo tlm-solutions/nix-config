@@ -42,8 +42,6 @@ pkgs.dockerTools.buildImage {
           c.Spawner.default_url='/lab'
         '';
 
-      copy-passwords = lib.concatStringsSep "\n" (builtins.map (u: "cp ${u.userPasswordFile} /pw/") jupyterUsers);
-
       entrypoint = pkgs.writeScriptBin "entrypoint.sh" ''
         #!${cont-interpreter}
         set -ex
@@ -59,9 +57,6 @@ pkgs.dockerTools.buildImage {
 
         # create all the users
         ${create-all-users-script}
-
-        # remove supplied passwords
-        rm -r /pw
 
         # install the python environ
         conda install -c conda-forge mamba
@@ -81,10 +76,6 @@ pkgs.dockerTools.buildImage {
 
       # make temp store for pw hashes
       mkdir -p /pw
-
-      ${copy-passwords}
-
-      # populate with temp pw's
 
       cp ${jupyterhub-config} /jupyterhub-config.py
       cp ${entrypoint}/bin/entrypoint.sh /entrypoint.sh
