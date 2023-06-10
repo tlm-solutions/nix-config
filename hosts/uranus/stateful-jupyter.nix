@@ -59,7 +59,7 @@ in
   systemd.services.setup-docker-pws = {
     description = "copy the user passwords to docker volume";
     wantedBy = [ "jupyterlab-stateful.service" ];
-    serviceConfig.type = "oneshot";
+    serviceConfig.Type = "oneshot";
     script = secret-setup;
   };
 
