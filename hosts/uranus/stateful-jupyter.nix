@@ -67,8 +67,8 @@ in
       script = secret-setup;
     };
     docker-jupyterlab-stateful = {
-      after = [ "setup-docker-pws" ];
-      requires = [ "setup-docker-pws" ];
+      after = [ "setup-docker-pws.service" ];
+      requires = [ "setup-docker-pws.service" ];
     };
   };
 
