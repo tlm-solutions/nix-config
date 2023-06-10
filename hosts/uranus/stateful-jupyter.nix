@@ -47,7 +47,7 @@ in
         "/var/lib/jupyter-volume:/workdir"
         "/var/lib/root-home:/root"
         "/var/lib/pw:/pw"
-      ];
+      ] ++ builtins.map (u: "/var/lib/${u.username}-home:/home/${u.username}") jupyterUsers;
       imageFile =
         let
           packages = lib.concatStringsSep " " [
