@@ -6,13 +6,27 @@ let
       userPasswordFile = config.sops.secrets.hashed-password-0xa.path;
       isAdmin = true;
     }
+    {
+      username = "tassilo";
+      userPasswordFile = config.sops.secrets.hashed-password-tassilo.path;
+      isAdmin = true;
+    }
+    {
+      username = "marenz";
+      userPasswordFile = config.sops.secrets.hashed-password-marenz.path;
+      isAdmin = true;
+    }
   ];
 
   # move the secrets to the volume
   secret-setup = (lib.strings.concatStringsSep "\n" (builtins.map (u: "cp --force --dereference ${u.userPasswordFile} /var/lib/pw/") jupyterUsers));
 in
 {
-  sops.secrets.hashed-password-0xa = { };
+  sops.secrets = {
+    hashed-password-0xa = { };
+    hashed-password-tassilo = { };
+    hashed-password-marenz = { };
+  };
 
   virtualisation.docker = {
     enable = true;
