@@ -56,11 +56,20 @@ in
     };
   };
 
-  systemd.services.setup-docker-pws = {
-    description = "copy the user passwords to docker volume";
-    wantedBy = [ "jupyterlab-stateful.service" ];
-    serviceConfig.Type = "oneshot";
-    script = secret-setup;
+  systemd.services = {
+    setup-docker-pws = {
+      description = "copy the user passwords to docker volume";
+      wantedBy = [ "jupyterlab-stateful.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = secret-setup;
+    };
+    docker-jupyterlab-stateful = {
+      after = [ "setup-docker-pws" ];
+      requires = [ "setup-docker-pws" ];
+    };
   };
 
 }
