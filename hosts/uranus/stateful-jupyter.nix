@@ -9,7 +9,7 @@ let
   ];
 
   # move the secrets to the volume
-  secret-setup = (lib.strings.concatStringsSep "\n" (builtins.map (u: "cp --dereference ${u.userPasswordFile} /var/lib/pw/") jupyterUsers));
+  secret-setup = (lib.strings.concatStringsSep "\n" (builtins.map (u: "cp --force --dereference ${u.userPasswordFile} /var/lib/pw/") jupyterUsers));
 in
 {
   sops.secrets.hashed-password-0xa = { };
