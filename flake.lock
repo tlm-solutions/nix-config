@@ -412,11 +412,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1683915762,
-        "narHash": "sha256-FNiZ2qRgkcqFVhNSREL7Y+PDat5R5EqVPqaJmnfIl1w=",
+        "lastModified": 1686382536,
+        "narHash": "sha256-2MDWrNByoeyV5xuiPcr4Mmij4pzv7cNh3akXvBBGnEs=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "e9beec3024175db0a9526026e0d8b9f57e865d13",
+        "rev": "581f43034082deb82c2454bb490cf900625d0741",
         "type": "github"
       },
       "original": {
@@ -617,11 +617,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1686059680,
-        "narHash": "sha256-sp0WlCIeVczzB0G8f8iyRg3IYW7KG31mI66z7HIZwrI=",
+        "lastModified": 1686331006,
+        "narHash": "sha256-hElRDWUNG655aqF0awu+h5cmDN+I/dQcChRt2tGuGGU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a558f7ac29f50c4b937fb5c102f587678ae1c9fb",
+        "rev": "85bcb95aa83be667e562e781e9d186c57a07d757",
         "type": "github"
       },
       "original": {
