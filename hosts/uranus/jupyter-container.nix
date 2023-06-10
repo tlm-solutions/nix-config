@@ -29,7 +29,8 @@ pkgs.dockerTools.buildImage {
                             ${if is-admin then "-G ${jupyterAdminGroup}" else ""} \
                             -p $(cat /pw/hashed-password-${user}) \
                             ${user} \
-                            && ln -s /workdir /home/${user}/shared-workdir \
+                            && chown -R ${user}:${jupyterAdminGroup} /home/${user} \
+                            && ln --force -s /workdir /home/${user}/shared-workdir
                             '');
 
       create-all-users-script = (lib.strings.concatStringsSep "\n" (builtins.map (u: (useradd-string u.username u.isAdmin)) jupyterUsers));
