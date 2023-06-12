@@ -38,14 +38,14 @@ pkgs.dockerTools.buildImage {
       '');
 
       create-all-users-script = (lib.strings.concatStringsSep "\n" (builtins.map (u: (useradd-string u.username u.isAdmin)) jupyterUsers));
-        jupyterhub-config = pkgs.writeText "jupyterhub-config.py" ''
-          c = get_config()
+      jupyterhub-config = pkgs.writeText "jupyterhub-config.py" ''
+        c = get_config()
 
-          c.PAMAuthenticator.admin_groups = {'${jupyterAdminGroup}'}
+        c.PAMAuthenticator.admin_groups = {'${jupyterAdminGroup}'}
 
-          c.Spawner.notebook_dir='/workdir'
-          c.Spawner.default_url='/lab'
-        '';
+        c.Spawner.notebook_dir='/workdir'
+        c.Spawner.default_url='/lab'
+      '';
 
       entrypoint = pkgs.writeScriptBin "entrypoint.sh" ''
         #!${cont-interpreter}
