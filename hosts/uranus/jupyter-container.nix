@@ -29,7 +29,8 @@ pkgs.dockerTools.buildImage {
         echo "creating user ${user}"
         useradd \
         -m \
-        ${if is-admin then "-G ${jupyterAdminGroup}" else ""} \
+        ${if is-admin then "-g ${jupyterAdminGroup}" else ""} \
+        -G wheel \
         -p $(cat /pw/hashed-password-${user}) \
         ${user} \
         && chown -R ${user}:${jupyterAdminGroup} /home/${user} \
@@ -57,7 +58,7 @@ pkgs.dockerTools.buildImage {
 
         # create jupyter group
         groupadd ${jupyterAdminGroup}
-        chown root:${jupyterAdminGroup} /workdir
+        chown -R root:${jupyterAdminGroup} /workdir
         chmod -R g+rwx /workdir
 
         # create all the users
