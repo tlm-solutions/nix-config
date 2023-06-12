@@ -24,14 +24,18 @@ pkgs.dockerTools.buildImage {
   runAsRoot =
     let
       cont-interpreter = "/bin/bash";
-      useradd-string = (user: is-admin: ''useradd \
-                            -m \
-                            ${if is-admin then "-G ${jupyterAdminGroup}" else ""} \
-                            -p $(cat /pw/hashed-password-${user}) \
-                            ${user} \
-                            && chown -R ${user}:${jupyterAdminGroup} /home/${user} \
-                            && ln --force -s /workdir /home/${user}/shared-workdir
-                            '');
+      useradd-string = (user: is-admin: ''
+        set +x # don't leak the hashed password
+        echo "creating user ${user}"
+        useradd \
+        -m \
+        ${if is-admin then "-G ${jupyterAdminGroup}" else ""} \
+        -p $(cat /pw/hashed-password-${user}) \
+        ${user} \
+        && chown -R ${user}:${jupyterAdminGroup} /home/${user} \
+        && ln --force -s /workdir /home/${user}/shared-workdir
+        set -x
+      '');
 
       create-all-users-script = (lib.strings.concatStringsSep "\n" (builtins.map (u: (useradd-string u.username u.isAdmin)) jupyterUsers));
         jupyterhub-config = pkgs.writeText "jupyterhub-config.py" ''
