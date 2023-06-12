@@ -58,7 +58,7 @@ pkgs.dockerTools.buildImage {
         # create jupyter group
         groupadd ${jupyterAdminGroup}
         chown root:${jupyterAdminGroup} /workdir
-        chmod g+rwx /workdir
+        chmod -R g+rwx /workdir
 
         # create all the users
         ${create-all-users-script}
