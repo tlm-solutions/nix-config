@@ -30,7 +30,6 @@ pkgs.dockerTools.buildImage {
         useradd \
         -m \
         ${if is-admin then "-g ${jupyterAdminGroup}" else ""} \
-        -G wheel \
         -p $(cat /pw/hashed-password-${user}) \
         ${user} \
         && chown -R ${user}:${jupyterAdminGroup} /home/${user} \
