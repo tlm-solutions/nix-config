@@ -329,8 +329,6 @@
         program = "${self.packages."x86_64-linux".test-vm-wrapper}";
       };
 
-      nixosModules."x86_64-linux".watch-me-senpai = import ./modules/watch-me-senpai;
-
       hydraJobs =
         let
           get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
