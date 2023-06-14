@@ -100,7 +100,7 @@ let
   nukeAll = lib.mapAttrs'
     (name: scripts: lib.nameValuePair (name) (pkgs.writeScriptBin "${name}" ''
       #!${pkgs.runtimeShell}
-      set -ex
+      set -x
 
       ${scripts}
     ''))
