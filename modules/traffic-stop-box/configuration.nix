@@ -5,7 +5,11 @@
 
   networking.hostName = "traffic-stop-box-${toString config.deployment-TLMS.systemNumber}"; # Define your hostname.
 
+  # some whoopsie in kernel 6.1.x maybe?
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
+
+  # reboot 60 seconds after kernel panic
+  boot.kernel.sysctl."kernel.panic" = 60;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
