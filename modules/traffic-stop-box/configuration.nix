@@ -1,9 +1,11 @@
-{ config, ... }:
+{ pkgs, config, ... }:
 
 {
   boot.tmp.useTmpfs = true;
 
   networking.hostName = "traffic-stop-box-${toString config.deployment-TLMS.systemNumber}"; # Define your hostname.
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
