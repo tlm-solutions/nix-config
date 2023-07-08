@@ -15,7 +15,7 @@ in
     };
     metrics = {
       port = 9010;
-      host = "0.0.0.0";
+      host = "10.13.37.1";
     };
   };
   services = {
