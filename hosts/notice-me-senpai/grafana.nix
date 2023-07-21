@@ -54,7 +54,14 @@ in
                   replacement = "${exporter}";
                 }
               ];
-            };
+            } ++ [
+              {
+                job_name = "funnel-connections";
+                static_configs = [{
+                  targets = [ "10.13.37.1:9010" ];
+                }];
+              }
+            ];
 
             # generate scraper config
             makeScrapeConfigHost = name: exporters: lib.mapAttrs (makeScrapeConfig name) exporters;
@@ -63,15 +70,7 @@ in
             TLMSScrapeConfigs = lib.lists.flatten (map lib.attrValues (lib.attrValues ScrapeConfigByHost));
           in
           TLMSScrapeConfigs;
-        } ++ [
-          {
-            job_name = "funnel-connections";
-            static_configs = [{
-              targets = [ "10.13.37.1:9010" ];
-            }];
-          }
-        ];
-
+      };
     # log collector
     loki = {
       enable = true;
