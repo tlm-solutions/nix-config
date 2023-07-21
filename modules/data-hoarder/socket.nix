@@ -7,7 +7,7 @@ in
     enable = true;
     GRPC = {
       host = "127.0.0.1";
-      port = 50050 + serice_number;
+      port = config.TLMS.chemo.port;
     };
     defaultWebsocket = {
       host = "127.0.0.1";
