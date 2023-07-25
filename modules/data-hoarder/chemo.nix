@@ -1,9 +1,11 @@
 { config, ... }:
-{
+let
+  service_number = 3;
+in {
   TLMS.chemo = {
     enable = true;
     host = "127.0.0.1";
-    port = 50053;
+    port = 50050 + service_number;
     database = {
       host = "127.0.0.1";
       port = config.services.postgresql.port;
