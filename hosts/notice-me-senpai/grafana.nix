@@ -64,9 +64,21 @@ in
           in
           TLMSScrapeConfigs ++ [
             {
-              job_name = "funnel-connections";
+              job_name = "funnel-connections-prod";
               static_configs = [{
                 targets = [ "10.13.37.1:9010" ];
+              }];
+            }
+            {
+              job_name = "funnel-connections-staging";
+              static_configs = [{
+                targets = [ "10.13.37.5:9010" ];
+              }];
+            }
+            {
+              job_name = "funnel-connections-borken";
+              static_configs = [{
+                targets = [ "10.13.37.7:9010" ];
               }];
             }
           ];
