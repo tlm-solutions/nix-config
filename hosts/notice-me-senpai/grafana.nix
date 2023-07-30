@@ -148,6 +148,9 @@ in
 
         compactor = {
           working_directory = "/var/lib/loki";
+          compaction_interval = "10m";
+          retention_enabled = true;
+          retention_delete_delay = "1m";
           shared_store = "filesystem";
           compactor_ring = {
             kvstore = {
