@@ -142,8 +142,8 @@ in
         };
 
         table_manager = {
-          retention_deletes_enabled = false;
-          retention_period = "0s";
+          retention_deletes_enabled = true;
+          retention_period = "720h";
         };
 
         compactor = {
