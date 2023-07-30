@@ -20,7 +20,7 @@ in
         port = 9501;
         listenAddress = config.deployment-TLMS.net.wg.addr4;
         globalConfig = {
-          scrape_interval = "17s";
+          scrape_interval = "131s";
         };
         scrapeConfigs =
           let
