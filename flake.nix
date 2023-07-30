@@ -215,21 +215,9 @@
           arch = "x86_64-linux";
           monitoring = true;
         }
-        # {
-        #   # Chemnitz
-        #   id = 2;
-        #   arch = "x86_64-linux";
-        #   monitoring = false;
-        # }
         {
           # Wundstr. 9
           id = 4;
-          arch = "x86_64-linux";
-          monitoring = true;
-        }
-        {
-          # Warpzone
-          id = 6;
           arch = "x86_64-linux";
           monitoring = true;
         }
