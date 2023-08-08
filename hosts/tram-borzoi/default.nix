@@ -14,7 +14,7 @@ in
   microvm = {
     vcpu = 2;
     mem = 1024 * 2;
-    hypervisor = "cloud-hypervisor";
+    hypervisor = "qemu";
     socket = "${config.networking.hostName}.socket";
 
     interfaces = [{
