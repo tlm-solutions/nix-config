@@ -1,12 +1,9 @@
-{ pkgs, config, ... }:
+{ pkgs, config, self, ... }:
 
 {
   boot.tmp.useTmpfs = true;
 
   networking.hostName = "traffic-stop-box-${toString config.deployment-TLMS.systemNumber}"; # Define your hostname.
-
-  # some whoopsie in kernel 6.1.x maybe?
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
 
   # reboot 60 seconds after kernel panic
   boot.kernel.sysctl."kernel.panic" = 60;
@@ -22,12 +19,5 @@
     };
   };
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "21.11"; # Did you read the comment?
-
 }

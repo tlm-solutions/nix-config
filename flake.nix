@@ -221,6 +221,11 @@
           arch = "x86_64-linux";
           monitoring = true;
         }
+        {
+          id = 8;
+          arch ="aarch64-linux";
+          monitoring = false;
+        }
       ];
 
       # attribute set of all traffic stop boxes

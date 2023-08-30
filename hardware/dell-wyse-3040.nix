@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
@@ -30,6 +30,8 @@
   boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" "sdhci_acpi" ];
   boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
+  # some whoopsie in kernel 6.1.x maybe?
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
 
   swapDevices = [ ];
   fileSystems."/" =
