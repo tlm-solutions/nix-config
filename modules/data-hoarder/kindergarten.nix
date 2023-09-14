@@ -13,7 +13,7 @@
         enableACME = true;
         forceSSL = true;
         locations."~ ^/(de|en)" = {
-          root = "/var/lib/kindergarden/";
+          root = "/var/lib/kindergarten/";
           # index = "index.html";
           tryFiles = "$uri /$1/index.html =404";
           extraConfig = ''
