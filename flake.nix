@@ -43,12 +43,6 @@
       url = "github:tlm-solutions/datacare";
     };
 
-    kindergarten = {
-      url = "github:tlm-solutions/kindergarten";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
-    };
-
     telegram-decoder = {
       url = "github:tlm-solutions/telegram-decoder";
       inputs = {
@@ -112,7 +106,6 @@
     , documentation-src
     , funnel
     , gnuradio-decoder
-    , kindergarten
     , microvm
     , nixpkgs
     , sops-nix
@@ -142,7 +135,6 @@
         {
           nixpkgs.overlays = [
             datacare.overlays.default
-            kindergarten.overlays.default
             trekkie.overlays.default
             lizard.overlays.default
             bureaucrat.overlays.default

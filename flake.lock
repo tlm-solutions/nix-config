@@ -425,29 +425,6 @@
         "type": "github"
       }
     },
-    "kindergarten": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": [
-          "flake-utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1694460521,
-        "narHash": "sha256-yM7jZsWnEEFcMijQWcin0bvVlshxXPlnJF2UgL9zBNY=",
-        "owner": "tlm-solutions",
-        "repo": "kindergarten",
-        "rev": "618e2544eb8f51aa719cc67695d40f82ca74b753",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "kindergarten",
-        "type": "github"
-      }
-    },
     "lizard": {
       "inputs": {
         "crane": "crane_3",
@@ -664,7 +641,6 @@
         "flake-utils": "flake-utils",
         "funnel": "funnel",
         "gnuradio-decoder": "gnuradio-decoder",
-        "kindergarten": "kindergarten",
         "lizard": "lizard",
         "microvm": "microvm",
         "naersk": "naersk_3",
