@@ -20,7 +20,7 @@ in
         port = 9501;
         listenAddress = config.deployment-TLMS.net.wg.addr4;
         globalConfig = {
-          scrape_interval = "17s";
+          scrape_interval = "131s";
         };
         scrapeConfigs =
           let
@@ -62,9 +62,27 @@ in
 
             TLMSScrapeConfigs = lib.lists.flatten (map lib.attrValues (lib.attrValues ScrapeConfigByHost));
           in
-          TLMSScrapeConfigs;
+          TLMSScrapeConfigs ++ [
+            {
+              job_name = "funnel-connections-prod";
+              static_configs = [{
+                targets = [ "10.13.37.1:9010" ];
+              }];
+            }
+            {
+              job_name = "funnel-connections-staging";
+              static_configs = [{
+                targets = [ "10.13.37.5:9010" ];
+              }];
+            }
+            {
+              job_name = "funnel-connections-borken";
+              static_configs = [{
+                targets = [ "10.13.37.7:9010" ];
+              }];
+            }
+          ];
       };
-
     # log collector
     loki = {
       enable = true;
@@ -124,12 +142,15 @@ in
         };
 
         table_manager = {
-          retention_deletes_enabled = false;
-          retention_period = "0s";
+          retention_deletes_enabled = true;
+          retention_period = "720h";
         };
 
         compactor = {
           working_directory = "/var/lib/loki";
+          compaction_interval = "10m";
+          retention_enabled = true;
+          retention_delete_delay = "1m";
           shared_store = "filesystem";
           compactor_ring = {
             kvstore = {

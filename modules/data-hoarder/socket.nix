@@ -1,21 +1,21 @@
 { config, ... }:
 let
-  serice_number = 2;
+  service_number = 2;
 in
 {
   TLMS.funnel = {
     enable = true;
     GRPC = {
       host = "127.0.0.1";
-      port = 50050 + serice_number;
+      port = 50050 + service_number;
     };
     defaultWebsocket = {
       host = "127.0.0.1";
-      port = 9000 + serice_number;
+      port = 9000 + service_number;
     };
     metrics = {
-      port = 9010;
-      host = "0.0.0.0";
+      port = 10010 + service_number ;
+      host = config.deployment-TLMS.net.wg.addr4;
     };
   };
   services = {

@@ -43,12 +43,6 @@
       url = "github:tlm-solutions/datacare";
     };
 
-    kindergarten = {
-      url = "github:tlm-solutions/kindergarten";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
-    };
-
     telegram-decoder = {
       url = "github:tlm-solutions/telegram-decoder";
       inputs = {
@@ -112,7 +106,6 @@
     , documentation-src
     , funnel
     , gnuradio-decoder
-    , kindergarten
     , microvm
     , nixpkgs
     , sops-nix
@@ -142,7 +135,6 @@
         {
           nixpkgs.overlays = [
             datacare.overlays.default
-            kindergarten.overlays.default
             trekkie.overlays.default
             lizard.overlays.default
             bureaucrat.overlays.default
@@ -215,12 +207,6 @@
           arch = "x86_64-linux";
           monitoring = true;
         }
-        # {
-        #   # Chemnitz
-        #   id = 2;
-        #   arch = "x86_64-linux";
-        #   monitoring = false;
-        # }
         {
           # Wundstr. 9
           id = 4;
@@ -228,10 +214,9 @@
           monitoring = true;
         }
         {
-          # Warpzone
-          id = 6;
-          arch = "x86_64-linux";
-          monitoring = true;
+          id = 8;
+          arch ="aarch64-linux";
+          monitoring = false;
         }
       ];
 
@@ -249,7 +234,7 @@
           }).optionsCommonMark;
         };
       }
-      // (import ./pkgs/deployment.nix { inherit self pkgs lib;})
+      // (import ./pkgs/deployment.nix { inherit self pkgs lib; })
       // (lib.foldl (x: y: lib.mergeAttrs x { "${y.config.system.name}-vm" = y.config.system.build.vm; }) { } (lib.attrValues self.nixosConfigurations));
 
     in
@@ -319,6 +304,7 @@
 
             ./modules/TLMS
             ./hosts/uranus
+            { deployment-TLMS.monitoring.enable = true; }
           ];
         };
 
@@ -328,12 +314,10 @@
         program = "${self.packages."x86_64-linux".test-vm-wrapper}";
       };
 
-      nixosModules."x86_64-linux".watch-me-senpai = import ./modules/watch-me-senpai;
-
       hydraJobs =
         let
           get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
         in
         nixpkgs.lib.mapAttrs get-toplevel self.nixosConfigurations;
-      };
+    };
 }

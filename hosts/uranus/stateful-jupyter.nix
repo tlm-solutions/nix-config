@@ -1,5 +1,33 @@
-{ pkgs, lib, ... }:
+{ pkgs, config, lib, ... }:
+let
+  jupyterUsers = [
+    {
+      username = "0xa";
+      userPasswordFile = config.sops.secrets.hashed-password-0xa.path;
+      isAdmin = true;
+    }
+    {
+      username = "tassilo";
+      userPasswordFile = config.sops.secrets.hashed-password-tassilo.path;
+      isAdmin = true;
+    }
+    {
+      username = "marenz";
+      userPasswordFile = config.sops.secrets.hashed-password-marenz.path;
+      isAdmin = true;
+    }
+  ];
+
+  # move the secrets to the volume
+  secret-setup = (lib.strings.concatStringsSep "\n" (builtins.map (u: "cp --force --dereference ${u.userPasswordFile} /var/lib/pw/") jupyterUsers));
+in
 {
+  sops.secrets = {
+    hashed-password-0xa = { };
+    hashed-password-tassilo = { };
+    hashed-password-marenz = { };
+  };
+
   virtualisation.docker = {
     enable = true;
     # magic from marenz to make it work on ceph
@@ -18,10 +46,12 @@
       volumes = [
         "/var/lib/jupyter-volume:/workdir"
         "/var/lib/root-home:/root"
+        "/var/lib/pw:/pw"
+        "/var/lib/users-home:/home"
       ];
       imageFile =
         let
-          package-string = lib.concatStringsSep " " [
+          packages = lib.concatStringsSep " " [
             # alphabetically `:sort`ed plz
             "geojson"
             "matplotlib"
@@ -31,13 +61,29 @@
             "psycopg"
             "scipy"
             "seaborn"
+            "bitstring"
           ];
         in
         (import ./jupyter-container.nix {
-          inherit pkgs;
-          packages = package-string;
+          inherit pkgs lib jupyterUsers packages;
         });
       image = "stateful-jupyterlab";
+    };
+  };
+
+  systemd.services = {
+    setup-docker-pws = {
+      description = "copy the user passwords to docker volume";
+      wantedBy = [ "jupyterlab-stateful.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+        RemainAfterExit = true;
+      };
+      script = secret-setup;
+    };
+    docker-jupyterlab-stateful = {
+      after = [ "setup-docker-pws.service" ];
+      requires = [ "setup-docker-pws.service" ];
     };
   };
 
