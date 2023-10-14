@@ -187,11 +187,11 @@
         "utils": "utils_3"
       },
       "locked": {
-        "lastModified": 1684706131,
-        "narHash": "sha256-aL1Z8upH3wrBEoO69O3P9erj7FRAAAaH6xt3QDiMOLY=",
+        "lastModified": 1697295393,
+        "narHash": "sha256-xQPCAf1PLm/2eQNc+yBRW0SdXdDflm4QaAwoA81rjj8=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "d479e68635b27576f2f776268643fbef7d0ca85d",
+        "rev": "72eada20c4a6c1425f6ddbe30e25cf9fea351688",
         "type": "github"
       },
       "original": {
@@ -282,11 +282,11 @@
         "rust-analyzer-src": "rust-analyzer-src_4"
       },
       "locked": {
-        "lastModified": 1684650006,
-        "narHash": "sha256-cIWPr9nCddVu3DITyHBNWy9tBbfc86u+BxPEnRWslMM=",
+        "lastModified": 1697178193,
+        "narHash": "sha256-LBDLUWlwSDPMA1Ui9wC9YcQEnJL0UP627RoUmtz4TTo=",
         "owner": "nix-community",
         "repo": "fenix",
-        "rev": "fb17fb7db07709d2aca1efc1000fb1cf60b00b4e",
+        "rev": "ff6c27356cbde594e598e388a32d79ef79cbe1b1",
         "type": "github"
       },
       "original": {
@@ -435,11 +435,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1697289746,
-        "narHash": "sha256-iMz+PcLkIqT+rd9N5auVVMl0vwzAFXuyK2mkzglzXwk=",
+        "lastModified": 1697292139,
+        "narHash": "sha256-HR5qfOntRm8E8/orokseiSIPBInljB4SSwtJZr44/cc=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "7d124018700465ae55a8ed5a55496853f9424ec3",
+        "rev": "6e363586cd9c34180f9788619891776333ccf909",
         "type": "github"
       },
       "original": {
@@ -524,11 +524,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1679567394,
-        "narHash": "sha256-ZvLuzPeARDLiQUt6zSZFGOs+HZmE+3g4QURc8mkBsfM=",
+        "lastModified": 1694081375,
+        "narHash": "sha256-vzJXOUnmkMCm3xw8yfPP5m8kypQ3BhAIRe4RRCWpzy8=",
         "owner": "nix-community",
         "repo": "naersk",
-        "rev": "88cd22380154a2c36799fe8098888f0f59861a15",
+        "rev": "3f976d822b7b37fc6fb8e6f157c2dd05e7e94e89",
         "type": "github"
       },
       "original": {
@@ -607,11 +607,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1684570954,
-        "narHash": "sha256-FX5y4Sm87RWwfu9PI71XFvuRpZLowh00FQpIJ1WfXqE=",
+        "lastModified": 1696879762,
+        "narHash": "sha256-Ud6bH4DMcYHUDKavNMxAhcIpDGgHMyL/yaDEAVSImQY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3005f20ce0aaa58169cdee57c8aa12e5f1b6e1b3",
+        "rev": "f99e5f03cc0aa231ab5950a15ed02afec45ed51a",
         "type": "github"
       },
       "original": {
@@ -623,11 +623,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1684570954,
-        "narHash": "sha256-FX5y4Sm87RWwfu9PI71XFvuRpZLowh00FQpIJ1WfXqE=",
+        "lastModified": 1697059129,
+        "narHash": "sha256-9NJcFF9CEYPvHJ5ckE8kvINvI84SZZ87PvqMbH6pro0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3005f20ce0aaa58169cdee57c8aa12e5f1b6e1b3",
+        "rev": "5e4c2ada4fcd54b99d56d7bd62f384511a7e2593",
         "type": "github"
       },
       "original": {
@@ -729,11 +729,11 @@
     "rust-analyzer-src_4": {
       "flake": false,
       "locked": {
-        "lastModified": 1684616122,
-        "narHash": "sha256-PLQN+e93BC1Yiqt4QNCj3cJ4mHtsO7Xlgn0VprgxiX4=",
+        "lastModified": 1697098808,
+        "narHash": "sha256-OfatUxSwuzYd17IDy9eNOedwioq0dX6mOuiTghKol3s=",
         "owner": "rust-lang",
         "repo": "rust-analyzer",
-        "rev": "a04d8456be1d289c814846178cc1ff63b4fc297b",
+        "rev": "84e1d273439413ab4ca1718db0b574dffba443ce",
         "type": "github"
       },
       "original": {
@@ -1040,11 +1040,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1681202837,
-        "narHash": "sha256-H+Rh19JDwRtpVPAWp64F+rlEtxUWBAQW28eAi3SRSzg=",
+        "lastModified": 1694529238,
+        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "cfacdce06f30d2b68473a46042957675eebb3401",
+        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
         "type": "github"
       },
       "original": {
