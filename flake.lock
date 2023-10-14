@@ -989,11 +989,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1697307830,
-        "narHash": "sha256-dQgSyqaHeCjNR44wuOgd8+rCtZTpzG3kNY6EbqgNU8k=",
+        "lastModified": 1697308310,
+        "narHash": "sha256-cSzzoNjdxIIb9Zm/HS1c4u08Mz4Q47NFc4aKiXpscx8=",
         "owner": "tlm-solutions",
         "repo": "trekkie",
-        "rev": "4996f1bbe9ad3256b556c16050bd66f89f3d8079",
+        "rev": "7129ff524b4c13ca70e4e5fb7d1682f0ea02b1b2",
         "type": "github"
       },
       "original": {
