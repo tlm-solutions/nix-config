@@ -57,11 +57,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1697311880,
-        "narHash": "sha256-1e/6yo3bjXVvXEuRbnL7IhsoVQmTp8K9tSJJyroqF64=",
+        "lastModified": 1697314683,
+        "narHash": "sha256-6R8XaVuIwjgyBBNfs0zwBUgbu0llidXpa0cNXAaxX/E=",
         "owner": "tlm-solutions",
         "repo": "chemo",
-        "rev": "a16741b736792f7e3f031e5d7109301307109609",
+        "rev": "016f418eaf73c1c5e658c0cae22b63d68619f658",
         "type": "github"
       },
       "original": {
@@ -392,11 +392,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1683910490,
-        "narHash": "sha256-iabBtF21jD8UhBu2W7qquF8vcf9nMgjSDY1TTgzO7T8=",
+        "lastModified": 1697315398,
+        "narHash": "sha256-/n3sb+wAsGVoM6n6WPbXMghirPE66WLyVAGSc0HoJWg=",
         "owner": "tlm-solutions",
         "repo": "funnel",
-        "rev": "5b50f355967e89dd6fff25fe1c43a8f688ac5074",
+        "rev": "e5c5899ec7c76868c0f2b1b28a685292b669de95",
         "type": "github"
       },
       "original": {
