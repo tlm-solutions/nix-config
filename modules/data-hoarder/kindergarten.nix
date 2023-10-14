@@ -13,7 +13,7 @@
         enableACME = true;
         forceSSL = true;
         locations."~ ^/(de|en)" = {
-          root = "/var/lib/kindergarten/";
+          root = if (config.deployment-TLMS.domain == "tlm.solutions") then "${pkgs.kindergarten}/bin/" else "${pkgs.kindergarten-staging}/bin/";
           # index = "index.html";
           tryFiles = "$uri /$1/index.html =404";
           extraConfig = ''
