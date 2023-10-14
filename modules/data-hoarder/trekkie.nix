@@ -15,6 +15,10 @@
       port = 6379;
       host = "localhost";
     };
+    grpc = {
+      host = config.TLMS.chemo.host;
+      port = config.TLMS.chemo.port;
+    };
     logLevel = "info";
   };
   systemd.services."trekkie" = {
