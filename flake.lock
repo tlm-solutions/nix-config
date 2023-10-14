@@ -396,11 +396,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1678306615,
-        "narHash": "sha256-fteaj/hQnnIp7Fw+ShzZgwFYWz9CWhGMnrWszuuqqOY=",
+        "lastModified": 1695290932,
+        "narHash": "sha256-KFX0q2weFKdHw+f8KbxATKCHhcIhUbLyU39UmgxR4W0=",
         "owner": "tlm-solutions",
         "repo": "gnuradio-decoder",
-        "rev": "e4d753bc45724ef74d61f24927d2321f85578e8b",
+        "rev": "cd0104cc974e344720912c48ac5401ee028d70b3",
         "type": "github"
       },
       "original": {
@@ -422,6 +422,29 @@
       "original": {
         "owner": "jorgen",
         "repo": "json_struct",
+        "type": "github"
+      }
+    },
+    "kindergarten": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "flake-utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1697289746,
+        "narHash": "sha256-iMz+PcLkIqT+rd9N5auVVMl0vwzAFXuyK2mkzglzXwk=",
+        "owner": "tlm-solutions",
+        "repo": "kindergarten",
+        "rev": "7d124018700465ae55a8ed5a55496853f9424ec3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tlm-solutions",
+        "repo": "kindergarten",
         "type": "github"
       }
     },
@@ -459,11 +482,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1694526290,
-        "narHash": "sha256-HiWr+tfJE/hcn8atRC0S5KweSUknQLEduPLTEiSr5J8=",
+        "lastModified": 1697132997,
+        "narHash": "sha256-ihUImJsnszkSzxOd/iWkA/oorwsM8JaRFs6LS1831RM=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "03e7f11cf915a911277c2cdea5d7da9717597aa2",
+        "rev": "38e15eee892e1866f483467de51025dbef473306",
         "type": "github"
       },
       "original": {
@@ -552,11 +575,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1693675694,
-        "narHash": "sha256-2pIOyQwGyy2FtFAUIb8YeKVmOCcPOTVphbAvmshudLE=",
+        "lastModified": 1696717752,
+        "narHash": "sha256-qEq1styCyQHSrw7AOhskH2qwCFx93bOwsGEzUIrZC0g=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5601118d39ca9105f8e7b39d4c221d3388c0419d",
+        "rev": "2f3b6b3fcd9fa0a4e6b544180c058a70890a7cc1",
         "type": "github"
       },
       "original": {
@@ -616,11 +639,11 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1694753796,
-        "narHash": "sha256-QPE7dqcicQH/nq9aywVXJWWtci4FvxHaM+BSIEbGBvA=",
+        "lastModified": 1696983906,
+        "narHash": "sha256-L7GyeErguS7Pg4h8nK0wGlcUTbfUMDu+HMf1UcyP72k=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "360a7d31c30abefdc490d203f80e3221b7a24af2",
+        "rev": "bd1cde45c77891214131cbbea5b1203e485a9d51",
         "type": "github"
       },
       "original": {
@@ -641,6 +664,7 @@
         "flake-utils": "flake-utils",
         "funnel": "funnel",
         "gnuradio-decoder": "gnuradio-decoder",
+        "kindergarten": "kindergarten",
         "lizard": "lizard",
         "microvm": "microvm",
         "naersk": "naersk_3",
@@ -808,11 +832,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1694495315,
-        "narHash": "sha256-sZEYXs9T1NVHZSSbMqBEtEm2PGa7dEDcx0ttQkArORc=",
+        "lastModified": 1697064251,
+        "narHash": "sha256-xxp2sB+4vqB6S6zC/L5J8LlRKgVbgIZOcYl9/TDrEzI=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "ea208e55f8742fdcc0986b256bdfa8986f5e4415",
+        "rev": "f995ea159252a53b25fa99824f2891e3b479d511",
         "type": "github"
       },
       "original": {
@@ -879,11 +903,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1680903767,
-        "narHash": "sha256-U0OrpMqiejCKTteBA7zKtOZRl/iRDS3AC+Wx0Y6ntcc=",
+        "lastModified": 1695283223,
+        "narHash": "sha256-tiitJUgyxRgG0t+sPH/Cvyh/QGGy6T3dkg3XM5+W/RE=",
         "owner": "tlm-solutions",
         "repo": "telegram-decoder",
-        "rev": "e65fcfa6d65977056a28e7a1756f9e204c3131e8",
+        "rev": "32759b4632cf74d9cc6d369e21541b38301a7996",
         "type": "github"
       },
       "original": {

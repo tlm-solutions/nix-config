@@ -1,7 +1,8 @@
 { config, ... }:
 let
   service_number = 3;
-in {
+in
+{
   TLMS.chemo = {
     enable = true;
     host = "127.0.0.1";
