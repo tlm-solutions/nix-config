@@ -446,19 +446,20 @@
     },
     "kindergarten": {
       "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ],
-        "utils": [
-          "flake-utils"
-        ]
+        "pnpm2nix": "pnpm2nix"
       },
       "locked": {
-        "lastModified": 1698434013,
-        "narHash": "sha256-gJgW+bSM37W82WWdf8bv4o/M1dxFWIqvP9utqkI0Js8=",
+        "lastModified": 1698439386,
+        "narHash": "sha256-hxZGEN4AUAQsWoz4JZIPvJEOv5bcxxZdmmFnybfrwic=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "0a72a08498ad9df82699171ee6fc578e08f747aa",
+        "rev": "92218c6735a25e6ca3a73c1e2f5cf9717ae97235",
         "type": "github"
       },
       "original": {
@@ -685,6 +686,31 @@
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "pnpm2nix": {
+      "inputs": {
+        "flake-utils": [
+          "kindergarten",
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "kindergarten",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1698439321,
+        "narHash": "sha256-2tMvX/9Vozsh3thu4D3vBA8GX4I/VB/ykJGngILLX9o=",
+        "owner": "MarcelCoding",
+        "repo": "pnpm2nix-nzbr",
+        "rev": "6e70950b084db6055cb0ef4821eecefd3cb31ffa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MarcelCoding",
+        "repo": "pnpm2nix-nzbr",
         "type": "github"
       }
     },
