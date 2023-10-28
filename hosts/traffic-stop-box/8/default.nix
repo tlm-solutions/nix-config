@@ -9,5 +9,5 @@
   users.users.root.openssh.authorizedKeys.keys = [
   ];
 
-  deployment-TLMS.net.wg.publicKey = "WPrf3g/dFFJWeTCY9EwtIrNe7tqhMm7qL1LLLEFUulM=";
+  deployment-TLMS.net.wg.publicKey = "dL9JGsBhaTOmXgGEH/N/GCHbQgVHEjBvIMaRtCsHBHw=";
 }
