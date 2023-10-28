@@ -8,7 +8,7 @@ in
   networking.firewall.allowedUDPPorts = [ port ];
 
   deployment-TLMS.net.wg = {
-    ownEndpoint.host = "endpoint.dvb.solutions";
+    ownEndpoint.host = "endpoint.tlm.solutions";
     ownEndpoint.port = port;
     addr4 = "10.13.37.1";
     prefix4 = 24;
