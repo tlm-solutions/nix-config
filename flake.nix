@@ -1,4 +1,9 @@
 {
+  nixConfig = {
+    extra-substituters = [ "https://nix-cache.hq.c3d2.de" ];
+    extra-trusted-public-keys = [ "nix-cache.hq.c3d2.de:KZRGGnwOYzys6pxgM8jlur36RmkJQ/y8y62e52fj1ps=" ];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
@@ -249,6 +254,8 @@
 
     in
     {
+
+      packages."aarch64-linux".box8 = self.nixosConfigurations.traffic-stop-box-8.config.system.build.sdImage;
       packages."x86_64-linux" = packages;
 
       nixosConfigurations = stop_boxes // {

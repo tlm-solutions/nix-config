@@ -6,6 +6,7 @@
   sops.secrets.wg-seckey = {
     owner = config.users.users.systemd-network.name;
   };
+
   deployment-TLMS.net.wg = {
     addr4 = lib.mkDefault "10.13.37.${toString (config.deployment-TLMS.systemNumber + 100)}";
     prefix4 = 24;

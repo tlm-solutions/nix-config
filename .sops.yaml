@@ -28,7 +28,7 @@ keys:
   # aachen
   - &traffic-stop-box-7 age1z5n0seu0qpt3y86gmz92mnmts0x8jd0a646e9ld2x5dqvvu5kgzsu93um4
   # C3H
-  - &traffic-stop-box-8 age1x0j3jpeqw3c5qd7wgqavfg3quse6phxdzze62zj8zl8ds9y46p3qecwgxm
+  - &traffic-stop-box-8 age1ejk6suts0n93epr4u663xcnfwaxgyaxmccge22h0e9c7u6spfujsj3drt8
   # dumpdvb_bugdorf
   - &traffic-stop-box-9 age1ger9j5fk5v7hcnnl688g9rcnt9uu7c6605ptgcl338l6xl3u9q8s5p7kys
   # CLT

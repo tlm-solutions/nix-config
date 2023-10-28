@@ -11,7 +11,8 @@ let
     { frequency = 170790000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # dresden test box
     { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; } # warpzone münster
     { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; } # drehturm aachen
-    { frequency = 150827500; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # C3H
+    { frequency = 170790000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # C3H
+    #{ frequency = 150827500; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # C3H
     { frequency = 152830000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # Hannover-greater-area
     { frequency = 153850000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } #  CLT
   ];
