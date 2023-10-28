@@ -455,11 +455,11 @@
         "pnpm2nix": "pnpm2nix"
       },
       "locked": {
-        "lastModified": 1698445447,
-        "narHash": "sha256-eG/M348YviMRzsimJrPb4apx0VmZhTi8/5coAXcoD2Q=",
+        "lastModified": 1698528491,
+        "narHash": "sha256-k7m4gdp6b/16T+KAQQeGVeUygmAq9P6U8siOKD3AJio=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "68118f0e071136a725c6f3878effce7f8210942b",
+        "rev": "c2e17d39dfb2b35d4151656781e587a7109830eb",
         "type": "github"
       },
       "original": {
@@ -502,11 +502,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1697662468,
-        "narHash": "sha256-BAryFkJiF8x9s76QDDdmR8l7ocAsBVa1z6p/pIPcdy4=",
+        "lastModified": 1698504395,
+        "narHash": "sha256-92+0zv8p0awLLigXNFHsuNBYzeOuBqMqPqLTbmHWRCA=",
         "owner": "astro",
         "repo": "microvm.nix",
-        "rev": "cd3a9cd0fcd30b55b9950ddcaec2d5271c0b78df",
+        "rev": "dfe2d3db94e4829e317f97e3a095d6fd8b91f30c",
         "type": "github"
       },
       "original": {
