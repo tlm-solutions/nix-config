@@ -229,7 +229,14 @@
           monitoring = true;
         }
         {
+          # Hannover Bredero Hochhaus City
           id = 8;
+          arch = "aarch64-linux";
+          monitoring = false;
+        }
+        {
+          # Hannover Bredero Hochhaus Wider Area
+          id = 9;
           arch = "aarch64-linux";
           monitoring = false;
         }
@@ -256,6 +263,7 @@
     {
 
       packages."aarch64-linux".box8 = self.nixosConfigurations.traffic-stop-box-8.config.system.build.sdImage;
+      packages."aarch64-linux".box9 = self.nixosConfigurations.traffic-stop-box-9.config.system.build.sdImage;
       packages."x86_64-linux" = packages;
 
       nixosConfigurations = stop_boxes // {
