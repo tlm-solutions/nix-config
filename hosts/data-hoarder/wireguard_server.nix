@@ -35,6 +35,11 @@ in
         publicKey = "Txd/qTDazvKcB1bIavm0Kilr/O7RkFwi9YGjjv88u2I=";
         addr4 = "10.13.37.6";
       }
+      {
+        # clarity
+        publicKey = "Txd/qTDazvKcB1bIavm0Kilr/O7RkFwi9YGjjv88u2I=";
+        addr4 = "10.13.37.10";
+      }
     ];
   };
 }
