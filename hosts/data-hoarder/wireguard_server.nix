@@ -37,7 +37,7 @@ in
       }
       {
         # clarity
-        publicKey = "Txd/qTDazvKcB1bIavm0Kilr/O7RkFwi9YGjjv88u2I=";
+        publicKey = "WFRZB+BmADZFZpzswTseaVBAnNH9ulfMPdS5bDQp1UA=";
         addr4 = "10.13.37.10";
       }
     ];
