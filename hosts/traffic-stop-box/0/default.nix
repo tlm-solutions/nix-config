@@ -4,4 +4,6 @@
   ];
 
   deployment-TLMS.net.wg.publicKey = "qyStvzZdoqcjJJQckw4ZwvsQUa+8TBWtnsRxURqanno=";
+
+  TLMS.telegramDecoder.errorCorrection = false;
 }

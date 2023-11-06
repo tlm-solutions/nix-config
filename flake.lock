@@ -981,11 +981,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1695283223,
-        "narHash": "sha256-tiitJUgyxRgG0t+sPH/Cvyh/QGGy6T3dkg3XM5+W/RE=",
+        "lastModified": 1699308180,
+        "narHash": "sha256-hoOPf8OSYERMR6qjJKj0nGFdAGVAVbxjw0vcTL1oVYU=",
         "owner": "tlm-solutions",
         "repo": "telegram-decoder",
-        "rev": "32759b4632cf74d9cc6d369e21541b38301a7996",
+        "rev": "b1ab10c89f776a93bc84f68cd27d012d7b91d1bb",
         "type": "github"
       },
       "original": {
