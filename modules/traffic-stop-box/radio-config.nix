@@ -11,7 +11,7 @@ let
     { frequency = 170790000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # dresden test box
     { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; } # warpzone münster
     { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; } # drehturm aachen
-    { frequency = 150917500; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # Hannover Bredero Hochhaus City
+    { frequency = 150890000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # Hannover Bredero Hochhaus City
     { frequency = 152830000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } # Hannover Bredero Hochaus Umland
     { frequency = 153850000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; } #  CLT
   ];
