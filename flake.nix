@@ -104,6 +104,7 @@
     chemo = {
       url = "github:tlm-solutions/chemo";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.utils.follows = "flake-utils";
     };
     borzoi = {
       url = "github:tlm-solutions/borzoi";
