@@ -307,10 +307,6 @@
         };
 
       };
-      apps."x86_64-linux".mctest = {
-        type = "app";
-        program = "${self.packages."x86_64-linux".test-vm-wrapper}";
-      };
 
       hydraJobs =
         let
