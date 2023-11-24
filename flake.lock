@@ -169,22 +169,6 @@
         "type": "github"
       }
     },
-    "documentation-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1693223762,
-        "narHash": "sha256-ZZNR/zzAhfUcWPvJdoaVaz19XV+4hleJI4AF6JY2tqc=",
-        "owner": "tlm-solutions",
-        "repo": "documentation",
-        "rev": "22b1328f19a5201a47b8b82c4fb3c7db7c1ded47",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "documentation",
-        "type": "github"
-      }
-    },
     "fenix": {
       "inputs": {
         "nixpkgs": "nixpkgs",
@@ -715,7 +699,6 @@
         "chemo": "chemo",
         "data-accumulator": "data-accumulator",
         "datacare": "datacare",
-        "documentation-src": "documentation-src",
         "flake-utils": "flake-utils",
         "funnel": "funnel",
         "gnuradio-decoder": "gnuradio-decoder",

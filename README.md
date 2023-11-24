@@ -18,5 +18,5 @@ This flake has lots of outputs, but you maybe be interested in:
 - `packages.x86_64-linux.docs`
 
 Those are primary system configurations we're runnning. If you are interested in hosting a station
-take a look at the [documentation](https://docs.dvb.solutions).
+take a look at the [documentation](https://docs.tlm.solutions).
 

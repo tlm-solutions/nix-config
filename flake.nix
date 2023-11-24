@@ -29,11 +29,6 @@
     };
 
     ## TLMS stuff below
-    documentation-src = {
-      url = "github:tlm-solutions/documentation";
-      flake = false;
-    };
-
     trekkie = {
       url = "github:tlm-solutions/trekkie";
       inputs = {
@@ -117,7 +112,6 @@
     , borzoi
     , data-accumulator
     , datacare
-    , documentation-src
     , funnel
     , gnuradio-decoder
     , kindergarten
@@ -157,12 +151,6 @@
             funnel.overlays.default
             data-accumulator.overlays.default
             chemo.overlays.default
-            (final: prev: {
-              inherit documentation-src;
-              options-docs = (pkgs.nixosOptionsDoc {
-                options = self.nixosConfigurations.data-hoarder.options.TLMS;
-              }).optionsCommonMark;
-            })
           ];
         }
       ];
@@ -250,12 +238,6 @@
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         borken-microvm = self.nixosConfigurations.borken-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
-        docs = pkgs.callPackage ./pkgs/documentation.nix {
-          inherit documentation-src;
-          options-docs = (pkgs.nixosOptionsDoc {
-            options = self.nixosConfigurations.data-hoarder.options.TLMS;
-          }).optionsCommonMark;
-        };
       }
       // (import ./pkgs/deployment.nix { inherit self pkgs lib; })
       // (lib.foldl (x: y: lib.mergeAttrs x { "${y.config.system.name}-vm" = y.config.system.build.vm; }) { } (lib.attrValues self.nixosConfigurations));
