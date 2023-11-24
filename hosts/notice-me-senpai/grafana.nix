@@ -66,19 +66,13 @@ in
             {
               job_name = "funnel-connections-prod";
               static_configs = [{
-                targets = [ "10.13.37.1:9010" ];
+                targets = [ "10.13.37.1:10012" ];
               }];
             }
             {
               job_name = "funnel-connections-staging";
               static_configs = [{
-                targets = [ "10.13.37.5:9010" ];
-              }];
-            }
-            {
-              job_name = "funnel-connections-borken";
-              static_configs = [{
-                targets = [ "10.13.37.7:9010" ];
+                targets = [ "10.13.37.5:10012" ];
               }];
             }
           ];
