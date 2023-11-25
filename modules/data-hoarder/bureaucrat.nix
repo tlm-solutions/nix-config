@@ -1,25 +1,15 @@
-{ config, ... }:
-let
-  service_number = 6;
-in
-{
+{ config, registry, ... }: {
   TLMS.bureaucrat = {
     enable = true;
-    grpc = {
-      host = "127.0.0.1";
-      port = 50050 + service_number;
-    };
-    redis = {
-      host = config.services.redis.servers."state".bind;
-      port = config.services.redis.servers."state".port;
-    };
+    grpc = registry.grpc-chemo-bureaucrat;
+    redis = registry.redis-bureaucrat-lizard;
   };
 
   services = {
-    redis.servers."state" = {
+    redis.servers."state" = with registry.redis-bureaucrat-lizard; {
+      inherit port;
       enable = true;
-      bind = "127.0.0.1";
-      port = 5314;
+      bind = host;
     };
   };
 }

@@ -1,9 +1,7 @@
-{ config, ... }:
-{
+{ config, registry, ... }: {
   TLMS.dataAccumulator = {
+    inherit (registry.port-data_accumulator) host port;
     enable = true;
-    host = "0.0.0.0";
-    port = 8080;
     database = {
       host = "127.0.0.1";
       port = config.services.postgresql.port;
@@ -11,13 +9,10 @@
       user = "tlms";
       database = "tlms";
     };
-    GRPC = [
-      {
-        name = "CHEMO";
-        host = config.TLMS.chemo.host;
-        port = config.TLMS.chemo.port;
-      }
-    ];
+    GRPC = [{
+      inherit (registry.grpc-data_accumulator-chemo) host port;
+      name = "CHEMO";
+    }];
   };
   systemd.services."data-accumulator" = {
     after = [ "postgresql.service" ];
@@ -29,7 +24,10 @@
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "dump.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+        "dump.${
+          (builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ]
+            config.deployment-TLMS.domain)
+        }" = {
           enableACME = true;
           forceSSL = true;
           extraConfig = ''
@@ -41,7 +39,8 @@
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.TLMS.dataAccumulator; "http://${host}:${toString port}/";
+              proxyPass = with registry.port-data_accumulator;
+                "http://${host}:${toString port}/";
             };
           };
         };

@@ -1,20 +1,10 @@
-{ config, ... }:
-let
-  service_number = 2;
-in
-{
+{ config, registry, ... }: {
   TLMS.funnel = {
     enable = true;
-    GRPC = {
-      host = "127.0.0.1";
-      port = 50050 + service_number;
-    };
-    defaultWebsocket = {
-      host = "127.0.0.1";
-      port = 9000 + service_number;
-    };
+    GRPC = registry.grpc-chemo-funnel;
+    defaultWebsocket = { inherit (registry.port-funnel) host port; };
     metrics = {
-      port = 10010 + service_number;
+      inherit (registry.port-funnel-metrics) port;
       host = config.deployment-TLMS.net.wg.addr4;
     };
   };
@@ -23,12 +13,16 @@ in
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "socket.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+        "socket.${
+          (builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ]
+            config.deployment-TLMS.domain)
+        }" = {
           enableACME = true;
           forceSSL = true;
           locations."/" = {
             proxyWebsockets = true;
-            proxyPass = with config.TLMS.funnel.defaultWebsocket; "http://${host}:${toString port}/";
+            proxyPass = with registry.port-funnel;
+              "http://${host}:${toString port}/";
           };
         };
         "socket.${config.deployment-TLMS.domain}" = {
@@ -36,7 +30,8 @@ in
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.TLMS.funnel.defaultWebsocket; "http://${host}:${toString port}/";
+              proxyPass = with registry.port-funnel;
+                "http://${host}:${toString port}/";
               proxyWebsockets = true;
             };
           };

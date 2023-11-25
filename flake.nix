@@ -241,6 +241,7 @@
       // (import ./pkgs/deployment.nix { inherit self pkgs lib; })
       // (lib.foldl (x: y: lib.mergeAttrs x { "${y.config.system.name}-vm" = y.config.system.build.vm; }) { } (lib.attrValues self.nixosConfigurations));
 
+      registry = import ./registry;
     in
     {
 
@@ -252,7 +253,7 @@
 
         data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs self; };
+          specialArgs = { inherit inputs self; registry = registry.data-hoarder; };
           modules = [
             microvm.nixosModules.microvm
             ./hosts/data-hoarder
@@ -261,7 +262,7 @@
 
         staging-data-hoarder = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs self; };
+          specialArgs = { inherit inputs self; registry = registry.data-hoarder; };
           modules = [
             ./hosts/staging-data-hoarder
             microvm.nixosModules.microvm

@@ -1,34 +1,22 @@
-{ config, ... }:
-let
-  service_number = 1;
-in
-{
+{ config, registry, ... }: {
   TLMS.lizard = {
     enable = true;
-    http = {
-      host = "127.0.0.1";
-      port = 9000 + service_number;
-    };
+    http = { inherit (registry.port-lizard) host port; };
 
-    redis = {
-      host = config.services.redis.servers."state".bind;
-      port = config.services.redis.servers."state".port;
-    };
+    redis = registry.redis-bureaucrat-lizard;
     logLevel = "debug";
     workerCount = 6;
   };
 
   services = {
-    redis.servers."state" = {
-      enable = true;
-      bind = "127.0.0.1";
-      port = 5314;
-    };
     nginx = {
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "lizard.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+        "lizard.${
+          (builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ]
+            config.deployment-TLMS.domain)
+        }" = {
           enableACME = true;
           forceSSL = true;
           extraConfig = ''
@@ -40,7 +28,8 @@ in
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with config.TLMS.lizard.http; "http://${host}:${toString port}/";
+              proxyPass = with registry.port-lizard;
+                "http://${host}:${toString port}/";
               proxyWebsockets = true;
             };
           };

@@ -4,22 +4,19 @@
     enable = true;
     enableTCPIP = true;
     port = 5432;
-    authentication =
-      let
-        senpai-ip = self.nixosConfigurations.notice-me-senpai.config.deployment-TLMS.net.wg.addr4;
-      in
-      pkgs.lib.mkOverride 10 ''
-        local	all	all	trust
-        host	all	all	127.0.0.1/32	trust
-        host	all	all	::1/128	trust
-        host	tlms	grafana	${senpai-ip}/32	scram-sha-256
-      '';
+    authentication = let
+      senpai-ip =
+        self.nixosConfigurations.notice-me-senpai.config.deployment-TLMS.net.wg.addr4;
+    in pkgs.lib.mkOverride 10 ''
+      local	all	all	trust
+      host	all	all	127.0.0.1/32	trust
+      host	all	all	::1/128	trust
+      host	tlms	grafana	${senpai-ip}/32	scram-sha-256
+    '';
     package = pkgs.postgresql_14;
     ensureDatabases = [ "tlms" ];
     ensureUsers = [
-      {
-        name = "grafana";
-      }
+      { name = "grafana"; }
       {
         name = "tlms";
         ensurePermissions = {
@@ -30,15 +27,12 @@
     ];
   };
 
-  environment.systemPackages = [ inputs.tlms-rs.packages.x86_64-linux.run-migration-based ];
+  environment.systemPackages =
+    [ inputs.tlms-rs.packages.x86_64-linux.run-migration-based ];
 
   systemd.services.postgresql = {
-    unitConfig = {
-      TimeoutStartSec = 3000;
-    };
-    serviceConfig = {
-      TimeoutSec = lib.mkForce 3000;
-    };
+    unitConfig = { TimeoutStartSec = 3000; };
+    serviceConfig = { TimeoutSec = lib.mkForce 3000; };
     postStart = lib.mkAfter ''
       # set pw for the users
       $PSQL -c "ALTER ROLE tlms WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})';"
@@ -63,9 +57,7 @@
 
   systemd.services.dump-csv = {
     path = [ config.services.postgresql.package ];
-    serviceConfig = {
-      User = "postgres";
-    };
+    serviceConfig = { User = "postgres"; };
     script = ''
       TMPFILE=$(mktemp)
       OUT_FOLDER=/var/lib/pub-files/postgres-dumps/$(date -d"$(date) - 1 day" +"%Y-%m")

@@ -1,12 +1,7 @@
-{ config, ... }:
-let
-  service_number = 3;
-in
-{
+{ config, registry, ... }: {
   TLMS.chemo = {
+    inherit (registry.grpc-data_accumulator-chemo) host port;
     enable = true;
-    host = "127.0.0.1";
-    port = 50050 + service_number;
     database = {
       host = "127.0.0.1";
       port = config.services.postgresql.port;
@@ -16,14 +11,12 @@ in
     };
     GRPC = [
       {
+        inherit (registry.grpc-chemo-bureaucrat) host port;
         name = "BUREAUCRAT";
-        host = config.TLMS.bureaucrat.grpc.host;
-        port = config.TLMS.bureaucrat.grpc.port;
       }
       {
+        inherit (registry.grpc-chemo-funnel) host port;
         name = "FUNNEL";
-        host = config.TLMS.funnel.GRPC.host;
-        port = config.TLMS.funnel.GRPC.port;
       }
     ];
   };

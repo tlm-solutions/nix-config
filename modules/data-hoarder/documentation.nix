@@ -1,11 +1,13 @@
-{ pkgs, config, ... }:
-{
+{ pkgs, config, ... }: {
   services = {
     nginx = {
       enable = true;
       recommendedProxySettings = true;
       virtualHosts = {
-        "docs.${(builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ] config.deployment-TLMS.domain)}" = {
+        "docs.${
+          (builtins.replaceStrings [ "tlm.solutions" ] [ "dvb.solutions" ]
+            config.deployment-TLMS.domain)
+        }" = {
           enableACME = true;
           forceSSL = true;
           extraConfig = ''
