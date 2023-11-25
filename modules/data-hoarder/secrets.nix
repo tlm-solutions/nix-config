@@ -24,12 +24,6 @@ in {
       members = [ datacare-user trekkie-user "postgres" ];
     };
 
-    #TODO: remove this the two databases got merged
-    postgres-telegrams = {
-      name = "postgres-telegrams";
-      members = [ datacare-user data-accumulator-user "postgres" ];
-    };
-
   };
 
   sops.secrets = {
