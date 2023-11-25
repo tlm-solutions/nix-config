@@ -189,6 +189,7 @@
                   ./modules/TLMS
                   {
                     deployment-TLMS.monitoring.enable = myRegistry.monitoring;
+                    _module.check = false;
                   }
                 ] ++ stop-box-modules;
             };
