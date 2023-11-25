@@ -1,5 +1,5 @@
-{ config, lib, ... }:
-# pubkey of the box goes to hosts/traffic-stop-box/${id}.nix!
+{ config, lib, registry, ... }:
+# pubkey of the box goes to registry/traffic-stop-box/default.nix!
 {
   networking.useNetworkd = lib.mkForce true;
 
@@ -8,7 +8,8 @@
   };
 
   deployment-TLMS.net.wg = {
-    addr4 = lib.mkDefault "10.13.37.${toString (config.deployment-TLMS.systemNumber + 100)}";
+    addr4 = registry.wgAddr4;
+    publicKey = registry.wireguardPublicKey;
     prefix4 = 24;
     privateKeyFile = lib.mkDefault config.sops.secrets.wg-seckey.path;
   };

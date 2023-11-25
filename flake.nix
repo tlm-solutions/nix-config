@@ -129,6 +129,7 @@
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
 
+      registry = import ./registry;
 
       data-hoarder-modules = [
         ./modules/data-hoarder
@@ -168,19 +169,16 @@
       ];
 
       # function that generates a system with the given number
-      generate_system = (id: arch: monitoring:
+      generate_system = (id:
+      let
+        myRegistry = registry.traffic-stop-box."${toString id}";
+      in
         {
-          "traffic-stop-box-${toString id}" = nixpkgs.lib.nixosSystem
+          "${myRegistry.hostName}" = nixpkgs.lib.nixosSystem
             {
-              system = arch;
-              specialArgs = inputs;
+              system = myRegistry.arch;
+              specialArgs = { inherit self inputs; registry = myRegistry; };
               modules =
-                let
-                  monitoring-mod =
-                    if monitoring
-                    then { deployment-TLMS.monitoring.enable = true; }
-                    else { deployment-TLMS.monitoring.enable = false; };
-                in
                 [
                   # box-specific config
                   ./hosts/traffic-stop-box/${toString id}
@@ -190,49 +188,18 @@
                   ./modules/traffic-stop-box
                   ./modules/TLMS
                   {
-                    deployment-TLMS.systemNumber = id;
+                    deployment-TLMS.monitoring.enable = myRegistry.monitoring;
                   }
-                  monitoring-mod
                 ] ++ stop-box-modules;
             };
         }
       );
 
-      id_list = [
-        {
-          # Barkhausen Bau
-          id = 0;
-          arch = "x86_64-linux";
-          monitoring = true;
-        }
-        {
-          # Zentralwerk
-          id = 1;
-          arch = "x86_64-linux";
-          monitoring = true;
-        }
-        {
-          # Wundstr. 9
-          id = 4;
-          arch = "x86_64-linux";
-          monitoring = true;
-        }
-        {
-          # Hannover Bredero Hochhaus City
-          id = 8;
-          arch = "aarch64-linux";
-          monitoring = false;
-        }
-        {
-          # Hannover Bredero Hochhaus Wider Area
-          id = 9;
-          arch = "aarch64-linux";
-          monitoring = false;
-        }
-      ];
+      # list of traffic-stop-box-$id that will be built
+      stop_box_ids = [ 0 1 4 8 9 ];
 
       # attribute set of all traffic stop boxes
-      stop_boxes = nixpkgs.lib.foldl (x: y: nixpkgs.lib.mergeAttrs x (generate_system y.id y.arch y.monitoring)) { } id_list;
+      stop_boxes = nixpkgs.lib.foldl (x: id: nixpkgs.lib.mergeAttrs x (generate_system id)) { } stop_box_ids;
 
       packages = {
         staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
@@ -240,8 +207,6 @@
       }
       // (import ./pkgs/deployment.nix { inherit self pkgs lib; })
       // (lib.foldl (x: y: lib.mergeAttrs x { "${y.config.system.name}-vm" = y.config.system.build.vm; }) { } (lib.attrValues self.nixosConfigurations));
-
-      registry = import ./registry;
     in
     {
 

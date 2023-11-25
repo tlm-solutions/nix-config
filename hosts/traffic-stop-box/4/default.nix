@@ -23,7 +23,5 @@ let eth = "enp1s0"; in
     ];
   };
 
-  deployment-TLMS.net.wg.publicKey = "B0wPH0jUxaatRncHMkgDEQ+DzvlbTBrVJY4etxqQgG8=";
-
   TLMS.telegramDecoder.errorCorrection = false;
 }

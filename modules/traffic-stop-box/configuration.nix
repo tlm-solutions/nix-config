@@ -1,9 +1,9 @@
-{ pkgs, config, self, ... }:
+{ pkgs, config, registry, ... }:
 
 {
   boot.tmp.useTmpfs = true;
 
-  networking.hostName = "traffic-stop-box-${toString config.deployment-TLMS.systemNumber}"; # Define your hostname.
+  networking.hostName = registry.hostName;
 
   # reboot 60 seconds after kernel panic
   boot.kernel.sysctl."kernel.panic" = 60;
