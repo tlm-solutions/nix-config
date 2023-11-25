@@ -1,8 +1,4 @@
-{ config, lib, self, registry, ... }:
-let
-
-  file = with config.deployment-TLMS; "${self}/hosts/traffic-stop-box/${toString systemNumber}/config_${toString systemNumber}.json";
-in
+{ config, lib, registry, ... }:
 {
   TLMS.gnuradio = {
     enable = true;
@@ -11,7 +7,7 @@ in
   TLMS.telegramDecoder = {
     enable = true;
     server = [ "http://10.13.37.1:8080" "http://10.13.37.5:8080" "http://10.13.37.7:8080" ];
-    configFile = file;
+    configFile = registry.telegramDecoderConfig;
     authTokenFile = config.sops.secrets.telegram-decoder-token.path;
   };
 }

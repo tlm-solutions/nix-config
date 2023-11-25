@@ -7,6 +7,7 @@
     wgAddr4 = "10.13.37.100";
     arch = "x86_64-linux";
     monitoring = true;
+    telegramDecoderConfig = ./config_0.json;
   };
   # Zentralwerk
   "1" = {
@@ -16,18 +17,21 @@
     wgAddr4 = "10.13.37.101";
     arch = "x86_64-linux";
     monitoring = true;
+    telegramDecoderConfig = ./config_1.json;
   };
   "2" = {
     wireguardPublicKey = "4TUQCToGNhjsCgV9elYE/91Vd/RvMgvMXtF/1Dzlvxo=";
     hostName = "traffic-stop-box-2";
     gnuradio = { frequency = 153850000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; }; # chemnitz
     wgAddr4 = "10.13.37.102";
+    telegramDecoderConfig = ./config_2.json;
   };
   "3" = {
     wireguardPublicKey = "w3AT3EahW1sCK8ZsR7sDTcQj1McXYeWx7fnfQFA7i3o=";
     hostName = "traffic-stop-box-3";
     gnuradio = { frequency = 170795000; offset = 19400; device = ""; RF = 14; IF = 32; BB = 42; }; # dresden unused
     wgAddr4 = "10.13.37.103";
+    telegramDecoderConfig = ./config_3.json;
   };
   # Wundstr. 9
   "4" = {
@@ -37,6 +41,7 @@
     wgAddr4 = "10.13.37.104";
     arch = "x86_64-linux";
     monitoring = true;
+    telegramDecoderConfig = ./config_4.json;
   };
   # number 5 is missing
   "6" = {
@@ -44,12 +49,14 @@
     hostName = "traffic-stop-box-6";
     gnuradio = { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; }; # warpzone münster
     wgAddr4 = "10.13.37.106";
+    telegramDecoderConfig = ./config_6.json;
   };
   "7" = {
     wireguardPublicKey = "sMsdY7dSjlYeIFMqjkh4pJ/ftAYXlyRuxDGbdnGLpEQ=";
     hostName = "traffic-stop-box-7";
     gnuradio = { frequency = 150827500; offset = 19550; device = ""; RF = 14; IF = 32; BB = 42; }; # drehturm aachen
     wgAddr4 = "10.13.37.107";
+    telegramDecoderConfig = ./config_7.json;
   };
   # Hannover Bredero Hochhaus City
   "8" = {
@@ -59,6 +66,7 @@
     wgAddr4 = "10.13.37.108";
     arch = "aarch64-linux";
     monitoring = false;
+    telegramDecoderConfig = ./config_8.json;
   };
   # Hannover Bredero Hochhaus Wider Area
   "9" = {
@@ -68,11 +76,13 @@
     wgAddr4 = "10.13.37.109";
     arch = "aarch64-linux";
     monitoring = false;
+    telegramDecoderConfig = ./config_9.json;
   };
   "10" = {
     wireguardPublicKey = "dL9JGsBhaTOmXgGEH/N/GCHbQgVHEjBvIMaRtCsHBHw=";
     hostName = "traffic-stop-box-10";
     gnuradio = { frequency = 153850000; offset = 20000; device = ""; RF = 14; IF = 32; BB = 42; }; # CLT
     wgAddr4 = "10.13.37.110";
+    telegramDecoderConfig = ./config_10.json;
   };
 }
