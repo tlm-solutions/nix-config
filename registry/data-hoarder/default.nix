@@ -52,4 +52,12 @@ rec {
     host = "localhost";
     port = 6379;
   };
+
+  postgres = {
+    host = "127.0.0.1";
+    user = "tlms";
+    database = "tlms";
+    port = 5432;
+    passwordFile = "/run/secrets/postgres_password";
+  };
 }

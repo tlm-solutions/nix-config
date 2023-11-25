@@ -1,9 +1,9 @@
-{ lib, pkgs, config, inputs, self, ... }: {
+{ lib, pkgs, config, inputs, self, registry, ... }: {
 
   services.postgresql = {
+    inherit (registry.postgres) port;
     enable = true;
     enableTCPIP = true;
-    port = 5432;
     authentication = let
       senpai-ip =
         self.nixosConfigurations.notice-me-senpai.config.deployment-TLMS.net.wg.addr4;

@@ -2,13 +2,7 @@
   TLMS.datacare = {
     enable = true;
     http = registry.port-datacare;
-    database = {
-      host = "127.0.0.1";
-      port = config.services.postgresql.port;
-      user = "tlms";
-      database = "tlms";
-      passwordFile = config.sops.secrets.postgres_password.path;
-    };
+    database = registry.postgres;
     allowedIpsExport = [ "10.13.37.0/24" ];
     saltFile = config.sops.secrets.postgres_password_hash_salt.path;
     user = "datacare";

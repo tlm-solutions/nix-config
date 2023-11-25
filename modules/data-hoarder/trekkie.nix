@@ -3,12 +3,7 @@
     inherit (registry.port-trekkie) host port;
     enable = true;
     saltPath = config.sops.secrets.postgres_password_hash_salt.path;
-    database = {
-      host = "127.0.0.1";
-      port = config.services.postgresql.port;
-      passwordFile = config.sops.secrets.postgres_password.path;
-      user = "tlms";
-    };
+    database = registry.postgres;
     redis = registry.redis-trekkie;
     grpc = registry.grpc-trekkie-chemo;
     logLevel = "info";

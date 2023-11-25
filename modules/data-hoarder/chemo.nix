@@ -2,13 +2,7 @@
   TLMS.chemo = {
     inherit (registry.grpc-data_accumulator-chemo) host port;
     enable = true;
-    database = {
-      host = "127.0.0.1";
-      port = config.services.postgresql.port;
-      passwordFile = config.sops.secrets.postgres_password.path;
-      user = "tlms";
-      database = "tlms";
-    };
+    database = registry.postgres;
     GRPC = [
       {
         inherit (registry.grpc-chemo-bureaucrat) host port;
