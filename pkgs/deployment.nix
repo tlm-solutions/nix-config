@@ -13,8 +13,8 @@ let
     let
       ip = system.config.deployment-TLMS.net.wg.addr4;
       host = system.config.networking.hostName;
-    in
 
+    in
     (pkgs.writeScriptBin "deploy" ''
       #!${pkgs.runtimeShell}
       set -e
@@ -77,11 +77,7 @@ let
     ''));
 
   # individual script generation
-  deployScriptWriter = (command:
-    lib.mapAttrs'
-      (name: system:
-        lib.nameValuePair ("rebuild-" + command + "-" + name) (deployScriptTemplate system command))
-      nonVmHosts);
+  deployScriptWriter = (command: lib.mapAttrs' (name: system: lib.nameValuePair ("rebuild-" + command + "-" + name) (deployScriptTemplate system command)) nonVmHosts);
 
   switchInstallScripts = deployScriptWriter "switch";
   bootInstallScripts = deployScriptWriter "boot";
@@ -98,21 +94,25 @@ let
   garbageAll = lib.strings.concatMapStringsSep "\n" (path: "${path}/bin/deploy") (builtins.attrValues garbageCollectScripts);
 
   nukeAll = lib.mapAttrs'
-    (name: scripts: lib.nameValuePair (name) (pkgs.writeScriptBin "${name}" ''
-      #!${pkgs.runtimeShell}
-      set -x
+    (name: scripts:
+      lib.nameValuePair (name) (pkgs.writeScriptBin "${name}" ''
+        #!${pkgs.runtimeShell}
+        set -x
 
-      ${scripts}
-    ''))
+        ${scripts}
+      ''))
     {
       rebuild-boot-all = bootAll;
       rebuild-switch-all = switchAll;
       reboot-all = rebootAll;
       garbage-collect-all = garbageAll;
     };
-
+  allPackages = installScripts // garbageCollectScripts // rebootScripts // nukeAll;
+  # rewrite to app definitions
 in
-installScripts //
-garbageCollectScripts //
-rebootScripts //
-nukeAll
+builtins.mapAttrs
+  (name: value: {
+    type = "app";
+    program = "${value}/bin/deploy";
+  })
+  allPackages

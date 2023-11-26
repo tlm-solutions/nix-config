@@ -174,8 +174,7 @@
         myRegistry = registry.traffic-stop-box."${toString id}";
       in
         {
-          "${myRegistry.hostName}" = nixpkgs.lib.nixosSystem
-            {
+          "${myRegistry.hostName}" = {
               system = myRegistry.arch;
               specialArgs = { inherit self inputs; registry = myRegistry; };
               modules =
@@ -189,7 +188,6 @@
                   ./modules/TLMS
                   {
                     deployment-TLMS.monitoring.enable = myRegistry.monitoring;
-                    _module.check = false;
                   }
                 ] ++ stop-box-modules;
             };
@@ -200,24 +198,10 @@
       stop_box_ids = [ 0 1 4 8 9 ];
 
       # attribute set of all traffic stop boxes
-      stop_boxes = nixpkgs.lib.foldl (x: id: nixpkgs.lib.mergeAttrs x (generate_system id)) { } stop_box_ids;
+      r09_receivers = nixpkgs.lib.foldl (x: id: nixpkgs.lib.mergeAttrs x (generate_system id)) { } stop_box_ids;
 
-      packages = {
-        staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
-        data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
-      }
-      // (import ./pkgs/deployment.nix { inherit self pkgs lib; })
-      // (lib.foldl (x: y: lib.mergeAttrs x { "${y.config.system.name}-vm" = y.config.system.build.vm; }) { } (lib.attrValues self.nixosConfigurations));
-    in
-    {
-
-      packages."aarch64-linux".box8 = self.nixosConfigurations.traffic-stop-box-8.config.system.build.sdImage;
-      packages."aarch64-linux".box9 = self.nixosConfigurations.traffic-stop-box-9.config.system.build.sdImage;
-      packages."x86_64-linux" = packages;
-
-      nixosConfigurations = stop_boxes // {
-
-        data-hoarder = nixpkgs.lib.nixosSystem {
+      unevaluatedNixosConfigurations = r09_receivers // {
+        data-hoarder = {
           system = "x86_64-linux";
           specialArgs = { inherit inputs self; registry = registry.data-hoarder; };
           modules = [
@@ -226,7 +210,7 @@
           ] ++ data-hoarder-modules;
         };
 
-        staging-data-hoarder = nixpkgs.lib.nixosSystem {
+        staging-data-hoarder = {
           system = "x86_64-linux";
           specialArgs = { inherit inputs self; registry = registry.data-hoarder; };
           modules = [
@@ -235,7 +219,7 @@
           ] ++ data-hoarder-modules;
         };
 
-        notice-me-senpai = nixpkgs.lib.nixosSystem {
+        notice-me-senpai = {
           system = "x86_64-linux";
           specialArgs = { inherit inputs self; };
           modules = [
@@ -245,7 +229,7 @@
           ];
         };
 
-        tram-borzoi = nixpkgs.lib.nixosSystem {
+        tram-borzoi = {
           system = "x86_64-linux";
           specialArgs = { inherit inputs self; };
           modules = [
@@ -260,7 +244,7 @@
           ];
         };
 
-        uranus = nixpkgs.lib.nixosSystem {
+        uranus = {
           system = "x86_64-linux";
           specialArgs = { inherit inputs self; };
           modules = [
@@ -272,8 +256,24 @@
             { deployment-TLMS.monitoring.enable = true; }
           ];
         };
-
       };
+    in
+    {
+      inherit unevaluatedNixosConfigurations;
+
+      packages."aarch64-linux".box8 = self.nixosConfigurations.traffic-stop-box-8.config.system.build.sdImage;
+      packages."aarch64-linux".box9 = self.nixosConfigurations.traffic-stop-box-9.config.system.build.sdImage;
+
+      packages."x86_64-linux" = {
+        staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
+        data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
+      };
+
+      # these are in the app declaration as nix before 2.19 tries to find attrPaths in packages first.
+      # here we evaluate over all nixos configurations making this extremely slow
+      apps."x86_64-linux" = (import ./pkgs/deployment.nix { inherit self pkgs lib; });
+
+      nixosConfigurations = lib.attrsets.mapAttrs (name: value: nixpkgs.lib.nixosSystem value) unevaluatedNixosConfigurations;
 
       hydraJobs =
         let
