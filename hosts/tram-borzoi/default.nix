@@ -46,12 +46,9 @@ in
       }];
   };
 
-  networking.hostName = "tram-borzoi";
-
   time.timeZone = "Europe/Berlin";
 
   networking.useNetworkd = true;
-
 
   sops.defaultSopsFile = ../../secrets/tram-borzoi/secrets.yaml;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
@@ -79,10 +76,8 @@ in
     };
 
     wg = {
-      addr4 = "10.13.37.8";
       prefix4 = 24;
       privateKeyFile = config.sops.secrets.wg-seckey.path;
-      publicKey = "wCW+r5kAaIarvZUWf4KsJNetyHobP0nNy5QOhqmsCCs=";
     };
 
   };

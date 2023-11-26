@@ -1,32 +1,13 @@
-{ lib, config, self, ... }:
+{ lib, config, self, registry, ... }:
 let
   cfg = config.deployment-TLMS.net.wg;
 in
 {
   options.deployment-TLMS.net.wg = with lib; {
 
-    ownEndpoint.host = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-    };
-    ownEndpoint.port = mkOption {
-      type = types.port;
-      default = 51820;
-    };
-
-    publicKey = mkOption {
-      type = types.str;
-      default = "";
-      description = "own public key";
-    };
     privateKeyFile = mkOption {
       type = types.either types.str types.path;
     };
-    addr4 = mkOption {
-      type = types.nullOr types.str;
-      default = null;
-    };
-
     prefix4 = mkOption {
       type = types.int;
       default = 24;
@@ -55,35 +36,35 @@ in
       keepalive = 25;
 
       # helpers
-      peer-systems = (lib.filter (x: (x.config.deployment-TLMS.net.wg.addr4 != cfg.addr4) && (!isNull x.config.deployment-TLMS.net.wg.addr4))
-        (lib.attrValues self.nixosConfigurations));
+      registries = builtins.attrValues (builtins.mapAttrs (name: value: value.specialArgs.registry) self.unevaluatedNixosConfigurations);
 
-      endpoint =
+      # find all other systems registries with wireguard
+      peerSystemRegistries = (lib.filter (x: (x.wgAddr4 != registry.wgAddr4) && (!isNull x.wgAddr4)) registries);
+
+      # find all endpoint registries
+      endpointRegistries =
         let
           ep = (lib.filter
-            (x:
-              x.config.deployment-TLMS.net.wg.addr4 != cfg.addr4
-              && (!isNull x.config.deployment-TLMS.net.wg.ownEndpoint.host))
-            (lib.attrValues self.nixosConfigurations));
+            (x: x.wgAddr4 != registry.wgAddr4 && (!isNull x.publicWireguardEndpoint)) registries);
         in
         assert lib.assertMsg (lib.length ep == 1) "there should be exactly one endpoint"; ep;
 
       peers = map
         (x: {
           wireguardPeerConfig = {
-            PublicKey = x.config.deployment-TLMS.net.wg.publicKey;
-            AllowedIPs = [ "${x.config.deployment-TLMS.net.wg.addr4}/32" ];
+            PublicKey = x.wireguardPublicKey;
+            AllowedIPs = [ "${x.wgAddr4}/32" ];
             PersistentKeepalive = keepalive;
           };
         })
-        peer-systems;
+        peerSystemRegistries;
 
       ep = [{
         wireguardPeerConfig =
-          let x = lib.elemAt endpoint 0; in {
-            PublicKey = x.config.deployment-TLMS.net.wg.publicKey;
-            AllowedIPs = [ "${x.config.deployment-TLMS.net.wg.addr4}/${toString cfg.prefix4}" ];
-            Endpoint = with x.config.deployment-TLMS.net.wg.ownEndpoint; "${host}:${toString port}";
+          let x = lib.elemAt endpointRegistries 0; in {
+            PublicKey = x.wireguardPublicKey;
+            AllowedIPs = [ "${x.wgAddr4}/${toString cfg.prefix4}" ];
+            Endpoint = with x.publicWireguardEndpoint; "${host}:${toString port}";
             PersistentKeepalive = keepalive;
           };
       }];
@@ -98,7 +79,7 @@ in
       dvbwg-wireguard = {
         PrivateKeyFile = cfg.privateKeyFile;
       } //
-      (if !isNull cfg.ownEndpoint.host then { ListenPort = cfg.ownEndpoint.port; } else { });
+      (if !isNull registry.publicWireguardEndpoint then { ListenPort = registry.publicWireguardEndpoint.port; } else { });
 
       expeers = map
         (x: {
@@ -110,9 +91,9 @@ in
         })
         cfg.extraPeers;
 
-      peerconf = if isNull cfg.ownEndpoint.host then ep else (peers ++ expeers);
+      peerconf = if isNull registry.publicWireguardEndpoint then ep else (peers ++ expeers);
     in
-    lib.mkIf (!isNull cfg.addr4) {
+    lib.mkIf (registry ? wgAddr4) {
       networking.wireguard.enable = true;
 
       networking.firewall.trustedInterfaces = [ dvbwg-name ];
@@ -125,7 +106,7 @@ in
       systemd.network.networks."30-${dvbwg-name}" = {
         matchConfig.Name = dvbwg-name;
         networkConfig = {
-          Address = "${cfg.addr4}/${toString cfg.prefix4}";
+          Address = "${registry.wgAddr4}/${toString cfg.prefix4}";
         };
       };
     };

@@ -1,4 +1,4 @@
-{ config, lib, self, ... }:
+{ config, lib, self, registry, ... }:
 let
   grafana_host = "grafana.tlm.solutions";
 in
@@ -18,7 +18,7 @@ in
       {
         enable = true;
         port = 9501;
-        listenAddress = config.deployment-TLMS.net.wg.addr4;
+        listenAddress = registry.wgAddr4;
         globalConfig = {
           scrape_interval = "131s";
         };
@@ -26,7 +26,7 @@ in
           let
             ### Autogenerate prometheus scraper config
             # currently only wireguard-connected machines are getting scraped.
-            filterWgHosts = k: v: !(builtins.isNull v.config.deployment-TLMS.net.wg.addr4);
+            filterWgHosts = k: v: !(builtins.isNull v._module.specialArgs.registry.wgAddr4);
             wgHosts = lib.filterAttrs filterWgHosts self.nixosConfigurations;
 
             # collect active prometheus exporters
@@ -38,7 +38,7 @@ in
               job_name = "${hostname}_${exporter}";
               static_configs =
                 let
-                  ip = wgHosts."${hostname}".config.deployment-TLMS.net.wg.addr4;
+                  ip = wgHosts."${hostname}"._module.specialArgs.registry.wgAddr4;
                 in
                 [{
                   targets = [ "${ip}:${toString exporter-cfg.port}" ];

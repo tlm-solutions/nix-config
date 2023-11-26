@@ -1,19 +1,12 @@
-{ config, ... }:
-let
-  port = 51820;
-in
+{ config, registry, ... }:
 {
   boot.kernel.sysctl."net.ipv4.ip_forward" = 1;
 
-  networking.firewall.allowedUDPPorts = [ port ];
+  networking.firewall.allowedUDPPorts = [ registry.publicWireguardEndpoint.port ];
 
   deployment-TLMS.net.wg = {
-    ownEndpoint.host = "endpoint.tlm.solutions";
-    ownEndpoint.port = port;
-    addr4 = "10.13.37.1";
     prefix4 = 24;
     privateKeyFile = config.sops.secrets.wg-seckey.path;
-    publicKey = "WDvCObJ0WgCCZ0ORV2q4sdXblBd8pOPZBmeWr97yphY=";
     extraPeers = [
       {
         # Tassilo

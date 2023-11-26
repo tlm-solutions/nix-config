@@ -11,7 +11,7 @@ let
   # the deployment script
   deployScriptTemplate = (system: command:
     let
-      ip = system.config.deployment-TLMS.net.wg.addr4;
+      ip = system._module.specialArgs.registry.wgAddr4;
       host = system.config.networking.hostName;
 
     in
@@ -34,7 +34,7 @@ let
   # garbage collect everything
   garbageCollect = (system:
     let
-      ip = system.config.deployment-TLMS.net.wg.addr4;
+      ip = system._module.specialArgs.registry.wgAddr4;
       host = system.config.networking.hostName;
     in
     (pkgs.writeScriptBin "deploy" ''
@@ -56,7 +56,7 @@ let
   # reboot everything
   reboot = (system:
     let
-      ip = system.config.deployment-TLMS.net.wg.addr4;
+      ip = system._module.specialArgs.registry.wgAddr4;
       host = system.config.networking.hostName;
     in
     (pkgs.writeScriptBin "deploy" ''

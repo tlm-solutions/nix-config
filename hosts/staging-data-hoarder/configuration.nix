@@ -42,8 +42,6 @@ in
       }];
   };
 
-  networking.hostName = "staging-data-hoarder";
-
   time.timeZone = "Europe/Berlin";
 
   networking.useNetworkd = true;
@@ -70,10 +68,8 @@ in
     };
 
     wg = {
-      addr4 = "10.13.37.5";
       prefix4 = 24;
       privateKeyFile = config.sops.secrets.wg-seckey.path;
-      publicKey = "48hc7DVnUh2DHYhrxrNtNzj05MRecJO52j2niPImvkU=";
     };
 
   };

@@ -1,7 +1,7 @@
-{ lib, config, self, ... }:
+{ lib, config, self, registry, ... }:
 let
   cfg = config.deployment-TLMS.monitoring;
-  monitoring-host = self.nixosConfigurations.notice-me-senpai.config;
+  monitoring-host = self.nixosConfigurations.notice-me-senpai;
 in
 {
   options.deployment-TLMS.monitoring = with lib; {
@@ -32,7 +32,7 @@ in
 
   config =
     let
-      wg-addr-pred = lib.assertMsg (!(isNull config.deployment-TLMS.net.wg.addr4)) "to add system to monitoring, add it to TLMS wireguard first!";
+      wg-addr-pred = lib.assertMsg (registry ? wgAddr4) "to add system to monitoring, add it to TLMS wireguard first!";
     in
     lib.mkIf (cfg.enable && wg-addr-pred) {
       # prometheus node exporter
@@ -40,7 +40,7 @@ in
         node = {
           enable = true;
           port = cfg.node-exporter.port;
-          listenAddress = config.deployment-TLMS.net.wg.addr4;
+          listenAddress = registry.wgAddr4;
           enabledCollectors = [
             "systemd"
           ];
@@ -59,7 +59,7 @@ in
             filename = "/tmp/positions.yaml";
           };
           clients = [{
-            url = "http://${monitoring-host.deployment-TLMS.net.wg.addr4}:${toString monitoring-host.services.loki.configuration.server.http_listen_port}/loki/api/v1/push";
+            url = "http://${monitoring-host._module.specialArgs.registry.wgAddr4}:${toString monitoring-host.config.services.loki.configuration.server.http_listen_port}/loki/api/v1/push";
           }];
           scrape_configs = [{
             job_name = "journal";

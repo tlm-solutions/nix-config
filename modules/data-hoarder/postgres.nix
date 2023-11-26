@@ -6,7 +6,7 @@
     enableTCPIP = true;
     authentication = let
       senpai-ip =
-        self.nixosConfigurations.notice-me-senpai.config.deployment-TLMS.net.wg.addr4;
+        self.nixosConfigurations.notice-me-senpai._module.specialArgs.registry.wgAddr4;
     in pkgs.lib.mkOverride 10 ''
       local	all	all	trust
       host	all	all	127.0.0.1/32	trust

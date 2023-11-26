@@ -8,8 +8,6 @@
   };
 
   deployment-TLMS.net.wg = {
-    addr4 = registry.wgAddr4;
-    publicKey = registry.wireguardPublicKey;
     prefix4 = 24;
     privateKeyFile = lib.mkDefault config.sops.secrets.wg-seckey.path;
   };

@@ -49,8 +49,6 @@ in
     ];
   };
 
-  networking.hostName = "uranus";
-
   time.timeZone = "Europe/Berlin";
 
   networking.useNetworkd = true;
@@ -82,10 +80,8 @@ in
     };
 
     wg = {
-      addr4 = "10.13.37.9";
       prefix4 = 24;
       privateKeyFile = config.sops.secrets.wg-seckey.path;
-      publicKey = "KwCG5CWPdNmrjEOYJYD2w0yhzoWpYHrjGbstdT5+pFk=";
     };
 
   };

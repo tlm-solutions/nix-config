@@ -3,8 +3,6 @@
 {
   boot.tmp.useTmpfs = true;
 
-  networking.hostName = registry.hostName;
-
   # reboot 60 seconds after kernel panic
   boot.kernel.sysctl."kernel.panic" = 60;
 

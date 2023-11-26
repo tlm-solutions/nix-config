@@ -212,7 +212,7 @@
 
         staging-data-hoarder = {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs self; registry = registry.data-hoarder; };
+          specialArgs = { inherit inputs self; registry = registry.staging-data-hoarder; };
           modules = [
             ./hosts/staging-data-hoarder
             microvm.nixosModules.microvm
@@ -221,7 +221,7 @@
 
         notice-me-senpai = {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs self; };
+          specialArgs = { inherit inputs self; registry = registry.notice-me-senpai; };
           modules = [
             sops-nix.nixosModules.sops
             ./modules/TLMS
@@ -231,7 +231,7 @@
 
         tram-borzoi = {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs self; };
+          specialArgs = { inherit inputs self; registry = registry.tram-borzoi; };
           modules = [
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
@@ -246,14 +246,13 @@
 
         uranus = {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs self; };
+          specialArgs = { inherit inputs self; registry = registry.uranus; };
           modules = [
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
 
             ./modules/TLMS
             ./hosts/uranus
-            { deployment-TLMS.monitoring.enable = true; }
           ];
         };
       };

@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, registry, ... }:
 let
   regMotd = ''
      _._     _,-'""`-._
@@ -30,6 +30,8 @@ in
   };
 
   networking.useNetworkd = true;
+
+  networking.hostName = registry.hostName;
 
   console = {
     font = "Lat2-Terminus16";

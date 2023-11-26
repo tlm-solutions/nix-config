@@ -1,8 +1,6 @@
 { self, pkgs, lib, ... }: {
   sops.defaultSopsFile = self + /secrets/notice-me-senpai/secrets.yaml;
 
-  networking.hostName = "notice-me-senpai";
-
   boot = {
     tmp.cleanOnBoot = true;
     kernelPackages = pkgs.linuxPackages_latest;

@@ -5,7 +5,7 @@
     defaultWebsocket = { inherit (registry.port-funnel) host port; };
     metrics = {
       inherit (registry.port-funnel-metrics) port;
-      host = config.deployment-TLMS.net.wg.addr4;
+      host = registry.wgAddr4;
     };
   };
   services = {
