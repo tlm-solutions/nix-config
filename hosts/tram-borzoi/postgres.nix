@@ -14,7 +14,7 @@
     port = 5432;
     authentication =
       let
-        senpai-ip = self.nixosConfigurations.notice-me-senpai._module.specialArgs.registry.wgAddr4;
+        senpai-ip = self.unevaluatedNixosConfigurations.notice-me-senpai.specialArgs.registry.wgAddr4;
         # TODO: fixme
         uranus-ip = "10.13.37.9";
       in

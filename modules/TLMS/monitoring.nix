@@ -1,7 +1,7 @@
 { lib, config, self, registry, ... }:
 let
   cfg = config.deployment-TLMS.monitoring;
-  monitoring-host = self.nixosConfigurations.notice-me-senpai;
+  monitoring-host-registry = self.unevaluatedNixosConfigurations.notice-me-senpai.specialArgs.registry;
 in
 {
   options.deployment-TLMS.monitoring = with lib; {
@@ -59,7 +59,7 @@ in
             filename = "/tmp/positions.yaml";
           };
           clients = [{
-            url = "http://${monitoring-host._module.specialArgs.registry.wgAddr4}:${toString monitoring-host.config.services.loki.configuration.server.http_listen_port}/loki/api/v1/push";
+            url = "http://${monitoring-host-registry.wgAddr4}:${toString monitoring-host-registry.port-loki}/loki/api/v1/push";
           }];
           scrape_configs = [{
             job_name = "journal";

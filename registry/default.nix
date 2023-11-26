@@ -20,6 +20,7 @@
     wgAddr4 = "10.13.37.200";
     wireguardPublicKey = "z2E9TjL9nn0uuLmyQexqddE6g8peB5ENyf0LxpMolD4=";
     publicWireguardEndpoint = null;
+    port-loki = 3100;
   };
   uranus = {
     hostName = "uranus";

@@ -81,7 +81,7 @@ in
     loki = {
       enable = true;
       configuration = {
-        server.http_listen_port = 3100;
+        server.http_listen_port = registry.port-loki;
         auth_enabled = false;
 
         ingester = {
