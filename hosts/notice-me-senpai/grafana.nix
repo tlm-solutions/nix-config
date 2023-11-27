@@ -26,7 +26,7 @@ in
           let
             ### Autogenerate prometheus scraper config
             # currently only wireguard-connected machines are getting scraped.
-            filterWgHosts = k: v: !(builtins.isNull v._module.specialArgs.registry.wgAddr4);
+            filterWgHosts = k: v: !(builtins.isNull v._module.specialArgs.registry.wgAddr4 or null);
             wgHosts = lib.filterAttrs filterWgHosts self.nixosConfigurations;
 
             # collect active prometheus exporters
