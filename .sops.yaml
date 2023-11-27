@@ -171,6 +171,13 @@ creation_rules:
         - *admin_marenz-2
         age:
         - *tram-borzoi
+  - path_regex: secrets/tetra-zw/[^/]+\.yaml$
+    key_groups:
+      - pgp:
+        - *admin_oxa
+        - *admin_revol-xut
+        - *admin_marenz-1
+        - *admin_marenz-2
   - path_regex: secrets/uranus/[^/]+\.yaml$
     key_groups:
       - pgp:

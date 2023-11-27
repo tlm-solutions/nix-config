@@ -692,6 +692,26 @@
         "type": "github"
       }
     },
+    "private-flake-overlays": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1701088629,
+        "narHash": "sha256-Xgb2lX35f+XILc++Y4fmTgZttPTi5MKQBMbOIAjWX4Y=",
+        "owner": "marenz2569",
+        "repo": "private-flake-overlays",
+        "rev": "316f9c9f3d79ccc52f8148b616789c38348cb58e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marenz2569",
+        "repo": "private-flake-overlays",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "borzoi": "borzoi",
@@ -707,6 +727,7 @@
         "microvm": "microvm",
         "naersk": "naersk_4",
         "nixpkgs": "nixpkgs_6",
+        "private-flake-overlays": "private-flake-overlays",
         "sops-nix": "sops-nix",
         "telegram-decoder": "telegram-decoder",
         "tlms-rs": "tlms-rs_2",

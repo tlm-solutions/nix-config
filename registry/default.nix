@@ -45,4 +45,10 @@
       port = 8080;
     };
   };
+  tetra-zw = {
+    hostName = "tetra-zw";
+    wgAddr4 = "10.13.37.11";
+    wireguardPublicKey = "ksztvj780MFau9YH0hBOL+/PzYb/EaARCUqR+EUIL2o=";
+    publicWireguardEndpoint = null;
+  };
 }

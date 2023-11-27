@@ -28,6 +28,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    private-flake-overlays = {
+      url = "github:marenz2569/private-flake-overlays";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ## TLMS stuff below
     trekkie = {
       url = "github:tlm-solutions/trekkie";
@@ -109,6 +114,7 @@
 
   outputs =
     inputs@{ self
+    , private-flake-overlays
     , borzoi
     , data-accumulator
     , datacare
@@ -128,6 +134,7 @@
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
       lib = pkgs.lib;
+      overlayFlake = private-flake-overlays.lib.overlayFlake;
 
       registry = import ./registry;
 
@@ -244,6 +251,17 @@
           ];
         };
 
+        tetra-zw = {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs self; registry = registry.tetra-zw; };
+          modules = [
+            sops-nix.nixosModules.sops
+
+            ./modules/TLMS
+            ./hosts/tetra-zw
+          ];
+        };
+
         uranus = {
           system = "x86_64-linux";
           specialArgs = { inherit inputs self; registry = registry.uranus; };
@@ -257,7 +275,8 @@
         };
       };
     in
-    {
+    # overlays this private flake when in impure mode
+    overlayFlake "git+ssh://git@github.com/tlm-solutions/nix-config-private.git" {
       inherit unevaluatedNixosConfigurations;
 
       packages."aarch64-linux".box8 = self.nixosConfigurations.traffic-stop-box-8.config.system.build.sdImage;
