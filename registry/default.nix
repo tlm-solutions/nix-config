@@ -33,5 +33,16 @@
     wgAddr4 = "10.13.37.8";
     wireguardPublicKey = "wCW+r5kAaIarvZUWf4KsJNetyHobP0nNy5QOhqmsCCs=";
     publicWireguardEndpoint = null;
+    postgres = {
+      host = "127.0.0.1";
+      port = 5432;
+      passwordFile = "/run/secrets/postgres-borzoi-pw";
+      user = "borzoi";
+      database = "borzoi";
+    };
+    port-borzoi = {
+      host = "0.0.0.0";
+      port = 8080;
+    };
   };
 }

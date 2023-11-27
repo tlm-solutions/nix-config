@@ -1,4 +1,4 @@
-{ lib, pkgs, config, inputs, self, ... }: {
+{ lib, pkgs, config, inputs, self, registry, ... }: {
 
   sops.secrets.postgres-borzoi-pw = {
     owner = config.users.users.postgres.name;
@@ -9,14 +9,13 @@
     owner = config.users.users.postgres.name;
   };
   services.postgresql = {
+    inherit (registry.postgres) port;
     enable = true;
     enableTCPIP = true;
-    port = 5432;
     authentication =
       let
         senpai-ip = self.unevaluatedNixosConfigurations.notice-me-senpai.specialArgs.registry.wgAddr4;
-        # TODO: fixme
-        uranus-ip = "10.13.37.9";
+        uranus-ip = self.unevaluatedNixosConfigurations.uranus.specialArgs.registry.wgAddr4;
       in
       pkgs.lib.mkOverride 10 ''
         local	all	all	trust
