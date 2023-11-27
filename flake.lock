@@ -699,11 +699,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1701088629,
-        "narHash": "sha256-Xgb2lX35f+XILc++Y4fmTgZttPTi5MKQBMbOIAjWX4Y=",
+        "lastModified": 1701110565,
+        "narHash": "sha256-OcaeY/Yd26LMrdqrgV7fVGJV1C0orZk902GxqyOskM4=",
         "owner": "marenz2569",
         "repo": "private-flake-overlays",
-        "rev": "316f9c9f3d79ccc52f8148b616789c38348cb58e",
+        "rev": "bc999b4c97f7aefbb33c70fb7f926f829e2dd788",
         "type": "github"
       },
       "original": {
