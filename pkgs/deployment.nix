@@ -15,7 +15,7 @@ let
       host = system.config.networking.hostName;
 
     in
-    (pkgs.writeScriptBin "deploy" ''
+    (pkgs.writeScript "deploy-${command}-${host}" ''
       #!${pkgs.runtimeShell}
       set -e
 
@@ -37,7 +37,7 @@ let
       ip = system._module.specialArgs.registry.wgAddr4;
       host = system.config.networking.hostName;
     in
-    (pkgs.writeScriptBin "deploy" ''
+    (pkgs.writeScript "collect-garbage-${host}" ''
       #!${pkgs.runtimeShell}
       set -e
 
@@ -59,7 +59,7 @@ let
       ip = system._module.specialArgs.registry.wgAddr4;
       host = system.config.networking.hostName;
     in
-    (pkgs.writeScriptBin "deploy" ''
+    (pkgs.writeScript "reboot-${host}" ''
       #!${pkgs.runtimeShell}
       set -e
 
@@ -88,14 +88,14 @@ let
   rebootScripts = lib.mapAttrs' (name: system: lib.nameValuePair ("reboot-" + name) (reboot system)) nonVmHosts;
 
   ## all at once
-  switchAll = lib.strings.concatMapStringsSep "\n" (path: "${path}/bin/deploy") (builtins.attrValues switchInstallScripts);
-  bootAll = lib.strings.concatMapStringsSep "\n" (path: "${path}/bin/deploy") (builtins.attrValues bootInstallScripts);
-  rebootAll = lib.strings.concatMapStringsSep "\n" (path: "${path}/bin/deploy") (builtins.attrValues rebootScripts);
-  garbageAll = lib.strings.concatMapStringsSep "\n" (path: "${path}/bin/deploy") (builtins.attrValues garbageCollectScripts);
+  switchAll = lib.strings.concatStringsSep "\n" (builtins.attrValues switchInstallScripts);
+  bootAll = lib.strings.concatStringsSep "\n" (builtins.attrValues bootInstallScripts);
+  rebootAll = lib.strings.concatStringsSep "\n" (builtins.attrValues rebootScripts);
+  garbageAll = lib.strings.concatStringsSep "\n" (builtins.attrValues garbageCollectScripts);
 
   nukeAll = lib.mapAttrs'
     (name: scripts:
-      lib.nameValuePair (name) (pkgs.writeScriptBin "${name}" ''
+      lib.nameValuePair (name) (pkgs.writeScript "${name}" ''
         #!${pkgs.runtimeShell}
         set -x
 
@@ -113,6 +113,6 @@ in
 builtins.mapAttrs
   (name: value: {
     type = "app";
-    program = "${value}/bin/deploy";
+    program = "${value}";
   })
   allPackages
