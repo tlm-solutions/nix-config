@@ -25,4 +25,6 @@
   services.resolved.dnssec = "false";
 
   system.stateVersion = "23.05";
+
+  deployment-TLMS.monitoring.enable = registry.monitoring;
 }

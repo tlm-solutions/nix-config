@@ -50,5 +50,6 @@
     wgAddr4 = "10.13.37.11";
     wireguardPublicKey = "ksztvj780MFau9YH0hBOL+/PzYb/EaARCUqR+EUIL2o=";
     publicWireguardEndpoint = null;
+    monitoring = false;
   };
 }
