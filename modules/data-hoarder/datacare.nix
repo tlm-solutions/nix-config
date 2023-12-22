@@ -33,7 +33,7 @@
           enableACME = true;
           locations = {
             "/" = {
-              proxyPass = with registry.port-data_accumulator;
+              proxyPass = with registry.port-datacare;
                 "http://${host}:${toString port}/";
               proxyWebsockets = true;
               extraConfig = ''
