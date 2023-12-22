@@ -25,7 +25,7 @@
       }
       {
         # marcel
-        publicKey = "Txd/qTDazvKcB1bIavm0Kilr/O7RkFwi9YGjjv88u2I=";
+        publicKey = "RMdb+UDvE6mH8UKzfLZGiZfzguGLrmAoUTS7JmBFNmg=";
         addr4 = "10.13.37.6";
       }
       {
