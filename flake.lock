@@ -395,11 +395,11 @@
         "pnpm2nix": "pnpm2nix"
       },
       "locked": {
-        "lastModified": 1702677710,
-        "narHash": "sha256-PDNl3XdBM8UrDJPjiyU2tebhmk3S+M+W4MnMOoHEOds=",
+        "lastModified": 1703276736,
+        "narHash": "sha256-DTnO5qFIwGah4SQ/g3c+ValoKukpeyUMCT6oAo1txOE=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "34a6df07903a499de5790a2fc45d9dc44e4b5658",
+        "rev": "2e0dd3ebc22c748e39c0e70144f3c801ba967d81",
         "type": "github"
       },
       "original": {
@@ -679,11 +679,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1699244314,
-        "narHash": "sha256-5DV/hpUIBOEc0fc3i1GH4IaYw8aP0qBxyE6jHEF3W1M=",
+        "lastModified": 1702270329,
+        "narHash": "sha256-Q3pg+Qc6OfVwf53o2lGoky5G4hDed0YkWw6PxocxPNE=",
         "owner": "nzbr",
         "repo": "pnpm2nix-nzbr",
-        "rev": "b304aef523b61a937979a5adfe48886fdd69f307",
+        "rev": "b88c9601da369ad4bc4fec1d5c28f830886e4ceb",
         "type": "github"
       },
       "original": {
