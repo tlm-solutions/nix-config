@@ -9,6 +9,7 @@ keys:
   - &notice-me-senpai age1wxewmzwlzgtsmr29tnu76n30kv29ra5p0ptvr2e3f3ymkqh569kqm07fv4
   - &tram-borzoi age10sedt7xftzu383y8g4pxsj0hazht8tnnxhcngedcsl93s4v9uvvsk99er4
   - &uranus age1xnaw8ssrq2hpsntnt8kdu4dlqh4lz3dcq5lzwn490cskz886te6sreuale
+  - &tetra-zw age1nknzqnqm2d7pxxjl4e4w50jk8t8xx947l2qgrjhpqjfd33ypjfusw7nszw
 
   # turmlabor
   - &traffic-stop-box-0 age1yxtur968m4xe0m3kj0waqpm2kuuywpp9f6t0rxl4f0262ze9n9jqehw0k5
@@ -178,6 +179,8 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        age:
+        - *tetra-zw
   - path_regex: secrets/uranus/[^/]+\.yaml$
     key_groups:
       - pgp:

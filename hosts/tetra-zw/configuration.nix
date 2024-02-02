@@ -1,8 +1,8 @@
-{ self, pkgs, config, registry, ... }:
+{ self, lib, pkgs, config, registry, ... }:
 
 {
   imports = [
-    "${self}/hardware/dell-wyse-3040.nix"
+    "${self}/hardware/tetra-zw.nix"
   ];
 
   boot.tmp.useTmpfs = true;

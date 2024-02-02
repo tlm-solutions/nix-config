@@ -12,5 +12,16 @@
       echo file binary-dist $diskImage >> $out/nix-support/hydra-build-products
     '';
   };
+  system.build.diskImageLegacy = import ./make-disk-image.nix {
+    name = "${config.networking.hostName}-disk";
+    partitionTableType = "legacy";
+    additionalSpace = "0G";
+    copyChannel = false;
+    inherit config lib pkgs;
+    postVM = ''
+      mkdir -p $out/nix-support
+      echo file binary-dist $diskImage >> $out/nix-support/hydra-build-products
+    '';
+  };
   fileSystems."/".autoResize = true;
 }
