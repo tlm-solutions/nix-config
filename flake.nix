@@ -5,7 +5,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     # naersk and flake utils are not used by this flake directly, but needed
     # for the follows in all the other ones.
