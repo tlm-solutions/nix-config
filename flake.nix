@@ -231,6 +231,7 @@
           specialArgs = { inherit inputs self; registry = registry.notice-me-senpai; };
           modules = [
             sops-nix.nixosModules.sops
+            microvm.nixosModules.microvm
             ./modules/TLMS
             ./hosts/notice-me-senpai
           ];
