@@ -355,11 +355,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1700510503,
-        "narHash": "sha256-SztDp6RnDRS80HtaNMOOkpJMdWwuMlF9RZr2aDKDWXM=",
+        "lastModified": 1714253000,
+        "narHash": "sha256-3c81gxWOt80yOkwvHLjFdZgpKW3HEikPXUliFlfEXTM=",
         "owner": "tlm-solutions",
         "repo": "gnuradio-decoder",
-        "rev": "5e122e74fa9380183428cc74bceb8ec0683dab74",
+        "rev": "4b012adec883477b19a88d272fd7e7a7900f275a",
         "type": "github"
       },
       "original": {
