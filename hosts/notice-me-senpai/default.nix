@@ -18,7 +18,7 @@ in
 
     interfaces = [{
       type = "tap";
-      id = "serv-tlm-mon";
+      id = "flpk-tlm-mon";
       mac = mac_addr;
     }];
 
@@ -61,12 +61,12 @@ in
       mac = mac_addr;
       matchOn = "mac";
       useDHCP = false;
-      addr4 = "172.20.73.10/25";
-      dns = [ "172.20.73.8" "9.9.9.9" ];
+      addr4 = "45.158.40.162/27";
+      dns = [ "1.1.1.1" ];
       routes = [
         {
           routeConfig = {
-            Gateway = "172.20.73.1";
+            Gateway = "45.158.40.160";
             GatewayOnLink = true;
             Destination = "0.0.0.0/0";
           };
