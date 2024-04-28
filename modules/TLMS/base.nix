@@ -59,6 +59,7 @@ in
     usbutils
     rtl-sdr
     hackrf
+    ssh-to-age
   ];
 
   networking.firewall.enable = lib.mkDefault true;
