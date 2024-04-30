@@ -3,6 +3,7 @@ keys:
   - &admin_revol-xut 91EBE87016391323642A6803B966009D57E69CC6
   - &admin_marenz-1 069836A578F7939612DB4934F77D0F7E247A1EE4
   - &admin_marenz-2 ED06986DFAAE6A61B751DC2F537F97DFB394C433
+  - &admin_marcel 46D4682470DBE26790DF9433446F3B093DF81C6A
 
   - &data-hoarder age1djp5hk6vpm5glzqy9h2e2cgam5xydx888glgs85kvs57spaf8v0sfm0pa2
   - &data-hoarder-staging age1m4g4y5ga2m8xdvs7rarda3tyk4gtkyta6pfyq2n3xmy47z20kfxq73m8r8
@@ -38,6 +39,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *data-hoarder
         - *data-hoarder-staging
@@ -51,6 +53,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *data-hoarder
         - *data-hoarder-staging
@@ -61,6 +64,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *data-hoarder
         - *data-hoarder-staging
@@ -71,6 +75,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *notice-me-senpai
   - path_regex: secrets/traffic-stop-box-0/[^/]+\.yaml$
@@ -80,6 +85,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-0
   - path_regex: secrets/traffic-stop-box-1/[^/]+\.yaml$
@@ -89,6 +95,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-1
   - path_regex: secrets/traffic-stop-box-2/[^/]+\.yaml$
@@ -98,6 +105,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-2
   - path_regex: secrets/traffic-stop-box-3/[^/]+\.yaml$
@@ -107,6 +115,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-3
   - path_regex: secrets/traffic-stop-box-4/[^/]+\.yaml$
@@ -116,6 +125,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-4
   - path_regex: secrets/traffic-stop-box-6/[^/]+\.yaml$
@@ -125,6 +135,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-6
   - path_regex: secrets/traffic-stop-box-7/[^/]+\.yaml$
@@ -134,6 +145,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-7
   - path_regex: secrets/traffic-stop-box-8/[^/]+\.yaml$
@@ -143,6 +155,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-8
   - path_regex: secrets/traffic-stop-box-9/[^/]+\.yaml$
@@ -152,6 +165,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-9
   - path_regex: secrets/traffic-stop-box-10/[^/]+\.yaml$
@@ -161,6 +175,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *traffic-stop-box-10
   - path_regex: secrets/tram-borzoi/[^/]+\.yaml$
@@ -170,6 +185,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *tram-borzoi
   - path_regex: secrets/tetra-zw/[^/]+\.yaml$
@@ -179,6 +195,7 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *tetra-zw
   - path_regex: secrets/uranus/[^/]+\.yaml$
@@ -188,5 +205,6 @@ creation_rules:
         - *admin_revol-xut
         - *admin_marenz-1
         - *admin_marenz-2
+        - *admin_marcel
         age:
         - *uranus
