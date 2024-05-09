@@ -373,11 +373,11 @@
         "pnpm2nix": "pnpm2nix"
       },
       "locked": {
-        "lastModified": 1715276989,
-        "narHash": "sha256-DGaRn4AbtEuSrQrJXGKrcoIYswNd/KcZvPHk04vvxYI=",
+        "lastModified": 1715280755,
+        "narHash": "sha256-zVkHdgFmpJ1NCmp1AQ18oT5QsbEewyqkH67wZP0uzRo=",
         "owner": "tlm-solutions",
         "repo": "kindergarten",
-        "rev": "8d5213f6a1c03f001e78dc7c8950b6d07e3d1468",
+        "rev": "3df46c35ba76ed22e25161c7cea0ae3cedf22631",
         "type": "github"
       },
       "original": {
