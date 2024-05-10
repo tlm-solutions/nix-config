@@ -10,9 +10,9 @@
 let
   miniconda-dockerhub = pkgs.dockerTools.pullImage {
     imageName = "continuumio/miniconda3";
-    imageDigest = "sha256:a4b665d2075d9bf4b2c5aa896c059439a0baa5538ca67589a673121c31b4c35d";
-    sha256 = "sha256-boIAZ8PaPckWLzYYTqrqMEL7HGbyl9grCJrXOpsBMhg=";
-    finalImageTag = "23.3.1-0";
+    imageDigest = "sha256:2016f249cdae34692a20d90fdb17432d07cf312992345d0e1e492bc36a12a35b";
+    sha256 = "sha256-x4AuqWDff3QNqP4FfvlcwQi81XCK7YP1xOMfHdxdNfQ=";
+    finalImageTag = "24.3.0-0";
     finalImageName = "miniconda";
 
   };
