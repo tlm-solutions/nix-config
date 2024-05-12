@@ -60,6 +60,7 @@ in
     rtl-sdr
     hackrf
     ssh-to-age
+    hwloc
   ];
 
   networking.firewall.enable = lib.mkDefault true;
