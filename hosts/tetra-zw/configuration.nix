@@ -24,7 +24,13 @@
 
   services.resolved.dnssec = "false";
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 
   deployment-TLMS.monitoring.enable = registry.monitoring;
+
+  powerManagement.enable = true;
+  powerManagement.cpuFreqGovernor = "ondemand";
+  # 2.4GHz fixed!
+  powerManagement.cpufreq.min = 2400000;
+  powerManagement.cpufreq.max = 2400000;
 }
