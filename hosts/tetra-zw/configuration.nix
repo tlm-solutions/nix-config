@@ -30,7 +30,7 @@
 
   powerManagement.enable = true;
   powerManagement.cpuFreqGovernor = "ondemand";
-  # 2.4GHz fixed!
-  powerManagement.cpufreq.min = 2400000;
-  powerManagement.cpufreq.max = 2400000;
+  # 2.5GHz fixed!
+  powerManagement.cpufreq.min = 2500000;
+  powerManagement.cpufreq.max = 2500000;
 }
