@@ -61,6 +61,7 @@ in
     hackrf
     ssh-to-age
     hwloc
+    lshw
   ];
 
   networking.firewall.enable = lib.mkDefault true;
