@@ -80,6 +80,7 @@ in
               static_configs = [{
                 targets = [ "10.13.37.11:9020" ];
               }];
+              scrape_interval = "10s";
             }
           ];
       };
