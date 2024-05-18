@@ -75,6 +75,12 @@ in
                 targets = [ "10.13.37.5:10012" ];
               }];
             }
+            {
+              job_name = "tetra-zw-signal-strength";
+              static_configs = [{
+                targets = [ "10.13.37.11:9020" ];
+              }];
+            }
           ];
       };
     # log collector
