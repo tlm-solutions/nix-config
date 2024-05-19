@@ -54,7 +54,11 @@ in
                   replacement = "${exporter}";
                 }
               ];
-            };
+            } // (
+              if exporter == "r09-receiver" then {
+                scrape_interval = "10s";
+              } else {}
+            );
 
             # generate scraper config
             makeScrapeConfigHost = name: exporters: lib.mapAttrs (makeScrapeConfig name) exporters;
