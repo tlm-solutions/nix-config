@@ -323,29 +323,6 @@
         "type": "github"
       }
     },
-    "gnuradio-decoder": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "utils": [
-          "flake-utils"
-        ]
-      },
-      "locked": {
-        "lastModified": 1714253000,
-        "narHash": "sha256-3c81gxWOt80yOkwvHLjFdZgpKW3HEikPXUliFlfEXTM=",
-        "owner": "tlm-solutions",
-        "repo": "gnuradio-decoder",
-        "rev": "4b012adec883477b19a88d272fd7e7a7900f275a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tlm-solutions",
-        "repo": "gnuradio-decoder",
-        "type": "github"
-      }
-    },
     "json-structs": {
       "flake": false,
       "locked": {
@@ -691,6 +668,29 @@
         "type": "github"
       }
     },
+    "r09-receiver": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "utils": [
+          "flake-utils"
+        ]
+      },
+      "locked": {
+        "lastModified": 1716150413,
+        "narHash": "sha256-wQ/0tqG6bcJ4LCqEJDSc3Bv2X8SkJYlEoYoXqlvBle0=",
+        "owner": "tlm-solutions",
+        "repo": "r09-receiver",
+        "rev": "36a32b34978fe7a6fe50f3a8c73bab9beec334f1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tlm-solutions",
+        "repo": "r09-receiver",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "borzoi": "borzoi",
@@ -700,13 +700,13 @@
         "datacare": "datacare",
         "flake-utils": "flake-utils",
         "funnel": "funnel",
-        "gnuradio-decoder": "gnuradio-decoder",
         "kindergarten": "kindergarten",
         "lizard": "lizard",
         "microvm": "microvm",
         "naersk": "naersk_4",
         "nixpkgs": "nixpkgs_6",
         "private-flake-overlays": "private-flake-overlays",
+        "r09-receiver": "r09-receiver",
         "sops-nix": "sops-nix",
         "telegram-decoder": "telegram-decoder",
         "tlms-rs": "tlms-rs_2",

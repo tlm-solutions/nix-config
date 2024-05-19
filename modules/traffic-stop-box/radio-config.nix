@@ -1,8 +1,8 @@
 { self, config, lib, registry, ... }:
 {
-  TLMS.gnuradio = {
+  TLMS.r09-receiver = {
     enable = true;
-  } // registry.gnuradio;
+  } // registry.r09-receiver;
 
   # find all the servers with data-accumulator configured
   TLMS.telegramDecoder = let

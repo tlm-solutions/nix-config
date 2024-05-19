@@ -65,8 +65,8 @@
       };
     };
 
-    gnuradio-decoder = {
-      url = "github:tlm-solutions/gnuradio-decoder";
+    r09-receiver = {
+      url = "github:tlm-solutions/r09-receiver";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
     };
@@ -119,7 +119,7 @@
     , data-accumulator
     , datacare
     , funnel
-    , gnuradio-decoder
+    , r09-receiver
     , kindergarten
     , microvm
     , nixpkgs
@@ -166,11 +166,11 @@
       stop-box-modules = [
         ./modules/TLMS
         telegram-decoder.nixosModules.default
-        gnuradio-decoder.nixosModules.default
+        r09-receiver.nixosModules.default
         {
           nixpkgs.overlays = [
             telegram-decoder.overlays.default
-            gnuradio-decoder.overlays.default
+            r09-receiver.overlays.default
           ];
         }
       ];
