@@ -2,6 +2,9 @@
 {
   TLMS.r09-receiver = {
     enable = true;
+    PrometheusHost = toString registry.wgAddr4;
+    # TODO: move this port out to the registry
+    PrometheusPort = 9020;
   } // registry.r09-receiver;
 
   # find all the servers with data-accumulator configured

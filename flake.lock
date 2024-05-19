@@ -678,11 +678,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1716150413,
-        "narHash": "sha256-wQ/0tqG6bcJ4LCqEJDSc3Bv2X8SkJYlEoYoXqlvBle0=",
+        "lastModified": 1716159441,
+        "narHash": "sha256-Q0CBvv/99HMIhXGRt12JXFZkbilfUiHlIEjNojnsck4=",
         "owner": "tlm-solutions",
         "repo": "r09-receiver",
-        "rev": "36a32b34978fe7a6fe50f3a8c73bab9beec334f1",
+        "rev": "6c6a4ecb42362ff69b0767ccdfbcb65b510558c0",
         "type": "github"
       },
       "original": {
