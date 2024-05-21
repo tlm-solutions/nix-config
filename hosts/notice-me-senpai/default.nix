@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, ... }:
+{ pkgs, config, lib, ... }:
 let
   mac_addr = "00:de:5b:f9:e2:3e";
 in
