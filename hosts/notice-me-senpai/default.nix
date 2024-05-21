@@ -81,6 +81,9 @@ in
 
   };
 
+  # NOTE: this has been updated to 6.6 due to an unfortunate situation at our colo
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
+
   users.motd = lib.mkForce (builtins.readFile ./motd.txt);
 
   # This value determines the NixOS release from which the default
