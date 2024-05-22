@@ -86,6 +86,13 @@ in
               }];
               scrape_interval = "10s";
             }
+            {
+              job_name = "tetra-zw-burst-count";
+              static_configs = [{
+                targets = [ "10.13.37.11:9030" ];
+              }];
+              scrape_interval = "10s";
+            }
           ];
       };
     # log collector
