@@ -19,6 +19,8 @@ in
         enable = true;
         port = 9501;
         listenAddress = registry.wgAddr4;
+        # Sorting by label is an experimental feature: https://prometheus.io/docs/prometheus/latest/querying/functions/#sort_by_label
+        extraFlags = [ "--enable-feature=promql-experimental-functions" ];
         globalConfig = {
           scrape_interval = "131s";
         };
