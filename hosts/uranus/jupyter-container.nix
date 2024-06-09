@@ -42,7 +42,7 @@ pkgs.dockerTools.buildImage {
         c = get_config()
 
         c.PAMAuthenticator.admin_groups = {'${jupyterAdminGroup}'}
-
+        c.Authenticator.allowed_users = {'marenz', 'oxa', 'tassilo'}
         c.Spawner.notebook_dir='/workdir'
         c.Spawner.default_url='/lab'
       '';
