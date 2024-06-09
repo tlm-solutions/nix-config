@@ -16,10 +16,11 @@
         enableACME = true;
         forceSSL = true;
         locations."~ ^/(de|en)" = {
-          root = if (config.deployment-TLMS.domain == "tlm.solutions") then
-            "${pkgs.kindergarten}"
-          else
-            "${pkgs.kindergarten-staging}";
+          root =
+            if (config.deployment-TLMS.domain == "tlm.solutions") then
+              "${pkgs.kindergarten}"
+            else
+              "${pkgs.kindergarten-staging}";
           # index = "index.html";
           tryFiles = "$uri /$1/index.html =404";
           extraConfig = ''

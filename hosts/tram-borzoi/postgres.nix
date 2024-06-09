@@ -33,10 +33,7 @@
       }
       {
         name = "borzoi";
-        ensurePermissions = {
-          "DATABASE borzoi" = "ALL PRIVILEGES";
-          "ALL TABLES IN SCHEMA public" = "ALL";
-        };
+        ensureDBOwnership = true;
       }
     ];
   };

@@ -59,7 +59,7 @@ in
             } // (
               if exporter == "r09-receiver" then {
                 scrape_interval = "10s";
-              } else {}
+              } else { }
             );
 
             # generate scraper config

@@ -1,28 +1,29 @@
 { lib, pkgs, config, inputs, self, registry, ... }: {
 
   services.postgresql = {
-    inherit (registry.postgres) port;
+    settings.port = registry.port;
     enable = true;
     enableTCPIP = true;
-    authentication = let
-      senpai-ip =
-        self.unevaluatedNixosConfigurations.notice-me-senpai.specialArgs.registry.wgAddr4;
-    in pkgs.lib.mkOverride 10 ''
-      local	all	all	trust
-      host	all	all	127.0.0.1/32	trust
-      host	all	all	::1/128	trust
-      host	tlms	grafana	${senpai-ip}/32	scram-sha-256
-    '';
+    authentication =
+      let
+        senpai-ip =
+          self.unevaluatedNixosConfigurations.notice-me-senpai.specialArgs.registry.wgAddr4;
+      in
+      pkgs.lib.mkOverride 10 ''
+        local	all	all	trust
+        host	all	all	127.0.0.1/32	trust
+        host	all	all	::1/128	trust
+        host	tlms	grafana	${senpai-ip}/32	scram-sha-256
+      '';
     package = pkgs.postgresql_14;
     ensureDatabases = [ "tlms" ];
     ensureUsers = [
-      { name = "grafana"; }
       {
         name = "tlms";
-        ensurePermissions = {
-          "DATABASE tlms" = "ALL PRIVILEGES";
-          "ALL TABLES IN SCHEMA public" = "ALL";
-        };
+        ensureDBOwnership = true;
+      }
+      {
+        name = "grafana";
       }
     ];
   };
