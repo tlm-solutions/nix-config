@@ -1,7 +1,7 @@
 { lib, pkgs, config, inputs, self, registry, ... }: {
 
   services.postgresql = {
-    settings.port = registry.port;
+    settings.port = registry.postgres.port;
     enable = true;
     enableTCPIP = true;
     authentication =
