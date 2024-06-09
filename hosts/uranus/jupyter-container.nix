@@ -70,6 +70,8 @@ pkgs.dockerTools.buildImage {
                          jupyterlab \
                          jupyterhub
 
+        # upgrading the db
+        jupyterhub upgrade-db
 
         # off to the races
         jupyterhub --ip=${bind-ip} --port=${toString bind-port} -f /jupyterhub-config.py
