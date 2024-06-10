@@ -16,16 +16,8 @@
         enableACME = true;
         forceSSL = true;
         locations."~ ^/(de|en)" = {
-          root =
-            if (config.deployment-TLMS.domain == "tlm.solutions") then
-              "${pkgs.kindergarten}"
-            else
-              "${pkgs.kindergarten-staging}";
-          # index = "index.html";
+          root = "${pkgs.kindergarten.override {inherit (config.deployment-TLMS ) domain; }}";
           tryFiles = "$uri /$1/index.html =404";
-          extraConfig = ''
-            more_set_headers "Access-Control-Allow-Credentials: true";
-          '';
         };
         locations."~ ^/(?!en|de)" = {
           extraConfig = ''

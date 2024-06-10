@@ -52,7 +52,6 @@
       url = "github:tlm-solutions/kindergarten";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
       };
     };
 
