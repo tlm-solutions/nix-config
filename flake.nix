@@ -294,7 +294,7 @@
       apps."x86_64-linux" = (import ./pkgs/deployment.nix { inherit self pkgs lib; });
 
       nixosConfigurations = lib.attrsets.mapAttrs (name: value: 
-      (if (name == "notice-me-senpai") then (nixpkgs-2311.lib.nixosSystem value) else (nixpkgs.lib.nixosSystem value))) unevaluatedNixosConfigurations;
+      (if (name == "notice-me-senpai" || name == "tetra-zw") then (nixpkgs-2311.lib.nixosSystem value) else (nixpkgs.lib.nixosSystem value))) unevaluatedNixosConfigurations;
 
       hydraJobs =
         let
