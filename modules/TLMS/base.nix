@@ -88,14 +88,16 @@ in
 
   users.motd = if config.networking.hostName == "data-hoarder" then prodMotd else regMotd;
 
-  programs.screen.enable = true;
-  programs.screen.screenrc = ''
-    defscrollback 10000
-
-    startup_message off
-
-    hardstatus on
-    hardstatus alwayslastline
-    hardstatus string "%w"
-  '';
+  # TODO: comment back in after 24.05 transtition
+  # temporarily disable screen because of added enable option with assertion
+  # programs.screen.enable = true;
+  # programs.screen.screenrc = ''
+  #   defscrollback 10000
+  #
+  #   startup_message off
+  #
+  #   hardstatus on
+  #   hardstatus alwayslastline
+  #   hardstatus string "%w"
+  # '';
 }
