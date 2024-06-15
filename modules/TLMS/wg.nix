@@ -45,7 +45,8 @@ in
       endpointRegistries =
         let
           ep = (lib.filter
-            (x: x.wgAddr4 != registry.wgAddr4 && (!isNull x.publicWireguardEndpoint)) registries);
+            (x: x.wgAddr4 != registry.wgAddr4 && (!isNull x.publicWireguardEndpoint))
+            registries);
         in
         assert lib.assertMsg (lib.length ep == 1) "there should be exactly one endpoint"; ep;
 

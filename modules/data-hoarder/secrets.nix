@@ -4,7 +4,8 @@ let
   data-accumulator-user = config.TLMS.dataAccumulator.user;
   trekkie-user = config.TLMS.trekkie.user;
   chemo-user = config.TLMS.chemo.user;
-in {
+in
+{
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   users.groups = {

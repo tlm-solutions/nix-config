@@ -88,6 +88,7 @@ in
 
   users.motd = if config.networking.hostName == "data-hoarder" then prodMotd else regMotd;
 
+  programs.screen.enable = true;
   programs.screen.screenrc = ''
     defscrollback 10000
 

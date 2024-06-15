@@ -20,7 +20,8 @@ let
     # STS
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
   '';
-in {
+in
+{
   networking.firewall.allowedTCPPorts = [ 80 443 ];
 
   security.acme.acceptTerms = true;

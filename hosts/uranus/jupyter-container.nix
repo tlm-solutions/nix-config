@@ -42,7 +42,7 @@ pkgs.dockerTools.buildImage {
         c = get_config()
 
         c.PAMAuthenticator.admin_groups = {'${jupyterAdminGroup}'}
-
+        c.Authenticator.allowed_users = {'marenz', 'oxa', 'tassilo'}
         c.Spawner.notebook_dir='/workdir'
         c.Spawner.default_url='/lab'
       '';
@@ -70,6 +70,8 @@ pkgs.dockerTools.buildImage {
                          jupyterlab \
                          jupyterhub
 
+        # upgrading the db
+        jupyterhub upgrade-db
 
         # off to the races
         jupyterhub --ip=${bind-ip} --port=${toString bind-port} -f /jupyterhub-config.py

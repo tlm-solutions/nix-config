@@ -5,7 +5,7 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     # naersk and flake utils are not used by this flake directly, but needed
     # for the follows in all the other ones.
@@ -52,7 +52,6 @@
       url = "github:tlm-solutions/kindergarten";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
       };
     };
 
@@ -177,27 +176,27 @@
 
       # function that generates a system with the given number
       generate_system = (id:
-      let
-        myRegistry = registry.traffic-stop-box."${toString id}";
-      in
+        let
+          myRegistry = registry.traffic-stop-box."${toString id}";
+        in
         {
           "${myRegistry.hostName}" = {
-              system = myRegistry.arch;
-              specialArgs = { inherit self inputs; registry = myRegistry; };
-              modules =
-                [
-                  # box-specific config
-                  ./hosts/traffic-stop-box/${toString id}
+            system = myRegistry.arch;
+            specialArgs = { inherit self inputs; registry = myRegistry; };
+            modules =
+              [
+                # box-specific config
+                ./hosts/traffic-stop-box/${toString id}
 
-                  # default modules
-                  sops-nix.nixosModules.sops
-                  ./modules/traffic-stop-box
-                  ./modules/TLMS
-                  {
-                    deployment-TLMS.monitoring.enable = myRegistry.monitoring;
-                  }
-                ] ++ stop-box-modules;
-            };
+                # default modules
+                sops-nix.nixosModules.sops
+                ./modules/traffic-stop-box
+                ./modules/TLMS
+                {
+                  deployment-TLMS.monitoring.enable = myRegistry.monitoring;
+                }
+              ] ++ stop-box-modules;
+          };
         }
       );
 
