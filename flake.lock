@@ -544,6 +544,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-2311": {
+      "locked": {
+        "lastModified": 1718229064,
+        "narHash": "sha256-ZFav8A9zPNfjZg/wrxh1uZeMJHELRfRgFP+meq01XYk=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5c2ec3a5c2ee9909904f860dadc19bc12cd9cc44",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-23.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1717880976,
@@ -735,6 +751,7 @@
         "microvm": "microvm",
         "naersk": "naersk_4",
         "nixpkgs": "nixpkgs_6",
+        "nixpkgs-2311": "nixpkgs-2311",
         "private-flake-overlays": "private-flake-overlays",
         "r09-receiver": "r09-receiver",
         "sops-nix": "sops-nix",
