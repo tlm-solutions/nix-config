@@ -10,11 +10,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1685227928,
-        "narHash": "sha256-IpTJdlDZxXgC8dCwXHv/9fgUnQ9BAcYL9gAWO4KI9N4=",
+        "lastModified": 1719306515,
+        "narHash": "sha256-26N5Lmu16vNRhgOF5vr403dYbeBcZ/XsNdauhHnfuqw=",
         "owner": "tlm-solutions",
         "repo": "borzoi",
-        "rev": "fd43361a3a771c7a574800bb031ddc905b10a594",
+        "rev": "be99d350c494656a4789315f8e638361afb2b558",
         "type": "github"
       },
       "original": {
