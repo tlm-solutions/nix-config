@@ -9,7 +9,7 @@ in
 {
   microvm = {
     vcpu = 4;
-    mem = 4096;
+    mem = 1024 * 4;
     hypervisor = "cloud-hypervisor";
     socket = "${config.networking.hostName}.socket";
 
