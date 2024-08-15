@@ -528,6 +528,22 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1718207430,
+        "narHash": "sha256-/eO2NTRvrrdYWMI06plS8ANDGOhTZBA+C3H3KwbBI1w=",
+        "ref": "refs/heads/master",
+        "rev": "9e848e173ca83adf884815c66edc08652ef9ade8",
+        "revCount": 1712,
+        "type": "git",
+        "url": "https://github.com/NixOS/nixos-hardware.git"
+      },
+      "original": {
+        "rev": "9e848e173ca83adf884815c66edc08652ef9ade8",
+        "type": "git",
+        "url": "https://github.com/NixOS/nixos-hardware.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1684570954,
@@ -750,6 +766,7 @@
         "lizard": "lizard",
         "microvm": "microvm",
         "naersk": "naersk_4",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_6",
         "nixpkgs-2311": "nixpkgs-2311",
         "private-flake-overlays": "private-flake-overlays",

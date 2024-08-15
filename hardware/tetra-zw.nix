@@ -8,7 +8,7 @@
     ./disk-module
   ];
   networking = {
-    interfaces.enp5s0.useDHCP = lib.mkDefault true;
+    interfaces.enp6s0.useDHCP = lib.mkDefault true;
     useDHCP = lib.mkDefault true;
   };
 
@@ -16,19 +16,36 @@
   networking.wireguard.enable = true;
 
   deployment-TLMS.net.iface.uplink = {
-    name = lib.mkDefault "enp5s0";
+    name = lib.mkDefault "enp6s0";
     useDHCP = lib.mkDefault true;
   };
 
   boot.tmp.tmpfsSize = "25%";
 
-  boot.kernelModules = [ "kvm-intel" "r8168" ];
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  boot.initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" "sd_mod" "sdhci_pci" "sdhci_acpi" ];
-  boot.initrd.kernelModules = [ ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "nvme"
+    "ehci_pci"
+    "ahci"
+    "uas"
+    "usb_storage"
+    "sd_mod"
+    "sr_mod"
+    "rtsx_pci_sdmmc"
+    "aesni_intel"
+    "cryptd"
+    "essiv"
+    "r8169"
+  ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelParams = [ "btusb.enable_autosuspend=n" ];
   boot.extraModulePackages = [ ];
-  # some whoopsie in kernel 6.1.x maybe?
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
+  boot.supportedFilesystems = [ ];
+
+  hardware.cpu.amd.updateMicrocode =
+    lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
 
   swapDevices = [ ];
   fileSystems."/" =
@@ -37,6 +54,13 @@
       fsType = "ext4";
     };
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
+  fileSystems."/boot" =
+    {
+      device = "/dev/disk/by-label/ESP";
+      fsType = "vfat";
+    };
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.configurationLimit = 1;
 }

@@ -34,6 +34,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # nixos hardware for nixos 23.11
+    nixos-hardware.url = "git+https://github.com/NixOS/nixos-hardware.git?rev=9e848e173ca83adf884815c66edc08652ef9ade8";
+
     ## TLMS stuff below
     trekkie = {
       url = "github:tlm-solutions/trekkie";
@@ -130,6 +133,7 @@
     , telegram-decoder
     , trekkie
     , chemo
+    , nixos-hardware
     , ...
     }:
     let
@@ -258,6 +262,7 @@
           specialArgs = { inherit inputs self; registry = registry.tetra-zw; };
           modules = [
             sops-nix.nixosModules.sops
+            nixos-hardware.nixosModules.lenovo-thinkpad-t14-amd-gen1
 
             ./modules/TLMS
             ./hosts/tetra-zw
