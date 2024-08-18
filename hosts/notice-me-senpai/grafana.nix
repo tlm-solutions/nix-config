@@ -67,31 +67,35 @@ in
             ScrapeConfigByHost = lib.mapAttrs makeScrapeConfigHost enabledExporters;
 
             TLMSScrapeConfigs = lib.lists.flatten (map lib.attrValues (lib.attrValues ScrapeConfigByHost));
+
+            tetra-zw-ip = self.unevaluatedNixosConfigurations.tetra-zw.specialArgs.registry.wgAddr4;
+            data-hoarder-ip = self.unevaluatedNixosConfigurations.data-hoarder.specialArgs.registry.wgAddr4;
+            staging-data-hoarder-ip = self.unevaluatedNixosConfigurations.staging-data-hoarder.specialArgs.registry.wgAddr4;
           in
           TLMSScrapeConfigs ++ [
             {
               job_name = "funnel-connections-prod";
               static_configs = [{
-                targets = [ "10.13.37.1:10012" ];
+                targets = [ "${data-hoarder-ip}:10012" ];
               }];
             }
             {
               job_name = "funnel-connections-staging";
               static_configs = [{
-                targets = [ "10.13.37.5:10012" ];
+                targets = [ "${staging-data-hoarder-ip}:10012" ];
               }];
             }
             {
               job_name = "tetra-zw-signal-strength";
               static_configs = [{
-                targets = [ "10.13.37.11:9020" ];
+                targets = [ "${tetra-zw-ip}:9020" ];
               }];
               scrape_interval = "10s";
             }
             {
               job_name = "tetra-zw-burst-count";
               static_configs = [{
-                targets = [ "10.13.37.11:9030" "10.13.37.11:9040" "10.13.37.11:9050" "10.13.37.11:9060" "10.13.37.11:9031" "10.13.37.11:9041" "10.13.37.11:9051" "10.13.37.11:9061" ];
+                targets = [ "${tetra-zw-ip}:9030" "${tetra-zw-ip}:9040" "${tetra-zw-ip}:9050" "${tetra-zw-ip}:9060" "${tetra-zw-ip}:9031" "${tetra-zw-ip}:9041" "${tetra-zw-ip}:9051" "${tetra-zw-ip}:9061" "${tetra-zw-ip}:10001" "${tetra-zw-ip}:10002" "${tetra-zw-ip}:10003" "${tetra-zw-ip}:10004" "${tetra-zw-ip}:10005" ];
               }];
               scrape_interval = "10s";
             }
