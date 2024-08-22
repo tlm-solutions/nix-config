@@ -29,5 +29,5 @@
   deployment-TLMS.monitoring.enable = registry.monitoring;
 
   powerManagement.enable = true;
-  powerManagement.cpuFreqGovernor = "ondemand";
+  powerManagement.cpuFreqGovernor = "schedutil";
 }

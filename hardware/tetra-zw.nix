@@ -45,6 +45,32 @@
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  # Enable OpenCL
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  hardware.amdgpu.opencl = true;
+  hardware.amdgpu.loadInInitrd = true;
+  nixpkgs.config.rocmSupport = true;
+
+  # Adjust power limits of the processor
+  systemd.services."adjust-power-limits" = {
+    enable = true;
+    wantedBy = [ "multi-user.target" ];
+
+    script = ''
+      exec ${pkgs.ryzenadj}/bin/ryzenadj --stapm-limit=30000 --fast-limit=30000 --slow-limit=30000 --tctl-temp=100 --max-performance --apu-skin-temp=100 --skin-temp-limit=100
+    '';
+
+    serviceConfig = {
+      Type = "oneshot";
+      User = config.users.users.root.name;
+    };
+  };
+
   boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_6;
 
   swapDevices = [ ];
