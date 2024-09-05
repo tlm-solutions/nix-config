@@ -50,11 +50,25 @@
     enable = true;
     driSupport = true;
     driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      rocmPackages.clr.icd
+      rocmPackages.clr
+      rocmPackages.rocminfo
+      rocmPackages.rocm-runtime
+      rocm-opencl-icd
+      rocmPackages.rocm-smi
+    ];
   };
 
-  hardware.amdgpu.opencl = true;
-  hardware.amdgpu.loadInInitrd = true;
+  nixpkgs.config.allowUnfree = true;
+  hardware.enableAllFirmware = true;
+
+  hardware.amdgpu.opencl.enable = true;
   nixpkgs.config.rocmSupport = true;
+
+  systemd.tmpfiles.rules = [
+    "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}"
+  ];
 
   # Adjust power limits of the processor
   systemd.services."adjust-power-limits" = {

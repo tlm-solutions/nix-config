@@ -34,8 +34,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # nixos hardware for nixos 23.11
-    nixos-hardware.url = "git+https://github.com/NixOS/nixos-hardware.git?rev=9e848e173ca83adf884815c66edc08652ef9ade8";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     ## TLMS stuff below
     trekkie = {
@@ -299,7 +298,7 @@
       apps."x86_64-linux" = (import ./pkgs/deployment.nix { inherit self pkgs lib; });
 
       nixosConfigurations = lib.attrsets.mapAttrs (name: value: 
-      (if (name == "notice-me-senpai" || name == "tetra-zw") then (nixpkgs-2311.lib.nixosSystem value) else (nixpkgs.lib.nixosSystem value))) unevaluatedNixosConfigurations;
+      (if (name == "notice-me-senpai") then (nixpkgs-2311.lib.nixosSystem value) else (nixpkgs.lib.nixosSystem value))) unevaluatedNixosConfigurations;
 
       hydraJobs =
         let
