@@ -1,9 +1,4 @@
 {
-  nixConfig = {
-    extra-substituters = [ "https://nix-cache.hq.c3d2.de" ];
-    extra-trusted-public-keys = [ "nix-cache.hq.c3d2.de:KZRGGnwOYzys6pxgM8jlur36RmkJQ/y8y62e52fj1ps=" ];
-  };
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-2311.url = "github:NixOS/nixpkgs/nixos-23.11";
@@ -55,6 +50,7 @@
       url = "github:tlm-solutions/kindergarten";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
       };
     };
 
@@ -297,8 +293,10 @@
       # here we evaluate over all nixos configurations making this extremely slow
       apps."x86_64-linux" = (import ./pkgs/deployment.nix { inherit self pkgs lib; });
 
-      nixosConfigurations = lib.attrsets.mapAttrs (name: value: 
-      (if (name == "notice-me-senpai") then (nixpkgs-2311.lib.nixosSystem value) else (nixpkgs.lib.nixosSystem value))) unevaluatedNixosConfigurations;
+      nixosConfigurations = lib.attrsets.mapAttrs
+        (name: value:
+          (if (name == "notice-me-senpai") then (nixpkgs-2311.lib.nixosSystem value) else (nixpkgs.lib.nixosSystem value)))
+        unevaluatedNixosConfigurations;
 
       hydraJobs =
         let
