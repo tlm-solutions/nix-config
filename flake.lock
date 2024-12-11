@@ -310,11 +310,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1714244204,
-        "narHash": "sha256-yXmLC0beeBmMNwvpk9R8EkWN7OSztU/Yg18m9/MX0eo=",
+        "lastModified": 1733959089,
+        "narHash": "sha256-lAqE316ljB59YxAvAmotXu0muorzYjDngC3IeEuWW9E=",
         "owner": "tlm-solutions",
         "repo": "funnel",
-        "rev": "4bdc18a09dd92876e0bc5058461b4026dfb20003",
+        "rev": "24620b2d923fc7dae7398a6207fc28409c734026",
         "type": "github"
       },
       "original": {
