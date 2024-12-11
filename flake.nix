@@ -293,10 +293,7 @@
       # here we evaluate over all nixos configurations making this extremely slow
       apps."x86_64-linux" = (import ./pkgs/deployment.nix { inherit self pkgs lib; });
 
-      nixosConfigurations = lib.attrsets.mapAttrs
-        (name: value:
-          (if (name == "notice-me-senpai") then (nixpkgs-2311.lib.nixosSystem value) else (nixpkgs.lib.nixosSystem value)))
-        unevaluatedNixosConfigurations;
+      nixosConfigurations = lib.attrsets.mapAttrs (name: value: (nixpkgs.lib.nixosSystem value)) unevaluatedNixosConfigurations;
 
       hydraJobs =
         let

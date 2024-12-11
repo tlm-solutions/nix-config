@@ -48,14 +48,13 @@
   # Enable OpenCL
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;
     extraPackages = with pkgs; [
       rocmPackages.clr.icd
       rocmPackages.clr
       rocmPackages.rocminfo
       rocmPackages.rocm-runtime
-      rocm-opencl-icd
+      #rocm-opencl-icd
       rocmPackages.rocm-smi
     ];
   };

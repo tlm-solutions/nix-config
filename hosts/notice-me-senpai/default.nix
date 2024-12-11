@@ -8,7 +8,7 @@ let
 in
 {
   imports = [
-    ./grafana.nix
+    #./grafana.nix
   ];
   microvm = {
     vcpu = 4;
