@@ -32,7 +32,10 @@ in
             wgHosts = lib.filterAttrs filterWgHosts self.nixosConfigurations;
 
             # collect active prometheus exporters
-            filterEnabledExporters = name: host: lib.filterAttrs (k: v: (builtins.isAttrs v) && v.enable == true) host.config.services.prometheus.exporters;
+            # First we check that the config section actually evalutes, since it is common practice to assert on evaluating a section if this is a removed option.
+            filterSuccessfulEvalExporters = host: lib.filterAttrs (k: v: (builtins.tryEval host.config.services.prometheus.exporters.${k}).success) host.config.services.prometheus.exporters;
+            # Then we filter on the enabled exporters
+            filterEnabledExporters = name: host: lib.filterAttrs (k: v: (builtins.isAttrs v) && v.enable == true) (filterSuccessfulEvalExporters host);
             enabledExporters = lib.mapAttrs filterEnabledExporters wgHosts;
 
             # turns exporter config into scraper config
@@ -122,20 +125,34 @@ in
           max_chunk_age = "1h";
           chunk_target_size = 1048576;
           chunk_retain_period = "30s";
-          max_transfer_retries = 0;
+          wal = {
+            enabled = true;
+          };
         };
 
         schema_config = {
-          configs = [{
-            from = "2022-05-05";
-            store = "boltdb-shipper";
-            object_store = "filesystem";
-            schema = "v11";
-            index = {
-              prefix = "index_";
-              period = "24h";
-            };
-          }];
+          configs = [
+            {
+              from = "2022-05-05";
+              store = "boltdb-shipper";
+              object_store = "filesystem";
+              schema = "v11";
+              index = {
+                prefix = "index_";
+                period = "24h";
+              };
+            }
+            {
+              from = "2024-12-29";
+              store = "tsdb";
+              object_store = "filesystem";
+              schema = "v13";
+              index = {
+                prefix = "index_";
+                period = "24h";
+              };
+            }
+          ];
         };
 
         storage_config = {
@@ -143,7 +160,11 @@ in
             active_index_directory = "/var/lib/loki/boltdb-shipper-active";
             cache_location = "/var/lib/loki/boltdb-shipper-cache";
             cache_ttl = "48h";
-            shared_store = "filesystem";
+          };
+          tsdb_shipper = {
+            active_index_directory = "/var/lib/loki/tsdb-shipper-active";
+            cache_location = "/var/lib/loki/tsdb-shipper-cache";
+            cache_ttl = "48h";
           };
           filesystem = {
             directory = "/var/lib/loki/chunks";
@@ -155,10 +176,6 @@ in
           reject_old_samples_max_age = "168h";
         };
 
-        chunk_store_config = {
-          max_look_back_period = "0s";
-        };
-
         table_manager = {
           retention_deletes_enabled = true;
           retention_period = "720h";
@@ -168,8 +185,8 @@ in
           working_directory = "/var/lib/loki";
           compaction_interval = "10m";
           retention_enabled = true;
+          delete_request_store = "filesystem";
           retention_delete_delay = "1m";
-          shared_store = "filesystem";
           compactor_ring = {
             kvstore = {
               store = "inmemory";
