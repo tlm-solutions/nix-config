@@ -1,7 +1,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-2311.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     # naersk and flake utils are not used by this flake directly, but needed
     # for the follows in all the other ones.
@@ -121,7 +120,6 @@
     , kindergarten
     , microvm
     , nixpkgs
-    , nixpkgs-2311
     , sops-nix
     , lizard
     , bureaucrat
