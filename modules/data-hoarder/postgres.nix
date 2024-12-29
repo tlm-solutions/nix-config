@@ -68,6 +68,9 @@
 
       mkdir -p $OUT_FOLDER
       chmod a+xr $OUT_FOLDER
+      
+      echo "Copying $TMPFILE to $OUT_FOLDER/$CSV_FILENAME"
+      cat $TMPFILE | wc -l
 
       cp $TMPFILE $OUT_FOLDER/$CSV_FILENAME
       chmod a+r $OUT_FOLDER/$CSV_FILENAME
