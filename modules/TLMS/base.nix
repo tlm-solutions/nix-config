@@ -20,7 +20,6 @@ let
 in
 {
   nix = {
-    package = pkgs.nixVersions.latest;
     extraOptions = ''
     '';
     settings = {

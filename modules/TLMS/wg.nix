@@ -52,23 +52,20 @@ in
 
       peers = map
         (x: {
-          wireguardPeerConfig = {
-            PublicKey = x.wireguardPublicKey;
-            AllowedIPs = [ "${x.wgAddr4}/32" ];
-            PersistentKeepalive = keepalive;
-          };
+          PublicKey = x.wireguardPublicKey;
+          AllowedIPs = [ "${x.wgAddr4}/32" ];
+          PersistentKeepalive = keepalive;
         })
         peerSystemRegistries;
 
-      ep = [{
-        wireguardPeerConfig =
-          let x = lib.elemAt endpointRegistries 0; in {
-            PublicKey = x.wireguardPublicKey;
-            AllowedIPs = [ "${x.wgAddr4}/${toString cfg.prefix4}" ];
-            Endpoint = with x.publicWireguardEndpoint; "${host}:${toString port}";
-            PersistentKeepalive = keepalive;
-          };
-      }];
+      ep = let x = lib.elemAt endpointRegistries 0; in [
+        {
+          PublicKey = x.wireguardPublicKey;
+          AllowedIPs = [ "${x.wgAddr4}/${toString cfg.prefix4}" ];
+          Endpoint = with x.publicWireguardEndpoint; "${host}:${toString port}";
+          PersistentKeepalive = keepalive;
+        }
+      ];
 
       # stuff proper
       dvbwg-netdev = {
@@ -84,11 +81,9 @@ in
 
       expeers = map
         (x: {
-          wireguardPeerConfig = {
-            PublicKey = x.publicKey;
-            AllowedIPs = [ "${x.addr4}/32" ];
-            PersistentKeepalive = keepalive;
-          };
+          PublicKey = x.publicKey;
+          AllowedIPs = [ "${x.addr4}/32" ];
+          PersistentKeepalive = keepalive;
         })
         cfg.extraPeers;
 

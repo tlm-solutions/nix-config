@@ -8,7 +8,7 @@ let
 in
 {
   imports = [
-    #./grafana.nix
+    ./grafana.nix
   ];
   microvm = {
     vcpu = 4;
@@ -65,11 +65,9 @@ in
       dns = [ "1.1.1.1" ];
       routes = [
         {
-          routeConfig = {
-            Gateway = "45.158.40.160";
-            GatewayOnLink = true;
-            Destination = "0.0.0.0/0";
-          };
+          Gateway = "45.158.40.160";
+          GatewayOnLink = true;
+          Destination = "0.0.0.0/0";
         }
       ];
     };

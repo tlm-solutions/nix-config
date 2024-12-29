@@ -15,10 +15,8 @@ let eth = "enp1s0"; in
     dns = [ "141.30.1.1" "9.9.9.9" ];
     routes = [
       {
-        routeConfig = {
-          Gateway = "141.30.30.129";
-          Destination = "0.0.0.0/0";
-        };
+        Gateway = "141.30.30.129";
+        Destination = "0.0.0.0/0";
       }
     ];
   };

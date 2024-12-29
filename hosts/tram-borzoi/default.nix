@@ -66,11 +66,9 @@ in
       dns = [ "172.20.73.8" "9.9.9.9" ];
       routes = [
         {
-          routeConfig = {
-            Gateway = "172.20.73.1";
-            GatewayOnLink = true;
-            Destination = "0.0.0.0/0";
-          };
+          Gateway = "172.20.73.1";
+          GatewayOnLink = true;
+          Destination = "0.0.0.0/0";
         }
       ];
     };

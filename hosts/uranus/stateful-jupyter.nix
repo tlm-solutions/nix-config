@@ -34,7 +34,6 @@ in
     storageDriver = "devicemapper";
     extraOptions = "--storage-opt dm.basesize=40G --storage-opt dm.fs=xfs";
   };
-  #systemd.enableUnifiedCgroupHierarchy = false;
 
   # user to run the thing
   # jupyterlab container
