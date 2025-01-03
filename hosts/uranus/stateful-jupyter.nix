@@ -30,9 +30,7 @@ in
 
   virtualisation.docker = {
     enable = true;
-    # magic from marenz to make it work on ceph
-    storageDriver = "devicemapper";
-    extraOptions = "--storage-opt dm.basesize=40G --storage-opt dm.fs=xfs";
+    storageDriver = "overlay2";
   };
 
   # user to run the thing
