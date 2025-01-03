@@ -30,7 +30,8 @@ in
 
   virtualisation.docker = {
     enable = true;
-    storageDriver = "fuse-overlayfs";
+    # automatic selection by docker
+    storageDriver = null;
   };
 
   # user to run the thing
