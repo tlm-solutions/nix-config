@@ -264,7 +264,11 @@
 
         uranus = {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs self; registry = registry.uranus; };
+          specialArgs = {
+            inherit inputs self;
+            registry = registry.uranus;
+            bind-ip = registry.uranus.wgAddr4;
+          };
           modules = [
             sops-nix.nixosModules.sops
             microvm.nixosModules.microvm
