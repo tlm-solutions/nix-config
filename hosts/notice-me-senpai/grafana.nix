@@ -201,6 +201,8 @@ in
       enable = true;
       settings.server = {
         domain = grafana_host;
+        root_url = "https://${grafana_host}/";
+        protocol = "http";
         http_addr = "127.0.0.1";
         http_port = 2342;
       };
