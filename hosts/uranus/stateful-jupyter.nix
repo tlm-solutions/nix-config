@@ -30,11 +30,9 @@ in
 
   virtualisation.docker = {
     enable = true;
-    # magic from marenz to make it work on ceph
-    storageDriver = "devicemapper";
-    extraOptions = "--storage-opt dm.basesize=40G --storage-opt dm.fs=xfs";
+    # automatic selection by docker
+    storageDriver = null;
   };
-  #systemd.enableUnifiedCgroupHierarchy = false;
 
   # user to run the thing
   # jupyterlab container
@@ -53,6 +51,7 @@ in
         let
           packages = lib.concatStringsSep " " [
             # alphabetically `:sort`ed plz
+            "bitstring"
             "geojson"
             "matplotlib"
             "numpy"
@@ -61,7 +60,6 @@ in
             "psycopg"
             "scipy"
             "seaborn"
-            "bitstring"
           ];
         in
         (import ./jupyter-container.nix {

@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 let
   headers = ''
     # Permissions Policy - gps only
@@ -22,7 +22,8 @@ let
   '';
 in
 {
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  # Open firewall HTTP and HTTPS if nginx is enabled
+  networking.firewall.allowedTCPPorts = if config.services.nginx.enable then [ 80 443 ] else [];
 
   security.acme.acceptTerms = true;
   security.acme.defaults.email = "TLMS@protonmail.com";
