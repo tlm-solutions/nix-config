@@ -40,7 +40,7 @@ in
     backend = "docker";
     containers."jupyterlab-stateful" = {
       autoStart = true;
-      ports = [ "8080:8080" ];
+      ports = [ "${registry.wgAddr4}:80:8080" ];
       volumes = [
         "/var/lib/jupyter-volume:/workdir"
         "/var/lib/root-home:/root"
@@ -64,7 +64,6 @@ in
         in
         (import ./jupyter-container.nix {
           inherit pkgs lib jupyterUsers packages;
-          bind-ip = registry.wgAddr4;
         });
       image = "stateful-jupyterlab";
     };

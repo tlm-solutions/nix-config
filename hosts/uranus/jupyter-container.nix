@@ -3,8 +3,8 @@
 , packages
 , jupyterUsers
 , jupyterAdminGroup ? "uranus-owner"
-, bind-ip ? "127.0.0.1"
-, bind-port ? 80
+, bind-ip ? "0.0.0.0"
+, bind-port ? 8080
 , ...
 }:
 let
