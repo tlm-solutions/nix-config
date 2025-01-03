@@ -9,7 +9,7 @@
     owner = config.users.users.postgres.name;
   };
   services.postgresql = {
-    inherit (registry.postgres) port;
+    settings.port = registry.postgres.port;
     enable = true;
     enableTCPIP = true;
     authentication =
