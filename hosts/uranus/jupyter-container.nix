@@ -3,7 +3,7 @@
 , packages
 , jupyterUsers
 , jupyterAdminGroup ? "uranus-owner"
-, bind-ip ? "10.13.37.9"
+, bind-ip ? "127.0.0.1"
 , bind-port ? 80
 , ...
 }:

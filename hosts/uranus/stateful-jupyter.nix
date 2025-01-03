@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, lib, registry, ... }:
 let
   jupyterUsers = [
     {
@@ -64,6 +64,7 @@ in
         in
         (import ./jupyter-container.nix {
           inherit pkgs lib jupyterUsers packages;
+          bind-ip = registry.wgAddr4;
         });
       image = "stateful-jupyterlab";
     };
