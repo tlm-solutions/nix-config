@@ -64,7 +64,7 @@
       OUT_FOLDER=/var/lib/pub-files/postgres-dumps/$(date -d"$(date) - 1 day" +"%Y-%m")
       CSV_FILENAME=$(date -d"$(date) - 1 day" +"%Y-%m-%d").csv
 
-      psql -d tlms -c "COPY (SELECT id, to_char(time::timestamp at time zone 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS') time, station, r09_type, delay, reporting_point, junction, direction, request_status, priority, direction_request, line, run_number, destination_number, train_length, vehicle_number, operator, region FROM r09_telegrams WHERE time > now() - interval '24 hours' ORDER by time ASC) TO STDOUT DELIMITER ',' HEADER CSV;" > $TMPFILE
+      psql -d tlms -c "COPY (SELECT id, to_char(time::timestamp at time zone 'UTC', 'YYYY-MM-DD\"T\"HH24:MI:SS') time, station, r09_type, delay, reporting_point, junction, direction, request_status, priority, direction_request, line, run_number, destination_number, train_length, vehicle_number, operator, region FROM r09_telegrams WHERE time > now() - interval '24 hours' ORDER by time ASC) TO STDOUT DELIMITER ',' HEADER CSV;" > $TMPFILE
 
       mkdir -p $OUT_FOLDER
       chmod a+xr $OUT_FOLDER
