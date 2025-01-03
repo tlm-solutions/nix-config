@@ -51,6 +51,7 @@ in
         let
           packages = lib.concatStringsSep " " [
             # alphabetically `:sort`ed plz
+            "bitstring"
             "geojson"
             "matplotlib"
             "numpy"
@@ -59,7 +60,6 @@ in
             "psycopg"
             "scipy"
             "seaborn"
-            "bitstring"
           ];
         in
         (import ./jupyter-container.nix {

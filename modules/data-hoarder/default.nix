@@ -8,7 +8,6 @@
     ./bureaucrat.nix
     ./file_sharing.nix
     ./map.nix
-    ./nginx.nix
     ./postgres.nix
     ./secrets.nix
     ./socket.nix

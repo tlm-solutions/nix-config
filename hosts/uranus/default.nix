@@ -9,7 +9,6 @@ in
 {
   imports = [
     ./stateful-jupyter.nix
-    ./stateless-jupyter.nix
   ];
 
   microvm = {
@@ -84,7 +83,7 @@ in
 
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 8080 22 ];
+  networking.firewall.allowedTCPPorts = [ 8080 ];
 
   users.motd = lib.mkForce (builtins.readFile ./motd.txt);
 
