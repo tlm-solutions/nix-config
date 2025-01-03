@@ -83,8 +83,6 @@ in
 
   };
 
-  networking.firewall.allowedTCPPorts = [ 8080 ];
-
   users.motd = lib.mkForce (builtins.readFile ./motd.txt);
 
   # This value determines the NixOS release from which the default

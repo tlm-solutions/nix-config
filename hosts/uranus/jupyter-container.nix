@@ -3,16 +3,16 @@
 , packages
 , jupyterUsers
 , jupyterAdminGroup ? "uranus-owner"
-, bind-ip ? "0.0.0.0"
-, bind-port ? 8080
+, bind-ip ? "10.13.37.9"
+, bind-port ? 80
 , ...
 }:
 let
   miniconda-dockerhub = pkgs.dockerTools.pullImage {
     imageName = "continuumio/miniconda3";
-    imageDigest = "sha256:2016f249cdae34692a20d90fdb17432d07cf312992345d0e1e492bc36a12a35b";
-    sha256 = "sha256-x4AuqWDff3QNqP4FfvlcwQi81XCK7YP1xOMfHdxdNfQ=";
-    finalImageTag = "24.3.0-0";
+    imageDigest = "sha256:6a66425f001f739d4778dd732e020afeb06175f49478fafc3ec673658d61550b";
+    sha256 = "sha256-/0P12tK+Z9eng448m+TMaUOtucUxrPos8iAeqbOvIP4=";
+    finalImageTag = "24.11.1-0";
     finalImageName = "miniconda";
 
   };
