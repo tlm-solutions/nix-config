@@ -5,21 +5,19 @@ in
 {
   microvm = {
     hypervisor = "cloud-hypervisor";
-    mem = 1024 * 4;
-    vcpu = 4;
+    mem = 1024 * 1;
+    balloonMem = 1024 * 3;
+    vcpu = 2;
+    storeOnDisk = true;
+    storeDiskErofsFlags = [ "-zlz4hc,level=5" ];
+
     interfaces = [{
       type = "tap";
       id = "serv-dvb-prod";
       mac = mac_addr;
     }];
+
     shares = [
-      {
-        source = "/nix/store";
-        mountPoint = "/nix/.ro-store";
-        tag = "store";
-        proto = "virtiofs";
-        socket = "store.socket";
-      }
       {
         source = "/var/lib/microvms/data-hoarder/etc";
         mountPoint = "/etc";
