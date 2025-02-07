@@ -13,9 +13,12 @@ in
 
   microvm = {
     vcpu = 4;
-    mem = 1024 * 4;
+    mem = 1024 * 2;
+    balloonMem = 1024 * 2;
     hypervisor = "cloud-hypervisor";
     socket = "${config.networking.hostName}.socket";
+    storeOnDisk = true;
+    storeDiskErofsFlags = [ "-zlz4hc,level=5" ];
 
     interfaces = [{
       type = "tap";
@@ -24,13 +27,6 @@ in
     }];
 
     shares = [
-      {
-        source = "/nix/store";
-        mountPoint = "/nix/.ro-store";
-        tag = "store";
-        proto = "virtiofs";
-        socket = "store.socket";
-      }
       {
         source = "/var/lib/microvms/uranus/etc";
         mountPoint = "/etc";

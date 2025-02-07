@@ -11,10 +11,12 @@ in
     ./grafana.nix
   ];
   microvm = {
-    vcpu = 4;
-    mem = 1024 * 4;
+    vcpu = 2;
+    mem = 1024 * 2;
     hypervisor = "cloud-hypervisor";
     socket = "${config.networking.hostName}.socket";
+    storeOnDisk = true;
+    storeDiskErofsFlags = [ "-zlz4hc,level=5" ];
 
     interfaces = [{
       type = "tap";
@@ -22,13 +24,7 @@ in
       mac = mac_addr;
     }];
 
-    shares = [{
-      source = "/nix/store";
-      mountPoint = "/nix/.ro-store";
-      tag = "store";
-      proto = "virtiofs";
-      socket = "store.socket";
-    }
+    shares = [
       {
         source = "/var/lib/microvms/notice-me-senpai/etc";
         mountPoint = "/etc";
