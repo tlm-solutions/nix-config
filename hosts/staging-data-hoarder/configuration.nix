@@ -28,14 +28,14 @@ in
         mountPoint = "/etc";
         tag = "etc";
         proto = "virtiofs";
-        socket = "etc.socket";
+        socket = "/var/lib/microvms/staging-data-hoarder/etc.socket";
       }
       {
         source = "/var/lib/microvms/staging-data-hoarder/var";
         mountPoint = "/var";
         tag = "var";
         proto = "virtiofs";
-        socket = "var.socket";
+        socket = "/var/lib/microvms/staging-data-hoarder/var.socket";
       }
     ];
   };
