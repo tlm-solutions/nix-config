@@ -36,7 +36,7 @@
       {
         # gregor
         publicKey = "bBWQsNrm508OBDfs4I6KRLX4R0D/JLzS680plcSr+Cs=";
-        addr4 = "10.13.37.11";
+        addr4 = "10.13.37.12";
       }
     ];
   };
