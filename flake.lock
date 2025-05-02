@@ -150,11 +150,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1746114843,
-        "narHash": "sha256-t+p3s1W5PN0hlhGSI4iZF07zBhpeJXcRz9FSBsHvIh4=",
+        "lastModified": 1746175107,
+        "narHash": "sha256-srt9SoKqVlehvrtVPutS3sV4U3CPucDYD7xjMRr0JgE=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "6fcc5853032f2369ede1884bab08c7544cb4814a",
+        "rev": "5dd68cca637f683ce4d1e07e93de5a3d0a985b86",
         "type": "github"
       },
       "original": {
