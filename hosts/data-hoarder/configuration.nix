@@ -6,7 +6,7 @@ in
   microvm = {
     hypervisor = "cloud-hypervisor";
     mem = 1024 * 1;
-    balloonMem = 1024 * 3;
+    balloon = true;
     vcpu = 2;
     storeOnDisk = true;
     storeDiskErofsFlags = [ "-zlz4hc,level=5" ];

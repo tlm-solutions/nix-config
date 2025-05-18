@@ -33,6 +33,11 @@
         publicKey = "WFRZB+BmADZFZpzswTseaVBAnNH9ulfMPdS5bDQp1UA=";
         addr4 = "10.13.37.10";
       }
+      {
+        # gregor
+        publicKey = "bBWQsNrm508OBDfs4I6KRLX4R0D/JLzS680plcSr+Cs=";
+        addr4 = "10.13.37.12";
+      }
     ];
   };
 }

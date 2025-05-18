@@ -74,6 +74,7 @@ in
       ../../keys/ssh/marenz1
       ../../keys/ssh/marenz2
       ../../keys/ssh/marcel
+      ../../keys/ssh/gdstr
     ];
   };
   services.openssh = {
