@@ -150,11 +150,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1746175107,
-        "narHash": "sha256-srt9SoKqVlehvrtVPutS3sV4U3CPucDYD7xjMRr0JgE=",
+        "lastModified": 1747577181,
+        "narHash": "sha256-12xd4w87GO7i2VcTd+h/w7LzO0m6kC9iahOFAfN29EY=",
         "owner": "tlm-solutions",
         "repo": "datacare",
-        "rev": "5dd68cca637f683ce4d1e07e93de5a3d0a985b86",
+        "rev": "563678b54d195c54765788235c0a51d816102ba6",
         "type": "github"
       },
       "original": {
@@ -546,16 +546,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1743095683,
-        "narHash": "sha256-gWd4urRoLRe8GLVC/3rYRae1h+xfQzt09xOfb0PaHSk=",
+        "lastModified": 1747335874,
+        "narHash": "sha256-IKKIXTSYJMmUtE+Kav5Rob8SgLPnfnq4Qu8LyT4gdqQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5e5402ecbcb27af32284d4a62553c019a3a49ea6",
+        "rev": "ba8b70ee098bc5654c459d6a95dfc498b91ff858",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-unstable",
+        "ref": "nixos-24.11",
         "repo": "nixpkgs",
         "type": "github"
       }
