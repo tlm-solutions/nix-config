@@ -128,11 +128,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1747431500,
-        "narHash": "sha256-Nvsrj6k3FffTl2Ce/tQHh2sjrbuDLqxFDWgjI88jOOo=",
+        "lastModified": 1747642032,
+        "narHash": "sha256-1BeMhBcNlhhTIcuomcR7fwBMcS19KGYPB+g8fbz+y5I=",
         "owner": "tlm-solutions",
         "repo": "data-accumulator",
-        "rev": "bfce29ec2025ec7ba10a973e596ab4f1a01970b4",
+        "rev": "d9fced8e1dcc299f262c2bcec773cc25da35b11a",
         "type": "github"
       },
       "original": {
