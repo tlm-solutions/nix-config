@@ -1,11 +1,16 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     # naersk and flake utils are not used by this flake directly, but needed
     # for the follows in all the other ones.
     naersk = {
       url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fenix = {
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -35,6 +40,7 @@
       url = "github:tlm-solutions/trekkie";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        fenix.follows = "fenix";
         naersk.follows = "naersk";
         tlms-rs.follows = "tlms-rs";
         utils.follows = "flake-utils";
@@ -43,6 +49,13 @@
 
     datacare = {
       url = "github:tlm-solutions/datacare";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        fenix.follows = "fenix";
+        naersk.follows = "naersk";
+        utils.follows = "flake-utils";
+        tlms-rs.follows = "tlms-rs";
+      };
     };
 
     kindergarten = {
@@ -70,21 +83,26 @@
 
     data-accumulator = {
       url = "github:tlm-solutions/data-accumulator";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.naersk.follows = "naersk";
-      inputs.utils.follows = "flake-utils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        naersk.follows = "naersk";
+        utils.follows = "flake-utils";
+        fenix.follows = "fenix";
+      };
     };
 
     lizard = {
       url = "github:tlm-solutions/lizard";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
+      inputs.naersk.follows = "naersk";
+      inputs.fenix.follows = "fenix";
     };
 
     bureaucrat = {
       url = "github:tlm-solutions/bureaucrat";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
+      inputs.flake-utils.follows = "flake-utils";
     };
 
     funnel = {
@@ -101,11 +119,16 @@
     chemo = {
       url = "github:tlm-solutions/chemo";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "flake-utils";
+      inputs.flake-utils.follows = "flake-utils";
     };
     borzoi = {
       url = "github:tlm-solutions/borzoi";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        fenix.follows = "fenix";
+        naersk.follows = "naersk";
+        utils.follows = "flake-utils";
+      };
     };
   };
 
