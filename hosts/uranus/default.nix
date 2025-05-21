@@ -14,7 +14,7 @@ in
   microvm = {
     vcpu = 4;
     mem = 1024 * 2;
-    balloonMem = 1024 * 2;
+    balloon = true;
     hypervisor = "cloud-hypervisor";
     socket = "${config.networking.hostName}.socket";
     storeOnDisk = true;
