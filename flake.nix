@@ -296,7 +296,8 @@
       };
     in
     # overlays this private flake when in impure mode
-    (overlayFlake "git+ssh://git@github.com/tlm-solutions/nix-config-private.git" {
+      #(overlayFlake "git+ssh://git@github.com/tlm-solutions/nix-config-private.git" {
+    {
       inherit unevaluatedNixosConfigurations;
 
       packages."aarch64-linux".box8 = self.nixosConfigurations.traffic-stop-box-8.config.system.build.sdImage;
@@ -318,5 +319,5 @@
           get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
         in
         nixpkgs.lib.mapAttrs get-toplevel self.nixosConfigurations;
-    });
+    };
 }
