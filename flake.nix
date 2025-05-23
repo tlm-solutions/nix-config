@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     # naersk and flake utils are not used by this flake directly, but needed
     # for the follows in all the other ones.
@@ -51,7 +51,6 @@
         fenix.follows = "fenix";
         naersk.follows = "naersk";
         utils.follows = "flake-utils";
-        tlms-rs.follows = "tlms-rs";
       };
     };
 
@@ -146,8 +145,7 @@
     }:
     let
       pkgs = nixpkgs.legacyPackages."x86_64-linux";
-      lib = pkgs.lib;
-      overlayFlake = private-flake-overlays.lib.overlayFlake;
+      inherit (pkgs) lib;
 
       registry = import ./registry;
 
@@ -189,7 +187,7 @@
       ];
 
       # function that generates a system with the given number
-      generate_system = (id:
+      generate_system = id:
         let
           myRegistry = registry.traffic-stop-box."${toString id}";
         in
@@ -211,8 +209,7 @@
                 }
               ] ++ stop-box-modules;
           };
-        }
-      );
+        };
 
       # list of traffic-stop-box-$id that will be built
       stop_box_ids = [ 0 1 4 ];
@@ -296,13 +293,13 @@
 
       # these are in the app declaration as nix before 2.19 tries to find attrPaths in packages first.
       # here we evaluate over all nixos configurations making this extremely slow
-      apps."x86_64-linux" = (import ./pkgs/deployment.nix { inherit self pkgs lib; });
+      apps."x86_64-linux" = import ./pkgs/deployment.nix { inherit self pkgs lib; };
 
-      nixosConfigurations = lib.attrsets.mapAttrs (name: value: (nixpkgs.lib.nixosSystem value)) unevaluatedNixosConfigurations;
+      nixosConfigurations = lib.attrsets.mapAttrs (_name: value: (nixpkgs.lib.nixosSystem value)) unevaluatedNixosConfigurations;
 
       hydraJobs =
         let
-          get-toplevel = (host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel);
+          get-toplevel = _host: nixSystem: nixSystem.config.microvm.declaredRunner or nixSystem.config.system.build.toplevel;
         in
         nixpkgs.lib.mapAttrs get-toplevel self.nixosConfigurations;
     };
