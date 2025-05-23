@@ -9,8 +9,8 @@
     }];
   };
   systemd.services."data-accumulator" = {
-    after = [ "postgresql.service" ];
-    wants = [ "postgresql.service" ];
+    after = [ "postgresql.target" ];
+    wants = [ "postgresql.target" ];
   };
 
   services = {

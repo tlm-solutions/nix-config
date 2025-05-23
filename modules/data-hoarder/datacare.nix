@@ -9,8 +9,8 @@
     group = config.users.groups.postgres-tlms.name;
   };
   systemd.services."datacare" = {
-    after = [ "postgresql.service" ];
-    wants = [ "postgresql.service" ];
+    after = [ "postgresql.target" ];
+    wants = [ "postgresql.target" ];
   };
 
   services = {

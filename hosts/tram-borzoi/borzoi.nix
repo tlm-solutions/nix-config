@@ -16,8 +16,8 @@
   };
 
   systemd.services."borzoi" = {
-    after = [ "postgresql.service" ];
-    wants = [ "postgresql.service" ];
+    after = [ "postgresql.target" ];
+    wants = [ "postgresql.target" ];
     serviceConfig = {
       User = config.users.users.borzoi.name;
       Group = config.users.groups.borzoi.name;

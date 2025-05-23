@@ -15,7 +15,7 @@
     ];
   };
   systemd.services."chemo" = {
-    after = [ "postgresql.service" ];
-    wants = [ "postgresql.service" ];
+    after = [ "postgresql.target" ];
+    wants = [ "postgresql.target" ];
   };
 }
