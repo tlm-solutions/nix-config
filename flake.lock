@@ -181,11 +181,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1748017668,
-        "narHash": "sha256-8kDv8Cvcb98GmaqIT6NhLiFel1FqpJ9JRhIv7kV0NwU=",
+        "lastModified": 1748033926,
+        "narHash": "sha256-zbjRzZLO+HPm2eFtBOFmNVim6aEK2XbB6UlDMS6x8OI=",
         "owner": "tlm-solutions",
         "repo": "funnel",
-        "rev": "6ad62fe7486b4425fd77f315eb15552bba1debf9",
+        "rev": "6dc61196250b4d9223f8bec263612431a062f629",
         "type": "github"
       },
       "original": {
@@ -317,11 +317,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1747825515,
-        "narHash": "sha256-BWpMQymVI73QoKZdcVCxUCCK3GNvr/xa2Dc4DM1o2BE=",
+        "lastModified": 1747953325,
+        "narHash": "sha256-y2ZtlIlNTuVJUZCqzZAhIw5rrKP4DOSklev6c8PyCkQ=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cd2812de55cf87df88a9e09bf3be1ce63d50c1a6",
+        "rev": "55d1f923c480dadce40f5231feb472e81b0bab48",
         "type": "github"
       },
       "original": {
