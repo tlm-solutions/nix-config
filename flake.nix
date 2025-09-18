@@ -215,7 +215,7 @@
       );
 
       # list of traffic-stop-box-$id that will be built
-      stop_box_ids = [ 0 1 4 8 9 ];
+      stop_box_ids = [ 0 1 4 ];
 
       # attribute set of all traffic stop boxes
       r09_receivers = nixpkgs.lib.foldl (x: id: nixpkgs.lib.mergeAttrs x (generate_system id)) { } stop_box_ids;
@@ -227,15 +227,6 @@
           modules = [
             microvm.nixosModules.microvm
             ./hosts/data-hoarder
-          ] ++ data-hoarder-modules;
-        };
-
-        staging-data-hoarder = {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs self; registry = registry.staging-data-hoarder; };
-          modules = [
-            ./hosts/staging-data-hoarder
-            microvm.nixosModules.microvm
           ] ++ data-hoarder-modules;
         };
 
@@ -299,11 +290,7 @@
     {
       inherit unevaluatedNixosConfigurations;
 
-      packages."aarch64-linux".box8 = self.nixosConfigurations.traffic-stop-box-8.config.system.build.sdImage;
-      packages."aarch64-linux".box9 = self.nixosConfigurations.traffic-stop-box-9.config.system.build.sdImage;
-
       packages."x86_64-linux" = {
-        staging-microvm = self.nixosConfigurations.staging-data-hoarder.config.microvm.declaredRunner;
         data-hoarder-microvm = self.nixosConfigurations.data-hoarder.config.microvm.declaredRunner;
       };
 

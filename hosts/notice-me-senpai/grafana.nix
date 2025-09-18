@@ -73,19 +73,12 @@ in
 
             tetra-zw-ip = self.unevaluatedNixosConfigurations.tetra-zw.specialArgs.registry.wgAddr4;
             data-hoarder-ip = self.unevaluatedNixosConfigurations.data-hoarder.specialArgs.registry.wgAddr4;
-            staging-data-hoarder-ip = self.unevaluatedNixosConfigurations.staging-data-hoarder.specialArgs.registry.wgAddr4;
           in
           TLMSScrapeConfigs ++ [
             {
               job_name = "funnel-connections-prod";
               static_configs = [{
                 targets = [ "${data-hoarder-ip}:10012" ];
-              }];
-            }
-            {
-              job_name = "funnel-connections-staging";
-              static_configs = [{
-                targets = [ "${staging-data-hoarder-ip}:10012" ];
               }];
             }
             {
