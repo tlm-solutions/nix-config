@@ -74,7 +74,6 @@
 
     r09-receiver = {
       url = "github:tlm-solutions/r09-receiver";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.utils.follows = "flake-utils";
     };
 
