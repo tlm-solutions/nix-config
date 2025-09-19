@@ -8,12 +8,6 @@
       port = 51820;
     };
   };
-  staging-data-hoarder = import ./data-hoarder // {
-    hostName = "staging-data-hoarder";
-    wgAddr4 = "10.13.37.5";
-    wireguardPublicKey = "48hc7DVnUh2DHYhrxrNtNzj05MRecJO52j2niPImvkU=";
-    publicWireguardEndpoint = null;
-  };
   traffic-stop-box = import ./traffic-stop-box;
   notice-me-senpai = {
     hostName = "notice-me-senpai";
