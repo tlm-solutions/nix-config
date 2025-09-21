@@ -31,7 +31,7 @@
   boot.initrd.kernelModules = [ ];
   boot.extraModulePackages = [ ];
   # some whoopsie in kernel 6.1.x maybe?
-  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_12;
 
   swapDevices = [ ];
   fileSystems."/" =
