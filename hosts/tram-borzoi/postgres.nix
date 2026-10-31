@@ -46,7 +46,7 @@
       TimeoutSec = lib.mkForce 3000;
     };
     postStart = lib.mkAfter ''
-      PSQL="psql --port=${builtins.toString config.services.postgres.settings.port}"
+      PSQL="psql --port=${builtins.toString config.services.postgresql.settings.port}"
 
       # set pw for the users
       $PSQL -c "ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres-borzoi-grafana-pw.path})';"
