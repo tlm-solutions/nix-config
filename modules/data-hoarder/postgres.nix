@@ -35,6 +35,8 @@
     unitConfig = { TimeoutStartSec = 3000; };
     serviceConfig = { TimeoutSec = lib.mkForce 3000; };
     postStart = lib.mkAfter ''
+      PSQL="psql --port=${builtins.toString config.services.postgres.settings.port}"
+
       # set pw for the users
       $PSQL -c "ALTER ROLE tlms WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password.path})';"
       $PSQL -c "ALTER ROLE grafana WITH PASSWORD '$(cat ${config.sops.secrets.postgres_password_grafana.path})';"
