@@ -27,6 +27,11 @@ in
 
     shares = [
       {
+        tag = "ro-store";
+        source = "/nix/store";
+        mountPoint = "/nix/.ro-store";
+      }
+      {
         source = "/var/lib/microvms/tram-borzoi/etc";
         mountPoint = "/etc";
         tag = "etc";
