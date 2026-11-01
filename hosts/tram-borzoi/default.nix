@@ -14,7 +14,7 @@ in
   microvm = {
     vcpu = 2;
     mem = 1024 * 1;
-    hypervisor = "cloud-hypervisor";
+    hypervisor = "qemu";
     socket = "${config.networking.hostName}.socket";
     storeOnDisk = true;
     storeDiskErofsFlags = [ "-zlz4hc,level=5" ];
