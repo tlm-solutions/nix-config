@@ -21,13 +21,6 @@ in
         '';
       };
     };
-    promtail-config = with lib; {
-      http_port = mkOption {
-        type = types.port;
-        default = 28183;
-        description = ''Default port for promtail log exporter'';
-      };
-    };
   };
 
   config =
@@ -47,35 +40,44 @@ in
         };
       };
 
-      # promtail log exporter
-      services.promtail = {
+      # systemd journal log exporter
+      services.fluent-bit = {
         enable = true;
-        configuration = {
-          server = {
-            http_listen_port = cfg.promtail-config.http_port;
-            grpc_listen_port = 0;
+
+        settings = {
+          service = {
+            flush = 1;
+            log_level = "info";
           };
-          positions = {
-            filename = "/tmp/positions.yaml";
+
+          pipeline = {
+            inputs = [
+              {
+                name = "systemd";
+                tag = "journal";
+                db = "/var/lib/fluent-bit/journal.db";
+              }
+            ];
+
+            outputs = [
+              {
+                name = "loki";
+                match = "journal";
+
+                host = monitoring-host-registry.wgAddr4;
+                port = toString monitoring-host-registry.port-loki;
+                uri = "/loki/api/v1/push";
+
+                labels = "job=systemd-journal, host=${config.networking.hostName}, unit=$['_SYSTEMD_UNIT']";
+              }
+            ];
           };
-          clients = [{
-            url = "http://${monitoring-host-registry.wgAddr4}:${toString monitoring-host-registry.port-loki}/loki/api/v1/push";
-          }];
-          scrape_configs = [{
-            job_name = "journal";
-            journal = {
-              max_age = "24h";
-              labels = {
-                job = "systemd-journal";
-                host = config.networking.hostName;
-              };
-            };
-            relabel_configs = [{
-              source_labels = [ "__journal__systemd_unit" ];
-              target_label = "unit";
-            }];
-          }];
         };
       };
+
+      # Allow Fluent Bit to read the systemd journal.
+      systemd.services.fluent-bit.serviceConfig.SupplementaryGroups = [
+        "systemd-journal"
+      ];
     };
 }
